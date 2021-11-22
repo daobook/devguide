@@ -1,0 +1,506 @@
+<!doctype html>
+<html class="no-js" lang="zh_CN">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="索引" href="genindex.html" /><link rel="search" title="搜索" href="search.html" /><link rel="next" title="Triaging an Issue" href="triaging.html" /><link rel="prev" title="Fixing “easy” Issues (and Beyond)" href="fixingissues.html" />
+
+    <meta name="generator" content="sphinx-4.3.0, furo 2021.11.16"/>
+        <title>Issue Tracking - Python Developer&#39;s Guide</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=916d6ed8f59335acffa15474ff504849343d4c76" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=0af69da206d614734f649b27d4cdc2dd6c31f41d" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  body[data-theme="dark"] {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    body:not([data-theme="light"]) {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+</style></head>
+  <body>
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" />
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Python Developer's Guide </div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="_static/python-logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Python Developer's Guide </span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder=搜索 name="q" aria-label="搜索">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Where to Get Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pullrequest.html">Lifecycle of a Pull Request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="runtests.html">Running &amp; Writing Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coverage.html">Increase Test Coverage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docquality.html">Helping with Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documenting.html">Documenting Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="silencewarnings.html">Silence Warnings From the Test Suite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fixingissues.html">Fixing “easy” Issues (and Beyond)</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Issue Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="triaging.html">Triaging an Issue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="communication.html">Following Python’s Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="porting.html">Porting Python to a new platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coredev.html">How to Become a Core Developer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developers.html">Developer Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="committing.html">Accepting Pull Requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="devcycle.html">Development Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="buildbots.html">Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stdlibchanges.html">Adding to the Stdlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="langchanges.html">Changing the Python Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experts.html">Experts Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gdb.html">gdb Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploring.html">Exploring CPython’s Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grammar.html">Changing CPython’s Grammar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parser.html">Guide to CPython’s Parser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compiler.html">Design of CPython’s Compiler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="garbage_collector.html">Design of CPython’s Garbage Collector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extensions.html">Updating standard library extension modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c-api.html">Changing Python’s C API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coverity.html">Coverity Scan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clang.html">Dynamic Analysis with Clang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="buildworker.html">Running a buildbot worker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motivations.html">Core Developer Motivations and Affiliations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitbootcamp.html">Git Bootcamp and Cheat Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix: Topics</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="issue-tracking">
+<h1>Issue Tracking<a class="headerlink" href="#issue-tracking" title="永久链接至标题">¶</a></h1>
+<section id="using-the-issue-tracker">
+<span id="tracker"></span><h2>Using the Issue Tracker<a class="headerlink" href="#using-the-issue-tracker" title="永久链接至标题">¶</a></h2>
+<p>If you think you have found a bug in Python, you can report it to the
+<a class="reference external" href="https://bugs.python.org/">issue tracker</a>. The <a class="reference external" href="https://bugs.python.org/">issue tracker</a> is also commonly referred to as
+<cite>bugs.python.org</cite> and <cite>bpo</cite>.  Documentation bugs can also be reported there.</p>
+<p>You can report bugs with the issue tracker itself to the <a class="reference external" href="https://github.com/python/psf-infra-meta/issues">meta tracker</a>.</p>
+<p>If you would like to file an issue about this devguide, please do so at the
+<a class="reference external" href="https://github.com/python/devguide/issues">devguide repo</a>.</p>
+<section id="checking-if-a-bug-already-exists">
+<h3>Checking if a bug already exists<a class="headerlink" href="#checking-if-a-bug-already-exists" title="永久链接至标题">¶</a></h3>
+<p>The first step before filing an issue report is to see whether the problem has
+already been reported.  Checking if the problem is an existing issue will:</p>
+<ul class="simple">
+<li><p>help you see if the problem has already been resolved or has been fixed for
+the next release</p></li>
+<li><p>save time for you and the developers</p></li>
+<li><p>help you learn what needs to be done to fix it</p></li>
+<li><p>determine if additional information, such as how to replicate the issue,
+is needed</p></li>
+</ul>
+<p>To see if an issue already exists, search the bug database using the
+search box on the top of the issue tracker page. An <a class="reference external" href="https://bugs.python.org/issue?@template=search">advanced search</a> is also
+available by clicking on “Search” in the sidebar.</p>
+</section>
+<section id="reporting-an-issue">
+<h3>Reporting an issue<a class="headerlink" href="#reporting-an-issue" title="永久链接至标题">¶</a></h3>
+<p>If the problem you’re reporting is not already in the <a class="reference external" href="https://bugs.python.org/">issue tracker</a>, you
+need to log in by entering your user and password in the form on the left.
+If you don’t already have a tracker account, select the “Register” link or,
+if you use <a class="reference external" href="https://openid.net">OpenID</a>, one of the OpenID provider logos in
+the sidebar.</p>
+<p>It is not possible to submit a bug report anonymously.</p>
+<p>Once logged in, you can submit a bug by clicking on the “Create New” link
+in the sidebar.</p>
+<p>The submission form has a number of fields, and they are described in detail
+in the <a class="reference internal" href="triaging.html#triaging"><span class="std std-ref">Triaging an Issue</span></a> page.  This is a short summary:</p>
+<ul class="simple">
+<li><p>in the <strong>Title</strong> field, enter a <em>very</em> short description of the problem;
+less than ten words is good;</p></li>
+<li><p>in the <strong>Type</strong> field, select the type of your problem (usually behavior);</p></li>
+<li><p>if you know which <strong>Components</strong> and <strong>Versions</strong> are affected by the issue,
+you can select these too; otherwise, leave them blank;</p></li>
+<li><p>last but not least, you have to describe the problem in detail, including
+what you expected to happen, what did happen, and how to replicate the
+problem in the <strong>Comment</strong> field. Be sure to include whether any extension
+modules were involved, and what hardware and software platform you were using
+(including version information as appropriate).</p></li>
+</ul>
+</section>
+<section id="understanding-the-issue-s-progress-and-status">
+<h3>Understanding the issue’s progress and status<a class="headerlink" href="#understanding-the-issue-s-progress-and-status" title="永久链接至标题">¶</a></h3>
+<p>The triaging team will take care of setting other fields, and possibly assign
+the issue to a specific developer.  You will automatically receive an update
+each time an action is taken on the bug.</p>
+</section>
+</section>
+<section id="disagreement-with-a-resolution-on-the-issue-tracker">
+<h2>Disagreement With a Resolution on the Issue Tracker<a class="headerlink" href="#disagreement-with-a-resolution-on-the-issue-tracker" title="永久链接至标题">¶</a></h2>
+<p>As humans, we will have differences of opinions from time to time. First and
+foremost, please be respectful that care, thought, and volunteer time went into
+the resolution.</p>
+<p>With this in mind, take some time to consider any comments made in association
+with the resolution of the issue. On reflection, the resolution steps may seem
+more reasonable than you initially thought.</p>
+<p>If you still feel the resolution is incorrect, then raise a thoughtful question
+on <a class="reference external" href="https://mail.python.org/mailman/listinfo/python-dev">python-dev</a>. Further argument and disrespectful discourse on <a class="reference external" href="https://mail.python.org/mailman/listinfo/python-dev">python-dev</a>
+after a consensus has been reached amongst the core developers is unlikely to
+win any converts.</p>
+<p>As a reminder, issues closed by a core developer have already been carefully
+considered. Please do not reopen a closed issue.</p>
+</section>
+<section id="helping-triage-issues">
+<span id="helptriage"></span><h2>Helping Triage Issues<a class="headerlink" href="#helping-triage-issues" title="永久链接至标题">¶</a></h2>
+<p>Once you know your way around how Python’s source files are
+structured and you are comfortable working with patches, a great way to
+contribute is to help triage issues. Do realize, though, that experience
+working on Python is needed in order to effectively help triage.</p>
+<p>Around the clock, new issues are being opened on the <a class="reference external" href="https://bugs.python.org/">issue tracker</a> and
+existing issues are being updated. Every issue needs to be triaged to make
+sure various things are in proper order. Even without special privileges you
+can help with this process.</p>
+<section id="classifying-reports">
+<h3>Classifying Reports<a class="headerlink" href="#classifying-reports" title="永久链接至标题">¶</a></h3>
+<p>For bugs, an issue needs to:</p>
+<ul class="simple">
+<li><p>clearly explain the bug so it can be reproduced</p></li>
+<li><p>include all relevant platform details</p></li>
+<li><p>state what version(s) of Python are affected by the bug.</p></li>
+</ul>
+<p>These are things you can help with once you have experience developing for
+Python:</p>
+<ul class="simple">
+<li><p>try reproducing the bug: For instance, if a bug is not clearly explained
+enough for you to reproduce it then there is a good chance a core developer
+won’t be able to either.</p></li>
+<li><p>see if the issue happens on a different Python version: It is always helpful
+to know if a bug not only affects the in-development version of Python, but
+whether it also affects other versions in maintenance mode.</p></li>
+<li><p>write a unit test: If the bug lacks a unit test that should end up in
+Python’s test suite, having that written can be very helpful.</p></li>
+</ul>
+<p>This is all helpful as it allows triagers (i.e.,
+<a class="reference internal" href="#devrole"><span class="std std-ref">people with the Developer role on the issue tracker</span></a>) to
+properly classify an issue so it can be handled by the right core developers in
+a timely fashion.</p>
+</section>
+<section id="reviewing-patches">
+<h3>Reviewing Patches<a class="headerlink" href="#reviewing-patches" title="永久链接至标题">¶</a></h3>
+<p>If an issue has a patch attached that has not been reviewed, you can help by
+making sure the patch:</p>
+<ul class="simple">
+<li><p>follows the style guides</p></li>
+<li><p>applies cleanly to an up-to-date clone</p></li>
+<li><p>is a good solution to the problem it is trying to solve</p></li>
+<li><p>includes proper tests</p></li>
+<li><p>includes proper documentation changes</p></li>
+<li><p>submitter is listed in <code class="docutils literal notranslate"><span class="pre">Misc/ACKS</span></code>, either already or the patch adds them</p></li>
+</ul>
+<p>Doing all of this allows core developers and <a class="reference internal" href="#devrole"><span class="std std-ref">triagers</span></a> to more
+quickly look for subtle issues that only people with extensive experience
+working on Python’s code base will notice.</p>
+</section>
+<section id="finding-an-issue-you-can-help-with">
+<h3>Finding an Issue You Can Help With<a class="headerlink" href="#finding-an-issue-you-can-help-with" title="永久链接至标题">¶</a></h3>
+<p>If you want to help triage issues, you might also want to search for issues
+in modules which you have a working knowledge.  Search for the name of a module
+in the issue tracker or use the <a class="reference external" href="https://bugs.python.org/issue?@template=search">advanced search</a> to search for specific
+components (e.g. “Windows” if you are a Windows developer, “Extension Modules”
+if you are familiar with C, etc.). Finally you can use the “Random issue” link
+in the sidebar to pick random issues until you find an issue that you like.
+You may find old issues that can be closed, either because they
+are no longer valid or they have a patch that is ready to be committed,
+but no one has had the time to do so.</p>
+<p>In the sidebar you can also find links to summaries for easy issues and
+issues with a patch.</p>
+</section>
+</section>
+<section id="gaining-the-developer-role-on-the-issue-tracker">
+<span id="devrole"></span><h2>Gaining the “Developer” Role on the Issue Tracker<a class="headerlink" href="#gaining-the-developer-role-on-the-issue-tracker" title="永久链接至标题">¶</a></h2>
+<p>When you have consistently shown the ability to properly
+help triage issues without guidance, you may request that you
+be given the “Developer” role on the <a class="reference external" href="https://bugs.python.org/">issue tracker</a>. You can make the request
+of any person who already has the Developer role. If they decide you are ready
+to gain the extra privileges on the tracker they will then act as a mentor to
+you until you are ready to do things entirely on your own. There is no set rule
+as to how many issues you need to have helped with before or how long you have
+been participating. The key requirements are that you show the desire to
+help, you are able to work well with others (especially those already with the
+Developer role), and that have a firm grasp of how to do things on the issue
+tracker properly on your own.</p>
+<p>Gaining the Developer role will allow you to set any value on any issue in the
+tracker, releasing you from the burden of having to ask others to set values on
+an issue for you in order to properly triage something. This will not only help
+speed up and simplify your work in helping out, but also help lessen the
+workload for everyone by gaining your help.</p>
+</section>
+<section id="the-meta-tracker">
+<h2>The Meta Tracker<a class="headerlink" href="#the-meta-tracker" title="永久链接至标题">¶</a></h2>
+<p>If you find an issue with the <a class="reference external" href="https://bugs.python.org/">issue tracker</a>, you can report it to the
+<a class="reference external" href="https://github.com/python/psf-infra-meta/issues">meta tracker</a>.  The meta tracker is where you file issues against anything
+you come across when working with the issue tracker itself (e.g you can’t
+attach a file, the layout is broken on your browser, Rietveld gave you an
+error, etc.).</p>
+<p>If you want to contribute to the tracker you can get a checkout of the source
+and install a local instance where to experiment.  You can find detailed
+instructions on the <a class="reference external" href="https://wiki.python.org/moin/TrackerDevelopment">Tracker Development</a> page.</p>
+<div class="admonition seealso">
+<p class="admonition-title">参见</p>
+<div class="line-block">
+<div class="line"><em>Issues with Python and documentation</em></div>
+</div>
+<dl class="simple">
+<dt><a class="reference external" href="https://bugs.python.org/">The Python issue tracker</a></dt><dd><p>Where to report issues about Python.</p>
+</dd>
+<dt><a class="reference external" href="https://mail.python.org/mailman/listinfo/new-bugs-announce">The New-bugs-announce mailing list</a></dt><dd><p>Where all the new issues created on the tracker are reported.</p>
+</dd>
+<dt><a class="reference external" href="https://mail.python.org/mailman/listinfo/python-bugs-list">The Python-bugs-list mailing list</a></dt><dd><p>Where all the changes to issues are reported.</p>
+</dd>
+</dl>
+<p><em>The meta tracker and its development</em></p>
+<dl class="simple">
+<dt><a class="reference external" href="https://github.com/python/psf-infra-meta/issues">The meta tracker</a></dt><dd><p>Where to report issues about the tracker itself.</p>
+</dd>
+<dt><a class="reference external" href="https://wiki.python.org/moin/TrackerDevelopment">The Tracker development wiki page</a></dt><dd><p>Instructions about setting up a local instance of the bug tracker.</p>
+</dd>
+<dt><a class="reference external" href="https://mail.python.org/mailman/listinfo/tracker-discuss">The Tracker-discuss mailing list</a></dt><dd><p>Discussions about the bug tracker.</p>
+</dd>
+</dl>
+</div>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="triaging.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Triaging an Issue</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="fixingissues.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Fixing “easy” Issues (and Beyond)</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2011-2021, Python Software Foundation |
+            最后更新于 11月 22, 2021. |
+          Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+          <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            | <a class="muted-link" href="_sources/tracker.rst.txt"
+               rel="nofollow">
+              显示源代码
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            目录
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Issue Tracking</a><ul>
+<li><a class="reference internal" href="#using-the-issue-tracker">Using the Issue Tracker</a><ul>
+<li><a class="reference internal" href="#checking-if-a-bug-already-exists">Checking if a bug already exists</a></li>
+<li><a class="reference internal" href="#reporting-an-issue">Reporting an issue</a></li>
+<li><a class="reference internal" href="#understanding-the-issue-s-progress-and-status">Understanding the issue’s progress and status</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#disagreement-with-a-resolution-on-the-issue-tracker">Disagreement With a Resolution on the Issue Tracker</a></li>
+<li><a class="reference internal" href="#helping-triage-issues">Helping Triage Issues</a><ul>
+<li><a class="reference internal" href="#classifying-reports">Classifying Reports</a></li>
+<li><a class="reference internal" href="#reviewing-patches">Reviewing Patches</a></li>
+<li><a class="reference internal" href="#finding-an-issue-you-can-help-with">Finding an Issue You Can Help With</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#gaining-the-developer-role-on-the-issue-tracker">Gaining the “Developer” Role on the Issue Tracker</a></li>
+<li><a class="reference internal" href="#the-meta-tracker">The Meta Tracker</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/scripts/furo.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/translations.js"></script>
+    </body>
+</html>

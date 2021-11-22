@@ -1,0 +1,559 @@
+<!doctype html>
+<html class="no-js" lang="zh_CN">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="索引" href="genindex.html" /><link rel="search" title="搜索" href="search.html" /><link rel="next" title="Helping with Documentation" href="docquality.html" /><link rel="prev" title="Running &amp; Writing Tests" href="runtests.html" />
+
+    <meta name="generator" content="sphinx-4.3.0, furo 2021.11.16"/>
+        <title>Increase Test Coverage - Python Developer&#39;s Guide</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=916d6ed8f59335acffa15474ff504849343d4c76" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=0af69da206d614734f649b27d4cdc2dd6c31f41d" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  body[data-theme="dark"] {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    body:not([data-theme="light"]) {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+</style></head>
+  <body>
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" />
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Python Developer's Guide </div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="_static/python-logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Python Developer's Guide </span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder=搜索 name="q" aria-label="搜索">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Where to Get Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pullrequest.html">Lifecycle of a Pull Request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="runtests.html">Running &amp; Writing Tests</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Increase Test Coverage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docquality.html">Helping with Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documenting.html">Documenting Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="silencewarnings.html">Silence Warnings From the Test Suite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fixingissues.html">Fixing “easy” Issues (and Beyond)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tracker.html">Issue Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="triaging.html">Triaging an Issue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="communication.html">Following Python’s Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="porting.html">Porting Python to a new platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coredev.html">How to Become a Core Developer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developers.html">Developer Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="committing.html">Accepting Pull Requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="devcycle.html">Development Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="buildbots.html">Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stdlibchanges.html">Adding to the Stdlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="langchanges.html">Changing the Python Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experts.html">Experts Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gdb.html">gdb Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploring.html">Exploring CPython’s Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grammar.html">Changing CPython’s Grammar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parser.html">Guide to CPython’s Parser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compiler.html">Design of CPython’s Compiler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="garbage_collector.html">Design of CPython’s Garbage Collector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extensions.html">Updating standard library extension modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c-api.html">Changing Python’s C API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coverity.html">Coverity Scan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clang.html">Dynamic Analysis with Clang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="buildworker.html">Running a buildbot worker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motivations.html">Core Developer Motivations and Affiliations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitbootcamp.html">Git Bootcamp and Cheat Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix: Topics</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="increase-test-coverage">
+<span id="coverage"></span><h1>Increase Test Coverage<a class="headerlink" href="#increase-test-coverage" title="永久链接至标题">¶</a></h1>
+<p>Python development follows a practice that all semantic changes and additions
+to the language and <abbr title="standard library">stdlib</abbr> are accompanied by
+appropriate unit tests. Unfortunately Python was in existence for a long time
+before the practice came into effect. This has left chunks of the stdlib
+untested which is not a desirable situation to be in.</p>
+<p>A good, easy way to become acquainted with Python’s code and to help out is to
+help increase the test coverage for Python’s stdlib. Ideally we would like to
+have 100% coverage, but any increase is a good one. Do realize, though, that
+getting 100% coverage is not always possible. There could be platform-specific
+code that simply will not execute for you, errors in the output, etc. You can
+use your judgement as to what should and should not be covered, but being
+conservative and assuming something should be covered is generally a good rule
+to follow.</p>
+<p>Choosing what module you want to increase test coverage for can be done in a
+couple of ways.
+You can simply run the entire test suite yourself with coverage turned
+on and see what modules need help. This has the drawback of running the entire
+test suite under coverage measuring which takes some time to complete, but you
+will have an accurate, up-to-date notion of what modules need the most work.</p>
+<p>Another is to follow the examples below and simply see what
+coverage your favorite module has. This is “stabbing in the dark”, though, and
+so it might take some time to find a module that needs coverage help.</p>
+<p>Do make sure, though, that for any module you do decide to work on that you run
+coverage for just that module. This will make sure you know how good the
+explicit coverage of the module is from its own set of tests instead of from
+implicit testing by other code that happens to use the module.</p>
+<section id="common-gotchas">
+<h2>Common Gotchas<a class="headerlink" href="#common-gotchas" title="永久链接至标题">¶</a></h2>
+<p>Please realize that coverage reports on modules already imported before coverage
+data starts to be recorded will be wrong. Typically you can tell a module falls
+into this category by the coverage report saying that global statements that
+would obviously be executed upon import have gone unexecuted while local
+statements have been covered. In these instances you can ignore the global
+statement coverage and simply focus on the local statement coverage.</p>
+<p>When writing new tests to increase coverage, do take note of the style of tests
+already provided for a module (e.g., whitebox, blackbox, etc.). As
+some modules are primarily maintained by a single core developer they may have
+a specific preference as to what kind of test is used (e.g., whitebox) and
+prefer that other types of tests not be used (e.g., blackbox). When in doubt,
+stick with whitebox testing in order to properly exercise the code.</p>
+</section>
+<section id="measuring-coverage">
+<h2>Measuring Coverage<a class="headerlink" href="#measuring-coverage" title="永久链接至标题">¶</a></h2>
+<p>It should be noted that a quirk of running coverage over Python’s own stdlib is
+that certain modules are imported as part of interpreter startup. Those modules
+required by Python itself will not be viewed as executed by the coverage tools
+and thus look like they have very poor coverage (e.g., the <a class="reference external" href="https://daobook.github.io/cpython/library/stat.html#module-stat" title="(在 Python v3.11)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">stat</span></code></a>
+module). In these instances the module will appear to not have any coverage of
+global statements but will have proper coverage of local statements (e.g.,
+function definitions will not be traced, but the function bodies will).
+Calculating the coverage of modules in this situation will simply require
+manually looking at what local statements were not executed.</p>
+<section id="using-coverage-py">
+<h3>Using coverage.py<a class="headerlink" href="#using-coverage-py" title="永久链接至标题">¶</a></h3>
+<p>One of the most popular third-party coverage tools is <a class="reference external" href="https://coverage.readthedocs.io/en/latest/">coverage.py</a> which
+provides very nice HTML output along with advanced features such as
+<a class="reference internal" href="#branch-coverage"><span class="std std-ref">branch coverage</span></a>. If you prefer to stay with tools only
+provided by the stdlib then you can <a class="reference internal" href="#coverage-by-regrtest"><span class="std std-ref">use test.regrtest</span></a>.</p>
+<section id="install-coverage">
+<span id="id1"></span><h4>Install Coverage<a class="headerlink" href="#install-coverage" title="永久链接至标题">¶</a></h4>
+<p>By default, pip will not install into the in-development version of Python you
+just built, and this built version of Python will not see packages installed
+into your default version of Python. One option is to use a virtual environment
+to install coverage.</p>
+<p>On Unix run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="o">../</span><span class="n">cpython</span><span class="o">-</span><span class="n">venv</span>
+<span class="n">source</span> <span class="o">../</span><span class="n">cpython</span><span class="o">-</span><span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">coverage</span>
+</pre></div>
+</div>
+<p>On <a class="reference internal" href="setup.html#mac-python-exe"><span class="std std-ref">most</span></a> Mac OS X systems run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">python</span><span class="o">.</span><span class="n">exe</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="o">../</span><span class="n">cpython</span><span class="o">-</span><span class="n">venv</span>
+<span class="n">source</span> <span class="o">../</span><span class="n">cpython</span><span class="o">-</span><span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">coverage</span>
+</pre></div>
+</div>
+<p>On Windows run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span><span class="o">.</span><span class="n">bat</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="o">..</span>\\<span class="n">cpython</span><span class="o">-</span><span class="n">venv</span>
+<span class="o">..</span>\\<span class="n">cpython</span><span class="o">-</span><span class="n">venv</span>\\<span class="n">Scripts</span>\\<span class="n">activate</span><span class="o">.</span><span class="n">bat</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">coverage</span>
+</pre></div>
+</div>
+<p>You can now use python without the ./ for the rest of these instructions, as
+long as your venv is activated. For more info on venv see <a class="reference external" href="https://docs.python.org/3/tutorial/venv.html">Virtual Environment</a> documentation.</p>
+<p>If this does not work for you for some reason, you should try using the
+in-development version of coverage.py to see if it has been updated as needed.
+To do this you should clone/check out the development version of coverage.py:</p>
+<blockquote>
+<div><p>git clone <a class="reference external" href="https://github.com/nedbat/coveragepy.git">https://github.com/nedbat/coveragepy.git</a></p>
+</div></blockquote>
+<p>You will need to use the full path to the installation.</p>
+<p>Another option is to use an installed copy of coverage.py, if you already have
+it. For this, you will again need to use the full path to that installation.</p>
+</section>
+<section id="basic-usage">
+<span id="coverage-usage"></span><h4>Basic Usage<a class="headerlink" href="#basic-usage" title="永久链接至标题">¶</a></h4>
+<p>The following command will tell you if your copy of coverage works (substitute
+<code class="docutils literal notranslate"><span class="pre">COVERAGEDIR</span></code> with the directory where your clone exists, e.g.
+<code class="docutils literal notranslate"><span class="pre">../coveragepy</span></code>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">python</span> <span class="n">COVERAGEDIR</span>
+</pre></div>
+</div>
+<p>Coverage.py will print out a little bit of helper text verifying that
+everything is working. If you are using an installed copy, you can do the
+following instead (note this must be installed using the built copy of Python,
+such as by venv):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">coverage</span>
+</pre></div>
+</div>
+<p>The rest of the examples on how to use coverage.py will assume you are using a
+cloned copy, but you can substitute the above and all instructions should still
+be valid.</p>
+<p>To run the test suite under coverage.py, do the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">python</span> <span class="n">COVERAGEDIR</span> <span class="n">run</span> <span class="o">--</span><span class="n">pylib</span> <span class="n">Lib</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">regrtest</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>To run only a single test, specify the module/package being tested
+in the <code class="docutils literal notranslate"><span class="pre">--source</span></code> flag (so as to prune the coverage reporting to only the
+module/package you are interested in) and then append the name of the test you
+wish to run to the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">python</span> <span class="n">COVERAGEDIR</span> <span class="n">run</span> <span class="o">--</span><span class="n">pylib</span> <span class="o">--</span><span class="n">source</span><span class="o">=</span><span class="n">abc</span> <span class="n">Lib</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">regrtest</span><span class="o">.</span><span class="n">py</span> <span class="n">test_abc</span>
+</pre></div>
+</div>
+<p>To see the results of the coverage run, you can view a text-based report with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">python</span> <span class="n">COVERAGEDIR</span> <span class="n">report</span>
+</pre></div>
+</div>
+<p>You can use the <code class="docutils literal notranslate"><span class="pre">--show-missing</span></code> flag to get a list of lines that were not
+executed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">python</span> <span class="n">COVERAGEDIR</span> <span class="n">report</span> <span class="o">--</span><span class="n">show</span><span class="o">-</span><span class="n">missing</span>
+</pre></div>
+</div>
+<p>But one of the strengths of coverage.py is its HTML-based reports which let
+you visually see what lines of code were not tested:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>./python COVERAGEDIR html -i --include=`pwd`/Lib/* --omit="Lib/test/*,Lib/*/tests/*"
+</pre></div>
+</div>
+<p>This will generate an HTML report in a directory named <code class="docutils literal notranslate"><span class="pre">htmlcov</span></code> which
+ignores any errors that may arise and ignores modules for which test coverage is
+unimportant (e.g. tests, temp files, etc.). You can then open the
+<code class="docutils literal notranslate"><span class="pre">htmlcov/index.html</span></code> file in a web browser to view the coverage results along
+with pages that visibly show what lines of code were or were not executed.</p>
+</section>
+<section id="branch-coverage">
+<span id="id2"></span><h4>Branch Coverage<a class="headerlink" href="#branch-coverage" title="永久链接至标题">¶</a></h4>
+<p>For the truly daring, you can use another powerful feature of coverage.py:
+branch coverage. Testing every possible branch path through code, while a great
+goal to strive for, is a secondary goal to getting 100% line
+coverage for the entire stdlib (for now).</p>
+<p>If you decide you want to try to improve branch coverage, simply add the
+<code class="docutils literal notranslate"><span class="pre">--branch</span></code> flag to your coverage run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">python</span> <span class="n">COVERAGEDIR</span> <span class="n">run</span> <span class="o">--</span><span class="n">pylib</span> <span class="o">--</span><span class="n">branch</span> <span class="o">&lt;</span><span class="n">arguments</span> <span class="n">to</span> <span class="n">run</span> <span class="n">test</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>This will lead to the report stating not only what lines were not covered, but
+also what branch paths were not executed.</p>
+</section>
+<section id="coverage-results-for-modules-imported-early-on">
+<h4>Coverage Results For Modules Imported Early On<a class="headerlink" href="#coverage-results-for-modules-imported-early-on" title="永久链接至标题">¶</a></h4>
+<p>For the <em>truly truly</em> daring, you can use a hack to get coverage.py to include
+coverage for modules that are imported early on during CPython’s startup (e.g.
+the encodings module). Do not worry if you can’t get this to work or it doesn’t
+make any sense; it’s entirely optional and only important for a small number of
+modules.</p>
+<p>If you still choose to try this, the first step is to make sure coverage.py’s
+C extension is installed. You can check this with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">python</span> <span class="n">COVERAGEDIR</span> <span class="o">--</span><span class="n">version</span>
+</pre></div>
+</div>
+<p>If it says ‘without C extension’, then you will need to build the C extension.
+Assuming that coverage.py’s clone is at <code class="docutils literal notranslate"><span class="pre">COVERAGEDIR</span></code> and your clone of CPython
+is at <code class="docutils literal notranslate"><span class="pre">CPYTHONDIR</span></code>, you can do this by executing the following in your coverage.py
+clone:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CPPFLAGS</span><span class="o">=</span><span class="s2">"-I CPYTHONDIR -I CPYTHONDIR/Include"</span> <span class="n">CPYTHONDIR</span><span class="o">/</span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">build_ext</span> <span class="o">--</span><span class="n">inplace</span>
+</pre></div>
+</div>
+<p>This will build coverage.py’s C extension code in-place, allowing the previous
+instructions on how to gather coverage to continue to work.</p>
+<p>To get coverage.py to be able to gather the most accurate coverage data on as
+many modules as possible
+<strong>with a HORRIBLE HACK that you should NEVER use in your own code</strong>, run the
+following from your CPython clone:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PYTHONPATH</span><span class="o">=</span><span class="n">COVERAGEDIR</span><span class="o">/</span><span class="n">coverage</span><span class="o">/</span><span class="n">fullcoverage</span> <span class="o">./</span><span class="n">python</span> <span class="n">COVERAGEDIR</span> <span class="n">run</span> <span class="o">--</span><span class="n">pylib</span> <span class="n">Lib</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">regrtest</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>This will give you the most complete coverage possible for CPython’s standard
+library.</p>
+</section>
+</section>
+<section id="using-test-regrtest">
+<span id="coverage-by-regrtest"></span><h3>Using test.regrtest<a class="headerlink" href="#using-test-regrtest" title="永久链接至标题">¶</a></h3>
+<p>If you prefer to rely solely on the stdlib to generate coverage data, you can
+do so by passing the appropriate flags to <a class="reference external" href="https://daobook.github.io/cpython/library/test.html#module-test" title="(在 Python v3.11)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">test</span></code></a> (along with
+any other flags you want to):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>./python -m test --coverage -D `pwd`/coverage_data &lt;test arguments&gt;
+</pre></div>
+</div>
+<p>Do note the argument to <code class="docutils literal notranslate"><span class="pre">-D</span></code>; if you do not specify an absolute path to where
+you want the coverage data to end up it will go somewhere you don’t expect.</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>If you are running coverage over the entire test suite, make sure to
+add <code class="docutils literal notranslate"><span class="pre">-x</span> <span class="pre">test_importlib</span> <span class="pre">test_runpy</span> <span class="pre">test_trace</span></code> to exclude those tests as
+they trigger exceptions during coverage; see
+<a class="reference external" href="https://bugs.python.org/issue10541">https://bugs.python.org/issue10541</a> and <a class="reference external" href="https://bugs.python.org/issue10991">https://bugs.python.org/issue10991</a>.</p>
+</div>
+<p>Once the tests are done you will find the directory you specified contains
+files for each executed module along with which lines were executed how many
+times.</p>
+</section>
+</section>
+<section id="filing-the-issue">
+<h2>Filing the Issue<a class="headerlink" href="#filing-the-issue" title="永久链接至标题">¶</a></h2>
+<p>Once you have increased coverage, you need to create an issue on the
+<a class="reference external" href="https://bugs.python.org">issue tracker</a> and submit a <a class="reference internal" href="pullrequest.html"><span class="doc">pull request</span></a>. On the
+issue set the “Components” to “Test” and “Versions” to the version of Python you
+worked on (i.e., the in-development version).</p>
+</section>
+<section id="measuring-coverage-of-c-code-with-gcov-and-lcov">
+<h2>Measuring coverage of C code with gcov and lcov<a class="headerlink" href="#measuring-coverage-of-c-code-with-gcov-and-lcov" title="永久链接至标题">¶</a></h2>
+<p>It’s also possible to measure the function, line and branch coverage of
+Python’s C code. Right now only GCC with <a class="reference external" href="https://gcc.gnu.org/onlinedocs/gcc/Gcov.html">gcov</a> is supported. In order to
+create an instrumented build of Python with gcov, run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">coverage</span>
+</pre></div>
+</div>
+<p>Then run some code and gather coverage data with the <code class="docutils literal notranslate"><span class="pre">gcov</span></code> command. In
+order to create a HTML report you can install <a class="reference external" href="http://ltp.sourceforge.net/coverage/lcov.php">lcov</a>. The command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">coverage</span><span class="o">-</span><span class="n">lcov</span>
+</pre></div>
+</div>
+<p>assembles coverage data, removes 3rd party and system libraries and finally
+creates a report. You can skip both steps and just run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">coverage</span><span class="o">-</span><span class="n">report</span>
+</pre></div>
+</div>
+<p>if you like to generate a coverage report for Python’s stdlib tests. It takes
+about 20 to 30 minutes on a modern computer.</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>Multiple test jobs may not work properly. C coverage reporting has only
+been tested with a single test process.</p>
+</div>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="docquality.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Helping with Documentation</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="runtests.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Running &amp; Writing Tests</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2011-2021, Python Software Foundation |
+            最后更新于 11月 22, 2021. |
+          Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+          <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            | <a class="muted-link" href="_sources/coverage.rst.txt"
+               rel="nofollow">
+              显示源代码
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            目录
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Increase Test Coverage</a><ul>
+<li><a class="reference internal" href="#common-gotchas">Common Gotchas</a></li>
+<li><a class="reference internal" href="#measuring-coverage">Measuring Coverage</a><ul>
+<li><a class="reference internal" href="#using-coverage-py">Using coverage.py</a><ul>
+<li><a class="reference internal" href="#install-coverage">Install Coverage</a></li>
+<li><a class="reference internal" href="#basic-usage">Basic Usage</a></li>
+<li><a class="reference internal" href="#branch-coverage">Branch Coverage</a></li>
+<li><a class="reference internal" href="#coverage-results-for-modules-imported-early-on">Coverage Results For Modules Imported Early On</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#using-test-regrtest">Using test.regrtest</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#filing-the-issue">Filing the Issue</a></li>
+<li><a class="reference internal" href="#measuring-coverage-of-c-code-with-gcov-and-lcov">Measuring coverage of C code with gcov and lcov</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/scripts/furo.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/translations.js"></script>
+    </body>
+</html>

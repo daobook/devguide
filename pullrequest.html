@@ -1,0 +1,746 @@
+<!doctype html>
+<html class="no-js" lang="zh_CN">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="索引" href="genindex.html" /><link rel="search" title="搜索" href="search.html" /><link rel="next" title="Running &amp; Writing Tests" href="runtests.html" /><link rel="prev" title="Where to Get Help" href="help.html" />
+
+    <meta name="generator" content="sphinx-4.3.0, furo 2021.11.16"/>
+        <title>Lifecycle of a Pull Request - Python Developer&#39;s Guide</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=916d6ed8f59335acffa15474ff504849343d4c76" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=0af69da206d614734f649b27d4cdc2dd6c31f41d" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  body[data-theme="dark"] {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    body:not([data-theme="light"]) {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+</style></head>
+  <body>
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" />
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Python Developer's Guide </div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="_static/python-logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Python Developer's Guide </span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder=搜索 name="q" aria-label="搜索">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Where to Get Help</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Lifecycle of a Pull Request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="runtests.html">Running &amp; Writing Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coverage.html">Increase Test Coverage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docquality.html">Helping with Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documenting.html">Documenting Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="silencewarnings.html">Silence Warnings From the Test Suite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fixingissues.html">Fixing “easy” Issues (and Beyond)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tracker.html">Issue Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="triaging.html">Triaging an Issue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="communication.html">Following Python’s Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="porting.html">Porting Python to a new platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coredev.html">How to Become a Core Developer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developers.html">Developer Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="committing.html">Accepting Pull Requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="devcycle.html">Development Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="buildbots.html">Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stdlibchanges.html">Adding to the Stdlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="langchanges.html">Changing the Python Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experts.html">Experts Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gdb.html">gdb Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploring.html">Exploring CPython’s Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grammar.html">Changing CPython’s Grammar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parser.html">Guide to CPython’s Parser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compiler.html">Design of CPython’s Compiler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="garbage_collector.html">Design of CPython’s Garbage Collector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extensions.html">Updating standard library extension modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c-api.html">Changing Python’s C API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coverity.html">Coverity Scan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clang.html">Dynamic Analysis with Clang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="buildworker.html">Running a buildbot worker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motivations.html">Core Developer Motivations and Affiliations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitbootcamp.html">Git Bootcamp and Cheat Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix: Topics</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="lifecycle-of-a-pull-request">
+<span id="patch"></span><h1>Lifecycle of a Pull Request<a class="headerlink" href="#lifecycle-of-a-pull-request" title="永久链接至标题">¶</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="永久链接至标题">¶</a></h2>
+<p>CPython uses a workflow based on pull requests. What this means is
+that you create a branch in Git, make your changes, push those changes
+to your fork on GitHub (<code class="docutils literal notranslate"><span class="pre">origin</span></code>), and then create a pull request against
+the official CPython repository (<code class="docutils literal notranslate"><span class="pre">upstream</span></code>).</p>
+</section>
+<section id="quick-guide">
+<span id="pullrequest-quickguide"></span><h2>Quick Guide<a class="headerlink" href="#quick-guide" title="永久链接至标题">¶</a></h2>
+<p><a class="reference external" href="https://opensource.guide/how-to-contribute/#how-to-submit-a-contribution">Clear communication</a> is key to contributing to any project, especially an
+<a class="reference external" href="https://opensource.guide/">Open Source</a> project like CPython.</p>
+<p>Here is a quick overview of how you can contribute to CPython:</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://bugs.python.org/">Create an issue</a> that describes your change <a class="footnote-reference brackets" href="#id2" id="id1">*</a></p></li>
+<li><p><a class="reference internal" href="#pullrequest-steps"><span class="std std-ref">Create a new branch in Git</span></a></p></li>
+<li><p>Work on changes (e.g. fix a bug or add a new feature)</p></li>
+<li><p><a class="reference internal" href="runtests.html#runtests"><span class="std std-ref">Run tests</span></a> and <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">patchcheck</span></code></p></li>
+<li><p><a class="reference internal" href="gitbootcamp.html#commit-changes"><span class="std std-ref">Commit</span></a> and <a class="reference internal" href="gitbootcamp.html#push-changes"><span class="std std-ref">push</span></a>
+changes to your GitHub fork</p></li>
+<li><p><a class="reference external" href="https://help.github.com/articles/creating-a-pull-request/">Create Pull Request</a> on GitHub to merge a branch from your fork</p></li>
+<li><p>Make sure the continuous integration checks on your Pull Request
+are green (i.e. successful)</p></li>
+<li><p>Review and address <a class="reference external" href="https://help.github.com/articles/commenting-on-a-pull-request/">comments on your Pull Request</a></p></li>
+<li><p>When your changes are merged, you can <a class="reference internal" href="gitbootcamp.html#deleting-branches"><span class="std std-ref">delete the PR branch</span></a></p></li>
+<li><p>Celebrate contributing to CPython! :)</p></li>
+</ol>
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">*</a></span></dt>
+<dd><p>If an issue is trivial (e.g. typo fixes), or if an issue already exists,
+you can skip this step.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>In order to keep the commit history intact, please avoid squashing or amending
+history and then force-pushing to the PR. Reviewers often want to look at
+individual commits.</p>
+</div>
+</section>
+<section id="step-by-step-guide">
+<span id="pullrequest-steps"></span><h2>Step-by-step Guide<a class="headerlink" href="#step-by-step-guide" title="永久链接至标题">¶</a></h2>
+<p>You should have already <a class="reference internal" href="setup.html#setup"><span class="std std-ref">set up your system</span></a>,
+<a class="reference internal" href="setup.html#checkout"><span class="std std-ref">got the source code</span></a>, and <a class="reference internal" href="setup.html#compiling"><span class="std std-ref">built Python</span></a>.</p>
+<ul>
+<li><p>Update data from your <code class="docutils literal notranslate"><span class="pre">upstream</span></code> repository:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git fetch upstream
+</pre></div>
+</div>
+</li>
+<li><p>Create a new branch in your local clone:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git checkout -b &lt;branch-name&gt; upstream/main
+</pre></div>
+</div>
+</li>
+<li><p>Make changes to the code, and use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> and <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code> to see them.</p>
+<p>(Learn more about <a class="reference internal" href="#good-prs"><span class="std std-ref">Making Good PRs</span></a>)</p>
+</li>
+<li><p>Make sure the changes are fine and don’t cause any test failure:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make patchcheck
+./python -m <span class="nb">test</span>
+</pre></div>
+</div>
+<p>(Learn more about <a class="reference internal" href="#patchcheck"><span class="std std-ref">patchcheck</span></a> and about <a class="reference internal" href="runtests.html"><span class="doc">Running &amp; Writing Tests</span></a>)</p>
+</li>
+<li><p>Once you are satisfied with the changes, add the files and commit them:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git add &lt;filenames&gt;
+git commit -m <span class="s1">'&lt;message&gt;'</span>
+</pre></div>
+</div>
+<p>(Learn more about <a class="reference internal" href="#good-commits"><span class="std std-ref">Making Good Commits</span></a>)</p>
+</li>
+<li><p>Then push your work to your GitHub fork:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git push origin &lt;branch-name&gt;
+</pre></div>
+</div>
+</li>
+<li><p>Finally go on <code class="samp docutils literal notranslate"><span class="pre">https://github.com/</span><em><span class="pre">&lt;your-username&gt;</span></em><span class="pre">/cpython</span></code>: you will
+see a box with the branch you just pushed and a green button that allows
+you to create a pull request against the official CPython repository.</p></li>
+<li><p>When people start adding review comments, you can address them by switching
+to your branch, making more changes, committing them, and pushing them to
+automatically update your PR:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git checkout &lt;branch-name&gt;
+<span class="c1"># make changes and run tests</span>
+git add &lt;filenames&gt;
+git commit -m <span class="s1">'&lt;message&gt;'</span>
+git push origin &lt;branch-name&gt;
+</pre></div>
+</div>
+<ul>
+<li><p>If a core developer reviewing your PR pushed one or more commits to your
+PR branch, then after checking out your branch and before editing, run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git pull origin &lt;branch-name&gt;  <span class="c1"># pull = fetch + merge</span>
+</pre></div>
+</div>
+<p>If you have made local changes that have not been pushed to your fork and
+there are merge conflicts, git will warn you about this and enter conflict
+resolution mode. See <a class="reference internal" href="#resolving-merge-conflicts"><span class="std std-ref">Resolving Merge Conflicts</span></a> below.</p>
+</li>
+</ul>
+</li>
+<li><p>If time passes and there are merge conflicts with the main branch, GitHub
+will show a warning to this end and you may be asked to address this. Merge
+the changes from the main branch while resolving the conflicts locally:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git checkout &lt;branch-name&gt;
+git pull upstream main  <span class="c1"># pull = fetch + merge</span>
+<span class="c1"># resolve conflicts: see "Resolving Merge Conflicts" below</span>
+git push origin &lt;branch-name&gt;
+</pre></div>
+</div>
+</li>
+<li><p>After your PR has been accepted and merged, you can <a class="reference internal" href="gitbootcamp.html#deleting-branches"><span class="std std-ref">delete the branch</span></a>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git branch -D &lt;branch-name&gt;  <span class="c1"># delete local branch</span>
+git push origin -d &lt;branch-name&gt;  <span class="c1"># delete remote branch</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>You can still upload a patch to <a class="reference external" href="https://bugs.python.org">bugs.python.org</a>, but the GitHub pull request
+workflow is <strong>strongly</strong> preferred.</p>
+</div>
+<section id="resolving-merge-conflicts">
+<span id="id3"></span><h3>Resolving Merge Conflicts<a class="headerlink" href="#resolving-merge-conflicts" title="永久链接至标题">¶</a></h3>
+<p>When merging changes from different branches (or variants of a branch on
+different repos), the two branches may contain incompatible changes to one
+or more files. These are called “merge conflicts” and need to be manually
+resolved as follows:</p>
+<ol class="arabic">
+<li><p>Check which files have merge conflicts:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git status
+</pre></div>
+</div>
+</li>
+<li><p>Edit the affected files and bring them to their intended final state.
+Make sure to remove the special “conflict markers” inserted by git.</p></li>
+<li><p>Commit the affected files:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git add &lt;filenames&gt;
+git merge --continue
+</pre></div>
+</div>
+</li>
+</ol>
+<p>When running the final command, git may open an editor for writing a commit
+message. It is usually okay to leave that as-is and close the editor.</p>
+<p>See <a class="reference external" href="https://git-scm.com/docs/git-merge">the merge command’s documentation</a>
+for a detailed technical explanation.</p>
+</section>
+</section>
+<section id="making-good-prs">
+<span id="good-prs"></span><h2>Making Good PRs<a class="headerlink" href="#making-good-prs" title="永久链接至标题">¶</a></h2>
+<p>When creating a pull request for submission, there are several things that you
+should do to help ensure that your pull request is accepted.</p>
+<p>First, make sure to follow Python’s style guidelines. For Python code you
+should follow <span class="target" id="index-0"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0008"><strong>PEP 8</strong></a>, and for C code you should follow <span class="target" id="index-1"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0007"><strong>PEP 7</strong></a>. If you have
+one or two discrepancies those can be fixed by the core developer who merges
+your pull request. But if you have systematic deviations from the style guides
+your pull request will be put on hold until you fix the formatting issues.</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>Pull requests with only code formatting changes are usually rejected. On the other
+hand, fixes for typos and grammar errors in documents and docstrings are
+welcome.</p>
+</div>
+<p>Second, be aware of backwards-compatibility considerations. While the core
+developer who eventually handles your pull request will make the final call on
+whether something is acceptable, thinking about backwards-compatibility early
+will help prevent having your pull request rejected on these grounds. Put
+yourself in the shoes of someone whose code will be broken by the change(s)
+introduced by the pull request. It is quite likely that any change made will
+break someone’s code, so you need to have a good reason to make a change as
+you will be forcing someone to update their code. (This obviously does not
+apply to new classes or functions; new arguments should be optional and have
+default values which maintain the existing behavior.) If in doubt, have a look
+at <span class="target" id="index-2"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0387"><strong>PEP 387</strong></a> or <a class="reference internal" href="communication.html#communication"><span class="std std-ref">discuss</span></a> the issue with experienced
+developers.</p>
+<p>Third, make sure you have proper tests to verify your pull request works as
+expected. Pull requests will not be accepted without the proper tests!</p>
+<p>Fourth, make sure the entire test suite <a class="reference internal" href="runtests.html#runtests"><span class="std std-ref">runs</span></a> <strong>without
+failure</strong> because of your changes.  It is not sufficient to only run whichever
+test seems impacted by your changes, because there might be interferences
+unknown to you between your changes and some other part of the interpreter.</p>
+<p>Fifth, proper <a class="reference internal" href="documenting.html#documenting"><span class="std std-ref">documentation</span></a>
+additions/changes should be included.</p>
+</section>
+<section id="patchcheck">
+<span id="id4"></span><h2><code class="docutils literal notranslate"><span class="pre">patchcheck</span></code><a class="headerlink" href="#patchcheck" title="永久链接至标题">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">patchcheck</span></code> is a simple automated patch checklist that guides a developer
+through the common patch generation checks. To run <code class="docutils literal notranslate"><span class="pre">patchcheck</span></code>:</p>
+<blockquote>
+<div><p>On <em>UNIX</em> (including Mac OS X):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make patchcheck
+</pre></div>
+</div>
+<p>On <em>Windows</em> (after any successful build):</p>
+<div class="highlight-dosbatch notranslate"><div class="highlight"><pre><span></span>python.bat Tools\scripts\patchcheck.py
+</pre></div>
+</div>
+</div></blockquote>
+<p>The automated patch checklist runs through:</p>
+<ul class="simple">
+<li><p>Are there any whitespace problems in Python files?
+(using <code class="docutils literal notranslate"><span class="pre">Tools/scripts/reindent.py</span></code>)</p></li>
+<li><p>Are there any whitespace problems in C files?</p></li>
+<li><p>Are there any whitespace problems in the documentation?
+(using <code class="docutils literal notranslate"><span class="pre">Tools/scripts/reindent-rst.py</span></code>)</p></li>
+<li><p>Has the documentation been updated?</p></li>
+<li><p>Has the test suite been updated?</p></li>
+<li><p>Has an entry under <code class="docutils literal notranslate"><span class="pre">Misc/NEWS.d/next</span></code> been added?
+(using <a class="reference external" href="https://blurb-it.herokuapp.com/">blurb-it</a>,
+or the <a class="reference external" href="https://pypi.org/project/blurb/">blurb</a> tool)</p></li>
+<li><p>Has <code class="docutils literal notranslate"><span class="pre">Misc/ACKS</span></code> been updated?</p></li>
+<li><p>Has <code class="docutils literal notranslate"><span class="pre">configure</span></code> been regenerated, if necessary?</p></li>
+<li><p>Has <code class="docutils literal notranslate"><span class="pre">pyconfig.h.in</span></code> been regenerated, if necessary?</p></li>
+</ul>
+<p>The automated patch check doesn’t actually <em>answer</em> all of these
+questions. Aside from the whitespace checks, the tool is
+a memory aid for the various elements that can go into
+making a complete patch.</p>
+</section>
+<section id="making-good-commits">
+<span id="good-commits"></span><h2>Making Good Commits<a class="headerlink" href="#making-good-commits" title="永久链接至标题">¶</a></h2>
+<p>Each feature or bugfix should be addressed by a single pull request,
+and for each pull request there may be several commits.  In particular:</p>
+<ul class="simple">
+<li><p>Do <strong>not</strong> fix more than one issue in the same commit (except,
+of course, if one code change fixes all of them).</p></li>
+<li><p>Do <strong>not</strong> do cosmetic changes to unrelated code in the same
+commit as some feature/bugfix.</p></li>
+</ul>
+<p>Commit messages should follow the following structure:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bpo-42: Make the spam module more spammy <span class="o">(</span>GH-NNNN<span class="o">)</span>
+
+The spam module sporadically came up short on spam. This change
+raises the amount of spam <span class="k">in</span> the module by making it more spammy.
+</pre></div>
+</div>
+<p>The first line or sentence is meant to be a dense, to-the-point explanation
+of what the purpose of the commit is. The imperative form (used in the example
+above) is strongly preferred to a descriptive form such as ‘the spam module is
+now more spammy’. Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span> <span class="pre">--oneline</span></code> to see existing title lines.
+Furthermore, the first line should not end in a period.</p>
+<p>If this is not enough detail for a commit, a new paragraph(s) can be added
+to explain in proper depth what has happened (detail should be good enough
+that a core developer reading the commit message understands the
+justification for the change).</p>
+<p>Check <a class="reference internal" href="gitbootcamp.html#accepting-and-merging-a-pr"><span class="std std-ref">the git bootcamp</span></a> for further
+instructions on how the commit message should look like when merging a pull
+request.</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p><a class="reference external" href="https://chris.beams.io/posts/git-commit/">How to Write a Git Commit Message</a>
+is a nice article that describes how to write a good commit message.</p>
+</div>
+</section>
+<section id="licensing">
+<span id="cla"></span><h2>Licensing<a class="headerlink" href="#licensing" title="永久链接至标题">¶</a></h2>
+<p>To accept your change we must have your formal approval for distributing
+your work under the <a class="reference external" href="https://docs.python.org/dev/license.html#terms-and-conditions-for-accessing-or-otherwise-using-python">PSF license</a>.  Therefore, you need to sign a
+<a class="reference external" href="https://www.python.org/psf/contrib/">contributor agreement</a> which allows the <a class="reference external" href="https://www.python.org/psf/">Python Software Foundation</a> to
+license your code for use with Python (you retain the copyright).</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>You only have to sign this document once, it will then apply to all
+your further contributions to Python.</p>
+</div>
+<p>Here are the steps needed in order to sign the CLA:</p>
+<ol class="arabic simple">
+<li><p>If you don’t have an account on <a class="reference external" href="https://bugs.python.org">bugs.python.org</a>
+(aka b.p.o), please
+<a class="reference external" href="https://bugs.python.org/user?@template=register">register</a> to create one.</p></li>
+<li><p>Make sure your GitHub username is listed in the <a class="reference external" href="https://cloud.githubusercontent.com/assets/2680980/23276970/d14a380c-f9d1-11e6-883d-e13b6b211239.png">“Your Details”</a>
+section at b.p.o.</p></li>
+<li><p>Fill out and sign the PSF <a class="reference external" href="https://www.python.org/psf/contrib/contrib-form/">contributor form</a>. The “bugs.python.org username”
+requested by the form is the “Login name” field under “Your Details”.</p></li>
+</ol>
+<p>After signing the CLA, please <strong>wait at least one US business day</strong> and
+then check the status by going to the <a class="reference external" href="https://check-python-cla.herokuapp.com">check-python-cla</a>
+website. The check will also be run automatically the next time you push changes
+to your PR.</p>
+</section>
+<section id="submitting">
+<h2>Submitting<a class="headerlink" href="#submitting" title="永久链接至标题">¶</a></h2>
+<p>Once you are satisfied with your work you will want to commit your
+changes to your branch. In general you can run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-a</span></code> and
+that will commit everything. You can always run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> to see
+what changes are outstanding.</p>
+<p>When all of your changes are committed (i.e. <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> doesn’t
+list anything), you will want to push your branch to your fork:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git push origin &lt;branch name&gt;
+</pre></div>
+</div>
+<p>This will get your changes up to GitHub.</p>
+<p>Now you want to
+<a class="reference external" href="https://help.github.com/articles/creating-a-pull-request-from-a-fork/">create a pull request from your fork</a>.
+If this is a pull request in response to a pre-existing issue on the
+<a class="reference external" href="https://bugs.python.org">issue tracker</a>, please make sure to reference the issue number using
+<code class="docutils literal notranslate"><span class="pre">bpo-NNNN</span></code> in the pull request title or message.</p>
+<p>If this is a pull request for an unreported issue (assuming you already
+performed a search on the issue tracker for a pre-existing issue), create a
+new issue and reference it in the pull request. Please fill in as much
+relevant detail as possible to prevent reviewers from having to delay
+reviewing your pull request because of lack of information.</p>
+<p>If this issue is so simple that there’s no need for an issue to track
+any discussion of what the pull request is trying to solve (e.g. fixing a
+spelling mistake), then the pull request needs to have the “skip issue” label
+added to it by someone with commit access.</p>
+<p>Your pull request may involve several commits as a result of addressing code
+review comments.  Please keep the commit history in the pull request intact by
+not squashing, amending, or anything that would require a force push to GitHub.
+A detailed commit history allows reviewers to view the diff of one commit to
+another so they can easily verify whether their comments have been addressed.
+The commits will be squashed when the pull request is merged.</p>
+</section>
+<section id="converting-an-existing-patch-from-b-p-o-to-github">
+<h2>Converting an Existing Patch from b.p.o to GitHub<a class="headerlink" href="#converting-an-existing-patch-from-b-p-o-to-github" title="永久链接至标题">¶</a></h2>
+<p>When a patch exists in the <a class="reference external" href="https://bugs.python.org">issue tracker</a> that should be converted into a
+GitHub pull request, please first ask the original patch author to prepare
+their own pull request. If the author does not respond after a week, it is
+acceptable for another contributor to prepare the pull request based on the
+existing patch. In this case, both parties should sign the <a class="reference internal" href="#cla"><span class="std std-ref">CLA</span></a>.
+When creating a pull request based on another person’s patch, provide
+attribution to the original patch author by adding “Co-authored-by:
+Author Name &lt;email_address&gt; .” to the pull request description and commit message.
+See <a class="reference external" href="https://help.github.com/articles/creating-a-commit-with-multiple-authors/">the GitHub article</a>
+on how to properly add the co-author info.</p>
+<p>See also <a class="reference internal" href="gitbootcamp.html#git-from-mercurial"><span class="std std-ref">Applying a Patch from Mercurial to Git</span></a>.</p>
+</section>
+<section id="reviewing">
+<h2>Reviewing<a class="headerlink" href="#reviewing" title="永久链接至标题">¶</a></h2>
+<p>To begin with, please be patient! There are many more people
+submitting pull requests than there are people capable of reviewing
+your pull request. Getting your pull request reviewed requires a
+reviewer to have the spare time and motivation to look at your pull
+request (we cannot force anyone to review pull requests and no one is
+employed to look at pull requests). If your pull request has not
+received any notice from reviewers (i.e., no comment made) after one
+month, first “ping” the issue on the <a class="reference external" href="https://bugs.python.org">issue tracker</a> to remind the
+nosy list that the pull request needs a review.  If you don’t get a response
+within a week after pinging the issue, then you can try emailing
+<a class="reference external" href="mailto:python-dev%40python.org">python-dev<span>@</span>python<span>.</span>org</a> to ask for someone to review your pull request.</p>
+<p>When someone does manage to find the time to look at your pull request
+they will most likely make comments about how it can be improved
+(don’t worry, even core developers of Python have their pull requests sent
+back to them for changes).  It is then expected that you update your
+pull request to address these comments, and the review process will
+thus iterate until a satisfactory solution has emerged.</p>
+<section id="how-to-review-a-pull-request">
+<span id="id5"></span><h3>How to Review a Pull Request<a class="headerlink" href="#how-to-review-a-pull-request" title="永久链接至标题">¶</a></h3>
+<p>One of the bottlenecks in the Python development
+process is the lack of code reviews.
+If you browse the bug tracker, you will see that numerous issues
+have a fix, but cannot be merged into the main source code repository,
+because no one has reviewed the proposed solution.
+Reviewing a pull request can be just as informative as providing a
+pull request and it will allow you to give constructive comments on
+another developer’s work. This guide provides a checklist for
+submitting a code review. It is a common misconception that in order
+to be useful, a code review has to be perfect. This is not the case at
+all! It is helpful to just test the pull request and/or play around with the
+code and leave comments in the pull request or issue tracker.</p>
+<ol class="arabic simple">
+<li><p>If you have not already done so, get a copy of the CPython repository
+by following the <a class="reference internal" href="setup.html#setup"><span class="std std-ref">setup guide</span></a>, build it and run the tests.</p></li>
+<li><p>Check the bug tracker to see what steps are necessary to reproduce
+the issue and confirm that you can reproduce the issue in your version
+of the Python REPL (the interactive shell prompt), which you can launch
+by executing ./python inside the repository.</p></li>
+<li><p>Checkout and apply the pull request (Please refer to the instruction
+<a class="reference internal" href="gitbootcamp.html#git-pr"><span class="std std-ref">Downloading Other’s Patches</span></a>)</p></li>
+<li><p>If the changes affect any C file, run the build again.</p></li>
+<li><p>Launch the Python REPL (the interactive shell prompt) and check if
+you can reproduce the issue. Now that the pull request has been applied,
+the issue should be fixed (in theory, but mistakes do happen! A good review
+aims to catch these before the code is merged into the Python repository).
+You should also try to see if there are any corner cases in this or related
+issues that the author of the fix may have missed.</p></li>
+<li><p>If you have time, run the entire test suite. If you are pressed for time,
+run the tests for the module(s) where changes were applied.
+However, please be aware that if you are recommending a pull request as
+‘merge-ready’, you should always make sure the entire test suite passes.</p></li>
+</ol>
+</section>
+</section>
+<section id="leaving-a-pull-request-review-on-github">
+<h2>Leaving a Pull Request Review on GitHub<a class="headerlink" href="#leaving-a-pull-request-review-on-github" title="永久链接至标题">¶</a></h2>
+<p>When you review a pull request, you should provide additional details and context
+of your review process.</p>
+<p>Instead of simply “approving” the pull request, leave comments.  For example:</p>
+<ol class="arabic simple">
+<li><p>If you tested the PR, report the result and the system and version tested on,
+such as ‘Windows 10’, ‘Ubuntu 16.4’, or ‘Mac High Sierra’.</p></li>
+<li><p>If you request changes, try to suggest how.</p></li>
+<li><p>Comment on what is “good” about the pull request, not just the “bad”. Doing
+so will make it easier for the PR author to find the good in your comments.</p></li>
+</ol>
+</section>
+<section id="dismissing-review-from-another-core-developer">
+<h2>Dismissing Review from Another Core Developer<a class="headerlink" href="#dismissing-review-from-another-core-developer" title="永久链接至标题">¶</a></h2>
+<p>A core developer can dismiss another core developer’s review if they confirmed
+that the requested changes have been made.  When a core developer has assigned
+the PR to themselves, then it is a sign that they are actively looking after
+the PR, and their review should not be dismissed.</p>
+</section>
+<section id="committing-rejecting">
+<h2>Committing/Rejecting<a class="headerlink" href="#committing-rejecting" title="永久链接至标题">¶</a></h2>
+<p>Once your pull request has reached an acceptable state (and thus considered
+“accepted”), it will either be merged or rejected. If it is rejected, please
+do not take it personally! Your work is still appreciated regardless of whether
+your pull request is merged. Balancing what <em>does</em> and <em>does not</em> go into
+Python is tricky and we simply cannot accept everyone’s contributions.</p>
+<p>But if your pull request is merged it will then go into Python’s
+<abbr title="version control system">VCS</abbr> to be released
+with the next major release of Python. It may also be backported to older
+versions of Python as a bugfix if the core developer doing the merge believes
+it is warranted.</p>
+</section>
+<section id="crediting">
+<h2>Crediting<a class="headerlink" href="#crediting" title="永久链接至标题">¶</a></h2>
+<p>Non-trivial contributions are credited in the <code class="docutils literal notranslate"><span class="pre">Misc/ACKS</span></code> file (and, most
+often, in a contribution’s news entry as well).  You may be
+asked to make these edits on the behalf of the core developer who
+accepts your pull request.</p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="runtests.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Running &amp; Writing Tests</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="help.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Where to Get Help</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2011-2021, Python Software Foundation |
+            最后更新于 11月 22, 2021. |
+          Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+          <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            | <a class="muted-link" href="_sources/pullrequest.rst.txt"
+               rel="nofollow">
+              显示源代码
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            目录
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Lifecycle of a Pull Request</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#quick-guide">Quick Guide</a></li>
+<li><a class="reference internal" href="#step-by-step-guide">Step-by-step Guide</a><ul>
+<li><a class="reference internal" href="#resolving-merge-conflicts">Resolving Merge Conflicts</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#making-good-prs">Making Good PRs</a></li>
+<li><a class="reference internal" href="#patchcheck"><code class="docutils literal notranslate"><span class="pre">patchcheck</span></code></a></li>
+<li><a class="reference internal" href="#making-good-commits">Making Good Commits</a></li>
+<li><a class="reference internal" href="#licensing">Licensing</a></li>
+<li><a class="reference internal" href="#submitting">Submitting</a></li>
+<li><a class="reference internal" href="#converting-an-existing-patch-from-b-p-o-to-github">Converting an Existing Patch from b.p.o to GitHub</a></li>
+<li><a class="reference internal" href="#reviewing">Reviewing</a><ul>
+<li><a class="reference internal" href="#how-to-review-a-pull-request">How to Review a Pull Request</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#leaving-a-pull-request-review-on-github">Leaving a Pull Request Review on GitHub</a></li>
+<li><a class="reference internal" href="#dismissing-review-from-another-core-developer">Dismissing Review from Another Core Developer</a></li>
+<li><a class="reference internal" href="#committing-rejecting">Committing/Rejecting</a></li>
+<li><a class="reference internal" href="#crediting">Crediting</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/scripts/furo.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/translations.js"></script>
+    </body>
+</html>

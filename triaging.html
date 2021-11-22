@@ -1,0 +1,1034 @@
+<!doctype html>
+<html class="no-js" lang="zh_CN">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="索引" href="genindex.html" /><link rel="search" title="搜索" href="search.html" /><link rel="next" title="Following Python’s Development" href="communication.html" /><link rel="prev" title="Issue Tracking" href="tracker.html" />
+
+    <meta name="generator" content="sphinx-4.3.0, furo 2021.11.16"/>
+        <title>Triaging an Issue - Python Developer&#39;s Guide</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=916d6ed8f59335acffa15474ff504849343d4c76" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=0af69da206d614734f649b27d4cdc2dd6c31f41d" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  body[data-theme="dark"] {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    body:not([data-theme="light"]) {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+</style></head>
+  <body>
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" />
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Python Developer's Guide </div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="_static/python-logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Python Developer's Guide </span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder=搜索 name="q" aria-label="搜索">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Where to Get Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pullrequest.html">Lifecycle of a Pull Request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="runtests.html">Running &amp; Writing Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coverage.html">Increase Test Coverage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docquality.html">Helping with Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documenting.html">Documenting Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="silencewarnings.html">Silence Warnings From the Test Suite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fixingissues.html">Fixing “easy” Issues (and Beyond)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tracker.html">Issue Tracking</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Triaging an Issue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="communication.html">Following Python’s Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="porting.html">Porting Python to a new platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coredev.html">How to Become a Core Developer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developers.html">Developer Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="committing.html">Accepting Pull Requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="devcycle.html">Development Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="buildbots.html">Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stdlibchanges.html">Adding to the Stdlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="langchanges.html">Changing the Python Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experts.html">Experts Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gdb.html">gdb Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploring.html">Exploring CPython’s Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grammar.html">Changing CPython’s Grammar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parser.html">Guide to CPython’s Parser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compiler.html">Design of CPython’s Compiler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="garbage_collector.html">Design of CPython’s Garbage Collector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extensions.html">Updating standard library extension modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c-api.html">Changing Python’s C API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coverity.html">Coverity Scan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clang.html">Dynamic Analysis with Clang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="buildworker.html">Running a buildbot worker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motivations.html">Core Developer Motivations and Affiliations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitbootcamp.html">Git Bootcamp and Cheat Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix: Topics</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="triaging-an-issue">
+<span id="triaging"></span><h1>Triaging an Issue<a class="headerlink" href="#triaging-an-issue" title="永久链接至标题">¶</a></h1>
+<p>This section of the devguide documents the <a class="reference external" href="https://bugs.python.org">issue tracker</a> for users
+and developers.</p>
+<p>Contributors with the Developer role on the <a class="reference external" href="https://bugs.python.org">issue tracker</a> can triage issues
+directly without any assistance.</p>
+<p>Additionally, this section provides an overview of the Python triage team.</p>
+<section id="python-triage-team">
+<h2>Python triage team<a class="headerlink" href="#python-triage-team" title="永久链接至标题">¶</a></h2>
+<p>The Python triage team is a group dedicated towards improving workflow
+efficiency through thoughtful review and triage of open issues and pull
+requests. This helps contributors receive timely feedback and enables core
+developers to focus on reviewed items which reduces their workload. The
+expectations of this role expand upon the “Developer” role on the
+<a class="reference external" href="https://bugs.python.org">issue tracker</a>. The responsibilities listed below are primarily centered
+around the Python GitHub repositories. This extends beyond CPython, and, as
+needed, to other repos such as devguide and core-workflow.</p>
+<p>Responsibilities include:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>PR/issue management</dt><dd><ul>
+<li><p>Renaming PRs</p></li>
+<li><p>Reviewing PRs</p></li>
+<li><p>Assisting contributors</p></li>
+<li><p>Notifying appropriate core developers</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Applying appropriate labels to PRs/Issues</dt><dd><ul>
+<li><p>Skip news</p></li>
+<li><p>Skip issue</p></li>
+<li><p>Good first issue</p></li>
+<li><p>Other categorizations</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>As triagers gain experience, they may have some intuition of when a PR should
+be closed. Triagers can recommend closing a PR, but the final decision must be
+made by a core developer. By having triagers and core developers work together,
+the author receives a careful consideration of their PR. This encourages future
+contributions, regardless of whether their PR is accepted or closed.</p>
+<p>Triagers can make use of the <code class="docutils literal notranslate"><span class="pre">invalid</span></code> and <code class="docutils literal notranslate"><span class="pre">stale</span></code> labels to suggest that a
+PR may be suitable for closure. For more information, see the
+<a class="reference internal" href="#github-pr-labels"><span class="std std-ref">GitHub PR labels</span></a> section.</p>
+<p>It is also of paramount importance to treat every contributor to the Python
+project kindly and with respect. Regardless of whether they’re entirely new
+or a veteran core developer, they’re actively choosing to voluntarily donate their
+time towards the improvement of Python. As is the case with any member of
+the Python Software Foundation, always follow the <a class="reference external" href="https://www.python.org/psf/codeofconduct/">PSF Code of Conduct</a>.</p>
+</section>
+<section id="becoming-a-member-of-the-python-triage-team">
+<h2>Becoming a member of the Python triage team<a class="headerlink" href="#becoming-a-member-of-the-python-triage-team" title="永久链接至标题">¶</a></h2>
+<p>Any Python core developers are welcome to invite a Python contributor to the
+Python triage team. Do note that the responsibilities of a Python triager
+are more elevated than a developer on bpo. For example, the Python triager
+has access to more repositories than just CPython. Triagers will be responsible
+to handle not just issues, but also pull requests, and even managing backports.</p>
+<p>Any existing developers on b.p.o can transition into becoming a Python triager.
+They can request this to any core developer, and the core developer
+can pass the request to the <a class="reference external" href="https://devguide.python.org/devcycle/?highlight=organization%20admin#current-owners">Python organization admin</a>
+on GitHub. The request
+can be made confidentially via a DM in Discourse, or publicly by opening
+an <a class="reference external" href="https://github.com/python/core-workflow/issues/new?template=triage_membership.md">issue in the core-workflow repository</a>.</p>
+<p>Any contributor who is not already a developer on b.p.o can also self-nominate
+to be a member of Python triage team. They can request this to any core developer,
+confidentially via DM in Discourse, or publicly by opening an issue in core-workflow.
+If a core developer agrees and is willing to vouch for them, the core developer
+can pass the request to the GitHub administrator. They should also be added as
+developer on bpo.</p>
+<p>For every new triager, it would be great to announce them in the python-committers
+mailing list and core-workflow category in Discourse. <a class="reference external" href="https://discuss.python.org/t/abhilash-raj-has-been-granted-triage-role-on-github/2089">Example announcement</a>.</p>
+<section id="github-labels-for-prs">
+<span id="github-pr-labels"></span><h3>GitHub Labels for PRs<a class="headerlink" href="#github-labels-for-prs" title="永久链接至标题">¶</a></h3>
+<p>An important component of triaging PRs for the CPython repo involves
+appropriately categorizing them through the usage of labels.</p>
+<p>Labels for PRs include:</p>
+<dl class="simple">
+<dt>DO-NOT-MERGE</dt><dd><p>Used on PRs to prevent miss-islington from being able
+to automatically merge the pull request. This label is appropriate when a PR
+has a non-trivial conflict with the branch it is being merged into.</p>
+</dd>
+<dt>expert-asyncio</dt><dd><p>Used for PRs which involve changes to the asyncio module
+or other asynchronous frameworks that utilize it.</p>
+</dd>
+<dt>invalid</dt><dd><p>Used manually for PRs that do not meet basic requirements and
+automatically added by bedevere when PR authors attempt to merge maintenace
+branches into the main branch. During events such as the October
+Hacktoberfest, this label will prevent the PR from counting toward the
+author’s contributions.</p>
+</dd>
+<dt>needs backport to X.Y</dt><dd><p>Used for PRs which are appropriate to backport to
+branches prior to main. Generally, backports to the maintenance branches
+are primarily bugfixes and documentation clarifications. Backports to the
+security branches are strictly reserved for PRs involving security fixes, such as
+crashes, privilege escalation, and DoS. The use of this label will cause
+miss-islington to attempt to automatically merge the PR into the branches
+specified.</p>
+</dd>
+<dt>OS-X</dt><dd><p>Used for PRs involving changes which only have an effect upon
+a specific operating system. Current variations of the label include
+OS-Windows and OS-Mac.</p>
+</dd>
+<dt>skip issue</dt><dd><p>Used for PRs which involve trivial changes, such as typo fixes,
+comment changes, and section rephrases. The majority of PRs require
+an issue to be attached to, but if there are no code changes and the
+section being modified retains the same meaning, this label might be
+appropriate.</p>
+</dd>
+<dt>skip news</dt><dd><p>Similar to the skip issue label, this label is used for PRs which
+involve trivial changes, backports, or already have a relevant news entry
+in another PR. Any potentially impactful changes should have a
+corresponding news entry, but for trivial changes it’s commonly at the
+discretion of the PR author if they wish to opt-out of making one.</p>
+</dd>
+<dt>sprint</dt><dd><p>Used for PRs authored during an in-person sprint, such as
+at PyCon, EuroPython, or other official Python events. The label is
+used to prioritize the review of those PRs during the sprint.</p>
+</dd>
+<dt>stale</dt><dd><p>Used for PRs that include changes which are no longer relevant or when the
+author hasn’t responded to feedback in a long period of time. This label
+helps core developers quickly identify PRs that are candidates for closure
+or require a ping to the author.</p>
+</dd>
+<dt>type-bugfix</dt><dd><p>Used for PRs that address unintentional behavior, but do not
+pose significant security concerns. Generally, bugfixes will be attached
+to a specific issue where the unintended behavior was first reported.</p>
+</dd>
+<dt>type-documentation</dt><dd><p>Used for PRs that exclusively involve changes to
+the documentation. Documentation includes <cite>*.rst</cite> files, docstrings,
+and code comments.</p>
+</dd>
+<dt>type-enhancement</dt><dd><p>Used for PRs that provide additional functionality
+or capabilities beyond the existing specifications.</p>
+</dd>
+<dt>type-performance</dt><dd><p>Used for PRs that provide performance optimizations.</p>
+</dd>
+<dt>type-security</dt><dd><p>Used for PRs that involve critical security issues. Less severe
+security concerns can instead use the type-bugfix label.</p>
+</dd>
+<dt>type-tests</dt><dd><p>Used for PRs that exclusively involve changes to the tests.</p>
+</dd>
+<dt>test-with-buildbots</dt><dd><p>Used on PRs to test the latest commit with the buildbot fleet. Generally for
+PRs with large code changes requiring more testing before merging. This
+may take multiple hours to complete. Triagers can also stop a stuck build
+using the web interface.</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="fields-in-the-issue-tracker">
+<h2>Fields in the Issue Tracker<a class="headerlink" href="#fields-in-the-issue-tracker" title="永久链接至标题">¶</a></h2>
+<p>The major elements found in an issue report include:</p>
+<ul class="simple">
+<li><p>Classification (including <em>Title</em>) - These fields categorize the issue.
+The fields include <em>Title</em>, <em>Type</em>, <em>Stage</em>, <em>Components</em>, and <em>Version</em>.</p></li>
+<li><p>Process - These fields indicate the state of the issue and its progress
+toward resolution. The fields are <em>Status</em>, <em>Resolution</em>, <em>Dependencies</em>,
+<em>Superseder</em>, <em>Assigned To</em>, <em>Nosy List</em>, <em>Priority</em>, <em>Keywords</em>, <em>Comment</em>,
+<em>File</em>, <em>File Description</em>, <em>Remote hg repo</em>, <em>GitHub PR</em>.</p></li>
+<li><p>Messages</p></li>
+<li><p>History</p></li>
+</ul>
+<section id="title">
+<h3>Title<a class="headerlink" href="#title" title="永久链接至标题">¶</a></h3>
+<p>A brief description of the issue. Review whether the title is too generic or
+specifies an incorrect term or library.</p>
+<p>(Optional) Add a prefix at the start of the title to indicate the module, e.g.
+IDLE, doc, or asyncio.</p>
+</section>
+<section id="type">
+<h3>Type<a class="headerlink" href="#type" title="永久链接至标题">¶</a></h3>
+<p>Describes the type of issue.  If an issue does not fit within any
+specific type, please do not set a type.</p>
+<div class="table-wrapper"><table class="docutils align-default">
+<colgroup>
+<col style="width: 22%"/>
+<col style="width: 78%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>behavior</p></td>
+<td><p>Unexpected behavior, result, or exception.  Most bugs
+will have this type.</p></td>
+</tr>
+<tr class="row-odd"><td><p>compile error</p></td>
+<td><p>Errors reported by the compiler while compiling Python.</p></td>
+</tr>
+<tr class="row-even"><td><p>crash</p></td>
+<td><p>Hard crashes of the Python interpreter – possibly with
+a core dump or a Windows error box.</p></td>
+</tr>
+<tr class="row-odd"><td><p>enhancement</p></td>
+<td><p>Issues that propose the addition of new functionality,
+such as new functions, classes, modules, or even new
+arguments for existing functions. Also used for
+improvements in the documentation, test suite and
+other refactorings. A good place to discuss enhancements
+prior to filing an issue is <a class="reference external" href="https://mail.python.org/mailman/listinfo/python-ideas">python-ideas</a> mailing
+list.</p></td>
+</tr>
+<tr class="row-even"><td><p>performance</p></td>
+<td><p>Situations where too much time is necessary to complete
+the task. For example, a common task now takes
+significantly longer to complete.</p></td>
+</tr>
+<tr class="row-odd"><td><p>resource usage</p></td>
+<td><p>Situations where too many resources (e.g. memory) are
+used.</p></td>
+</tr>
+<tr class="row-even"><td><p>security</p></td>
+<td><p>Issues that might have security implications. Report
+security vulnerabilities using the procedure found in
+the <a class="reference external" href="https://www.python.org/dev/security/">Reporting security issues in Python</a> page on the
+python.org website.</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="stage">
+<h3>Stage<a class="headerlink" href="#stage" title="永久链接至标题">¶</a></h3>
+<p>A needed next action to advance the issue.  The <em>stage</em> needn’t be set until
+it is clear that the issue has been initially triaged and determined work
+will be needed.</p>
+<div class="table-wrapper"><table class="docutils align-default">
+<colgroup>
+<col style="width: 21%"/>
+<col style="width: 79%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Stage</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>test needed</p></td>
+<td><p>The steps which are needed to reproduce the issue. The
+bug reporter should post a script, instructions, or
+example to help someone test or reproduce the issue.</p></td>
+</tr>
+<tr class="row-odd"><td><p>needs patch</p></td>
+<td><p>A patch or pull request is needed to solve the problem
+(i.e. fixing the bug or adding the requested
+improvement).</p></td>
+</tr>
+<tr class="row-even"><td><p>patch review</p></td>
+<td><p>A patch or pull request exists, but it needs review.
+Any triager or core developer may do the review.</p></td>
+</tr>
+<tr class="row-odd"><td><p>commit review</p></td>
+<td><p>A triager performed a patch review and it looks good.
+This signals to core developers the patch or pull
+request needs a quick once-over to make sure nothing was
+overlooked before committing it.</p></td>
+</tr>
+<tr class="row-even"><td><p>resolved</p></td>
+<td><p>The issue is considered closed and addressed (e.g. patch
+or pull request committed; expected behavior).</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="components">
+<h3>Components<a class="headerlink" href="#components" title="永久链接至标题">¶</a></h3>
+<p>The area or Python library affected by the issue. This is a multi-select field.</p>
+<p>Choosing certain components, such as <cite>Documentation</cite>, may cause the issue to
+be auto-assigned, i.e. the issue tracker may automatically fill in the
+<a class="reference internal" href="#assigned-to">Assigned To</a> field after you press <code class="docutils literal notranslate"><span class="pre">Submit</span> <span class="pre">changes</span></code>.</p>
+<p>One or more components may be selected for an issue:</p>
+<div class="table-wrapper"><table class="docutils align-default">
+<colgroup>
+<col style="width: 26%"/>
+<col style="width: 74%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Component</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2to3 (<em>2.x to</em>
+<em>3 conversion</em>
+<em>tool</em>)</p></td>
+<td><p>The 2to3 conversion tool in <a class="reference external" href="https://github.com/python/cpython/tree/main/Lib/lib2to3/">Lib/lib2to3</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Build</p></td>
+<td><p>The build process.</p></td>
+</tr>
+<tr class="row-even"><td><p>ctypes</p></td>
+<td><p>The ctypes package in <a class="reference external" href="https://github.com/python/cpython/tree/main/Lib/ctypes/">Lib/ctypes</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Demos and Tools</p></td>
+<td><p>The files in <a class="reference external" href="https://github.com/python/cpython/tree/main/Tools/">Tools</a> and <a class="reference external" href="https://github.com/python/cpython/tree/main/Tools/demo/">Tools/demo</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p>Distutils</p></td>
+<td><p>The distutils package in <a class="reference external" href="https://github.com/python/cpython/tree/main/Lib/distutils/">Lib/distutils</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Documentation</p></td>
+<td><p>The documentation in <a class="reference external" href="https://github.com/python/cpython/tree/main/Doc/">Doc</a> (source used to build HTML
+docs for <a class="reference external" href="https://docs.python.org/">https://docs.python.org/</a>).</p></td>
+</tr>
+<tr class="row-even"><td><p>email</p></td>
+<td><p>The email package and related modules.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Extension Modules</p></td>
+<td><p>C modules in <a class="reference external" href="https://github.com/python/cpython/tree/main/Modules/">Modules</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p>IDLE</p></td>
+<td><p>The <a class="reference external" href="https://github.com/python/cpython/tree/main/Lib/idlelib/">Lib/idlelib</a> package.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Installation</p></td>
+<td><p>The installation process.</p></td>
+</tr>
+<tr class="row-even"><td><p>Interpreter Core</p></td>
+<td><p>The interpreter core.
+The built-in objects in <a class="reference external" href="https://github.com/python/cpython/tree/main/Objects/">Objects</a>, the <a class="reference external" href="https://github.com/python/cpython/tree/main/Python/">Python</a>,
+<a class="reference external" href="https://github.com/python/cpython/tree/main/Grammar/">Grammar</a> and <a class="reference external" href="https://github.com/python/cpython/tree/main/Parser/">Parser</a> dirs.</p></td>
+</tr>
+<tr class="row-odd"><td><p>IO</p></td>
+<td><p>The I/O system, <a class="reference external" href="https://github.com/python/cpython/tree/main/Lib/io.py">Lib/io.py</a> and <a class="reference external" href="https://github.com/python/cpython/tree/main/Modules/_io/">Modules/_io</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p>Library (Lib)</p></td>
+<td><p>Python modules in <a class="reference external" href="https://github.com/python/cpython/tree/main/Lib/">Lib</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Macintosh</p></td>
+<td><p>The Mac OS X operating system.</p></td>
+</tr>
+<tr class="row-even"><td><p>Regular
+Expressions</p></td>
+<td><p>The <a class="reference external" href="https://github.com/python/cpython/tree/main/Lib/re.py">Lib/re.py</a> and <a class="reference external" href="https://github.com/python/cpython/tree/main/Modules/_sre.c">Modules/_sre.c</a> modules.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Tests</p></td>
+<td><p>The unittest framework in <a class="reference external" href="https://github.com/python/cpython/tree/main/Lib/unittest/">Lib/unittest</a>
+The doctest framework <a class="reference external" href="https://github.com/python/cpython/tree/main/Lib/doctest.py">Lib/doctest.py</a>.
+The CPython tests in <a class="reference external" href="https://github.com/python/cpython/tree/main/Lib/test/">Lib/test</a>.
+The test runner in <a class="reference external" href="https://github.com/python/cpython/tree/main/Lib/test/regrtest.py">Lib/test/regrtest.py</a>.
+The test support utilities in <a class="reference external" href="https://github.com/python/cpython/tree/main/Lib/test/support/">Lib/test/support</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p>Tkinter</p></td>
+<td><p>The <a class="reference external" href="https://github.com/python/cpython/tree/main/Lib/tkinter/">Lib/tkinter</a> package.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Unicode</p></td>
+<td><p>Unicode, codecs, str vs bytes,
+<a class="reference external" href="https://github.com/python/cpython/tree/main/Objects/unicodeobject.c">Objects/unicodeobject.c</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p>Windows</p></td>
+<td><p>The Windows operating system.</p></td>
+</tr>
+<tr class="row-odd"><td><p>XML</p></td>
+<td><p>The <a class="reference external" href="https://github.com/python/cpython/tree/main/Lib/xml/">Lib/xml</a> package.</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="versions">
+<h3>Versions<a class="headerlink" href="#versions" title="永久链接至标题">¶</a></h3>
+<p>The known versions of Python that the issue affects and should be fixed for.</p>
+<p>Thus if an issue for a new feature is assigned for e.g., Python 3.8 but is not
+applied before Python 3.8.0 is released, this field should be updated to say
+Python 3.9 as the version and drop Python 3.8.</p>
+</section>
+<section id="priority">
+<h3>Priority<a class="headerlink" href="#priority" title="永久链接至标题">¶</a></h3>
+<p>What is the severity and urgency?</p>
+<div class="table-wrapper"><table class="docutils align-default">
+<colgroup>
+<col style="width: 24%"/>
+<col style="width: 76%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Priority</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>low</p></td>
+<td><p>This is for low-impact bugs.</p></td>
+</tr>
+<tr class="row-odd"><td><p>normal</p></td>
+<td><p>The default value for most issues filed.</p></td>
+</tr>
+<tr class="row-even"><td><p>high</p></td>
+<td><p>Try to fix the issue before the next final release.</p></td>
+</tr>
+<tr class="row-odd"><td><p>critical</p></td>
+<td><p>Should definitely be fixed for next final release.</p></td>
+</tr>
+<tr class="row-even"><td><p>deferred blocker</p></td>
+<td><p>The issue will not hold up the next release, <em>n</em>. It
+will be promoted to a <em>release blocker</em> for the
+following release, <em>n+1</em>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>release blocker</p></td>
+<td><p>The issue <strong>must</strong> be fixed before <em>any</em> release is
+made, e.g., will block the next release even if it is
+an alpha release.</p></td>
+</tr>
+</tbody>
+</table></div>
+<p>As a guideline, <em>critical</em> and above are usually reserved for crashes,
+serious regressions or breakage of very important APIs.  Whether a bug
+is a <em>release blocker</em> for the current <a class="reference external" href="https://devguide.python.org/#status-of-python-branches">release schedule</a> is decided by the
+release manager. Triagers may recommend this priority and should add the
+release manager to the <em>nosy list</em>. If needed, consult the
+<a class="reference external" href="https://devguide.python.org/#status-of-python-branches">release schedule</a> and the release’s associated PEP for the release
+manager’s name.</p>
+</section>
+<section id="keywords">
+<h3>Keywords<a class="headerlink" href="#keywords" title="永久链接至标题">¶</a></h3>
+<p>Various informational flags about the issue. Multiple values are possible.</p>
+<div class="table-wrapper"><table class="docutils align-default">
+<colgroup>
+<col style="width: 20%"/>
+<col style="width: 80%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Keyword</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>buildbot</p></td>
+<td><p>A buildbot triggered the issue being reported.</p></td>
+</tr>
+<tr class="row-odd"><td><p>easy</p></td>
+<td><p>Fixing the issue should not take longer than a day for
+someone new to contributing to Python to solve.</p></td>
+</tr>
+<tr class="row-even"><td><p>easy (C)</p></td>
+<td><p>Fixing the issue should not take longer than a day for
+someone new contributing to Python, focused on C.</p></td>
+</tr>
+<tr class="row-odd"><td><p>security_issue</p></td>
+<td><p>This is a security issue or is related to one. The main
+difference from the “security” issue type is that this is
+a definite security problem that has to be dealt with.</p></td>
+</tr>
+<tr class="row-even"><td><p>PEP 3121</p></td>
+<td><p>The issue is related to PEP <a class="reference external" href="https://www.python.org/dev/peps/pep-3121/">PEP 3121</a>.
+Extension Module Initialization and Finalization.</p></td>
+</tr>
+<tr class="row-odd"><td><p>newcomer
+friendly</p></td>
+<td><p>Issue suitable for newcomer/first time contributors.
+Not suitable for experienced contributors. Typically it is
+straightforward, well-defined, low-risk, and optionally
+someone is able to mentor the new contributor.</p></td>
+</tr>
+<tr class="row-even"><td><p>gsoc</p></td>
+<td><p>The issue would fit as, or is related to, a <a class="reference external" href="https://summerofcode.withgoogle.com/">GSoC</a> project.</p></td>
+</tr>
+<tr class="row-odd"><td><p>needs review</p></td>
+<td><p>The patch or pull request attached to the issue is in need
+of a review.</p></td>
+</tr>
+<tr class="row-even"><td><p>patch</p></td>
+<td><p>There is a patch or pull request attached to the issue.</p></td>
+</tr>
+<tr class="row-odd"><td><p>3.3regression</p></td>
+<td><p>The issue is a regression in 3.3.</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="nosy-list">
+<h3>Nosy List<a class="headerlink" href="#nosy-list" title="永久链接至标题">¶</a></h3>
+<p>A list of people who may be interested in an issue.</p>
+<p>It is acceptable to add someone to the nosy list if you think the issue should
+be brought to their attention. Use the <a class="reference internal" href="experts.html#experts"><span class="std std-ref">Experts Index</span></a> to know who wants to be
+added to the nosy list for issues targeting specific areas.</p>
+<p>If you are logged in and have JavaScript enabled, you can use the <code class="docutils literal notranslate"><span class="pre">[+]</span></code>
+button to add yourself to the nosy list (remember to click on
+“Submit Changes” afterwards).  Note that you are added to the nosy
+automatically when you submit a message.</p>
+<p>The nosy list also has an autocomplete that lets you search from the lists of
+developers and <a class="reference internal" href="experts.html#experts"><span class="std std-ref">Experts Index</span></a>.  The search is case-insensitive and
+works for real names, modules, interest areas, etc., and only adds the
+username(s) to the nosy once an entry is selected.</p>
+</section>
+<section id="assigned-to">
+<h3>Assigned To<a class="headerlink" href="#assigned-to" title="永久链接至标题">¶</a></h3>
+<p>Who is expected to take the next step in resolving the issue.</p>
+<p>It is acceptable to assign an issue to someone if the issue cannot move
+forward without their help, e.g., they need to make a technical decision to
+allow the issue to move forward. Also consult the <a class="reference internal" href="experts.html#experts"><span class="std std-ref">Experts Index</span></a> as certain
+stdlib modules should always be assigned to a specific person.</p>
+<p>Note that in order to assign an issue to someone, that person <strong>must</strong> have
+the <a class="reference internal" href="tracker.html#devrole"><span class="std std-ref">Developer role</span></a> on the issue tracker.</p>
+</section>
+<section id="dependencies">
+<h3>Dependencies<a class="headerlink" href="#dependencies" title="永久链接至标题">¶</a></h3>
+<p>The issue requires the listed issue(s) to be resolved first before it can move
+forward.</p>
+</section>
+<section id="superseder">
+<h3>Superseder<a class="headerlink" href="#superseder" title="永久链接至标题">¶</a></h3>
+<p>The issue is a duplicate of the listed issue(s).</p>
+</section>
+<section id="status">
+<h3>Status<a class="headerlink" href="#status" title="永久链接至标题">¶</a></h3>
+<div class="table-wrapper"><table class="docutils align-default">
+<colgroup>
+<col style="width: 20%"/>
+<col style="width: 80%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Status</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>open</p></td>
+<td><p>Issue is not resolved.</p></td>
+</tr>
+<tr class="row-odd"><td><p>pending</p></td>
+<td><p>The issue is blocked until someone (often the
+<abbr title="original poster">OP</abbr>) provides some critical
+information; the issue will be closed after a set amount
+time if no reply comes in.</p>
+<p>Useful when someone opens an issue that lacks enough
+information to reproduce the bug reported.  Requesting
+additional information and setting status to <em>pending</em>
+indicates that the issue should be closed if the necessary
+information is not provided in a timely manner (i.e. one
+month).</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>closed</p></td>
+<td><p>The issue has been resolved (somehow).</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="resolution">
+<h3>Resolution<a class="headerlink" href="#resolution" title="永久链接至标题">¶</a></h3>
+<p>Why the issue is in its current state. This is not usually used for issues
+with the “open” status.</p>
+<div class="table-wrapper"><table class="docutils align-default">
+<colgroup>
+<col style="width: 20%"/>
+<col style="width: 80%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Resolution</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>open</p></td>
+<td><p>Issue is not resolved.</p></td>
+</tr>
+<tr class="row-odd"><td><p>duplicate</p></td>
+<td><p>Duplicate of another issue; should have the <em>Superseder</em>
+field filled out.</p></td>
+</tr>
+<tr class="row-even"><td><p>fixed</p></td>
+<td><p>A fix for the issue was committed.</p></td>
+</tr>
+<tr class="row-odd"><td><p>later</p></td>
+<td><p>Issue is to be worked on in a later release cycle.</p></td>
+</tr>
+<tr class="row-even"><td><p>not a bug</p></td>
+<td><p>For some reason the issue is invalid (e.g. the perceived
+problem is not a bug in Python).</p></td>
+</tr>
+<tr class="row-odd"><td><p>out of date</p></td>
+<td><p>The issue has already been fixed, or the problem doesn’t
+exist anymore for other reasons.</p></td>
+</tr>
+<tr class="row-even"><td><p>postponed</p></td>
+<td><p>Issue will not be worked on at the moment but in a future
+minor release version.</p></td>
+</tr>
+<tr class="row-odd"><td><p>rejected</p></td>
+<td><p>Issue was rejected (especially for feature requests).</p></td>
+</tr>
+<tr class="row-even"><td><p>remind</p></td>
+<td><p>The issue is acting as a reminder for someone.</p></td>
+</tr>
+<tr class="row-odd"><td><p>wont fix</p></td>
+<td><p>Issue will not be fixed, typically because it would cause
+a backwards-compatibility problem.</p></td>
+</tr>
+<tr class="row-even"><td><p>works for me</p></td>
+<td><p>Bug cannot be reproduced.</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="mercurial-repository">
+<h3>Mercurial Repository<a class="headerlink" href="#mercurial-repository" title="永久链接至标题">¶</a></h3>
+<p>HTTP link to a Mercurial repository that contains a patch for the issue.
+A <span class="guilabel">Create Patch</span> button will appear that computes a diff for the
+head revision of the remote branch and attaches it to the issue.  The button
+supports only <a class="reference external" href="https://github.com/python/cpython/">CPython</a> patches.</p>
+<p>If you don’t indicate a remote branch, <code class="docutils literal notranslate"><span class="pre">default</span></code> is used.  You can
+indicate a remote branch by adding <code class="docutils literal notranslate"><span class="pre">#BRANCH</span></code> to the end of the URL.</p>
+</section>
+</section>
+<section id="generating-special-links-in-a-comment">
+<h2>Generating Special Links in a Comment<a class="headerlink" href="#generating-special-links-in-a-comment" title="永久链接至标题">¶</a></h2>
+<p>Using the following abbreviations in a comment will automatically generate
+a link to relevant web pages.</p>
+<div class="table-wrapper"><table class="docutils align-default">
+<colgroup>
+<col style="width: 53%"/>
+<col style="width: 47%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Comment abbreviation</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">#&lt;number&gt;</span></code>,
+<code class="docutils literal notranslate"><span class="pre">issue&lt;number&gt;</span></code>, or
+<code class="docutils literal notranslate"><span class="pre">issue</span> <span class="pre">&lt;number&gt;</span></code></p></td>
+<td><p>Links to the tracker issue <code class="docutils literal notranslate"><span class="pre">&lt;number&gt;</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">msg&lt;number&gt;</span></code></p></td>
+<td><p>Links to the tracker message <code class="docutils literal notranslate"><span class="pre">&lt;number&gt;</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">PR</span> <span class="pre">&lt;number&gt;</span></code>,
+<code class="docutils literal notranslate"><span class="pre">PR&lt;number&gt;</span></code>, or
+<code class="docutils literal notranslate"><span class="pre">pull</span> <span class="pre">request</span> <span class="pre">&lt;number&gt;</span></code></p></td>
+<td><p>Links to <a class="reference external" href="https://github.com/python/cpython/pulls">GitHub pull requests</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>a 10-, 11-, 12-, or 40-digit hex <code class="docutils literal notranslate"><span class="pre">&lt;number&gt;</span></code></p></td>
+<td><p>Indicates a Git or Mercurial changeset identifier and
+generates a link to changeset <code class="docutils literal notranslate"><span class="pre">&lt;number&gt;</span></code> on GitHub
+or <a class="reference external" href="https://hg.python.org/">https://hg.python.org/</a>. The <code class="docutils literal notranslate"><span class="pre">git</span></code> and <code class="docutils literal notranslate"><span class="pre">hg</span></code>
+prefixes can also be used to disambiguate, and must
+precede the number without spaces.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">r&lt;number&gt;</span></code>,
+<code class="docutils literal notranslate"><span class="pre">rev&lt;number&gt;</span></code>, or
+<code class="docutils literal notranslate"><span class="pre">revision</span> <span class="pre">&lt;number&gt;</span></code></p></td>
+<td><p>Indicates a legacy Subversion revision number,
+a reference to a changeset that was checked in prior
+to 2011-03-05 when the official Python source code
+repositories were migrated from the
+<abbr title="Subversion">svn</abbr>
+<abbr title="version control system">VCS</abbr> to Mercurial.
+The issue tracker automatically translates the legacy
+svn revision <code class="docutils literal notranslate"><span class="pre">&lt;number&gt;</span></code> to its corresponding
+Mercurial changeset identifier.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Dir/file.ext</span></code> or
+<code class="docutils literal notranslate"><span class="pre">Dir/file.ext:NNN</span></code></p></td>
+<td><p>Links to files in the
+<a class="reference external" href="https://github.com/python/cpython/">Python source code repositories</a>, possibly linking
+to the line number specified after the <code class="docutils literal notranslate"><span class="pre">:</span></code>.
+<code class="docutils literal notranslate"><span class="pre">3.6/Dir/file.ext</span></code> will generate a link with <code class="docutils literal notranslate"><span class="pre">3.6</span></code>
+as branch.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">PEP</span> <span class="pre">&lt;number&gt;</span></code> or
+<code class="docutils literal notranslate"><span class="pre">PEP&lt;number&gt;</span></code></p></td>
+<td><p>Link to the <abbr title="Python Enhancement Proposal">PEP</abbr>
+<code class="docutils literal notranslate"><span class="pre">&lt;number&gt;</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">devguide</span></code>,
+<code class="docutils literal notranslate"><span class="pre">devguide/triaging</span></code>, or
+<code class="docutils literal notranslate"><span class="pre">devguide/triaging#generating-special-links-in-a-comment</span></code></p></td>
+<td><p>Links to the Devguide, this page, and this section
+respectively.</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="checklist-for-triaging">
+<h2>Checklist for Triaging<a class="headerlink" href="#checklist-for-triaging" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>Read the issue comment(s).</p></li>
+<li><dl class="simple">
+<dt>Review and set classification fields</dt><dd><ul>
+<li><p>Title: should be concise with specifics which are helpful to someone
+scanning a list of issue titles. (Optional, if possible) Add a
+prefix at the start of the title to indicate the module, e.g. IDLE,
+doc, or async.</p></li>
+<li><p>Type</p></li>
+<li><p>Stage</p></li>
+<li><p>Components: multiple items may be set</p></li>
+<li><p>Versions: set if known, leave blank if unsure. Multiple items may be set.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Review and set process fields</dt><dd><ul>
+<li><p>Status</p></li>
+<li><p>Resolution</p></li>
+<li><p>Superseder</p></li>
+<li><p>Assigned To</p></li>
+<li><p>Nosy List</p></li>
+<li><p>Priority</p></li>
+<li><p>Keywords</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>(Optional) Leave a brief comment about the proposed next action needed. If
+there is a long message list, a summary can be very helpful.</p></li>
+</ul>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="communication.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Following Python’s Development</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="tracker.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Issue Tracking</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2011-2021, Python Software Foundation |
+            最后更新于 11月 22, 2021. |
+          Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+          <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            | <a class="muted-link" href="_sources/triaging.rst.txt"
+               rel="nofollow">
+              显示源代码
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            目录
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Triaging an Issue</a><ul>
+<li><a class="reference internal" href="#python-triage-team">Python triage team</a></li>
+<li><a class="reference internal" href="#becoming-a-member-of-the-python-triage-team">Becoming a member of the Python triage team</a><ul>
+<li><a class="reference internal" href="#github-labels-for-prs">GitHub Labels for PRs</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fields-in-the-issue-tracker">Fields in the Issue Tracker</a><ul>
+<li><a class="reference internal" href="#title">Title</a></li>
+<li><a class="reference internal" href="#type">Type</a></li>
+<li><a class="reference internal" href="#stage">Stage</a></li>
+<li><a class="reference internal" href="#components">Components</a></li>
+<li><a class="reference internal" href="#versions">Versions</a></li>
+<li><a class="reference internal" href="#priority">Priority</a></li>
+<li><a class="reference internal" href="#keywords">Keywords</a></li>
+<li><a class="reference internal" href="#nosy-list">Nosy List</a></li>
+<li><a class="reference internal" href="#assigned-to">Assigned To</a></li>
+<li><a class="reference internal" href="#dependencies">Dependencies</a></li>
+<li><a class="reference internal" href="#superseder">Superseder</a></li>
+<li><a class="reference internal" href="#status">Status</a></li>
+<li><a class="reference internal" href="#resolution">Resolution</a></li>
+<li><a class="reference internal" href="#mercurial-repository">Mercurial Repository</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#generating-special-links-in-a-comment">Generating Special Links in a Comment</a></li>
+<li><a class="reference internal" href="#checklist-for-triaging">Checklist for Triaging</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/scripts/furo.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/translations.js"></script>
+    </body>
+</html>

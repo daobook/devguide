@@ -1,0 +1,628 @@
+<!doctype html>
+<html class="no-js" lang="zh_CN">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="索引" href="genindex.html" /><link rel="search" title="搜索" href="search.html" /><link rel="next" title="Running a buildbot worker" href="buildworker.html" /><link rel="prev" title="Coverity Scan" href="coverity.html" />
+
+    <meta name="generator" content="sphinx-4.3.0, furo 2021.11.16"/>
+        <title>Dynamic Analysis with Clang - Python Developer&#39;s Guide</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=916d6ed8f59335acffa15474ff504849343d4c76" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=0af69da206d614734f649b27d4cdc2dd6c31f41d" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  body[data-theme="dark"] {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    body:not([data-theme="light"]) {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+</style></head>
+  <body>
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" />
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Python Developer's Guide </div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="_static/python-logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Python Developer's Guide </span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder=搜索 name="q" aria-label="搜索">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Where to Get Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pullrequest.html">Lifecycle of a Pull Request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="runtests.html">Running &amp; Writing Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coverage.html">Increase Test Coverage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docquality.html">Helping with Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documenting.html">Documenting Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="silencewarnings.html">Silence Warnings From the Test Suite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fixingissues.html">Fixing “easy” Issues (and Beyond)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tracker.html">Issue Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="triaging.html">Triaging an Issue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="communication.html">Following Python’s Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="porting.html">Porting Python to a new platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coredev.html">How to Become a Core Developer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developers.html">Developer Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="committing.html">Accepting Pull Requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="devcycle.html">Development Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="buildbots.html">Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stdlibchanges.html">Adding to the Stdlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="langchanges.html">Changing the Python Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experts.html">Experts Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gdb.html">gdb Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploring.html">Exploring CPython’s Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grammar.html">Changing CPython’s Grammar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parser.html">Guide to CPython’s Parser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compiler.html">Design of CPython’s Compiler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="garbage_collector.html">Design of CPython’s Garbage Collector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extensions.html">Updating standard library extension modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c-api.html">Changing Python’s C API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coverity.html">Coverity Scan</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Dynamic Analysis with Clang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="buildworker.html">Running a buildbot worker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motivations.html">Core Developer Motivations and Affiliations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitbootcamp.html">Git Bootcamp and Cheat Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix: Topics</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="dynamic-analysis-with-clang">
+<h1>Dynamic Analysis with Clang<a class="headerlink" href="#dynamic-analysis-with-clang" title="永久链接至标题">¶</a></h1>
+<p>This document describes how to use Clang to perform analysis on Python and its
+libraries. In addition to performing the analysis, the document will cover
+downloading, building and installing the latest Clang/LLVM combination (which
+is currently 3.4).</p>
+<p>This document does not cover interpreting the findings. For a discussion of
+interpreting results, see Marshall Clow’s <a class="reference external" href="https://cplusplusmusings.wordpress.com/tag/clang/">Testing libc++ with
+-fsanitize=undefined</a>.  The
+blog posting is a detailed examinations of issues uncovered by Clang in
+<code class="docutils literal notranslate"><span class="pre">libc++</span></code>.</p>
+<section id="what-is-clang">
+<h2>What is Clang?<a class="headerlink" href="#what-is-clang" title="永久链接至标题">¶</a></h2>
+<p>Clang is the C, C++ and Objective C front-end for the LLVM compiler.  The
+front-end provides access to LLVM’s optimizer and code generator. The
+sanitizers - or checkers - are hooks into the code generation phase to
+instrument compiled code so suspicious behavior is flagged.</p>
+</section>
+<section id="what-are-sanitizers">
+<h2>What are Sanitizers?<a class="headerlink" href="#what-are-sanitizers" title="永久链接至标题">¶</a></h2>
+<p>Clang sanitizers are runtime checkers used to identify suspicious and undefined
+behavior. The checking occurs at runtime with actual runtime parameters so false
+positives are kept to a minimum.</p>
+<p>There are a number of sanitizers available, but two that should be used on a
+regular basis are the Address Sanitizer (or ASan) and the Undefined Behavior
+Sanitizer (or UBSan). ASan is invoked with the compiler option
+<code class="docutils literal notranslate"><span class="pre">-fsanitize=address</span></code>, and UBSan is invoked with <code class="docutils literal notranslate"><span class="pre">-fsanitize=undefined</span></code>.  The
+flags are passed through <code class="docutils literal notranslate"><span class="pre">CFLAGS</span></code> and <code class="docutils literal notranslate"><span class="pre">CXXFLAGS</span></code>, and sometimes through
+<code class="docutils literal notranslate"><span class="pre">CC</span></code> and <code class="docutils literal notranslate"><span class="pre">CXX</span></code> (in addition to the compiler).</p>
+<p>A complete list of sanitizers can be found at <a class="reference external" href="https://clang.llvm.org/docs/UsersManual.html#controlling-code-generation">Controlling Code Generation</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>Because sanitizers operate at runtime on real program parameters, its
+important to provide a complete set of positive and negative self tests.</p>
+</div>
+<p>Clang and its sanitizers have strengths (and weaknesses). Its just one tool in
+the war chest to uncovering bugs and improving code quality. Clang should be
+used to compliment other methods, including Code Reviews, Valgrind, Coverity,
+etc.</p>
+</section>
+<section id="clang-llvm-setup">
+<h2>Clang/LLVM Setup<a class="headerlink" href="#clang-llvm-setup" title="永久链接至标题">¶</a></h2>
+<p>This portion of the document covers downloading, building and installing Clang
+and LLVM. There are three components to download and build. They are the LLVM
+compiler, the compiler front end and the compiler runtime library.</p>
+<p>In preparation you should create a scratch directory. Also ensure you are using
+Python 2 and not Python 3. Python 3 will cause the build to fail.</p>
+<section id="download-build-and-install">
+<h3>Download, Build and Install<a class="headerlink" href="#download-build-and-install" title="永久链接至标题">¶</a></h3>
+<p>Perform the following to download, build and install the Clang/LLVM 3.4.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download</span>
+wget https://llvm.org/releases/3.4/llvm-3.4.src.tar.gz
+wget https://llvm.org/releases/3.4/clang-3.4.src.tar.gz
+wget https://llvm.org/releases/3.4/compiler-rt-3.4.src.tar.gz
+
+<span class="c1"># LLVM</span>
+tar xvf llvm-3.4.src.tar.gz
+<span class="nb">cd</span> llvm-3.4/tools
+
+<span class="c1"># Clang Front End</span>
+tar xvf ../../clang-3.4.src.tar.gz
+mv clang-3.4 clang
+
+<span class="c1"># Compiler RT</span>
+<span class="nb">cd</span> ../projects
+tar xvf ../../compiler-rt-3.4.src.tar.gz
+mv compiler-rt-3.4/ compiler-rt
+
+<span class="c1"># Build</span>
+<span class="nb">cd</span> ..
+./configure --enable-optimized --prefix<span class="o">=</span>/usr/local
+make -j4
+sudo make install
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>If you receive an error <code class="docutils literal notranslate"><span class="pre">'LibraryDependencies.inc'</span> <span class="pre">file</span> <span class="pre">not</span> <span class="pre">found</span></code>, then
+ensure you are utilizing Python 2 and not Python 3. If you encounter the
+error after switching to Python 2, then delete everything and start over.</p>
+</div>
+<p>After <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">install</span></code> executes, the compilers will be installed in
+<code class="docutils literal notranslate"><span class="pre">/usr/local/bin</span></code> and the various libraries will be installed in
+<code class="docutils literal notranslate"><span class="pre">/usr/local/lib/clang/3.4/lib/linux/</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ls /usr/local/lib/clang/3.4/lib/linux/
+<span class="go">libclang_rt.asan-x86_64.a   libclang_rt.profile-x86_64.a</span>
+<span class="go">libclang_rt.dfsan-x86_64.a  libclang_rt.san-x86_64.a</span>
+<span class="go">libclang_rt.full-x86_64.a   libclang_rt.tsan-x86_64.a</span>
+<span class="go">libclang_rt.lsan-x86_64.a   libclang_rt.ubsan_cxx-x86_64.a</span>
+<span class="go">libclang_rt.msan-x86_64.a   libclang_rt.ubsan-x86_64.a</span>
+</pre></div>
+</div>
+<p>On Mac OS X, the libraries are installed in
+<code class="docutils literal notranslate"><span class="pre">/usr/local/lib/clang/3.3/lib/darwin/</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ls /usr/local/lib/clang/3.3/lib/darwin/
+<span class="go">libclang_rt.10.4.a                    libclang_rt.ios.a</span>
+<span class="go">libclang_rt.asan_osx.a                libclang_rt.osx.a</span>
+<span class="go">libclang_rt.asan_osx_dynamic.dylib    libclang_rt.profile_ios.a</span>
+<span class="go">libclang_rt.cc_kext.a                 libclang_rt.profile_osx.a</span>
+<span class="go">libclang_rt.cc_kext_ios5.a            libclang_rt.ubsan_osx.a</span>
+<span class="go">libclang_rt.eprintf.a</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>You should never have to add the libraries to a project. Clang will handle
+it for you. If you find you cannot pass the <code class="docutils literal notranslate"><span class="pre">-fsanitize=XXX</span></code> flag through
+<code class="docutils literal notranslate"><span class="pre">make</span></code>’s implicit variables (<code class="docutils literal notranslate"><span class="pre">CFLAGS</span></code>, <code class="docutils literal notranslate"><span class="pre">CXXFLAGS</span></code>, <code class="docutils literal notranslate"><span class="pre">CC</span></code>,
+<code class="docutils literal notranslate"><span class="pre">CXXFLAGS</span></code>, <code class="docutils literal notranslate"><span class="pre">LDFLAGS</span></code>) during <code class="docutils literal notranslate"><span class="pre">configure</span></code>, then you should modify the
+makefile after configuring to ensure the flag is passed through the
+compiler.</p>
+</div>
+<p>The installer does not install all the components needed on occasion. For
+example, you might want to run a <code class="docutils literal notranslate"><span class="pre">scan-build</span></code> or examine the results with
+<code class="docutils literal notranslate"><span class="pre">scan-view</span></code>. You can copy the components by hand with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo mkdir /usr/local/bin/scan-build
+sudo cp -r llvm-3.4/tools/clang/tools/scan-build /usr/local/bin
+sudo mkdir /usr/local/bin/scan-view
+sudo cp -r llvm-3.4/tools/clang/tools/scan-view /usr/local/bin
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>Because the installer does not install all the components needed on
+occasion, you should not delete the scratch directory until you are sure
+things work as expected. If a library is missing, then you should search for
+it in the Clang/LLVM build directory.</p>
+</div>
+</section>
+</section>
+<section id="python-build-setup">
+<h2>Python Build Setup<a class="headerlink" href="#python-build-setup" title="永久链接至标题">¶</a></h2>
+<p>This portion of the document covers invoking Clang and LLVM with the options
+required so the sanitizers analyze Python with under its test suite. Two
+checkers are used - ASan and UBSan.</p>
+<p>Because the sanitizers are runtime checkers, its best to have as many positive
+and negative self tests as possible. You can never have enough self tests.</p>
+<p>The general idea is to compile and link with the sanitizer flags. At link time,
+Clang will include the needed runtime libraries. However, you can’t use
+<code class="docutils literal notranslate"><span class="pre">CFLAGS</span></code> and <code class="docutils literal notranslate"><span class="pre">CXXFLAGS</span></code> to pass the options through the compiler to the
+linker because the makefile rules for <code class="docutils literal notranslate"><span class="pre">BUILDPYTHON</span></code>, <code class="docutils literal notranslate"><span class="pre">_testembed</span></code> and
+<code class="docutils literal notranslate"><span class="pre">_freeze_importlib</span></code> don’t use the implicit variables.</p>
+<p>As a workaround to the absence of flags to the linker, you can pass the
+sanitizer options by way of the compilers - <code class="docutils literal notranslate"><span class="pre">CC</span></code> and <code class="docutils literal notranslate"><span class="pre">CXX</span></code>.  Passing the
+flags though the compiler is used below, but passing them through <code class="docutils literal notranslate"><span class="pre">LDFLAGS</span></code> is
+also reported to work.</p>
+<section id="building-python">
+<h3>Building Python<a class="headerlink" href="#building-python" title="永久链接至标题">¶</a></h3>
+<p>To begin, export the variables of interest with the desired sanitizers. Its OK
+to specify both sanitizers:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># ASan</span>
+<span class="nb">export</span> <span class="nv">CC</span><span class="o">=</span><span class="s2">"/usr/local/bin/clang -fsanitize=address"</span>
+<span class="nb">export</span> <span class="nv">CXX</span><span class="o">=</span><span class="s2">"/usr/local/bin/clang++ -fsanitize=address -fno-sanitize=vptr"</span>
+</pre></div>
+</div>
+<p>Or:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># UBSan</span>
+<span class="nb">export</span> <span class="nv">CC</span><span class="o">=</span><span class="s2">"/usr/local/bin/clang -fsanitize=undefined"</span>
+<span class="nb">export</span> <span class="nv">CXX</span><span class="o">=</span><span class="s2">"/usr/local/bin/clang++ -fsanitize=undefined -fno-sanitize=vptr"</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">-fno-sanitize=vptr</span></code> removes vtable checks that are part of UBSan from C++
+projects due to noise. Its not needed with Python, but you will likely need it
+for other C++ projects.</p>
+<p>After exporting <code class="docutils literal notranslate"><span class="pre">CC</span></code> and <code class="docutils literal notranslate"><span class="pre">CXX</span></code>, <code class="docutils literal notranslate"><span class="pre">configure</span></code> as normal:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./configure
+<span class="go">checking build system type... x86_64-unknown-linux-gnu</span>
+<span class="go">checking host system type... x86_64-unknown-linux-gnu</span>
+<span class="go">checking for --enable-universalsdk... no</span>
+<span class="go">checking for --with-universal-archs... 32-bit</span>
+<span class="go">checking MACHDEP... linux</span>
+<span class="go">checking for --without-gcc... no</span>
+<span class="go">checking for gcc... /usr/local/bin/clang -fsanitize=undefined</span>
+<span class="go">checking whether the C compiler works... yes</span>
+<span class="go">...</span>
+</pre></div>
+</div>
+<p>Next is a standard <code class="docutils literal notranslate"><span class="pre">make</span></code> (formatting added for clarity):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>make
+<span class="go">/usr/local/bin/clang -fsanitize=undefined -c -Wno-unused-result</span>
+<span class="go">    -DNDEBUG -g -fwrapv -O3 -Wall -Wstrict-prototypes -I.</span>
+<span class="go">    -IInclude -I./Include -DPy_BUILD_CORE -o Modules/python.o</span>
+<span class="go">    ./Modules/python.c</span>
+<span class="go">/usr/local/bin/clang -fsanitize=undefined -c -Wno-unused-result</span>
+<span class="go">    -DNDEBUG -g -fwrapv -O3 -Wall -Wstrict-prototypes -I.</span>
+<span class="go">    -IInclude -I./Include -DPy_BUILD_CORE -o Parser/acceler.o</span>
+<span class="go">    Parser/acceler.c</span>
+<span class="go">...</span>
+</pre></div>
+</div>
+<p>Finally is <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">test</span></code> (formatting added for clarity):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Objects/longobject.c:39:42: runtime error: index -1 out of bounds
+    for type 'PyLongObject [262]'
+Objects/tupleobject.c:188:13: runtime error: member access within
+    misaligned address 0x2b76be018078 for type 'PyGC_Head' (aka
+    'union _gc_head'), which requires 16 byte alignment
+    0x2b76be018078: note: pointer points here
+    00 00 00 00  40 53 5a b6 76 2b 00 00  60 52 5a b6 ...
+                 ^
+...
+</pre></div>
+</div>
+<p>If you are using the address sanitizer, its important to pipe the output through
+<code class="docutils literal notranslate"><span class="pre">asan_symbolize.py</span></code> to get a good trace. For example, from Issue 20953 during
+compile (formatting added for clarity):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ make test 2&gt;&amp;1 | asan_symbolize.py
+...
+
+/usr/local/bin/clang -fsanitize=address -Xlinker -export-dynamic
+    -o python Modules/python.o libpython3.3m.a -ldl -lutil
+    /usr/local/ssl/lib/libssl.a /usr/local/ssl/lib/libcrypto.a -lm
+./python -E -S -m sysconfig --generate-posix-vars
+=================================================================
+==24064==ERROR: AddressSanitizer: heap-buffer-overflow on address
+0x619000004020 at pc 0x4ed4b2 bp 0x7fff80fff010 sp 0x7fff80fff008
+READ of size 4 at 0x619000004020 thread T0
+  #0 0x4ed4b1 in PyObject_Free Python-3.3.5/./Objects/obmalloc.c:987
+  #1 0x7a2141 in code_dealloc Python-3.3.5/./Objects/codeobject.c:359
+  #2 0x620c00 in PyImport_ImportFrozenModuleObject
+       Python-3.3.5/./Python/import.c:1098
+  #3 0x620d5c in PyImport_ImportFrozenModule
+       Python-3.3.5/./Python/import.c:1114
+  #4 0x63fd07 in import_init Python-3.3.5/./Python/pythonrun.c:206
+  #5 0x63f636 in _Py_InitializeEx_Private
+       Python-3.3.5/./Python/pythonrun.c:369
+  #6 0x681d77 in Py_Main Python-3.3.5/./Modules/main.c:648
+  #7 0x4e6894 in main Python-3.3.5/././Modules/python.c:62
+  #8 0x2abf9a525eac in __libc_start_main
+       /home/aurel32/eglibc/eglibc-2.13/csu/libc-start.c:244
+  #9 0x4e664c in _start (Python-3.3.5/./python+0x4e664c)
+
+AddressSanitizer can not describe address in more detail (wild
+memory access suspected).
+SUMMARY: AddressSanitizer: heap-buffer-overflow
+  Python-3.3.5/./Objects/obmalloc.c:987 PyObject_Free
+Shadow bytes around the buggy address:
+  0x0c327fff87b0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c327fff87c0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c327fff87d0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c327fff87e0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c327fff87f0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+=&gt;0x0c327fff8800: fa fa fa fa[fa]fa fa fa fa fa fa fa fa fa fa fa
+  0x0c327fff8810: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c327fff8820: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c327fff8830: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c327fff8840: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c327fff8850: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07
+  Heap left redzone:     fa
+  Heap right redzone:    fb
+  Freed heap region:     fd
+  Stack left redzone:    f1
+  Stack mid redzone:     f2
+  Stack right redzone:   f3
+  Stack partial redzone: f4
+  Stack after return:    f5
+  Stack use after scope: f8
+  Global redzone:        f9
+  Global init order:     f6
+  Poisoned by user:      f7
+  ASan internal:         fe
+==24064==ABORTING
+make: *** [pybuilddir.txt] Error 1
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p><code class="docutils literal notranslate"><span class="pre">asan_symbolize.py</span></code> is supposed to be installed during <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">install</span></code>.
+If its not installed, then look in the Clang/LLVM build directory for it and
+copy it to <code class="docutils literal notranslate"><span class="pre">/usr/local/bin</span></code>.</p>
+</div>
+</section>
+<section id="blacklisting-ignoring-findings">
+<h3>Blacklisting (Ignoring) Findings<a class="headerlink" href="#blacklisting-ignoring-findings" title="永久链接至标题">¶</a></h3>
+<p>Clang allows you to alter the behavior of sanitizer tools for certain
+source-level by providing a special blacklist file at compile-time. The
+blacklist is needed because it reports every instance of an issue, even if the
+issue is reported 10’s of thousands of time in un-managed library code.</p>
+<p>You specify the blacklist with <code class="docutils literal notranslate"><span class="pre">-fsanitize-blacklist=XXX</span></code>. For example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>-fsanitize-blacklist=my_blacklist.txt
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">my_blacklist.txt</span></code> would then contain entries such as the following. The entry
+will ignore a bug in <code class="docutils literal notranslate"><span class="pre">libc++</span></code>’s <code class="docutils literal notranslate"><span class="pre">ios</span></code> formatting functions:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>fun:_Ios_Fmtflags
+</pre></div>
+</div>
+<p>As an example with Python 3.4.0, <code class="docutils literal notranslate"><span class="pre">audioop.c</span></code> will produce a number of
+findings:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./Modules/audioop.c:422:11: runtime error: left shift of negative value -1
+./Modules/audioop.c:446:19: runtime error: left shift of negative value -1
+./Modules/audioop.c:476:19: runtime error: left shift of negative value -1
+./Modules/audioop.c:504:16: runtime error: left shift of negative value -1
+./Modules/audioop.c:533:22: runtime error: left shift of negative value -128
+./Modules/audioop.c:775:19: runtime error: left shift of negative value -70
+./Modules/audioop.c:831:19: runtime error: left shift of negative value -70
+./Modules/audioop.c:881:19: runtime error: left shift of negative value -1
+./Modules/audioop.c:920:22: runtime error: left shift of negative value -70
+./Modules/audioop.c:967:23: runtime error: left shift of negative value -70
+./Modules/audioop.c:968:23: runtime error: left shift of negative value -70
+...
+</pre></div>
+</div>
+<p>One of the function of interest is <code class="docutils literal notranslate"><span class="pre">audioop_getsample_impl</span></code> (flagged at line
+422), and the blacklist entry would include:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>fun:audioop_getsample_imp
+</pre></div>
+</div>
+<p>Or, you could ignore the entire file with:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>src:Modules/audioop.c
+</pre></div>
+</div>
+<p>Unfortunately, you won’t know what to blacklist until you run the sanitizer.</p>
+<p>The documentation is available at <a class="reference external" href="https://clang.llvm.org/docs/SanitizerSpecialCaseList.html">Sanitizer special case list</a>.</p>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="buildworker.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Running a buildbot worker</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="coverity.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Coverity Scan</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2011-2021, Python Software Foundation |
+            最后更新于 11月 22, 2021. |
+          Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+          <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            | <a class="muted-link" href="_sources/clang.rst.txt"
+               rel="nofollow">
+              显示源代码
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            目录
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Dynamic Analysis with Clang</a><ul>
+<li><a class="reference internal" href="#what-is-clang">What is Clang?</a></li>
+<li><a class="reference internal" href="#what-are-sanitizers">What are Sanitizers?</a></li>
+<li><a class="reference internal" href="#clang-llvm-setup">Clang/LLVM Setup</a><ul>
+<li><a class="reference internal" href="#download-build-and-install">Download, Build and Install</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#python-build-setup">Python Build Setup</a><ul>
+<li><a class="reference internal" href="#building-python">Building Python</a></li>
+<li><a class="reference internal" href="#blacklisting-ignoring-findings">Blacklisting (Ignoring) Findings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/scripts/furo.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/translations.js"></script>
+    </body>
+</html>

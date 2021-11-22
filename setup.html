@@ -1,0 +1,765 @@
+<!doctype html>
+<html class="no-js" lang="zh_CN">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="索引" href="genindex.html" /><link rel="search" title="搜索" href="search.html" /><link rel="next" title="Where to Get Help" href="help.html" /><link rel="prev" title="Python 开发者指南" href="index.html" />
+
+    <meta name="generator" content="sphinx-4.3.0, furo 2021.11.16"/>
+        <title>Getting Started - Python Developer&#39;s Guide</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=916d6ed8f59335acffa15474ff504849343d4c76" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=0af69da206d614734f649b27d4cdc2dd6c31f41d" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  body[data-theme="dark"] {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    body:not([data-theme="light"]) {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+</style></head>
+  <body>
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" />
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Python Developer's Guide </div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="_static/python-logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Python Developer's Guide </span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder=搜索 name="q" aria-label="搜索">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Where to Get Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pullrequest.html">Lifecycle of a Pull Request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="runtests.html">Running &amp; Writing Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coverage.html">Increase Test Coverage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docquality.html">Helping with Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documenting.html">Documenting Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="silencewarnings.html">Silence Warnings From the Test Suite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fixingissues.html">Fixing “easy” Issues (and Beyond)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tracker.html">Issue Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="triaging.html">Triaging an Issue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="communication.html">Following Python’s Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="porting.html">Porting Python to a new platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coredev.html">How to Become a Core Developer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developers.html">Developer Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="committing.html">Accepting Pull Requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="devcycle.html">Development Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="buildbots.html">Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stdlibchanges.html">Adding to the Stdlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="langchanges.html">Changing the Python Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experts.html">Experts Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gdb.html">gdb Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploring.html">Exploring CPython’s Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grammar.html">Changing CPython’s Grammar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parser.html">Guide to CPython’s Parser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compiler.html">Design of CPython’s Compiler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="garbage_collector.html">Design of CPython’s Garbage Collector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extensions.html">Updating standard library extension modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c-api.html">Changing Python’s C API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coverity.html">Coverity Scan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clang.html">Dynamic Analysis with Clang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="buildworker.html">Running a buildbot worker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motivations.html">Core Developer Motivations and Affiliations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitbootcamp.html">Git Bootcamp and Cheat Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix: Topics</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="getting-started">
+<span id="setup"></span><h1>Getting Started<a class="headerlink" href="#getting-started" title="永久链接至标题">¶</a></h1>
+<p>These instructions cover how to get a working copy of the source code and a
+compiled version of the CPython interpreter (CPython is the version of Python
+available from <a class="reference external" href="https://www.python.org/">https://www.python.org/</a>). It also gives an overview of the
+directory structure of the CPython source code.</p>
+<p>Alternatively, if you have <a class="reference external" href="https://www.docker.com/">Docker</a> installed you
+might want to use <a class="reference external" href="https://gitlab.com/python-devs/ci-images/blob/master/README.md">our official images</a>.  These
+contain the latest releases of several Python versions, along with git head,
+and are provided for development and testing purposes only.</p>
+<div class="admonition seealso">
+<p class="admonition-title">参见</p>
+<p>The <a class="reference internal" href="index.html#quick-reference"><span class="std std-ref">快速参考</span></a> gives brief summary of the process from
+installing git to submitting a pull request.</p>
+</div>
+<section id="install-git">
+<span id="vcsetup"></span><h2>Install <code class="docutils literal notranslate"><span class="pre">git</span></code><a class="headerlink" href="#install-git" title="永久链接至标题">¶</a></h2>
+<p>CPython is developed using <a class="reference external" href="https://git-scm.com">git</a> for version control. The git
+command line program is named <code class="docutils literal notranslate"><span class="pre">git</span></code>; this is also used to refer to git
+itself. git is easily available for all common operating systems.</p>
+<ul>
+<li><p><strong>Install</strong></p>
+<p>As the CPython repo is hosted on GitHub, please refer to either the
+<a class="reference external" href="https://help.github.com/articles/set-up-git/">GitHub setup instructions</a>
+or the <a class="reference external" href="https://git-scm.com">git project instructions</a> for step-by-step
+installation directions. You may also want to consider a graphical client
+such as <a class="reference external" href="https://tortoisegit.org/">TortoiseGit</a> or
+<a class="reference external" href="https://desktop.github.com/">GitHub Desktop</a>.</p>
+</li>
+<li><p><strong>Configure</strong></p>
+<p>Configure <a class="reference internal" href="gitbootcamp.html#set-up-name-email"><span class="std std-ref">your name and email</span></a> and create
+<a class="reference external" href="https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/">an SSH key</a>
+as this will allow you to interact with GitHub without typing a username
+and password each time you execute a command, such as <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code>,
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code>, or <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">fetch</span></code>.  On Windows, you should also
+<a class="reference internal" href="gitbootcamp.html#autocrlf"><span class="std std-ref">enable autocrlf</span></a>.</p>
+</li>
+</ul>
+</section>
+<section id="get-the-source-code">
+<span id="checkout"></span><h2>Get the source code<a class="headerlink" href="#get-the-source-code" title="永久链接至标题">¶</a></h2>
+<p>The CPython repo is hosted on GitHub. To get a copy of the source code you should
+<a class="reference internal" href="gitbootcamp.html#fork-cpython"><span class="std std-ref">fork the Python repository on GitHub</span></a>, <a class="reference internal" href="gitbootcamp.html#clone-your-fork"><span class="std std-ref">create a local
+clone of your personal fork, and configure the remotes</span></a>.</p>
+<p>You will only need to execute these steps once:</p>
+<ol class="arabic">
+<li><p>Go to <a class="reference external" href="https://github.com/python/cpython">https://github.com/python/cpython</a>.</p></li>
+<li><p>Press <span class="guilabel">Fork</span> on the top right.</p></li>
+<li><p>When asked where to fork the repository, choose to fork it to your username.</p></li>
+<li><p>Your fork will be created at <code class="samp docutils literal notranslate"><span class="pre">https://github.com/</span><em><span class="pre">&lt;username&gt;</span></em><span class="pre">/cpython</span></code>.</p></li>
+<li><p>Clone your GitHub fork (replace <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;</span></code> with your username):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git clone git@github.com:&lt;username&gt;/cpython.git
+</pre></div>
+</div>
+<p>(You can use both SSH-based or HTTPS-based URLs.)</p>
+</li>
+<li><p>Configure an <code class="docutils literal notranslate"><span class="pre">upstream</span></code> remote:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span> cpython
+<span class="gp">$ </span>git remote add upstream git@github.com:python/cpython.git
+</pre></div>
+</div>
+</li>
+<li><p>Verify that your setup is correct:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git remote -v
+<span class="go">origin  git@github.com:&lt;your-username&gt;/cpython.git (fetch)</span>
+<span class="go">origin  git@github.com:&lt;your-username&gt;/cpython.git (push)</span>
+<span class="go">upstream        git@github.com:python/cpython.git (fetch)</span>
+<span class="go">upstream        git@github.com:python/cpython.git (push)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>If you did everything correctly, you should now have a copy of the code
+in the <code class="docutils literal notranslate"><span class="pre">cpython</span></code> directory and two remotes that refer to your own GitHub fork
+(<code class="docutils literal notranslate"><span class="pre">origin</span></code>) and the official CPython repository (<code class="docutils literal notranslate"><span class="pre">upstream</span></code>).</p>
+<p>If you want a working copy of an already-released version of Python,
+i.e., a version in <a class="reference internal" href="devcycle.html#maintbranch"><span class="std std-ref">maintenance mode</span></a>, you can checkout
+a release branch. For instance, to checkout a working copy of Python 3.8,
+do <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">3.8</span></code>.</p>
+<p>You will need to re-compile CPython when you do such an update.</p>
+<p>Do note that CPython will notice that it is being run from a working copy.
+This means that if you edit CPython’s source code in your working copy,
+changes to Python code will be picked up by the interpreter for immediate
+use and testing.  (If you change C code, you will need to recompile the
+affected files as described below.)</p>
+<p>Patches for the documentation can be made from the same repository; see
+<a class="reference internal" href="documenting.html#documenting"><span class="std std-ref">Documenting Python</span></a>.</p>
+</section>
+<section id="compile-and-build">
+<span id="compiling"></span><h2>Compile and build<a class="headerlink" href="#compile-and-build" title="永久链接至标题">¶</a></h2>
+<p>CPython provides several compilation flags which help with debugging various
+things. While all of the known flags can be found in the
+<code class="docutils literal notranslate"><span class="pre">Misc/SpecialBuilds.txt</span></code> file, the most critical one is the <code class="docutils literal notranslate"><span class="pre">Py_DEBUG</span></code> flag
+which creates what is known as a “pydebug” build. This flag turns on various
+extra sanity checks which help catch common issues. The use of the flag is so
+common that turning on the flag is a basic compile option.</p>
+<p>You should always develop under a pydebug build of CPython (the only instance of
+when you shouldn’t is if you are taking performance measurements). Even when
+working only on pure Python code the pydebug build provides several useful
+checks that one should not skip.</p>
+<div class="admonition seealso">
+<p class="admonition-title">参见</p>
+<p>The effects of various configure and build flags are documented in
+the <a class="reference external" href="https://docs.python.org/dev/using/configure.html">Python configure docs</a>.</p>
+</div>
+<section id="unix">
+<span id="unix-compiling"></span><h3>UNIX<a class="headerlink" href="#unix" title="永久链接至标题">¶</a></h3>
+<p>The core CPython interpreter only needs a C compiler to be built,
+however, some of the extension modules will need development headers
+for additional libraries (such as the <code class="docutils literal notranslate"><span class="pre">zlib</span></code> library for compression).
+Depending on what you intend to work on, you might need to install these
+additional requirements so that the compiled interpreter supports the
+desired features.</p>
+<p>If you want to install these optional dependencies, consult the
+<a class="reference internal" href="#build-dependencies"><span class="std std-ref">Install dependencies</span></a> section below.</p>
+<p>If you don’t need to install them, the basic steps for building Python
+for development is to configure it and then compile it.</p>
+<p>Configuration is typically:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./configure --with-pydebug
+</pre></div>
+</div>
+<p>More flags are available to <code class="docutils literal notranslate"><span class="pre">configure</span></code>, but this is the minimum you should
+do to get a pydebug build of CPython.</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>You might need to run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">clean</span></code> before or after re-running <code class="docutils literal notranslate"><span class="pre">configure</span></code>
+in a particular build directory.</p>
+</div>
+<p>Once <code class="docutils literal notranslate"><span class="pre">configure</span></code> is done, you can then compile CPython with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make -s -j2
+</pre></div>
+</div>
+<p>This will build CPython with only warnings and errors being printed to
+stderr and utilize up to 2 CPU cores. If you are using a multi-core machine
+with more than 2 cores (or a single-core machine), you can adjust the number
+passed into the <code class="docutils literal notranslate"><span class="pre">-j</span></code> flag to match the number of cores you have (or if your
+version of Make supports it, you can use <code class="docutils literal notranslate"><span class="pre">-j</span></code> without a number and Make
+will not limit the number of steps that can run simultaneously.).</p>
+<p>At the end of the build you should see a success message, possibly followed
+by a list of extension modules that haven’t been built because their
+dependencies were missing:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Python build finished successfully!
+The necessary bits to build these optional modules were not found:
+_bz2                  _dbm                  _gdbm
+_lzma                 _sqlite3              _ssl
+_tkinter              _uuid                 readline
+zlib
+To find the necessary bits, look in setup.py in detect_modules()
+for the module's name.
+</pre></div>
+</div>
+<p>If the build failed and you are using a C89 or C99-compliant compiler,
+please <a class="reference external" href="https://bugs.python.org">open a bug report</a>.</p>
+<p>If you decide to <a class="reference internal" href="#build-dependencies"><span class="std std-ref">Install dependencies</span></a>, you will need to re-run both
+<code class="docutils literal notranslate"><span class="pre">configure</span></code> and <code class="docutils literal notranslate"><span class="pre">make</span></code>.</p>
+<p id="mac-python-exe">Once CPython is done building you will then have a working build
+that can be run in-place; <code class="docutils literal notranslate"><span class="pre">./python</span></code> on most machines (and what is used in
+all examples), <code class="docutils literal notranslate"><span class="pre">./python.exe</span></code> wherever a case-insensitive filesystem is used
+(e.g. on OS X by default), in order to avoid conflicts with the <code class="docutils literal notranslate"><span class="pre">Python</span></code>
+directory. There is normally no need to install your built copy
+of Python! The interpreter will realize where it is being run from
+and thus use the files found in the working copy.  If you are worried
+you might accidentally install your working copy build, you can add
+<code class="docutils literal notranslate"><span class="pre">--prefix=/tmp/python</span></code> to the configuration step.  When running from your
+working directory, it is best to avoid using the <code class="docutils literal notranslate"><span class="pre">--enable-shared</span></code> flag
+to <code class="docutils literal notranslate"><span class="pre">configure</span></code>; unless you are very careful, you may accidentally run
+with code from an older, installed shared Python library rather than from
+the interpreter you just built.</p>
+<section id="clang">
+<h4>Clang<a class="headerlink" href="#clang" title="永久链接至标题">¶</a></h4>
+<p>If you are using <a class="reference external" href="https://clang.llvm.org/">clang</a> to build CPython, some flags you might want to set to
+quiet some standard warnings which are specifically superfluous to CPython are
+<code class="docutils literal notranslate"><span class="pre">-Wno-unused-value</span> <span class="pre">-Wno-empty-body</span> <span class="pre">-Qunused-arguments</span></code>. You can set your
+<code class="docutils literal notranslate"><span class="pre">CFLAGS</span></code> environment variable to these flags when running <code class="docutils literal notranslate"><span class="pre">configure</span></code>.</p>
+<p>If you are using <a class="reference external" href="https://clang.llvm.org/">clang</a> with <a class="reference external" href="https://ccache.samba.org/">ccache</a>, turn off the noisy
+<code class="docutils literal notranslate"><span class="pre">parentheses-equality</span></code> warnings with the <code class="docutils literal notranslate"><span class="pre">-Wno-parentheses-equality</span></code> flag.
+These warnings are caused by clang not  having enough information to detect
+that extraneous parentheses in expanded macros are valid, because the
+preprocessing is done separately by ccache.</p>
+<p>If you are using LLVM 2.8, also use the <code class="docutils literal notranslate"><span class="pre">-no-integrated-as</span></code> flag in order to
+build the <a class="reference external" href="https://daobook.github.io/cpython/library/ctypes.html#module-ctypes" title="(在 Python v3.11)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ctypes</span></code></a> module (without the flag the rest of CPython will
+still build properly).</p>
+</section>
+</section>
+<section id="windows">
+<span id="windows-compiling"></span><h3>Windows<a class="headerlink" href="#windows" title="永久链接至标题">¶</a></h3>
+<p>For a quick guide to building you can read <a class="reference external" href="https://cpython-core-tutorial.readthedocs.io/en/latest/build_cpython_windows.html">this documentation</a> from Victor
+Stinner.</p>
+<p><strong>Python 3.6</strong> and later can use Microsoft Visual Studio 2017.  You can download
+and use any of the free or paid versions of <a class="reference external" href="https://www.visualstudio.com/">Visual Studio 2017</a>.</p>
+<p>When installing Visual Studio 2017, select the <strong>Python development</strong> workload
+and the optional <strong>Python native development tools</strong> component to obtain all of
+the necessary build tools. If you do not already have git installed, you can
+find git for Windows on the <strong>Individual components</strong> tab of the installer.</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>If you want to build MSI installers, be aware that the build toolchain
+for them has a dependency on the Microsoft .NET Framework Version 3.5 (which
+may not be configured on recent versions of Windows, such as Windows 10). If
+you are building on a recent Windows version, use the Control Panel (Programs
+| Programs and Features | Turn Windows Features on or off) and ensure that the
+entry “.NET Framework 3.5 (includes .NET 2.0 and 3.0)” is enabled.</p>
+</div>
+<p>Your first build should use the command line to ensure any external dependencies
+are downloaded:</p>
+<div class="highlight-dosbatch notranslate"><div class="highlight"><pre><span></span>PCbuild\build.bat
+</pre></div>
+</div>
+<p>After this build succeeds, you can open the <code class="docutils literal notranslate"><span class="pre">PCbuild\pcbuild.sln</span></code> solution in
+Visual Studio to continue development.</p>
+<p>See the <a class="reference external" href="https://github.com/python/cpython/blob/main/PCbuild/readme.txt">readme</a> for more details on what other software is necessary and how
+to build.</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>If you are using the Windows Subsystem for Linux (WSL), clone the
+repository from a native Windows terminal program like cmd.exe command prompt
+or PowerShell as well as use a build of git targeted for Windows, e.g., the
+official one from <a class="reference external" href="https://git-scm.com">https://git-scm.com</a>. Otherwise, Visual Studio will
+not be able to find all the project’s files and will fail the build.</p>
+</div>
+</section>
+</section>
+<section id="install-dependencies">
+<span id="build-dependencies"></span><h2>Install dependencies<a class="headerlink" href="#install-dependencies" title="永久链接至标题">¶</a></h2>
+<p>This section explains how to install additional extensions (e.g. <code class="docutils literal notranslate"><span class="pre">zlib</span></code>)
+on <a class="reference internal" href="#deps-on-linux"><span class="std std-ref">Linux</span></a> and <a class="reference internal" href="#macos"><span class="std std-ref">macOs/OS X</span></a>.  On Windows,
+extensions are already included and built automatically.</p>
+<section id="linux">
+<span id="deps-on-linux"></span><h3>Linux<a class="headerlink" href="#linux" title="永久链接至标题">¶</a></h3>
+<p>For UNIX based systems, we try to use system libraries whenever available.
+This means optional components will only build if the relevant system headers
+are available. The best way to obtain the appropriate headers will vary by
+distribution, but the appropriate commands for some popular distributions
+are below.</p>
+<p>On <strong>Fedora</strong>, <strong>Red Hat Enterprise Linux</strong> and other <code class="docutils literal notranslate"><span class="pre">yum</span></code> based systems:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo yum install yum-utils
+<span class="gp">$ </span>sudo yum-builddep python3
+</pre></div>
+</div>
+<p>On <strong>Fedora</strong> and other <code class="docutils literal notranslate"><span class="pre">DNF</span></code> based systems:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo dnf install dnf-plugins-core  <span class="c1"># install this to use 'dnf builddep'</span>
+<span class="gp">$ </span>sudo dnf builddep python3
+</pre></div>
+</div>
+<p>On <strong>Debian</strong>, <strong>Ubuntu</strong>, and other <code class="docutils literal notranslate"><span class="pre">apt</span></code> based systems, try to get the
+dependencies for the Python you’re working on by using the <code class="docutils literal notranslate"><span class="pre">apt</span></code> command.</p>
+<p>First, make sure you have enabled the source packages in the sources list.
+You can do this by adding the location of the source packages, including
+URL, distribution name and component name, to <code class="docutils literal notranslate"><span class="pre">/etc/apt/sources.list</span></code>.
+Take Ubuntu Bionic for example:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">deb-src http://archive.ubuntu.com/ubuntu/ bionic main</span>
+</pre></div>
+</div>
+<p>For other distributions, like Debian, change the URL and names to correspond
+with the specific distribution.</p>
+<p>Then you should update the packages index:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo apt-get update
+</pre></div>
+</div>
+<p>Now you can install the build dependencies via <code class="docutils literal notranslate"><span class="pre">apt</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo apt-get build-dep python3
+<span class="gp">$ </span>sudo apt-get install pkg-config
+</pre></div>
+</div>
+<p>If you want to build all optional modules, install the following packages and
+their dependencies:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo apt-get install build-essential gdb lcov pkg-config <span class="se">\</span>
+      libbz2-dev libffi-dev libgdbm-dev libgdbm-compat-dev liblzma-dev <span class="se">\</span>
+      libncurses5-dev libreadline6-dev libsqlite3-dev libssl-dev <span class="se">\</span>
+      lzma lzma-dev tk-dev uuid-dev zlib1g-dev
+</pre></div>
+</div>
+</section>
+<section id="macos-and-os-x">
+<span id="macos"></span><h3>macOS and OS X<a class="headerlink" href="#macos-and-os-x" title="永久链接至标题">¶</a></h3>
+<p>For <strong>macOS systems</strong> (versions 10.12+) and <strong>OS X 10.9 and later</strong>,
+the Developer Tools can be downloaded and installed automatically;
+you do not need to download the complete Xcode application.</p>
+<p>If necessary, run the following:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>xcode-select --install
+</pre></div>
+</div>
+<p>This will also ensure that the system header files are installed into
+<code class="docutils literal notranslate"><span class="pre">/usr/include</span></code>.</p>
+<p>On <strong>Mac OS X systems</strong> (versions 10.0 - 10.7) and <strong>OS X 10.8</strong>, use the C
+compiler and other development utilities provided by Apple’s Xcode Developer
+Tools. The Developer Tools are not shipped with Mac OS X.</p>
+<p>For these <strong>older releases (versions 10.0 - 10.8)</strong>, you will need to download either the
+correct version of the Command Line Tools, if available, or install them from the
+full Xcode app or package for that OS X release.  Older versions may be
+available either as a no-cost download through Apple’s App Store or from
+<a class="reference external" href="https://developer.apple.com/">the Apple Developer web site</a>.</p>
+<p>Also note that OS X does not include several libraries used by the Python
+standard library, including <code class="docutils literal notranslate"><span class="pre">libzma</span></code>, so expect to see some extension module
+build failures unless you install local copies of them.  As of OS X 10.11,
+Apple no longer provides header files for the deprecated system version of
+OpenSSL which means that you will not be able to build the <code class="docutils literal notranslate"><span class="pre">_ssl</span></code> extension.
+One solution is to install these libraries from a third-party package
+manager, like <a class="reference external" href="https://brew.sh">Homebrew</a> or <a class="reference external" href="https://www.macports.org">MacPorts</a>, and then add the appropriate paths
+for the header and library files to your <code class="docutils literal notranslate"><span class="pre">configure</span></code> command.  For example,</p>
+<p>with <strong>Homebrew</strong>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>brew install openssl xz gdbm
+</pre></div>
+</div>
+<p>and <code class="docutils literal notranslate"><span class="pre">configure</span></code> Python versions &gt;= 3.7:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">./configure --with-pydebug --with-openssl=$(brew --prefix openssl)</span>
+</pre></div>
+</div>
+<p>or <code class="docutils literal notranslate"><span class="pre">configure</span></code> Python versions &lt; 3.7:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nv">CPPFLAGS</span><span class="o">=</span><span class="s2">"-I</span><span class="k">$(</span>brew --prefix openssl<span class="k">)</span><span class="s2">/include"</span> <span class="se">\</span>
+  <span class="nv">LDFLAGS</span><span class="o">=</span><span class="s2">"-L</span><span class="k">$(</span>brew --prefix openssl<span class="k">)</span><span class="s2">/lib"</span> <span class="se">\</span>
+  ./configure --with-pydebug
+</pre></div>
+</div>
+<p>and <code class="docutils literal notranslate"><span class="pre">make</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>make -s -j2
+</pre></div>
+</div>
+<p>or <strong>MacPorts</strong>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo port install pkgconfig openssl xz gdbm
+</pre></div>
+</div>
+<p>and <code class="docutils literal notranslate"><span class="pre">configure</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nv">CPPFLAGS</span><span class="o">=</span><span class="s2">"-I/opt/local/include"</span> <span class="se">\</span>
+  <span class="nv">LDFLAGS</span><span class="o">=</span><span class="s2">"-L/opt/local/lib"</span> <span class="se">\</span>
+  ./configure --with-pydebug
+</pre></div>
+</div>
+<p>and <code class="docutils literal notranslate"><span class="pre">make</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>make -s -j2
+</pre></div>
+</div>
+<p>There will sometimes be optional modules added for a new release which
+won’t yet be identified in the OS level build dependencies. In those cases,
+just ask for assistance on the core-mentorship list.</p>
+<p>Explaining how to build optional dependencies on a UNIX based system without
+root access is beyond the scope of this guide.</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>While you need a C compiler to build CPython, you don’t need any
+knowledge of the C language to contribute!  Vast areas of CPython are
+written completely in Python: as of this writing, CPython contains slightly
+more Python code than C.</p>
+</div>
+</section>
+</section>
+<section id="regenerate-configure">
+<span id="id2"></span><h2>Regenerate <code class="docutils literal notranslate"><span class="pre">configure</span></code><a class="headerlink" href="#regenerate-configure" title="永久链接至标题">¶</a></h2>
+<p>If a change is made to Python which relies on some POSIX system-specific
+functionality (such as using a new system call), it is necessary to update the
+<code class="docutils literal notranslate"><span class="pre">configure</span></code> script to test for availability of the functionality.</p>
+<p>Python’s <code class="docutils literal notranslate"><span class="pre">configure</span></code> script is generated from <code class="docutils literal notranslate"><span class="pre">configure.ac</span></code> using Autoconf.
+Instead of editing <code class="docutils literal notranslate"><span class="pre">configure</span></code>, edit <code class="docutils literal notranslate"><span class="pre">configure.ac</span></code> and then run
+<code class="docutils literal notranslate"><span class="pre">autoreconf</span></code> to regenerate <code class="docutils literal notranslate"><span class="pre">configure</span></code> and a number of other files (such as
+<code class="docutils literal notranslate"><span class="pre">pyconfig.h</span></code>).</p>
+<p>When submitting a patch with changes made to <code class="docutils literal notranslate"><span class="pre">configure.ac</span></code>, you should also
+include the generated files.</p>
+<p>Note that running <code class="docutils literal notranslate"><span class="pre">autoreconf</span></code> is not the same as running <code class="docutils literal notranslate"><span class="pre">autoconf</span></code>. For
+example, <code class="docutils literal notranslate"><span class="pre">autoconf</span></code> by itself will not regenerate <code class="docutils literal notranslate"><span class="pre">pyconfig.h.in</span></code>.
+<code class="docutils literal notranslate"><span class="pre">autoreconf</span></code> runs <code class="docutils literal notranslate"><span class="pre">autoconf</span></code> and a number of other tools repeatedly as is
+appropriate.</p>
+<p>Python’s <code class="docutils literal notranslate"><span class="pre">configure.ac</span></code> script typically requires a specific version of
+Autoconf.  At the moment, this reads: <code class="docutils literal notranslate"><span class="pre">AC_PREREQ(2.69)</span></code>. It also requires
+to have the <code class="docutils literal notranslate"><span class="pre">autoconf-archive</span></code> and <code class="docutils literal notranslate"><span class="pre">pkg-config</span></code> utilities installed in
+the system and the <code class="docutils literal notranslate"><span class="pre">pkg.m4</span></code> macro file located in the appropriate <code class="docutils literal notranslate"><span class="pre">alocal</span></code>
+location. You can easily check if this is correctly configured by running:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls <span class="k">$(</span>aclocal --print-ac-dir<span class="k">)</span> <span class="p">|</span> grep pkg.m4
+</pre></div>
+</div>
+<p>If the system copy of Autoconf does not match this version, you will need to
+install your own copy of Autoconf.</p>
+</section>
+<section id="troubleshoot-the-build">
+<span id="build-troubleshooting"></span><h2>Troubleshoot the build<a class="headerlink" href="#troubleshoot-the-build" title="永久链接至标题">¶</a></h2>
+<p>This section lists some of the common problems that may arise during the
+compilation of Python, with proposed solutions.</p>
+<section id="avoid-recreating-auto-generated-files">
+<h3>Avoid recreating auto-generated files<a class="headerlink" href="#avoid-recreating-auto-generated-files" title="永久链接至标题">¶</a></h3>
+<p>Under some circumstances you may encounter Python errors in scripts like
+<code class="docutils literal notranslate"><span class="pre">Parser/asdl_c.py</span></code> or <code class="docutils literal notranslate"><span class="pre">Python/makeopcodetargets.py</span></code> while running <code class="docutils literal notranslate"><span class="pre">make</span></code>.
+Python auto-generates some of its own code, and a full build from scratch needs
+to run the auto-generation scripts. However, this makes the Python build require
+an already installed Python interpreter; this can also cause version mismatches
+when trying to build an old (2.x) Python with a new (3.x) Python installed, or
+vice versa.</p>
+<p>To overcome this problem, auto-generated files are also checked into the
+Git repository. So if you don’t touch the auto-generation scripts, there’s
+no real need to auto-generate anything.</p>
+</section>
+</section>
+<section id="editors-and-tools">
+<h2>Editors and Tools<a class="headerlink" href="#editors-and-tools" title="永久链接至标题">¶</a></h2>
+<p>Python is used widely enough that practically all code editors have some form
+of support for writing Python code. Various coding tools also include Python
+support.</p>
+<p>For editors and tools which the core developers have felt some special comment
+is needed for coding <em>in</em> Python, see <a class="reference internal" href="index.html#resources"><span class="std std-ref">Additional Resources</span></a>.</p>
+</section>
+<section id="directory-structure">
+<h2>Directory structure<a class="headerlink" href="#directory-structure" title="永久链接至标题">¶</a></h2>
+<p>There are several top-level directories in the CPython source tree. Knowing what
+each one is meant to hold will help you find where a certain piece of
+functionality is implemented. Do realize, though, there are always exceptions to
+every rule.</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">Doc</span></code></dt><dd><p>The official documentation. This is what <a class="reference external" href="https://docs.python.org/">https://docs.python.org/</a> uses.
+See also <a class="reference internal" href="documenting.html#building-doc"><span class="std std-ref">Building the documentation</span></a>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Grammar</span></code></dt><dd><p>Contains the <abbr title="Extended Backus-Naur Form">EBNF</abbr> grammar file for
+Python.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Include</span></code></dt><dd><p>Contains all interpreter-wide header files.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Lib</span></code></dt><dd><p>The part of the standard library implemented in pure Python.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Mac</span></code></dt><dd><p>Mac-specific code (e.g., using IDLE as an OS X application).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Misc</span></code></dt><dd><p>Things that do not belong elsewhere. Typically this is varying kinds of
+developer-specific documentation.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Modules</span></code></dt><dd><p>The part of the standard library (plus some other code) that is implemented
+in C.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Objects</span></code></dt><dd><p>Code for all built-in types.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">PC</span></code></dt><dd><p>Windows-specific code.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">PCbuild</span></code></dt><dd><p>Build files for the version of MSVC currently used for the Windows
+installers provided on python.org.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Parser</span></code></dt><dd><p>Code related to the parser. The definition of the AST nodes is also kept
+here.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Programs</span></code></dt><dd><p>Source code for C executables, including the main function for the
+CPython interpreter (in versions prior to Python 3.5, these files are
+in the Modules directory).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Python</span></code></dt><dd><p>The code that makes up the core CPython runtime. This includes the
+compiler, eval loop and various built-in modules.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Tools</span></code></dt><dd><p>Various tools that are (or have been) used to maintain Python.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="help.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Where to Get Help</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="index.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Home</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2011-2021, Python Software Foundation |
+            最后更新于 11月 22, 2021. |
+          Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+          <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            | <a class="muted-link" href="_sources/setup.rst.txt"
+               rel="nofollow">
+              显示源代码
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            目录
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Getting Started</a><ul>
+<li><a class="reference internal" href="#install-git">Install <code class="docutils literal notranslate"><span class="pre">git</span></code></a></li>
+<li><a class="reference internal" href="#get-the-source-code">Get the source code</a></li>
+<li><a class="reference internal" href="#compile-and-build">Compile and build</a><ul>
+<li><a class="reference internal" href="#unix">UNIX</a><ul>
+<li><a class="reference internal" href="#clang">Clang</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#windows">Windows</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#install-dependencies">Install dependencies</a><ul>
+<li><a class="reference internal" href="#linux">Linux</a></li>
+<li><a class="reference internal" href="#macos-and-os-x">macOS and OS X</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#regenerate-configure">Regenerate <code class="docutils literal notranslate"><span class="pre">configure</span></code></a></li>
+<li><a class="reference internal" href="#troubleshoot-the-build">Troubleshoot the build</a><ul>
+<li><a class="reference internal" href="#avoid-recreating-auto-generated-files">Avoid recreating auto-generated files</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#editors-and-tools">Editors and Tools</a></li>
+<li><a class="reference internal" href="#directory-structure">Directory structure</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/scripts/furo.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/translations.js"></script>
+    </body>
+</html>

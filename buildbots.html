@@ -1,0 +1,533 @@
+<!doctype html>
+<html class="no-js" lang="zh_CN">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="索引" href="genindex.html" /><link rel="search" title="搜索" href="search.html" /><link rel="next" title="Adding to the Stdlib" href="stdlibchanges.html" /><link rel="prev" title="Development Cycle" href="devcycle.html" />
+
+    <meta name="generator" content="sphinx-4.3.0, furo 2021.11.16"/>
+        <title>Continuous Integration - Python Developer&#39;s Guide</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=916d6ed8f59335acffa15474ff504849343d4c76" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=0af69da206d614734f649b27d4cdc2dd6c31f41d" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  body[data-theme="dark"] {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    body:not([data-theme="light"]) {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+</style></head>
+  <body>
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" />
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Python Developer's Guide </div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="_static/python-logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Python Developer's Guide </span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder=搜索 name="q" aria-label="搜索">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Where to Get Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pullrequest.html">Lifecycle of a Pull Request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="runtests.html">Running &amp; Writing Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coverage.html">Increase Test Coverage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docquality.html">Helping with Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documenting.html">Documenting Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="silencewarnings.html">Silence Warnings From the Test Suite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fixingissues.html">Fixing “easy” Issues (and Beyond)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tracker.html">Issue Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="triaging.html">Triaging an Issue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="communication.html">Following Python’s Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="porting.html">Porting Python to a new platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coredev.html">How to Become a Core Developer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developers.html">Developer Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="committing.html">Accepting Pull Requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="devcycle.html">Development Cycle</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stdlibchanges.html">Adding to the Stdlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="langchanges.html">Changing the Python Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experts.html">Experts Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gdb.html">gdb Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploring.html">Exploring CPython’s Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grammar.html">Changing CPython’s Grammar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parser.html">Guide to CPython’s Parser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compiler.html">Design of CPython’s Compiler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="garbage_collector.html">Design of CPython’s Garbage Collector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extensions.html">Updating standard library extension modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c-api.html">Changing Python’s C API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coverity.html">Coverity Scan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clang.html">Dynamic Analysis with Clang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="buildworker.html">Running a buildbot worker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motivations.html">Core Developer Motivations and Affiliations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitbootcamp.html">Git Bootcamp and Cheat Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix: Topics</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="continuous-integration">
+<span id="buildbots"></span><h1>Continuous Integration<a class="headerlink" href="#continuous-integration" title="永久链接至标题">¶</a></h1>
+<p>To assert that there are no regressions in the <a class="reference internal" href="devcycle.html"><span class="doc">development and maintenance
+branches</span></a>, Python has a set of dedicated machines (called <em>buildbots</em>
+or <em>build workers</em>) used for continuous integration.  They span a number of
+hardware/operating system combinations.  Furthermore, each machine hosts
+several <em>builders</em>, one per active branch: when a new change is pushed
+to this branch on the public <a class="reference external" href="https://github.com/python/cpython">GitHub repository</a>, all corresponding builders
+will schedule a new build to be run as soon as possible.</p>
+<p>The build steps run by the buildbots are the following:</p>
+<ul class="simple">
+<li><p>Check out the source tree for the changeset which triggered the build</p></li>
+<li><p>Compile Python</p></li>
+<li><p>Run the test suite using <a class="reference internal" href="runtests.html#strenuous-testing"><span class="std std-ref">strenuous settings</span></a></p></li>
+<li><p>Clean up the build tree</p></li>
+</ul>
+<p>It is your responsibility, as a core developer, to check the automatic
+build results after you push a change to the repository.  It is therefore
+important that you get acquainted with the way these results are presented,
+and how various kinds of failures can be explained and diagnosed.</p>
+<section id="in-case-of-trouble">
+<h2>In case of trouble<a class="headerlink" href="#in-case-of-trouble" title="永久链接至标题">¶</a></h2>
+<p>Please read this page in full. If your questions aren’t answered here and you
+need assistance with the buildbots, a good way to get help is to either:</p>
+<ul class="simple">
+<li><p>contact the <code class="docutils literal notranslate"><span class="pre">python-buildbots@python.org</span></code> mailing list where all buildbot
+worker owners are subscribed; or</p></li>
+<li><p>contact the release manager of the branch you have issues with.</p></li>
+</ul>
+</section>
+<section id="buildbot-failures-on-pull-requests">
+<h2>Buildbot failures on Pull Requests<a class="headerlink" href="#buildbot-failures-on-pull-requests" title="永久链接至标题">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">bedevere-bot</span></code> on GitHub will put a message on your merged Pull Request
+if building your commit on a stable buildbot worker fails. Take care to
+evaluate the failure, even if it looks unrelated at first glance.</p>
+<p>Not all failures will generate a notification since not all builds are executed
+after each commit. In particular, reference leaks builds take several hours to
+complete so they are done periodically. This is why it’s important for you to
+be able to check the results yourself, too.</p>
+</section>
+<section id="checking-results-of-automatic-builds">
+<h2>Checking results of automatic builds<a class="headerlink" href="#checking-results-of-automatic-builds" title="永久链接至标题">¶</a></h2>
+<p>There are three ways of visualizing recent build results:</p>
+<ul>
+<li><p>The Web interface for each branch at <a class="reference external" href="https://www.python.org/dev/buildbot/">https://www.python.org/dev/buildbot/</a>,
+where the so-called “waterfall” view presents a vertical rundown of recent
+builds for each builder.  When interested in one build, you’ll have to
+click on it to know which changesets it corresponds to.  Note that
+the buildbot web pages are often slow to load, be patient.</p></li>
+<li><p>The command-line <code class="docutils literal notranslate"><span class="pre">bbreport.py</span></code> client, which you can get from
+<a class="reference external" href="https://code.google.com/archive/p/bbreport">https://code.google.com/archive/p/bbreport</a>. Installing it is trivial: just add
+the directory containing <code class="docutils literal notranslate"><span class="pre">bbreport.py</span></code> to your system path so that
+you can run it from any filesystem location.  For example, if you want
+to display the latest build results on the development (“main”) branch,
+type:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bbreport.py -q <span class="m">3</span>.x
+</pre></div>
+</div>
+</li>
+<li><p>The buildbot “console” interface at <a class="reference external" href="http://buildbot.python.org/all/#/console">http://buildbot.python.org/all/#/console</a>
+This works best on a wide, high resolution
+monitor.  Clicking on the colored circles will allow you to open a new page
+containing whatever information about that particular build is of interest to
+you.  You can also access builder information by clicking on the builder
+status bubbles in the top line.</p></li>
+</ul>
+<p>If you like IRC, having an IRC client open to the #python-dev-notifs channel on
+irc.libera.chat is useful.  Any time a builder changes state (last build
+passed and this one didn’t, or vice versa), a message is posted to the channel.
+Keeping an eye on the channel after pushing a changeset is a simple way to get
+notified that there is something you should look in to.</p>
+<p>Some buildbots are much faster than others.  Over time, you will learn which
+ones produce the quickest results after a build, and which ones take the
+longest time.</p>
+<p>Also, when several changesets are pushed in a quick succession in the same
+branch, it often happens that a single build is scheduled for all these
+changesets.</p>
+</section>
+<section id="stability">
+<h2>Stability<a class="headerlink" href="#stability" title="永久链接至标题">¶</a></h2>
+<p>A subset of the buildbots are marked “stable”.  They are taken into account
+when making a new release.  The rule is that all stable builders must be free of
+persistent failures when the release is cut.  It is absolutely <strong>vital</strong>
+that core developers fix any issue they introduce on the stable buildbots,
+as soon as possible.</p>
+<p>This does not mean that other builders’ test results can be taken lightly,
+either.  Some of them are known for having platform-specific issues that
+prevent some tests from succeeding (or even terminating at all), but
+introducing additional failures should generally not be an option.</p>
+</section>
+<section id="flags-dependent-failures">
+<h2>Flags-dependent failures<a class="headerlink" href="#flags-dependent-failures" title="永久链接至标题">¶</a></h2>
+<p>Sometimes, while you have run the <a class="reference internal" href="runtests.html"><span class="doc">whole test suite</span></a> before
+committing, you may witness unexpected failures on the buildbots.  One source
+of such discrepancies is if different flags have been passed to the test runner
+or to Python itself.  To reproduce, make sure you use the same flags as the
+buildbots: they can be found out simply by clicking the <strong>stdio</strong> link for
+the failing build’s tests.  For example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./python.exe -Wd -E -bb  ./Lib/test/regrtest.py -uall -rwW
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>Running <code class="docutils literal notranslate"><span class="pre">Lib/test/regrtest.py</span></code> is exactly equivalent to running
+<code class="docutils literal notranslate"><span class="pre">-m</span> <span class="pre">test</span></code>.</p>
+</div>
+</section>
+<section id="ordering-dependent-failures">
+<h2>Ordering-dependent failures<a class="headerlink" href="#ordering-dependent-failures" title="永久链接至标题">¶</a></h2>
+<p>Sometimes the failure is even subtler, as it relies on the order in which
+the tests are run.  The buildbots <em>randomize</em> test order (by using the <code class="docutils literal notranslate"><span class="pre">-r</span></code>
+option to the test runner) to maximize the probability that potential
+interferences between library modules are exercised; the downside is that it
+can make for seemingly sporadic failures.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">--randseed</span></code> option makes it easy to reproduce the exact randomization
+used in a given build.  Again, open the <code class="docutils literal notranslate"><span class="pre">stdio</span></code> link for the failing test
+run, and check the beginning of the test output proper.</p>
+<p>Let’s assume, for the sake of example, that the output starts with:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./python -Wd -E -bb Lib/test/regrtest.py -uall -rwW
+== CPython 3.3a0 (default:22ae2b002865, Mar 30 2011, 13:58:40) [GCC 4.4.5]
+==   Linux-2.6.36-gentoo-r5-x86_64-AMD_Athlon-tm-_64_X2_Dual_Core_Processor_4400+-with-gentoo-1.12.14 little-endian
+==   /home/buildbot/buildarea/3.x.ochtman-gentoo-amd64/build/build/test_python_29628
+Testing with flags: sys.flags(debug=0, inspect=0, interactive=0, optimize=0, dont_write_bytecode=0, no_user_site=0, no_site=0, ignore_environment=1, verbose=0, bytes_warning=2, quiet=0)
+<span class="hll">Using random seed 2613169
+</span>[  1/353] test_augassign
+[  2/353] test_functools
+</pre></div>
+</div>
+<p>You can reproduce the exact same order using:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./python -Wd -E -bb -m <span class="nb">test</span> -uall -rwW --randseed <span class="m">2613169</span>
+</pre></div>
+</div>
+<p>It will run the following sequence (trimmed for brevity):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[  1/353] test_augassign
+[  2/353] test_functools
+[  3/353] test_bool
+[  4/353] test_contains
+[  5/353] test_compileall
+[  6/353] test_unicode
+</pre></div>
+</div>
+<p>If this is enough to reproduce the failure on your setup, you can then
+bisect the test sequence to look for the specific interference causing the
+failure.  Copy and paste the test sequence in a text file, then use the
+<code class="docutils literal notranslate"><span class="pre">--fromfile</span></code> (or <code class="docutils literal notranslate"><span class="pre">-f</span></code>) option of the test runner to run the exact
+sequence recorded in that text file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./python -Wd -E -bb -m <span class="nb">test</span> -uall -rwW --fromfile mytestsequence.txt
+</pre></div>
+</div>
+<p>In the example sequence above, if <code class="docutils literal notranslate"><span class="pre">test_unicode</span></code> had failed, you would
+first test the following sequence:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[  1/353] test_augassign
+[  2/353] test_functools
+[  3/353] test_bool
+[  6/353] test_unicode
+</pre></div>
+</div>
+<p>And, if it succeeds, the following one instead (which, hopefully, shall
+fail):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[  4/353] test_contains
+[  5/353] test_compileall
+[  6/353] test_unicode
+</pre></div>
+</div>
+<p>Then, recursively, narrow down the search until you get a single pair of
+tests which triggers the failure.  It is very rare that such an interference
+involves more than <strong>two</strong> tests.  If this is the case, we can only wish you
+good luck!</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>You cannot use the <code class="docutils literal notranslate"><span class="pre">-j</span></code> option (for parallel testing) when diagnosing
+ordering-dependent failures.  Using <code class="docutils literal notranslate"><span class="pre">-j</span></code> isolates each test in a
+pristine subprocess and, therefore, prevents you from reproducing any
+interference between tests.</p>
+</div>
+</section>
+<section id="transient-failures">
+<h2>Transient failures<a class="headerlink" href="#transient-failures" title="永久链接至标题">¶</a></h2>
+<p>While we try to make the test suite as reliable as possible, some tests do
+not reach a perfect level of reproducibility.  Some of them will sometimes
+display spurious failures, depending on various conditions.  Here are common
+offenders:</p>
+<ul class="simple">
+<li><p>Network-related tests, such as <code class="docutils literal notranslate"><span class="pre">test_poplib</span></code>, <code class="docutils literal notranslate"><span class="pre">test_urllibnet</span></code>, etc.
+Their failures can stem from adverse network conditions, or imperfect
+thread synchronization in the test code, which often has to run a
+server in a separate thread.</p></li>
+<li><p>Tests dealing with delicate issues such as inter-thread or inter-process
+synchronization, or Unix signals: <code class="docutils literal notranslate"><span class="pre">test_multiprocessing</span></code>,
+<code class="docutils literal notranslate"><span class="pre">test_threading</span></code>, <code class="docutils literal notranslate"><span class="pre">test_subprocess</span></code>, <code class="docutils literal notranslate"><span class="pre">test_threadsignals</span></code>.</p></li>
+</ul>
+<p>When you think a failure might be transient, it is recommended you confirm by
+waiting for the next build.  Still, even if the failure does turn out sporadic
+and unpredictable, the issue should be reported on the bug tracker; even
+better if it can be diagnosed and suppressed by fixing the test’s
+implementation, or by making its parameters - such as a timeout - more robust.</p>
+</section>
+<section id="custom-builders">
+<h2>Custom builders<a class="headerlink" href="#custom-builders" title="永久链接至标题">¶</a></h2>
+<p>When working on a platform-specific issue, you may want to test your changes on
+the buildbot fleet rather than just on Travis and AppVeyor.  To do so, you can
+make use of the <a class="reference external" href="https://buildbot.python.org/all/#/builders?tags=%2Bcustom">custom builders</a>.
+These builders track the <code class="docutils literal notranslate"><span class="pre">buildbot-custom</span></code> short-lived branch of the
+<code class="docutils literal notranslate"><span class="pre">python/cpython</span></code> repository, which is only accessible to core developers.</p>
+<p>To start a build on the custom builders, push the commit you want to test to
+the <code class="docutils literal notranslate"><span class="pre">buildbot-custom</span></code> branch:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git push upstream &lt;local_branch_name&gt;:buildbot-custom
+</pre></div>
+</div>
+<p>You may run into conflicts if another developer is currently using the custom
+builders or forgot to delete the branch when they finished.  In that case, make
+sure the other developer is finished and either delete the branch or force-push
+(add the <code class="docutils literal notranslate"><span class="pre">-f</span></code> option) over it.</p>
+<p>When you have gotten the results of your tests, delete the branch:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git push upstream :buildbot-custom     <span class="c1"># or use the GitHub UI</span>
+</pre></div>
+</div>
+<p>If you are interested in the results of a specific test file only, we
+recommend you change (temporarily, of course) the contents of the
+<code class="docutils literal notranslate"><span class="pre">buildbottest</span></code> clause in <code class="docutils literal notranslate"><span class="pre">Makefile.pre.in</span></code>; or, for Windows builders,
+the <code class="docutils literal notranslate"><span class="pre">Tools/buildbot/test.bat</span></code> script.</p>
+<div class="admonition seealso">
+<p class="admonition-title">参见</p>
+<p><a class="reference internal" href="buildworker.html#buildworker"><span class="std std-ref">Running a buildbot worker</span></a></p>
+</div>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="stdlibchanges.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Adding to the Stdlib</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="devcycle.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Development Cycle</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2011-2021, Python Software Foundation |
+            最后更新于 11月 22, 2021. |
+          Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+          <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            | <a class="muted-link" href="_sources/buildbots.rst.txt"
+               rel="nofollow">
+              显示源代码
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            目录
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Continuous Integration</a><ul>
+<li><a class="reference internal" href="#in-case-of-trouble">In case of trouble</a></li>
+<li><a class="reference internal" href="#buildbot-failures-on-pull-requests">Buildbot failures on Pull Requests</a></li>
+<li><a class="reference internal" href="#checking-results-of-automatic-builds">Checking results of automatic builds</a></li>
+<li><a class="reference internal" href="#stability">Stability</a></li>
+<li><a class="reference internal" href="#flags-dependent-failures">Flags-dependent failures</a></li>
+<li><a class="reference internal" href="#ordering-dependent-failures">Ordering-dependent failures</a></li>
+<li><a class="reference internal" href="#transient-failures">Transient failures</a></li>
+<li><a class="reference internal" href="#custom-builders">Custom builders</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/scripts/furo.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/translations.js"></script>
+    </body>
+</html>

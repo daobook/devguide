@@ -1,0 +1,539 @@
+<!doctype html>
+<html class="no-js" lang="zh_CN">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="索引" href="genindex.html" /><link rel="search" title="搜索" href="search.html" /><link rel="next" title="Development Cycle" href="devcycle.html" /><link rel="prev" title="Developer Log" href="developers.html" />
+
+    <meta name="generator" content="sphinx-4.3.0, furo 2021.11.16"/>
+        <title>Accepting Pull Requests - Python Developer&#39;s Guide</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=916d6ed8f59335acffa15474ff504849343d4c76" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=0af69da206d614734f649b27d4cdc2dd6c31f41d" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  body[data-theme="dark"] {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    body:not([data-theme="light"]) {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+</style></head>
+  <body>
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" />
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Python Developer's Guide </div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="_static/python-logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Python Developer's Guide </span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder=搜索 name="q" aria-label="搜索">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Where to Get Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pullrequest.html">Lifecycle of a Pull Request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="runtests.html">Running &amp; Writing Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coverage.html">Increase Test Coverage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docquality.html">Helping with Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documenting.html">Documenting Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="silencewarnings.html">Silence Warnings From the Test Suite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fixingissues.html">Fixing “easy” Issues (and Beyond)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tracker.html">Issue Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="triaging.html">Triaging an Issue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="communication.html">Following Python’s Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="porting.html">Porting Python to a new platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coredev.html">How to Become a Core Developer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developers.html">Developer Log</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Accepting Pull Requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="devcycle.html">Development Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="buildbots.html">Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stdlibchanges.html">Adding to the Stdlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="langchanges.html">Changing the Python Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experts.html">Experts Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gdb.html">gdb Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploring.html">Exploring CPython’s Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grammar.html">Changing CPython’s Grammar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parser.html">Guide to CPython’s Parser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compiler.html">Design of CPython’s Compiler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="garbage_collector.html">Design of CPython’s Garbage Collector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extensions.html">Updating standard library extension modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c-api.html">Changing Python’s C API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coverity.html">Coverity Scan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clang.html">Dynamic Analysis with Clang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="buildworker.html">Running a buildbot worker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motivations.html">Core Developer Motivations and Affiliations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitbootcamp.html">Git Bootcamp and Cheat Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix: Topics</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="accepting-pull-requests">
+<span id="committing"></span><h1>Accepting Pull Requests<a class="headerlink" href="#accepting-pull-requests" title="永久链接至标题">¶</a></h1>
+<p>This page is a step-by-step guide for core developers who need to assess,
+merge, and possibly backport a pull request on the main repository.</p>
+<section id="assessing-a-pull-request">
+<h2>Assessing a pull request<a class="headerlink" href="#assessing-a-pull-request" title="永久链接至标题">¶</a></h2>
+<p>Before you can accept a pull request, you need to make sure that it is ready
+to enter the public source tree. Ask yourself the following questions:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>Are there ongoing discussions at</strong> <code class="docutils literal notranslate"><span class="pre">bugs.python.org</span></code> <strong>(b.p.o.)?</strong></dt><dd><p>Read the linked b.p.o. issue. If there are ongoing discussions, then
+we need to have a resolution there before we can merge the pull request.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Was the pull request first made against the appropriate branch?</strong></dt><dd><p>The only branch that receives new features is <code class="docutils literal notranslate"><span class="pre">main</span></code>, the
+in-development branch. Pull requests should only target bug-fix branches
+if an issue appears in only that version and possibly older versions.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Are the changes acceptable?</strong></dt><dd><p>If you want to share your work-in-progress code on a feature or bugfix,
+then you can open a <code class="docutils literal notranslate"><span class="pre">WIP</span></code>-prefixed pull request, publish patches on
+the <a class="reference external" href="https://bugs.python.org/">issue tracker</a>, or create a public
+fork of the repository.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Do the checks on the pull request show that the test suite passes?</strong></dt><dd><p>Make sure that all of the status checks are passing.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Is the patch in a good state?</strong></dt><dd><p>Check <a class="reference internal" href="pullrequest.html#patch"><span class="std std-ref">Lifecycle of a Pull Request</span></a> and <a class="reference internal" href="tracker.html#helptriage"><span class="std std-ref">Helping Triage Issues</span></a> to review what is expected of
+a patch.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Does the patch break backwards-compatibility without a strong reason?</strong></dt><dd><p><a class="reference internal" href="runtests.html#runtests"><span class="std std-ref">Run the entire test suite</span></a> to make sure that everything
+still passes. If there is a change to the semantics, then there needs to
+be a strong reason, because it will cause some peoples’ code to break.
+If you are unsure if the breakage is worth it, then ask on python-dev.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Does documentation need to be updated?</strong></dt><dd><p>If the pull request introduces backwards-incompatible changes (e.g.
+deprecating or removing a feature), then make sure that those changes
+are reflected in the documentation before you merge the pull request.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Were appropriate labels added to signify necessary backporting of the pull request?</strong></dt><dd><p>If it is determined that a pull request needs to be
+backported into one or more of the maintenance branches, then a core
+developer can apply the label <code class="docutils literal notranslate"><span class="pre">needs</span> <span class="pre">backport</span> <span class="pre">to</span> <span class="pre">X.Y</span></code> to the pull
+request. Once the backport pull request has been created, remove the
+<code class="docutils literal notranslate"><span class="pre">needs</span> <span class="pre">backport</span> <span class="pre">to</span> <span class="pre">X.Y</span></code> label from the original pull request. (Only
+core developers and members of the <a class="reference external" href="https://devguide.python.org/triaging/#python-triage-team">Python Triage Team</a> can apply
+labels to GitHub pull requests).</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Does the pull request have a label indicating that the submitter has signed the CLA?</strong></dt><dd><p>Make sure that the contributor has signed a <a class="reference external" href="https://www.python.org/psf/contrib/contrib-form/">Contributor
+Licensing Agreement</a>
+(CLA), unless their change has no possible intellectual property
+associated with it (e.g. fixing a spelling mistake in documentation).
+To check if a contributor’s CLA has been received, go
+to <a class="reference external" href="https://check-python-cla.herokuapp.com/">Check Python CLA</a> and
+put in their GitHub username. For further questions about the CLA
+process, write to <a class="reference external" href="mailto:contributors%40python.org">contributors<span>@</span>python<span>.</span>org</a>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Were</strong> <code class="docutils literal notranslate"><span class="pre">What's</span> <span class="pre">New</span> <span class="pre">in</span> <span class="pre">Python</span></code> <strong>and</strong> <code class="docutils literal notranslate"><span class="pre">Misc/NEWS.d/next</span></code> <strong>updated?</strong></dt><dd><p>If the change is particularly interesting for end users (e.g. new features,
+significant improvements, or backwards-incompatible changes), then an
+entry in the <code class="docutils literal notranslate"><span class="pre">What's</span> <span class="pre">New</span> <span class="pre">in</span> <span class="pre">Python</span></code> document (in <code class="docutils literal notranslate"><span class="pre">Doc/whatsnew/</span></code>) should
+be added as well. Changes that affect only documentation generally do not
+require a <code class="docutils literal notranslate"><span class="pre">NEWS</span></code> entry. (See the following section for more information.)</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="updating-news-and-what-s-new-in-python">
+<h2>Updating NEWS and What’s New in Python<a class="headerlink" href="#updating-news-and-what-s-new-in-python" title="永久链接至标题">¶</a></h2>
+<p>Almost all changes made to the code base deserve an entry in <code class="docutils literal notranslate"><span class="pre">Misc/NEWS.d</span></code>.
+If the change is particularly interesting for end users (e.g. new features,
+significant improvements, or backwards-incompatible changes), then an entry in
+the <code class="docutils literal notranslate"><span class="pre">What's</span> <span class="pre">New</span> <span class="pre">in</span> <span class="pre">Python</span></code> document (in <code class="docutils literal notranslate"><span class="pre">Doc/whatsnew/</span></code>) should be added
+as well. Changes that affect documentation only generally do not require
+a <code class="docutils literal notranslate"><span class="pre">NEWS</span></code> entry.</p>
+<p>There are two notable exceptions to this general principle, and they
+both relate to changes that:</p>
+<ul class="simple">
+<li><p>Already have a <code class="docutils literal notranslate"><span class="pre">NEWS</span></code> entry</p></li>
+<li><p>Have not yet been included in any formal release (including alpha
+and beta releases)</p></li>
+</ul>
+<p>These are the two exceptions:</p>
+<ol class="arabic simple">
+<li><p><strong>If a change is reverted prior to release</strong>, then the corresponding
+entry is simply removed. Otherwise, a new entry must be added noting
+that the change has been reverted (e.g. when a feature is released in
+an alpha and then cut prior to the first beta).</p></li>
+<li><p><strong>If a change is a fix (or other adjustment) to an earlier unreleased
+change and the original</strong> <code class="docutils literal notranslate"><span class="pre">NEWS</span></code> <strong>entry remains valid</strong>, then no additional
+entry is needed.</p></li>
+</ol>
+<p>If a change needs an entry in <code class="docutils literal notranslate"><span class="pre">What's</span> <span class="pre">New</span> <span class="pre">in</span> <span class="pre">Python</span></code>, then it is very
+likely not suitable for including in a maintenance release.</p>
+<p><code class="docutils literal notranslate"><span class="pre">NEWS</span></code> entries go into the <code class="docutils literal notranslate"><span class="pre">Misc/NEWS.d</span></code> directory as individual files. The
+<code class="docutils literal notranslate"><span class="pre">NEWS</span></code> entry can be created by using <a class="reference external" href="https://blurb-it.herokuapp.com/">blurb-it</a>,
+or the <a class="reference external" href="https://pypi.org/project/blurb/">blurb</a> tool and its <code class="docutils literal notranslate"><span class="pre">blurb</span> <span class="pre">add</span></code>
+command.</p>
+<p>If you are unable to use the tool, then you can create the <code class="docutils literal notranslate"><span class="pre">NEWS</span></code> entry file
+manually. The <code class="docutils literal notranslate"><span class="pre">Misc/NEWS.d</span></code> directory contains a sub-directory named
+<code class="docutils literal notranslate"><span class="pre">next</span></code>, which contains various sub-directories representing classifications
+for what was affected (e.g. <code class="docutils literal notranslate"><span class="pre">Misc/NEWS.d/next/Library</span></code> for changes relating
+to the standard library). The file name itself should be in the format
+<code class="docutils literal notranslate"><span class="pre">&lt;datetime&gt;.bpo-&lt;issue-number&gt;.&lt;nonce&gt;.rst</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;datetime&gt;</span></code> is today’s date joined with a hyphen (<code class="docutils literal notranslate"><span class="pre">-</span></code>) to the current
+time, in the <code class="docutils literal notranslate"><span class="pre">YYYY-MM-DD-hh-mm-ss</span></code> format (e.g. <code class="docutils literal notranslate"><span class="pre">2017-05-27-16-46-23</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;issue-number&gt;</span></code> is the issue number the change is for (e.g. <code class="docutils literal notranslate"><span class="pre">12345</span></code>
+for <code class="docutils literal notranslate"><span class="pre">bpo-12345</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;nonce&gt;</span></code> is a unique string to guarantee that the file name is
+unique across branches (e.g. <code class="docutils literal notranslate"><span class="pre">Yl4gI2</span></code>). It is typically six characters
+long, but it can be any length of letters and numbers. Its uniqueness
+can be satisfied by typing random characters on your keyboard.</p></li>
+</ul>
+<p>As a result, a file name can look something like
+<code class="docutils literal notranslate"><span class="pre">Misc/NEWS.d/next/Library/2017-05-27-16-46-23.bpo-12345.Yl4gI2.rst</span></code>.</p>
+<p>The contents of a <code class="docutils literal notranslate"><span class="pre">NEWS</span></code> file should be valid reStructuredText. An 80 character
+column width should be used. There is no indentation or leading marker in the
+file (e.g. <code class="docutils literal notranslate"><span class="pre">-</span></code>). There is also no need to start the entry with the issue
+number since it is part of the file name. You can use
+<a class="reference internal" href="documenting.html#rest-inline-markup"><span class="std std-ref">inline markups</span></a> too. Here is an example of a <code class="docutils literal notranslate"><span class="pre">NEWS</span></code>
+entry:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Fix warning message when :func:`os.chdir` fails inside
+:func:`test.support.temp_cwd`. Patch by Chris Jerdonek.
+</pre></div>
+</div>
+<p>The inline Sphinx roles like <code class="docutils literal notranslate"><span class="pre">:func:</span></code> can be used help readers
+find more information. You can build HTML and verify that the
+link target is appropriate by using <a class="reference internal" href="documenting.html#building-using-make"><span class="std std-ref">make html</span></a>.</p>
+<p>While Sphinx roles can be beneficial to readers, they are not required.
+Inline <code class="docutils literal notranslate"><span class="pre">``code</span> <span class="pre">blocks``</span></code> can be used instead.</p>
+</section>
+<section id="working-with-git">
+<h2>Working with <a class="reference external" href="https://git-scm.com/">Git</a><a class="headerlink" href="#working-with-git" title="永久链接至标题">¶</a></h2>
+<div class="admonition seealso">
+<p class="admonition-title">参见</p>
+<p><a class="reference internal" href="gitbootcamp.html#gitbootcamp"><span class="std std-ref">Git Bootcamp and Cheat Sheet</span></a></p>
+</div>
+<p>As a core developer, you have the ability to push changes to the official
+Python repositories, so you need to be careful with your workflow:</p>
+<ul class="simple">
+<li><p><strong>You should not push new branches to the main repository.</strong>  You can
+still use them in the fork that you use for the development of patches.
+You can also push these branches to a separate public repository
+for maintenance work before it is integrated into the main repository.</p></li>
+<li><p><strong>You should not commit directly into the</strong> <code class="docutils literal notranslate"><span class="pre">main</span></code> <strong>branch, or any of the maintenance branches.</strong>
+You should commit against your own feature branch, and then create a
+pull request.</p></li>
+<li><p><strong>For a small change, you can make a quick edit through the GitHub web UI.</strong>
+If you choose to use the web UI, be aware that GitHub will
+create a new branch in the main CPython repository rather than in your fork.
+Delete this newly created branch after it has been merged into the
+<code class="docutils literal notranslate"><span class="pre">main</span></code> branch or any of the maintenance branches. To keep the CPython
+repository tidy, remove the new branch within a few days.</p></li>
+</ul>
+<p>Keep a fork of the main repository, since it will allow you to revert all
+local changes (even committed ones) if you’re not happy with your local
+clone.</p>
+<section id="seeing-active-branches">
+<span id="committing-active-branches"></span><h3>Seeing active branches<a class="headerlink" href="#seeing-active-branches" title="永久链接至标题">¶</a></h3>
+<p>If you use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span></code>, then you will see a <a class="reference internal" href="index.html#branchstatus"><span class="std std-ref">list of branches</span></a>. The only branch that receives new features is
+<code class="docutils literal notranslate"><span class="pre">main</span></code>, the in-development branch. The other branches receive only
+bug fixes or security fixes.</p>
+</section>
+<section id="backporting-changes-to-an-older-version">
+<span id="branch-merge"></span><h3>Backporting changes to an older version<a class="headerlink" href="#backporting-changes-to-an-older-version" title="永久链接至标题">¶</a></h3>
+<p>If it is determined that a pull request needs to be backported into one or
+more of the maintenance branches, then a core developer can apply the label
+<code class="docutils literal notranslate"><span class="pre">needs</span> <span class="pre">backport</span> <span class="pre">to</span> <span class="pre">X.Y</span></code> to the pull request.</p>
+<p>After the pull request has been merged, miss-islington (bot) will first try to
+do the backport automatically. If miss-islington is unable to do it,
+then the pull request author or the core developer who merged it should look into
+backporting it themselves, using the backport generated by <a class="reference external" href="https://github.com/python/cherry-picker">cherry_picker.py</a>
+as a starting point.</p>
+<p>You can get the commit hash from the original pull request, or you can use
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code> on the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch. To display the 10 most recent commit
+hashes and their first line of the commit, use the following command:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git log -10 --oneline
+</pre></div>
+</div>
+<p id="backport-pr-title">You can prefix the backport pull request with the branch, and reference
+the pull request number from <code class="docutils literal notranslate"><span class="pre">main</span></code>. Here is an example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[3.9] bpo-12345: Fix the Spam Module (GH-NNNN)
+</pre></div>
+</div>
+<p>Note that <a class="reference external" href="https://github.com/python/cherry-picker">cherry_picker.py</a> adds the branch prefix automatically.</p>
+<p>Once the backport pull request has been created, remove the
+<code class="docutils literal notranslate"><span class="pre">needs</span> <span class="pre">backport</span> <span class="pre">to</span> <span class="pre">X.Y</span></code> label from the original pull request. (Only
+core developers and members of the <a class="reference external" href="https://devguide.python.org/triaging/#python-triage-team">Python Triage Team</a> can apply
+labels to GitHub pull requests).</p>
+</section>
+<section id="reverting-a-merged-pull-request">
+<h3>Reverting a merged pull request<a class="headerlink" href="#reverting-a-merged-pull-request" title="永久链接至标题">¶</a></h3>
+<p>To revert a merged pull request, press the <code class="docutils literal notranslate"><span class="pre">Revert</span></code> button at the
+bottom of the pull request. That will bring up the page to create a
+new pull request where the commit can be reverted. It will also create
+a new branch on the main CPython repository. Delete the branch once
+the pull request has been merged.</p>
+<p>Always include the reason for reverting the commit to help others
+understand why it was done. The reason should be included as part of
+the commit message. Here is an example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Revert bpo-NNNN: Fix Spam Module (GH-111)
+
+Reverts python/cpython#111.
+Reason: This commit broke the buildbot.
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="devcycle.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Development Cycle</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="developers.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Developer Log</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2011-2021, Python Software Foundation |
+            最后更新于 11月 22, 2021. |
+          Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+          <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            | <a class="muted-link" href="_sources/committing.rst.txt"
+               rel="nofollow">
+              显示源代码
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            目录
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Accepting Pull Requests</a><ul>
+<li><a class="reference internal" href="#assessing-a-pull-request">Assessing a pull request</a></li>
+<li><a class="reference internal" href="#updating-news-and-what-s-new-in-python">Updating NEWS and What’s New in Python</a></li>
+<li><a class="reference internal" href="#working-with-git">Working with Git</a><ul>
+<li><a class="reference internal" href="#seeing-active-branches">Seeing active branches</a></li>
+<li><a class="reference internal" href="#backporting-changes-to-an-older-version">Backporting changes to an older version</a></li>
+<li><a class="reference internal" href="#reverting-a-merged-pull-request">Reverting a merged pull request</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/scripts/furo.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/translations.js"></script>
+    </body>
+</html>
