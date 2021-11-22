@@ -1,0 +1,749 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2011-2021, Python Software Foundation
+# This file is distributed under the same license as the Python Developer's
+# Guide package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Developer's Guide \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-22 09:18+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../index.rst:3
+msgid "Python Developer's Guide"
+msgstr "Python 开发者指南"
+
+#: ../../index.rst:7
+msgid ""
+"This guide is a comprehensive resource for :ref:`contributing "
+"<contributing>` to Python_ -- for both new and experienced contributors. "
+"It is :ref:`maintained <helping-with-the-developers-guide>` by the same "
+"community that maintains Python.  We welcome your contributions to "
+"Python!"
+msgstr ""
+"本指南是一个全面的资源，有助于对 Python_  :ref:`贡献 <contributing>`  -- 为新的和有经验的贡献者。"
+"它是由维护 Python 的同一个社区来 :ref:`维护 <helping-with-the-developers-guide>` 。"
+"我们欢迎你对 Python 的贡献！"
+
+#: ../../index.rst:15
+msgid "Quick Reference"
+msgstr "快速参考"
+
+#: ../../index.rst:17
+msgid ""
+"Here are the basic steps needed to get :ref:`set up <setup>` and "
+"contribute a patch. This is meant as a checklist, once you know the "
+"basics. For complete instructions please see the :ref:`setup guide "
+"<setup>`."
+msgstr ""
+"以下是获得 :ref:`安装 <setup>` 和贡献一个补丁所需的基本步骤。"
+"这是一个检查清单，一旦你知道了基本知识。完整的说明请见 :ref:`安装指南 <setup>`。"
+
+#: ../../index.rst:21
+msgid ""
+"Install and set up :ref:`Git <vcsetup>` and other dependencies (see the "
+":ref:`Git Setup <setup>` page for detailed information)."
+msgstr ""
+"安装和设置 :ref:`Git <vcsetup>` 和其他依赖项（详细信息请参见 :ref:`Git 安装 <setup>` 页面）。"
+
+#: ../../index.rst:24
+msgid ""
+"Fork `the CPython repository <https://github.com/python/cpython>`_ to "
+"your GitHub account and :ref:`get the source code <checkout>` using::"
+msgstr ""
+"将 `CPython仓库 <https://github.com/python/cpython>`_ 分叉到你的 GitHub 账户，"
+"并 :ref:`获取源代码 <checkout>` 使用::"
+
+#: ../../index.rst:30
+msgid "Build Python, on UNIX and Mac OS use::"
+msgstr "构建 Python，在 UNIX 和 Mac OS 上使用 ::"
+
+#: ../../index.rst:34
+msgid "and on Windows use:"
+msgstr "而在 Windows 上则使用 ::"
+
+#: ../../index.rst:40
+msgid ""
+"See also :ref:`more detailed instructions <compiling>`, :ref:`how to "
+"install and build dependencies <build-dependencies>`, and the platform-"
+"specific pages for :ref:`UNIX <unix-compiling>`, :ref:`Mac OS <MacOS>`, "
+"and :ref:`Windows <windows-compiling>`."
+msgstr ""
+"也请参见 :ref:`更详细的说明 <compiling>`、:ref:`如何安装和构建依赖关系 <build-dependencies>` "
+"以及 :ref:`UNIX <unix-compiling>`、:ref:`Mac OS <MacOS>` 和 "
+":ref:`Windows <windows-compiling>` 的特定平台页面。"
+
+#: ../../index.rst:45
+msgid ":doc:`Run the tests <runtests>`::"
+msgstr ":doc:`运行测试 <runtests>` ::"
+
+#: ../../index.rst:49
+msgid ""
+"On :ref:`most <mac-python.exe>` Mac OS X systems, replace "
+":file:`./python` with :file:`./python.exe`.  On Windows, use "
+":file:`python.bat`."
+msgstr ""
+"在 :ref:`most <mac-python.exe>` Mac OS X 系统上，"
+"用 :file:`./python` 替换 :file:`./python.exe`。"
+"在 Windows 上，使用 :file:`python.bat`。"
+
+#: ../../index.rst:52
+msgid "Create a new branch where your work for the issue will go, e.g.::"
+msgstr "创建一个新的分支，将你为这个 issue 所做的工作放在那里，例如 ::"
+
+#: ../../index.rst:56
+msgid ""
+"If an issue does not already exist, please `create it "
+"<https://bugs.python.org/>`_.  Trivial issues (e.g. typo fixes) do not "
+"require any issue to be created."
+msgstr ""
+"如果一个 issue 还不存在，请 `创建它 <https://bugs.python.org/>`_。"
+"琐碎的issue （例如，错别字修正）不需要创建任何 issue。"
+
+#: ../../index.rst:60
+msgid ""
+"Once you fixed the issue, run the tests, run ``make patchcheck``, and if "
+"everything is ok, commit."
+msgstr ""
+"一旦你修复了问题，运行测试，运行 ``make patchcheck``，如果一切正常，提交。"
+
+#: ../../index.rst:63
+msgid ""
+"Push the branch on your fork on GitHub and :doc:`create a pull request "
+"<pullrequest>`.  Include the issue number using ``bpo-NNNN`` in the pull "
+"request description.  For example::"
+msgstr ""
+
+#: ../../index.rst:69
+msgid ""
+"Add a News entry into the ``Misc/NEWS.d`` directory as individual file. "
+"The news entry can be created by using `blurb-it <https://blurb-"
+"it.herokuapp.com/>`_, or the `blurb <https://pypi.org/project/blurb/>`_ "
+"tool and its ``blurb add`` command. Please read more about ``blurb`` in "
+":ref:`documentation <documenting>`."
+msgstr ""
+
+#: ../../index.rst:76
+msgid ""
+"First time contributors will need to sign the Contributor Licensing "
+"Agreement (CLA) as described in the :ref:`Licensing <cla>` section of "
+"this guide."
+msgstr ""
+
+#: ../../index.rst:81
+msgid "Quick Links"
+msgstr ""
+
+#: ../../index.rst:83
+msgid ""
+"Here are some links that you probably will reference frequently while "
+"contributing to Python:"
+msgstr ""
+
+#: ../../index.rst:86 ../../index.rst:244
+msgid "`Issue tracker`_"
+msgstr ""
+
+#: ../../index.rst:87 ../../index.rst:246
+msgid "`Buildbot status`_"
+msgstr ""
+
+#: ../../index.rst:88 ../../index.rst:164 ../../index.rst:252
+msgid ":doc:`help`"
+msgstr ""
+
+#: ../../index.rst:89 ../../index.rst:251
+msgid "PEPs_ (Python Enhancement Proposals)"
+msgstr ""
+
+#: ../../index.rst:90 ../../index.rst:174
+msgid ":doc:`gitbootcamp`"
+msgstr ""
+
+#: ../../index.rst:95
+msgid "Status of Python branches"
+msgstr ""
+
+#: ../../index.rst:98
+msgid "Branch"
+msgstr ""
+
+#: ../../index.rst:98
+msgid "Schedule"
+msgstr ""
+
+#: ../../index.rst:98
+msgid "Status"
+msgstr ""
+
+#: ../../index.rst:98
+msgid "First release"
+msgstr ""
+
+#: ../../index.rst:98
+msgid "End-of-life"
+msgstr ""
+
+#: ../../index.rst:98
+msgid "Release manager"
+msgstr ""
+
+#: ../../index.rst:100
+msgid "main"
+msgstr ""
+
+#: ../../index.rst:100
+msgid ":pep:`664`"
+msgstr ""
+
+#: ../../index.rst ../../index.rst:100
+msgid "features"
+msgstr ""
+
+#: ../../index.rst:100
+msgid "*2022-10-03*"
+msgstr ""
+
+#: ../../index.rst:100
+msgid "*2027-10*"
+msgstr ""
+
+#: ../../index.rst:100 ../../index.rst:102
+msgid "Pablo Galindo Salgado"
+msgstr ""
+
+#: ../../index.rst:102
+msgid "3.10"
+msgstr ""
+
+#: ../../index.rst:102
+msgid ":pep:`619`"
+msgstr ""
+
+#: ../../index.rst ../../index.rst:102 ../../index.rst:104
+msgid "bugfix"
+msgstr ""
+
+#: ../../index.rst:102
+msgid "2021-10-04"
+msgstr ""
+
+#: ../../index.rst:102
+msgid "*2026-10*"
+msgstr ""
+
+#: ../../index.rst:104
+msgid "3.9"
+msgstr ""
+
+#: ../../index.rst:104
+msgid ":pep:`596`"
+msgstr ""
+
+#: ../../index.rst:104
+msgid "2020-10-05"
+msgstr ""
+
+#: ../../index.rst:104
+msgid "*2025-10*"
+msgstr ""
+
+#: ../../index.rst:104 ../../index.rst:106
+msgid "Łukasz Langa"
+msgstr ""
+
+#: ../../index.rst:106
+msgid "3.8"
+msgstr ""
+
+#: ../../index.rst:106
+msgid ":pep:`569`"
+msgstr ""
+
+#: ../../index.rst ../../index.rst:106 ../../index.rst:108 ../../index.rst:110
+msgid "security"
+msgstr ""
+
+#: ../../index.rst:106
+msgid "2019-10-14"
+msgstr ""
+
+#: ../../index.rst:106
+msgid "*2024-10*"
+msgstr ""
+
+#: ../../index.rst:108
+msgid "3.7"
+msgstr ""
+
+#: ../../index.rst:108
+msgid ":pep:`537`"
+msgstr ""
+
+#: ../../index.rst:108
+msgid "2018-06-27"
+msgstr ""
+
+#: ../../index.rst:108
+msgid "*2023-06-27*"
+msgstr ""
+
+#: ../../index.rst:108 ../../index.rst:110
+msgid "Ned Deily"
+msgstr ""
+
+#: ../../index.rst:110
+msgid "3.6"
+msgstr ""
+
+#: ../../index.rst:110
+msgid ":pep:`494`"
+msgstr ""
+
+#: ../../index.rst:110
+msgid "2016-12-23"
+msgstr ""
+
+#: ../../index.rst:110
+msgid "*2021-12-23*"
+msgstr ""
+
+#: ../../index.rst:115
+msgid "Dates in *italic* are scheduled and can be adjusted."
+msgstr ""
+
+#: ../../index.rst:117
+msgid ""
+"The main branch is currently the future Python 3.11, and is the only "
+"branch that accepts new features.  The latest release for each Python "
+"version can be found on the `download page "
+"<https://www.python.org/downloads/>`_."
+msgstr ""
+
+#: ../../index.rst:121
+msgid "Status:"
+msgstr ""
+
+#: ../../index.rst:123
+msgid "new features, bugfixes, and security fixes are accepted."
+msgstr ""
+
+#: ../../index.rst
+msgid "prerelease"
+msgstr ""
+
+#: ../../index.rst:124
+msgid ""
+"feature fixes, bugfixes, and security fixes are accepted for the upcoming"
+" feature release."
+msgstr ""
+
+#: ../../index.rst:126
+msgid ""
+"bugfixes and security fixes are accepted, new binaries are still "
+"released. (Also called **maintenance** mode or **stable** release)"
+msgstr ""
+
+#: ../../index.rst:128
+msgid ""
+"only security fixes are accepted and no more binaries are released, but "
+"new source-only versions can be released"
+msgstr ""
+
+#: ../../index.rst
+msgid "end-of-life"
+msgstr ""
+
+#: ../../index.rst:130
+msgid "release cycle is frozen; no further changes can be pushed to it."
+msgstr ""
+
+#: ../../index.rst:132
+msgid "See also the :ref:`devcycle` page for more information about branches."
+msgstr ""
+
+#: ../../index.rst:134
+msgid ""
+"By default, the end-of-life is scheduled 5 years after the first release,"
+" but can be adjusted by the release manager of each branch.  All Python 2"
+" versions have reached end-of-life."
+msgstr ""
+
+#: ../../index.rst:142
+msgid "Contributing"
+msgstr ""
+
+#: ../../index.rst:144
+msgid ""
+"We encourage everyone to contribute to Python and that's why we have put "
+"up this developer's guide.  If you still have questions after reviewing "
+"the material in this guide, then the `Core Python Mentorship`_ group is "
+"available to help guide new contributors through the process."
+msgstr ""
+
+#: ../../index.rst:149
+msgid ""
+"A number of individuals from the Python community have contributed to a "
+"series of excellent guides at `Open Source Guides "
+"<https://opensource.guide/>`_."
+msgstr ""
+
+#: ../../index.rst:152
+msgid ""
+"Core developers and contributors alike will find the following guides "
+"useful:"
+msgstr ""
+
+#: ../../index.rst:154
+msgid ""
+"`How to Contribute to Open Source <https://opensource.guide/how-to-"
+"contribute/>`_"
+msgstr ""
+
+#: ../../index.rst:155
+msgid ""
+"`Building Welcoming Communities <https://opensource.guide/building-"
+"community/>`_"
+msgstr ""
+
+#: ../../index.rst:157
+msgid "Guide for contributing to Python:"
+msgstr ""
+
+#: ../../index.rst:160
+msgid "New Contributors"
+msgstr ""
+
+#: ../../index.rst:160
+msgid "Documentarians"
+msgstr ""
+
+#: ../../index.rst:160
+msgid "Triagers"
+msgstr ""
+
+#: ../../index.rst:160
+msgid "Core Developers"
+msgstr ""
+
+#: ../../index.rst:162
+msgid ":doc:`setup`"
+msgstr ""
+
+#: ../../index.rst:162
+msgid ":doc:`docquality`"
+msgstr ""
+
+#: ../../index.rst:162
+msgid ":doc:`tracker`"
+msgstr ""
+
+#: ../../index.rst:162
+msgid ":doc:`coredev`"
+msgstr ""
+
+#: ../../index.rst:164
+msgid ":doc:`documenting`"
+msgstr ""
+
+#: ../../index.rst:164
+msgid ":doc:`triaging`"
+msgstr ""
+
+#: ../../index.rst:164 ../../index.rst:253
+msgid ":doc:`developers`"
+msgstr ""
+
+#: ../../index.rst:166
+msgid ":doc:`pullrequest`"
+msgstr ""
+
+#: ../../index.rst:166
+msgid ":ref:`style-guide`"
+msgstr ""
+
+#: ../../index.rst:166
+msgid ":ref:`helptriage`"
+msgstr ""
+
+#: ../../index.rst:166
+msgid ":doc:`committing`"
+msgstr ""
+
+#: ../../index.rst:168
+msgid ":doc:`runtests`"
+msgstr ""
+
+#: ../../index.rst:168
+msgid ":ref:`rst-primer`"
+msgstr ""
+
+#: ../../index.rst:168 ../../index.rst:245
+msgid ":doc:`experts`"
+msgstr ""
+
+#: ../../index.rst:168
+msgid ":doc:`devcycle`"
+msgstr ""
+
+#: ../../index.rst:170 ../../index.rst:184
+msgid ":doc:`fixingissues`"
+msgstr ""
+
+#: ../../index.rst:170
+msgid ":ref:`translating`"
+msgstr ""
+
+#: ../../index.rst:170
+msgid ":doc:`motivations`"
+msgstr ""
+
+#: ../../index.rst:172
+msgid ":doc:`communication`"
+msgstr ""
+
+#: ../../index.rst:172
+msgid ":ref:`office hour`"
+msgstr ""
+
+#: ../../index.rst:177
+msgid "Advanced tasks and topics for once you are comfortable:"
+msgstr ""
+
+#: ../../index.rst:179
+msgid ":doc:`silencewarnings`"
+msgstr ""
+
+#: ../../index.rst:180
+msgid "Fixing issues found by the :doc:`buildbots <buildbots>`"
+msgstr ""
+
+#: ../../index.rst:181
+msgid ":doc:`coverity`"
+msgstr ""
+
+#: ../../index.rst:182
+msgid ""
+"Helping out with reviewing `open pull requests`_. See :ref:`how to review"
+" a Pull Request <how-to-review-a-pull-request>`."
+msgstr ""
+
+#: ../../index.rst:186
+msgid ""
+"It is **recommended** that the above documents be read as needed. New "
+"contributors will build understanding of the CPython workflow by reading "
+"the sections mentioned in this table. You can stop where you feel "
+"comfortable and begin contributing immediately without reading and "
+"understanding these documents all at once.  If you do choose to skip "
+"around within the documentation, be aware that it is written assuming "
+"preceding documentation has been read so you may find it necessary to "
+"backtrack to fill in missing concepts and terminology."
+msgstr ""
+
+#: ../../index.rst:197
+msgid "Proposing changes to Python itself"
+msgstr ""
+
+#: ../../index.rst:199
+msgid ""
+"Improving Python's code, documentation and tests are ongoing tasks that "
+"are never going to be \"finished\", as Python operates as part of an "
+"ever-evolving system of technology.  An even more challenging ongoing "
+"task than these necessary maintenance activities is finding ways to make "
+"Python, in the form of the standard library and the language definition, "
+"an even better tool in a developer's toolkit."
+msgstr ""
+
+#: ../../index.rst:206
+msgid ""
+"While these kinds of change are much rarer than those described above, "
+"they do happen and that process is also described as part of this guide:"
+msgstr ""
+
+#: ../../index.rst:209
+msgid ":doc:`stdlibchanges`"
+msgstr ""
+
+#: ../../index.rst:210
+msgid ":doc:`langchanges`"
+msgstr ""
+
+#: ../../index.rst:214
+msgid "Other Interpreter Implementations"
+msgstr ""
+
+#: ../../index.rst:216
+msgid ""
+"This guide is specifically for contributing to the Python reference "
+"interpreter, also known as CPython (while most of the standard library is"
+" written in Python, the interpreter core is written in C and integrates "
+"most easily with the C and C++ ecosystems)."
+msgstr ""
+
+#: ../../index.rst:221
+msgid ""
+"There are other Python implementations, each with a different focus.  "
+"Like CPython, they always have more things they would like to do than "
+"they have developers to work on them.  Some major examples that may be of"
+" interest are:"
+msgstr ""
+
+#: ../../index.rst:225
+msgid ""
+"PyPy_: A Python interpreter focused on high speed (JIT-compiled) "
+"operation on major platforms"
+msgstr ""
+
+#: ../../index.rst:227
+msgid ""
+"Jython_: A Python interpreter focused on good integration with the Java "
+"Virtual Machine (JVM) environment"
+msgstr ""
+
+#: ../../index.rst:229
+msgid ""
+"IronPython_: A Python interpreter focused on good integration with the "
+"Common Language Runtime (CLR) provided by .NET and Mono"
+msgstr ""
+
+#: ../../index.rst:231
+msgid ""
+"Stackless_: A Python interpreter focused on providing lightweight "
+"microthreads while remaining largely compatible with CPython specific "
+"extension modules"
+msgstr ""
+
+#: ../../index.rst:237
+msgid "Key Resources"
+msgstr ""
+
+#: ../../index.rst:240
+msgid "Coding style guides"
+msgstr ""
+
+#: ../../index.rst:240
+msgid ":PEP:`7` (Style Guide for C Code)"
+msgstr ""
+
+#: ../../index.rst:241
+msgid ":PEP:`8` (Style Guide for Python Code)"
+msgstr ""
+
+#: ../../index.rst:243
+msgid ""
+"`Meta tracker <http://psf.upfronthosting.co.za/roundup/meta>`_ (issue "
+"tracker for the issue tracker)"
+msgstr ""
+
+#: ../../index.rst:249
+msgid "Source code"
+msgstr ""
+
+#: ../../index.rst:248
+msgid "`Browse online <https://github.com/python/cpython/>`_"
+msgstr ""
+
+#: ../../index.rst:249
+msgid ""
+"`Snapshot of the *main* branch "
+"<https://github.com/python/cpython/archive/main.zip>`_"
+msgstr ""
+
+#: ../../index.rst:250
+msgid "`Daily OS X installer <http://buildbot.python.org/daily-dmg/>`_"
+msgstr ""
+
+#: ../../index.rst:259
+msgid "Additional Resources"
+msgstr ""
+
+#: ../../index.rst:261
+msgid ""
+"Anyone can clone the sources for this guide.  See :ref:`helping-with-the-"
+"developers-guide`."
+msgstr ""
+
+#: ../../index.rst:267
+msgid "Help with ..."
+msgstr ""
+
+#: ../../index.rst:264
+msgid ":doc:`exploring`"
+msgstr ""
+
+#: ../../index.rst:265
+msgid ":doc:`grammar`"
+msgstr ""
+
+#: ../../index.rst:266
+msgid ":doc:`parser`"
+msgstr ""
+
+#: ../../index.rst:267
+msgid ":doc:`compiler`"
+msgstr ""
+
+#: ../../index.rst:268
+msgid ":doc:`garbage_collector`"
+msgstr ""
+
+#: ../../index.rst:273
+msgid "Tool support"
+msgstr ""
+
+#: ../../index.rst:270
+msgid ":doc:`gdb`"
+msgstr ""
+
+#: ../../index.rst:271
+msgid ":doc:`clang`"
+msgstr ""
+
+#: ../../index.rst:272
+msgid "Various tools with configuration files as found in the `Misc directory`_"
+msgstr ""
+
+#: ../../index.rst:273
+msgid ""
+"Information about editors and their configurations can be found in the "
+"`wiki <https://wiki.python.org/moin/PythonEditors>`_"
+msgstr ""
+
+#: ../../index.rst:275
+msgid "`python.org maintenance`_"
+msgstr ""
+
+#: ../../index.rst:277
+msgid ":ref:`Search this guide <search>`"
+msgstr ""
+
+#: ../../index.rst:281
+msgid "Code of Conduct"
+msgstr ""
+
+#: ../../index.rst:282
+msgid ""
+"Please note that all interactions on `Python Software Foundation "
+"<https://www.python.org/psf-landing/>`__-supported infrastructure is "
+"`covered <https://www.python.org/psf/records/board/minutes/2014-01-06"
+"/#management-of-the-psfs-web-properties>`__ by the `PSF Code of Conduct "
+"<https://www.python.org/psf/codeofconduct/>`__, which includes all "
+"infrastructure used in the development of Python itself (e.g. mailing "
+"lists, issue trackers, GitHub, etc.). In general this means everyone is "
+"expected to be open, considerate, and respectful of others no matter what"
+" their position is within the project."
+msgstr ""
+
+#: ../../index.rst:295
+msgid "Full Table of Contents"
+msgstr ""
+

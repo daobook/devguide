@@ -1,0 +1,217 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2011-2021, Python Software Foundation
+# This file is distributed under the same license as the Python Developer's
+# Guide package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Developer's Guide \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-22 09:18+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../docquality.rst:4
+msgid "Helping with Documentation"
+msgstr ""
+
+#: ../../docquality.rst:6
+msgid ""
+"Python is known for having well-written documentation. Maintaining the "
+"documentation's accuracy and keeping a high level of quality takes a lot "
+"of effort. Community members, like you, help with writing, editing, and "
+"updating content, and these contributions are appreciated and welcomed."
+msgstr ""
+
+#: ../../docquality.rst:11
+msgid "This high-level **Helping with Documentation** section provides:"
+msgstr ""
+
+#: ../../docquality.rst:13
+msgid "an overview of Python's documentation"
+msgstr ""
+
+#: ../../docquality.rst:14
+msgid "how to help with documentation issues"
+msgstr ""
+
+#: ../../docquality.rst:15
+msgid "information on proofreading"
+msgstr ""
+
+#: ../../docquality.rst:16
+msgid "guidance on contributing to this Developer's Guide"
+msgstr ""
+
+#: ../../docquality.rst:18
+msgid ""
+"The next chapter, :ref:`Documenting Python <documenting>`, gives "
+"extensive, detailed information on how to write documentation and submit "
+"changes."
+msgstr ""
+
+#: ../../docquality.rst:23
+msgid "Python Documentation"
+msgstr ""
+
+#: ../../docquality.rst:25
+msgid ""
+"The :ref:`Documenting Python <documenting>` section covers the details of"
+" how Python's documentation works. It includes information about the "
+"markup language used, specific formats, and style recommendations. "
+"Looking at pre-existing documentation source files can be very helpful "
+"when getting started. :ref:`How to build the documentation <building-"
+"doc>` walks you through the steps to create a draft build which lets you "
+"see how your changes will look and validates that your new markup is "
+"correct."
+msgstr ""
+
+#: ../../docquality.rst:33
+msgid ""
+"You can view the documentation built from :ref:`in-development "
+"<indevbranch>` and :ref:`maintenance <maintbranch>` branches at "
+"https://docs.python.org/dev/. The in-development and most recent 3.x (as "
+"well as 2.x) maintenance branches are rebuilt once per day."
+msgstr ""
+
+#: ../../docquality.rst:38
+msgid ""
+"If you would like to be more involved with documentation, consider "
+"subscribing to the `docs@python.org "
+"<https://mail.python.org/mailman/listinfo/docs>`_ mailing list. The "
+"`issue tracker`_ sends new documentation issues to this mailing list, "
+"and, less frequently, the list receives some directly mailed bug reports."
+" The `docs-sig@python.org <https://mail.python.org/mailman/listinfo/doc-"
+"sig>`_ mailing list discusses the documentation toolchain, projects, and "
+"standards."
+msgstr ""
+
+#: ../../docquality.rst:47
+msgid "Helping with documentation issues"
+msgstr ""
+
+#: ../../docquality.rst:49
+msgid ""
+"If you look at `documentation issues`_ on the `issue tracker`_, you will "
+"find various documentation problems that may need work. Issues vary from "
+"typos to unclear documentation and items lacking documentation."
+msgstr ""
+
+#: ../../docquality.rst:53
+msgid "If you see a documentation issue that you would like to tackle, you can:"
+msgstr ""
+
+#: ../../docquality.rst:55
+msgid ""
+"check to see if there is a paperclip or `octocat`_ icon at the end of the"
+" issue's title column.  If there is, then someone has already created a "
+"pull request for the issue."
+msgstr ""
+
+#: ../../docquality.rst:58
+msgid ""
+"leave a comment on the issue saying you are going to try and create a "
+"pull request and roughly how long you think you will take to do so (this "
+"allows others to take on the issue if you happen to forget or lose "
+"interest)."
+msgstr ""
+
+#: ../../docquality.rst:61
+msgid "submit a :doc:`pull request <pullrequest>` for the issue."
+msgstr ""
+
+#: ../../docquality.rst:63
+msgid ""
+"By following the steps in the :ref:`Quick Guide to Pull Requests "
+"<pullrequest-quickguide>`, you will learn the workflow for documentation "
+"pull requests."
+msgstr ""
+
+#: ../../docquality.rst:72
+msgid "Proofreading"
+msgstr ""
+
+#: ../../docquality.rst:74
+msgid ""
+"While an issue filed on the `issue tracker`_ means there is a known issue"
+" somewhere, that does not mean there are not other issues lurking about "
+"in the documentation. Proofreading a part of the documentation, such as a"
+" \"How to\" or OS specific document, can often uncover problems (e.g., "
+"documentation that needs updating for Python 3)."
+msgstr ""
+
+#: ../../docquality.rst:80
+msgid ""
+"If you decide to proofread, read a section of the documentation from "
+"start to finish, filing issues in the issue tracker for each major type "
+"of problem you find. Simple typos don't require issues of their own, but,"
+" instead, submit a pull request directly. It's best to avoid filing a "
+"single issue for an entire section containing multiple problems; instead,"
+" file several issues so that it is easier to break the work up for "
+"multiple people and more efficient review."
+msgstr ""
+
+#: ../../docquality.rst:91
+msgid "Helping with the Developer's Guide"
+msgstr ""
+
+#: ../../docquality.rst:95
+msgid ""
+"The Developer's Guide (what you're reading now) uses the same process as "
+"the main Python documentation, except for some small differences.  The "
+"source lives in a `separate repository`_ and bug reports should be "
+"submitted to the `devguide GitHub tracker`_."
+msgstr ""
+
+#: ../../docquality.rst:100
+msgid ""
+"Our devguide workflow uses continuous integration and deployment so "
+"changes to the devguide are normally published when the pull request is "
+"merged. Changes to CPython documentation follow the workflow of a CPython"
+" release and are published in the release."
+msgstr ""
+
+#: ../../docquality.rst:107
+msgid "Developer's Guide workflow"
+msgstr ""
+
+#: ../../docquality.rst:109
+msgid ""
+"To submit a :doc:`pull request <pullrequest>`, you can fork the `devguide"
+" repo`_ to your GitHub account and clone it using::"
+msgstr ""
+
+#: ../../docquality.rst:114
+msgid ""
+"For your PR to be accepted, you will also need to sign the "
+":ref:`contributor agreement <cla>`."
+msgstr ""
+
+#: ../../docquality.rst:117
+msgid ""
+"To build the devguide, some additional dependencies are required (most "
+"importantly, `Sphinx`_), and the standard way to install dependencies in "
+"Python projects is to create a virtualenv, and then install dependencies "
+"from a ``requirements.txt`` file. For your convenience, this is all "
+"*automated for you*. To build the devguide on a Unix-like system use::"
+msgstr ""
+
+#: ../../docquality.rst:125
+msgid "in the checkout directory. On Windows use:"
+msgstr ""
+
+#: ../../docquality.rst:131
+msgid ""
+"You will find the generated files in ``_build/html``. Note that ``make "
+"check`` runs automatically when you submit a :doc:`pull request "
+"<pullrequest>`. You may wish to run ``make check`` and ``make linkcheck``"
+" to make sure that it runs without errors."
+msgstr ""
+

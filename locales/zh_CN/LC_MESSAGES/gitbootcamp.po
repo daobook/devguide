@@ -1,0 +1,651 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2011-2021, Python Software Foundation
+# This file is distributed under the same license as the Python Developer's
+# Guide package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Developer's Guide \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-22 09:18+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../gitbootcamp.rst:6
+msgid "Git Bootcamp and Cheat Sheet"
+msgstr ""
+
+#: ../../gitbootcamp.rst:10
+msgid ""
+"This section provides instructions on common tasks in CPython's workflow."
+" It's designed to assist new contributors who have some familiarity with "
+"git and GitHub."
+msgstr ""
+
+#: ../../gitbootcamp.rst:14
+msgid ""
+"If you are new to git and GitHub, please become comfortable with these "
+"instructions before submitting a pull request. As there are several ways "
+"to accomplish these tasks using git and GitHub, this section reflects one"
+" method suitable for new contributors. Experienced contributors may "
+"desire a different approach."
+msgstr ""
+
+#: ../../gitbootcamp.rst:21
+msgid ""
+"In this section, we will go over some commonly used Git commands that are"
+" relevant to CPython's workflow."
+msgstr ""
+
+#: ../../gitbootcamp.rst:25
+msgid ""
+"Setting up git aliases for common tasks can be useful to you. You can get"
+" more information about that in `git documentation <https://git-"
+"scm.com/book/en/v2/Git-Basics-Git-Aliases>`_"
+msgstr ""
+
+#: ../../gitbootcamp.rst:32
+msgid "Forking CPython GitHub Repository"
+msgstr ""
+
+#: ../../gitbootcamp.rst:34
+msgid "You will only need to do this once."
+msgstr ""
+
+#: ../../gitbootcamp.rst:36 ../../gitbootcamp.rst:259
+msgid "Go to https://github.com/python/cpython."
+msgstr ""
+
+#: ../../gitbootcamp.rst:38
+msgid "Press ``Fork`` on the top right."
+msgstr ""
+
+#: ../../gitbootcamp.rst:40
+msgid ""
+"When asked where to fork the repository, choose to fork it to your "
+"username."
+msgstr ""
+
+#: ../../gitbootcamp.rst:42
+msgid ""
+"Your forked CPython repository will be created at "
+"https://github.com/<username>/cpython."
+msgstr ""
+
+#: ../../gitbootcamp.rst:47
+msgid "Cloning a Forked CPython Repository"
+msgstr ""
+
+#: ../../gitbootcamp.rst:49
+msgid "You will only need to do this once.  From your command line::"
+msgstr ""
+
+#: ../../gitbootcamp.rst:53
+msgid "It is also recommended to configure an ``upstream`` remote repository::"
+msgstr ""
+
+#: ../../gitbootcamp.rst:58
+msgid "You can also use SSH-based or HTTPS-based URLs."
+msgstr ""
+
+#: ../../gitbootcamp.rst:61
+msgid "Listing the Remote Repositories"
+msgstr ""
+
+#: ../../gitbootcamp.rst:63
+msgid ""
+"To list the remote repositories that are configured, along with their "
+"URLs::"
+msgstr ""
+
+#: ../../gitbootcamp.rst:67
+msgid ""
+"You should have two remote repositories: ``origin`` pointing to your "
+"forked CPython repository, and ``upstream`` pointing to the official "
+"CPython repository::"
+msgstr ""
+
+#: ../../gitbootcamp.rst:79
+msgid "Setting Up Your Name and Email Address"
+msgstr ""
+
+#: ../../gitbootcamp.rst:86
+msgid ""
+"The ``--global`` flag sets these parameters globally while the "
+"``--local`` flag sets them only for the current project."
+msgstr ""
+
+#: ../../gitbootcamp.rst:92
+msgid "Enabling ``autocrlf`` on Windows"
+msgstr ""
+
+#: ../../gitbootcamp.rst:94
+msgid ""
+"The ``autocrlf`` option will fix automatically any Windows-specific line "
+"endings. This should be enabled on Windows, since the public repository "
+"has a hook which will reject all changesets having the wrong line "
+"endings::"
+msgstr ""
+
+#: ../../gitbootcamp.rst:101
+msgid "Creating and Switching Branches"
+msgstr ""
+
+#: ../../gitbootcamp.rst:104
+msgid "Never commit directly to the ``main`` branch."
+msgstr ""
+
+#: ../../gitbootcamp.rst:106
+msgid "Create a new branch and switch to it::"
+msgstr ""
+
+#: ../../gitbootcamp.rst:111
+msgid "This is equivalent to::"
+msgstr ""
+
+#: ../../gitbootcamp.rst:118
+msgid "To find the branch you are currently on::"
+msgstr ""
+
+#: ../../gitbootcamp.rst:122
+msgid ""
+"The current branch will have an asterisk next to the branch name.  Note, "
+"this will only list all of your local branches."
+msgstr ""
+
+#: ../../gitbootcamp.rst:125
+msgid "To list all the branches, including the remote branches::"
+msgstr ""
+
+#: ../../gitbootcamp.rst:129
+msgid "To switch to a different branch::"
+msgstr ""
+
+#: ../../gitbootcamp.rst:133
+msgid ""
+"Other releases are just branches in the repository.  For example, to work"
+" on the 2.7 release from the ``upstream`` remote::"
+msgstr ""
+
+#: ../../gitbootcamp.rst:141
+msgid "Deleting Branches"
+msgstr ""
+
+#: ../../gitbootcamp.rst:143
+msgid "To delete a **local** branch that you no longer need::"
+msgstr ""
+
+#: ../../gitbootcamp.rst:148
+msgid "To delete a **remote** branch::"
+msgstr ""
+
+#: ../../gitbootcamp.rst:152
+msgid "You may specify more than one branch for deletion."
+msgstr ""
+
+#: ../../gitbootcamp.rst:156
+msgid "Renaming Branch"
+msgstr ""
+
+#: ../../gitbootcamp.rst:158
+msgid ""
+"The CPython repository's default branch was renamed from ``master`` to "
+"``main`` after the Python 3.10b1 release."
+msgstr ""
+
+#: ../../gitbootcamp.rst:161
+msgid ""
+"If you have a fork on GitHub (as described in :ref:`fork-cpython`) that "
+"was created before the rename, you should visit the GitHub page for your "
+"fork to rename the branch there. You only have to do this once. GitHub "
+"should provide you with a dialog for this. If it doesn't (or the dialog "
+"was already dismissed), you can rename the branch in your fork manually "
+"`by following these GitHub instructions "
+"<https://github.com/github/renaming#renaming-existing-branches>`__"
+msgstr ""
+
+#: ../../gitbootcamp.rst:168
+msgid ""
+"After renaming the branch in your fork, you need to update any local "
+"clones as well. This only has to be done once per clone::"
+msgstr ""
+
+#: ../../gitbootcamp.rst:176
+msgid "(GitHub also provides these instructions after you rename the branch.)"
+msgstr ""
+
+#: ../../gitbootcamp.rst:178
+msgid ""
+"If you do not have a fork on GitHub, but rather a direct clone of the "
+"main repo created before the branch rename, you still have to update your"
+" local clones. This still only has to be done once per clone. In that "
+"case, you can rename your local branch as follows::"
+msgstr ""
+
+#: ../../gitbootcamp.rst:189
+msgid "Staging and Committing Files"
+msgstr ""
+
+#: ../../gitbootcamp.rst:191
+msgid "To show the current changes::"
+msgstr ""
+
+#: ../../gitbootcamp.rst:195
+msgid "To stage the files to be included in your commit::"
+msgstr ""
+
+#: ../../gitbootcamp.rst:199
+msgid "To commit the files that have been staged (done in step 2):"
+msgstr ""
+
+#: ../../gitbootcamp.rst:206
+msgid "Reverting Changes"
+msgstr ""
+
+#: ../../gitbootcamp.rst:208
+msgid "To revert changes to a file that has not been committed yet::"
+msgstr ""
+
+#: ../../gitbootcamp.rst:212
+msgid ""
+"If the change has been committed, and now you want to reset it to "
+"whatever the origin is at::"
+msgstr ""
+
+#: ../../gitbootcamp.rst:218
+msgid "Stashing Changes"
+msgstr ""
+
+#: ../../gitbootcamp.rst:220
+msgid "To stash away changes that are not ready to be committed yet::"
+msgstr ""
+
+#: ../../gitbootcamp.rst:224
+msgid "To re-apply the last stashed change::"
+msgstr ""
+
+#: ../../gitbootcamp.rst:231
+msgid "Committing Changes"
+msgstr ""
+
+#: ../../gitbootcamp.rst:233
+msgid "Add the files you want to commit::"
+msgstr ""
+
+#: ../../gitbootcamp.rst:237
+msgid "Commit the files:"
+msgstr ""
+
+#: ../../gitbootcamp.rst:246
+msgid "Pushing Changes"
+msgstr ""
+
+#: ../../gitbootcamp.rst:248
+msgid ""
+"Once your changes are ready for a review or a pull request, you will need"
+" to push them to the remote repository."
+msgstr ""
+
+#: ../../gitbootcamp.rst:257
+msgid "Creating a Pull Request"
+msgstr ""
+
+#: ../../gitbootcamp.rst:261
+msgid "Press the ``New pull request`` button."
+msgstr ""
+
+#: ../../gitbootcamp.rst:263
+msgid "Click the ``compare across forks`` link."
+msgstr ""
+
+#: ../../gitbootcamp.rst:265
+msgid "Select the base repository: ``python/cpython`` and base branch: ``main``."
+msgstr ""
+
+#: ../../gitbootcamp.rst:267
+msgid ""
+"Select the head repository: ``<username>/cpython`` and head branch: the "
+"branch containing your changes."
+msgstr ""
+
+#: ../../gitbootcamp.rst:270
+msgid "Press the ``Create pull request`` button."
+msgstr ""
+
+#: ../../gitbootcamp.rst:273
+msgid "Updating your CPython Fork"
+msgstr ""
+
+#: ../../gitbootcamp.rst:275 ../../gitbootcamp.rst:326
+#: ../../gitbootcamp.rst:366
+msgid "Scenario:"
+msgstr ""
+
+#: ../../gitbootcamp.rst:277
+msgid "You forked the CPython repository some time ago."
+msgstr ""
+
+#: ../../gitbootcamp.rst:278 ../../gitbootcamp.rst:300
+msgid "Time passes."
+msgstr ""
+
+#: ../../gitbootcamp.rst:279
+msgid "There have been new commits made in the upstream CPython repository."
+msgstr ""
+
+#: ../../gitbootcamp.rst:280
+msgid "Your forked CPython repository is no longer up to date."
+msgstr ""
+
+#: ../../gitbootcamp.rst:281
+msgid ""
+"You now want to update your forked CPython repository to be the same as "
+"the upstream CPython repository."
+msgstr ""
+
+#: ../../gitbootcamp.rst:284
+msgid ""
+"Please do not try to solve this by creating a pull request from "
+"``python:main`` to ``<username>:main`` as the authors of the patches will"
+" get notified unnecessarily."
+msgstr ""
+
+#: ../../gitbootcamp.rst:288 ../../gitbootcamp.rst:306
+msgid "Solution::"
+msgstr ""
+
+#: ../../gitbootcamp.rst:294
+msgid ""
+"For the above commands to work, please follow the instructions found in "
+"the :ref:`checkout` section"
+msgstr ""
+
+#: ../../gitbootcamp.rst:297
+msgid "Another scenario:"
+msgstr ""
+
+#: ../../gitbootcamp.rst:299
+msgid "You created ``some-branch`` some time ago."
+msgstr ""
+
+#: ../../gitbootcamp.rst:301
+msgid "You made some commits to ``some-branch``."
+msgstr ""
+
+#: ../../gitbootcamp.rst:302
+msgid "Meanwhile, there are recent changes from the upstream CPython repository."
+msgstr ""
+
+#: ../../gitbootcamp.rst:303
+msgid ""
+"You want to incorporate the recent changes from the upstream CPython "
+"repository into ``some-branch``."
+msgstr ""
+
+#: ../../gitbootcamp.rst:313
+msgid ""
+"You may see error messages like \"CONFLICT\" and \"Automatic merge "
+"failed;\" when you run ``git merge upstream/main``."
+msgstr ""
+
+#: ../../gitbootcamp.rst:316
+msgid ""
+"When it happens, you need to resolve conflict.  See these articles about "
+"resolving conflicts:"
+msgstr ""
+
+#: ../../gitbootcamp.rst:318
+msgid ""
+"`About merge conflicts <https://help.github.com/en/articles/about-merge-"
+"conflicts>`_"
+msgstr ""
+
+#: ../../gitbootcamp.rst:319
+msgid ""
+"`Resolving a merge conflict using the command line "
+"<https://help.github.com/en/articles/resolving-a-merge-conflict-using-"
+"the-command-line>`_"
+msgstr ""
+
+#: ../../gitbootcamp.rst:324
+msgid "Applying a Patch from Mercurial to Git"
+msgstr ""
+
+#: ../../gitbootcamp.rst:328
+msgid "A Mercurial patch exists but there is no pull request for it."
+msgstr ""
+
+#: ../../gitbootcamp.rst:330
+msgid "Solution:"
+msgstr ""
+
+#: ../../gitbootcamp.rst:332
+msgid "Download the patch locally."
+msgstr ""
+
+#: ../../gitbootcamp.rst:334
+msgid "Apply the patch::"
+msgstr ""
+
+#: ../../gitbootcamp.rst:338
+msgid ""
+"If there are errors, update to a revision from when the patch was created"
+" and then try the ``git apply`` again:"
+msgstr ""
+
+#: ../../gitbootcamp.rst:346
+msgid ""
+"If the patch still won't apply, then a patch tool will not be able to "
+"apply the patch and it will need to be re-implemented manually."
+msgstr ""
+
+#: ../../gitbootcamp.rst:349
+msgid "If the apply was successful, create a new branch and switch to it."
+msgstr ""
+
+#: ../../gitbootcamp.rst:351
+msgid "Stage and commit the changes."
+msgstr ""
+
+#: ../../gitbootcamp.rst:353
+msgid ""
+"If the patch was applied to an old revision, it needs to be updated and "
+"merge conflicts need to be resolved::"
+msgstr ""
+
+#: ../../gitbootcamp.rst:359
+msgid "Push the changes and open a pull request."
+msgstr ""
+
+#: ../../gitbootcamp.rst:364
+msgid "Downloading Other's Patches"
+msgstr ""
+
+#: ../../gitbootcamp.rst:368
+msgid "A contributor made a pull request to CPython."
+msgstr ""
+
+#: ../../gitbootcamp.rst:369
+msgid "Before merging it, you want to be able to test their changes locally."
+msgstr ""
+
+#: ../../gitbootcamp.rst:371
+msgid "On Unix and MacOS, set up the following git alias::"
+msgstr ""
+
+#: ../../gitbootcamp.rst:375
+msgid "On Windows, reverse the single (``'``) and double (``\"``) quotes:"
+msgstr ""
+
+#: ../../gitbootcamp.rst:381
+msgid ""
+"The alias only needs to be done once.  After the alias is set up, you can"
+" get a local copy of a pull request as follows::"
+msgstr ""
+
+#: ../../gitbootcamp.rst:388
+msgid ""
+"`hub <https://github.com/github/hub>`_ command line utility makes this "
+"workflow very easy.  You can check out the branch by ``hub pr checkout "
+"<pr_number> [<branch_name>]``. This command configures remote URL for the"
+" branch too. So you can ``git push`` if the pull request author checked "
+"\"Allow edits from maintainers\" when creating the pull request."
+msgstr ""
+
+#: ../../gitbootcamp.rst:398
+msgid "Accepting and Merging a Pull Request"
+msgstr ""
+
+#: ../../gitbootcamp.rst:400
+msgid "Pull requests can be accepted and merged by a Python Core Developer."
+msgstr ""
+
+#: ../../gitbootcamp.rst:402
+msgid ""
+"At the bottom of the pull request page, click the ``Squash and merge`` "
+"button."
+msgstr ""
+
+#: ../../gitbootcamp.rst:405
+msgid ""
+"Replace the reference to GitHub pull request ``#NNNN`` with ``GH-NNNN``. "
+"If the title is too long, the pull request number can be added to the "
+"message body."
+msgstr ""
+
+#: ../../gitbootcamp.rst:409
+msgid "Adjust and clean up the commit message."
+msgstr ""
+
+#: ../../gitbootcamp.rst:411
+msgid "Example of good commit message::"
+msgstr ""
+
+#: ../../gitbootcamp.rst:418
+msgid "Example of bad commit message::"
+msgstr ""
+
+#: ../../gitbootcamp.rst:428
+msgid ""
+"`How to Write a Git Commit Message <https://chris.beams.io/posts/git-"
+"commit/>`_ is a nice article describing how to write a good commit "
+"message."
+msgstr ""
+
+#: ../../gitbootcamp.rst:431
+msgid "Press the ``Confirm squash and merge`` button."
+msgstr ""
+
+#: ../../gitbootcamp.rst:434
+msgid "Backporting Merged Changes"
+msgstr ""
+
+#: ../../gitbootcamp.rst:436
+msgid ""
+"A pull request may need to be backported into one of the maintenance "
+"branches after it has been accepted and merged into ``main``.  It is "
+"usually indicated by the label ``needs backport to X.Y`` on the pull "
+"request itself."
+msgstr ""
+
+#: ../../gitbootcamp.rst:440
+msgid ""
+"Use the utility script `cherry_picker.py <https://github.com/python"
+"/cherry-picker>`_ from the `core-workflow  <https://github.com/python"
+"/core-workflow>`_ repository to backport the commit."
+msgstr ""
+
+#: ../../gitbootcamp.rst:445
+msgid ""
+"The commit hash for backporting is the squashed commit that was merged to"
+" the ``main`` branch.  On the merged pull request, scroll to the bottom "
+"of the page.  Find the event that says something like::"
+msgstr ""
+
+#: ../../gitbootcamp.rst:451
+msgid ""
+"By following the link to ``<commit_sha1>``, you will get the full commit "
+"hash."
+msgstr ""
+
+#: ../../gitbootcamp.rst:453
+msgid ""
+"Alternatively, the commit hash can also be obtained by the following git "
+"commands:"
+msgstr ""
+
+#: ../../gitbootcamp.rst:461
+msgid ""
+"The above commands will print out the hash of the commit containing "
+"``\"bpo-12345\"`` as part of the commit message."
+msgstr ""
+
+#: ../../gitbootcamp.rst:464
+msgid ""
+"When formatting the commit message for a backport commit: leave the "
+"original one as is and delete the number of the backport pull request."
+msgstr ""
+
+#: ../../gitbootcamp.rst:467
+msgid "Example of good backport commit message::"
+msgstr ""
+
+#: ../../gitbootcamp.rst:476
+msgid "Example of bad backport commit message::"
+msgstr ""
+
+#: ../../gitbootcamp.rst:484
+msgid "Editing a Pull Request Prior to Merging"
+msgstr ""
+
+#: ../../gitbootcamp.rst:486
+msgid ""
+"When a pull request submitter has enabled the `Allow edits from "
+"maintainers`_ option, Python Core Developers may decide to make any "
+"remaining edits needed prior to merging themselves, rather than asking "
+"the submitter to do them. This can be particularly appropriate when the "
+"remaining changes are bookkeeping items like updating ``Misc/ACKS``."
+msgstr ""
+
+#: ../../gitbootcamp.rst:494
+msgid "To edit an open pull request that targets ``main``:"
+msgstr ""
+
+#: ../../gitbootcamp.rst:496
+msgid ""
+"In the pull request page, under the description, there is some "
+"information about the contributor's forked CPython repository and branch "
+"name that will be useful later::"
+msgstr ""
+
+#: ../../gitbootcamp.rst:501
+msgid "Fetch the pull request, using the :ref:`git pr <git_pr>` alias::"
+msgstr ""
+
+#: ../../gitbootcamp.rst:505
+msgid "This will checkout the contributor's branch at ``<pr_number>``."
+msgstr ""
+
+#: ../../gitbootcamp.rst:507
+msgid ""
+"Make and commit your changes on the branch.  For example, merge in "
+"changes made to ``main`` since the PR was submitted (any merge commits "
+"will be removed by the later ``Squash and Merge`` when accepting the "
+"change):"
+msgstr ""
+
+#: ../../gitbootcamp.rst:518
+msgid "Push the changes back to the contributor's PR branch::"
+msgstr ""
+
+#: ../../gitbootcamp.rst:522
+msgid "Optionally, :ref:`delete the PR branch <deleting_branches>`."
+msgstr ""
+

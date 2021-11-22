@@ -1,0 +1,42 @@
+name: deploy
+on:
+  push:
+    branches:
+      - xin
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v1
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('pyproject.toml') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.10"
+      - uses: s-weigand/setup-conda@v1
+      - run: conda --version
+      - run: which python
+
+      - name: Install dependencies
+        run: |
+          pip install sphinx-intl python-docs-theme
+          python3 -m pip install -U pip -r requirements.txt
+      
+      - name: Build the book
+        run: |
+          sphinx-build -D language=zh_CN -b html ./ _build/html
+
+      - name: GitHub Pages action
+        uses: peaceiris/actions-gh-pages@v3.6.1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: _build/html
+          user_name: "github-actions[bot]"
+          user_email: "github-actions[bot]@users.noreply.github.com"

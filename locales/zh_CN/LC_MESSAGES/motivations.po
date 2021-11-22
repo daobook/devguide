@@ -1,0 +1,515 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2011-2021, Python Software Foundation
+# This file is distributed under the same license as the Python Developer's
+# Guide package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Developer's Guide \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-22 09:18+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../motivations.rst:4
+msgid "Core Developer Motivations and Affiliations"
+msgstr ""
+
+#: ../../motivations.rst:6
+msgid ""
+"CPython core developers participate in the core development process for a"
+" variety of reasons. Being accepted as a core developer indicates that an"
+" individual is interested in acquiring those responsibilities, has the "
+"ability to collaborate effectively with existing core developers, and has"
+" had the time available to demonstrate both that interest and that "
+"ability."
+msgstr ""
+
+#: ../../motivations.rst:12
+msgid ""
+"This page allows core developers that choose to do so to provide more "
+"information to the rest of the Python community regarding their personal "
+"situation (such as their general location and professional affiliations),"
+" as well as any personal motivations that they consider particularly "
+"relevant."
+msgstr ""
+
+#: ../../motivations.rst:17
+msgid ""
+"Core developers that wish to provide this additional information add a "
+"new entry to the :ref:`published-motivations` section below. Guidelines "
+"relating to content and layout are included as comments in the source "
+"code for this page."
+msgstr ""
+
+#: ../../motivations.rst:21
+msgid ""
+"Core developers that are available for training, consulting, contract, or"
+" full-time work, or are seeking crowdfunding support for their community "
+"contributions, may also choose to provide that information here "
+"(including linking out to commercial sites with the relevant details)."
+msgstr ""
+
+#: ../../motivations.rst:26
+msgid ""
+"For more information on the origins and purpose of this page, see :ref"
+":`goals-of-the-motivations-page`."
+msgstr ""
+
+#: ../../motivations.rst:32
+msgid "Published entries"
+msgstr ""
+
+#: ../../motivations.rst:34
+msgid ""
+"The following core developers have chosen to provide additional details "
+"regarding their professional affiliations and (optionally) other reasons "
+"for participating in the CPython core development process:"
+msgstr ""
+
+#: ../../motivations.rst:97
+msgid "Personal site: `snarky.ca <https://snarky.ca/>`_"
+msgstr ""
+
+#: ../../motivations.rst:98
+msgid "`Extended bio <https://stackoverflow.com/cv/DrBrettCannon>`__"
+msgstr ""
+
+#: ../../motivations.rst:99 ../../motivations.rst:119 ../../motivations.rst:242
+msgid "Microsoft (Software Developer)"
+msgstr ""
+
+#: ../../motivations.rst:100 ../../motivations.rst:136
+#: ../../motivations.rst:186 ../../motivations.rst:216
+#: ../../motivations.rst:225 ../../motivations.rst:243
+#: ../../motivations.rst:264
+msgid "Python Software Foundation (Fellow)"
+msgstr ""
+
+msgid "Nick Coghlan (Australia)"
+msgstr ""
+
+#: ../../motivations.rst:104
+msgid "Personal site: `Curious Efficiency <https://www.curiousefficiency.org/>`_"
+msgstr ""
+
+#: ../../motivations.rst:105
+msgid "`Extended bio <https://www.curiousefficiency.org/pages/about>`__"
+msgstr ""
+
+#: ../../motivations.rst:106
+msgid "`Tritium <https://www.tritium.com.au/>`__ (Software Developer)"
+msgstr ""
+
+#: ../../motivations.rst:107
+msgid "Python Software Foundation (Fellow, Packaging Working Group)"
+msgstr ""
+
+#: ../../motivations.rst:109
+msgid ""
+"Nick began using Python as a testing and prototyping language while "
+"working for Boeing Defence Australia, and continues to use it for that "
+"purpose today."
+msgstr ""
+
+#: ../../motivations.rst:112
+msgid ""
+"As a core developer, he is primarily interested in helping to ensure "
+"Python's continued suitability for educational, testing and data analysis"
+" use cases, as well as in encouraging good architectural practices when "
+"assembling Python applications and test harnesses from open source "
+"components."
+msgstr ""
+
+msgid "Steve Dower (United States/Australia)"
+msgstr ""
+
+#: ../../motivations.rst:120
+msgid "Personal site: `stevedower.id.au <https://stevedower.id.au/>`_"
+msgstr ""
+
+#: ../../motivations.rst:121
+msgid "Speaking: `stevedower.id.au/speaking <https://stevedower.id.au/speaking>`_"
+msgstr ""
+
+#: ../../motivations.rst:122
+msgid "Work blog: `aka.ms/pythonblog <https://aka.ms/pythonblog>`_"
+msgstr ""
+
+#: ../../motivations.rst:123
+msgid "Email address: steve.dower@python.org"
+msgstr ""
+
+#: ../../motivations.rst:125
+msgid ""
+"Steve started with Python while automating a test harness for medical "
+"devices, and now works for Microsoft on anything that makes Python more "
+"accessible to developers on any platform."
+msgstr ""
+
+#: ../../motivations.rst:129
+msgid ""
+"As a core developer, his focus is on maintaining the already excellent "
+"Windows support and improving Python's ability to be embedded in other "
+"applications."
+msgstr ""
+
+#: ../../motivations.rst:135
+msgid "Red Hat (Software Developer, Security Engineering / Identity Management)"
+msgstr ""
+
+msgid "Mariatta (Canada)"
+msgstr ""
+
+#: ../../motivations.rst:140
+msgid "Personal site: `mariatta.ca <http://mariatta.ca>`_"
+msgstr ""
+
+#: ../../motivations.rst:141
+msgid ""
+"Works as a `Software Engineer <https://www.linkedin.com/in/mariatta/>`_ "
+"in Vancouver, helps organize `Vancouver PyLadies <https://www.meetup.com"
+"/PyLadies-Vancouver/>`_ meetup on the side, and sometimes `speaks "
+"<http://mariatta.ca/pages/talk-chronology.html#talk-chronology>`_ at "
+"conferences."
+msgstr ""
+
+#: ../../motivations.rst:146
+msgid "Email address: mariatta@python.org"
+msgstr ""
+
+#: ../../motivations.rst:147
+msgid ""
+"`Sponsor Mariatta on GitHub "
+"<https://github.com/users/Mariatta/sponsorship>`_"
+msgstr ""
+
+#: ../../motivations.rst:148
+msgid "`Patreon <https://www.patreon.com/Mariatta>`_"
+msgstr ""
+
+#: ../../motivations.rst:150
+msgid ""
+"Support Mariatta by `becoming a sponsor "
+"<https://github.com/users/Mariatta/sponsorship>`_, sending her a "
+"`happiness packet <https://www.happinesspackets.io/send/>`_, or `paypal "
+"<https://www.paypal.me/mariatta>`_."
+msgstr ""
+
+msgid "R. David Murray (United States)"
+msgstr ""
+
+#: ../../motivations.rst:156
+msgid "Personal site: `bitdance.com <http://www.bitdance.com>`_"
+msgstr ""
+
+#: ../../motivations.rst:157
+msgid ""
+"Available for `Python and Internet Services Consulting and Python "
+"contract programming <http://www.murrayandwalker.com/>`_"
+msgstr ""
+
+#: ../../motivations.rst:160
+msgid ""
+"David has been involved in the Internet since the days when the old IBM "
+"BITNET and the ARPANet got cross connected, and in Python programming "
+"since he first discovered it around the days of Python 1.4.  After "
+"transitioning from being Director of Operations for dialup Internet "
+"providers (when that business started declining) to being a full time "
+"independent consultant, David started contributing directly to CPython "
+"development.  He became a committer in 2009.  He subsequently took over "
+"primary maintenance of the email package from Barry Warsaw, and "
+"contributed the unicode oriented API. David is also active in mentoring "
+"new contributors and, when time is available, working on the "
+"infrastructure that supports CPython development, specifically the "
+"Roundup-based bug tracker and the buildbot system."
+msgstr ""
+
+#: ../../motivations.rst:172
+msgid ""
+"David currently does both proprietary and open source development work, "
+"primarily in Python, through the company in which he is a partner, "
+"`Murray & Walker, Inc <http://www.murrayandwalker.com>`_.  He has done "
+"contract work focused specifically on CPython development both through "
+"the PSF (the kickstart of the email unicode API development) and directly"
+" funded by interested corporations (additional development work on email "
+"funded by QNX, and work on CPython ICC support funded by Intel).  He "
+"would like to spend more of his (and his company's) time on open source "
+"work, and so is actively seeking additional such contract opportunities."
+msgstr ""
+
+msgid "Antoine Pitrou (France)"
+msgstr ""
+
+#: ../../motivations.rst:184
+msgid ""
+"LinkedIn: `<https://www.linkedin.com/in/pitrou/>`_ (Senior Software "
+"Engineer)"
+msgstr ""
+
+#: ../../motivations.rst:185
+msgid "Independent (currently Ursa Labs / R Studio)"
+msgstr ""
+
+#: ../../motivations.rst:187
+msgid "Available for open source contract work"
+msgstr ""
+
+#: ../../motivations.rst:188
+msgid "Email address: antoine@python.org"
+msgstr ""
+
+#: ../../motivations.rst:190
+msgid ""
+"Antoine started working with Python in 2005 in order to implement a "
+"decentralized virtual world protocol.  He started contributing to CPython"
+" in 2007 and became a core developer in 2008.  His motivations have been "
+"driven both by the abstract desire to make Python better for the whole "
+"world, and by the concrete roadblocks he was hitting in professional "
+"settings.  Topics of choice have included interpreter optimizations, "
+"garbage collection, network programming, system programming and "
+"concurrent programming (such as maintaining ``multiprocessing``)."
+msgstr ""
+
+#: ../../motivations.rst:199
+msgid ""
+"As a professional, Antoine has been first specializing in network "
+"programming, and more lately in open source data science infrastructure "
+"such as Dask, Numba, Apache Arrow."
+msgstr ""
+
+msgid "Victor Stinner (France)"
+msgstr ""
+
+#: ../../motivations.rst:205
+msgid "`Personal website <https://vstinner.readthedocs.io/>`__"
+msgstr ""
+
+#: ../../motivations.rst:206
+msgid "Red Hat (Senior Software Engineer)"
+msgstr ""
+
+#: ../../motivations.rst:208
+msgid ""
+"Victor is paid by Red Hat to maintain Python upstream and downstream "
+"(RHEL, CentOS, Fedora & Software collections). See `Victor's "
+"contributions to Python "
+"<http://vstinner.readthedocs.io/python_contrib.html>`_."
+msgstr ""
+
+#: ../../motivations.rst:214
+msgid "`Personal website <https://kushaldas.in>`__"
+msgstr ""
+
+#: ../../motivations.rst:215
+msgid "`Freedom of the Press Foundation <https://freedom.press>`__ (Staff)"
+msgstr ""
+
+msgid "Barry Warsaw (United States)"
+msgstr ""
+
+#: ../../motivations.rst:220
+msgid ""
+"`LinkedIn: <https://www.linkedin.com/in/barry-warsaw/>`_ (Senior Staff "
+"Software Engineer - Python Foundation team)"
+msgstr ""
+
+#: ../../motivations.rst:222
+msgid "Personal site: `barry.warsaw.us <https://barry.warsaw.us/>`_"
+msgstr ""
+
+#: ../../motivations.rst:223
+msgid "Blog: `We Fear Change <https://www.wefearchange.org/>`_"
+msgstr ""
+
+#: ../../motivations.rst:224
+msgid "Email address: barry@python.org"
+msgstr ""
+
+#: ../../motivations.rst:227
+msgid ""
+"Barry has been working in, with, and on Python since 1994.  He attended "
+"the first Python workshop at NBS (now `NIST <https://www.nist.gov/>`_) in"
+" Gaithersburg, MD in 1994, where he met Guido and several other early "
+"Python adopters.  Barry subsequently worked with Guido for 8 years while "
+"at `CNRI <http://cnri.reston.va.us/>`_.  From 2007 until 2017, Barry "
+"worked for `Canonical <https://www.canonical.com/>`_, corporate sponsor "
+"of `Ubuntu <https://www.ubuntu.com/>`_ Linux, primarily on the Python "
+"ecosystem, and is both an Ubuntu and a `Debian <http://www.debian.org/>`_"
+" uploading developer.  Barry has served as Python's postmaster, "
+"webmaster, release manager, Language Summit co-chair, `Jython "
+"<http://www.jython.org/>`_ project leader, `GNU Mailman "
+"<http://www.list.org/>`_ project leader, and probably lots of other "
+"things he shouldn't admit to."
+msgstr ""
+
+msgid "Dino Viehland (United States)"
+msgstr ""
+
+#: ../../motivations.rst:247
+msgid "Meta (Software Engineer)"
+msgstr ""
+
+#: ../../motivations.rst:248
+msgid "Email address: dinoviehland@gmail.com"
+msgstr ""
+
+#: ../../motivations.rst:250
+msgid ""
+"Dino started working with Python in 2005 by working on IronPython, an "
+"implementation of Python running on .NET.  He was one of the primary "
+"developers on the project for 6 years.  After that he started the Python "
+"Tools for Visual Studio project focusing on providing advanced code "
+"completion and debugging features for Python.  Today he works on `Cinder "
+"<https://github.com/facebookincubator/cinder/>`_ improving Python "
+"performance for Instagram."
+msgstr ""
+
+msgid "Carol Willing (United States)"
+msgstr ""
+
+#: ../../motivations.rst:260
+msgid "Noteable: `<https://noteable.io/about-us/>`__ (Technical Evangelist)"
+msgstr ""
+
+#: ../../motivations.rst:261
+msgid "Personal site: `Willing Consulting <https://www.willingconsulting.com/>`_"
+msgstr ""
+
+#: ../../motivations.rst:262
+msgid "`Extended bio <https://www.willingconsulting.com/about/>`__"
+msgstr ""
+
+#: ../../motivations.rst:263
+msgid "Project Jupyter (Steering Council, Core Team for JupyterHub/Binder)"
+msgstr ""
+
+#: ../../motivations.rst:266
+msgid ""
+"Carol is focused on Python's usage in education and scientific research. "
+"She is interested in organizational development, operational workflows, "
+"and sustainability of open source projects."
+msgstr ""
+
+#: ../../motivations.rst:274
+msgid "Goals of this page"
+msgstr ""
+
+#: ../../motivations.rst:276
+msgid ""
+"The `issue metrics`_ automatically collected by the CPython issue tracker"
+" strongly suggest that the current core development process is "
+"bottlenecked on core developer time - this is most clearly indicated in "
+"the first metrics graph, which shows both the number of open issues and "
+"the number of patches awaiting review growing steadily over time, despite"
+" CPython being one of the most active open source projects in the world. "
+"This bottleneck then impacts not only resolving open issues and applying "
+"submitted patches, but also the process of identifying, nominating and "
+"mentoring new core developers."
+msgstr ""
+
+#: ../../motivations.rst:285
+msgid ""
+"The core commit statistics monitored by sites like `OpenHub`_ provide a "
+"good record as to *who* is currently handling the bulk of the review and "
+"maintenance work, but don't provide any indication as to the factors "
+"currently influencing people's ability to spend time on reviewing "
+"proposed changes, or mentoring new contributors."
+msgstr ""
+
+#: ../../motivations.rst:291
+msgid ""
+"This page aims to provide at least some of that missing data by "
+"encouraging core developers to highlight professional affiliations in the"
+" following two cases (even if not currently paid for time spent "
+"participating in the core development process):"
+msgstr ""
+
+#: ../../motivations.rst:296
+msgid ""
+"developers working for vendors that distribute a commercially supported "
+"Python runtime"
+msgstr ""
+
+#: ../../motivations.rst:298
+msgid "developers working for Sponsor Members of the Python Software Foundation"
+msgstr ""
+
+#: ../../motivations.rst:300
+msgid ""
+"These are cases where documenting our affiliations helps to improve the "
+"overall transparency of the core development process, as well as making "
+"it easier for staff at these organisations to locate colleagues that can "
+"help them to participate in and contribute effectively to supporting the "
+"core development process."
+msgstr ""
+
+#: ../../motivations.rst:306
+msgid ""
+"Core developers working for organisations with a vested interest in the "
+"sustainability of the CPython core development process are also "
+"encouraged to seek opportunities to spend work time on mentoring "
+"potential new core developers, whether through the general `core "
+"mentorship program`_, through mentoring colleagues, or through more "
+"targeted efforts like Outreachy's paid `internships`_ and Google's "
+"`Summer of Code`_."
+msgstr ""
+
+#: ../../motivations.rst:313
+msgid ""
+"Core developers that are available for consulting or contract work on "
+"behalf of the Python Software Foundation or other organisations are also "
+"encouraged to provide that information here, as this will help the PSF to"
+" better facilitate funding of core development work by organisations that"
+" don't directly employ any core developers themselves."
+msgstr ""
+
+#: ../../motivations.rst:319
+msgid ""
+"Finally, some core developers seeking to increase the time they have "
+"available to contribute to CPython may wish to pursue crowdfunding "
+"efforts that allow their contributions to be funded directly by the "
+"community, rather than relying on institutional sponsors allowing them to"
+" spend some or all of their work time contributing to CPython "
+"development."
+msgstr ""
+
+#: ../../motivations.rst:333
+msgid "Limitations on scope"
+msgstr ""
+
+#: ../../motivations.rst:335
+msgid ""
+"Specific technical areas of interest for core developers should be "
+"captured in the :ref:`Experts Index <experts>`."
+msgstr ""
+
+#: ../../motivations.rst:338
+msgid ""
+"This specific listing is limited to CPython core developers (since it's "
+"focused on the specific constraint that is core developer time), but it "
+"would be possible to create a more expansive listing on the Python wiki "
+"that also covers issue triagers, and folks seeking to become core "
+"developers."
+msgstr ""
+
+#: ../../motivations.rst:343
+msgid ""
+"Changes to the software and documentation maintained by core developers, "
+"together with related design discussions, all take place in public "
+"venues, and hence are inherently subject to full public review. "
+"Accordingly, core developers are NOT required to publish their "
+"motivations and affiliations if they do not choose to do so. This helps "
+"to ensure that core contribution processes remain open to anyone that is "
+"in a position to sign the `Contributor Licensing Agreement`_, the details"
+" of which are filed privately with the Python Software Foundation, rather"
+" than publicly."
+msgstr ""
+

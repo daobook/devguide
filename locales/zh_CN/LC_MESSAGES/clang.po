@@ -1,0 +1,305 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2011-2021, Python Software Foundation
+# This file is distributed under the same license as the Python Developer's
+# Guide package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Developer's Guide \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-22 09:18+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../clang.rst:3
+msgid "Dynamic Analysis with Clang"
+msgstr ""
+
+#: ../../clang.rst:7
+msgid ""
+"This document describes how to use Clang to perform analysis on Python "
+"and its libraries. In addition to performing the analysis, the document "
+"will cover downloading, building and installing the latest Clang/LLVM "
+"combination (which is currently 3.4)."
+msgstr ""
+
+#: ../../clang.rst:12
+msgid ""
+"This document does not cover interpreting the findings. For a discussion "
+"of interpreting results, see Marshall Clow's `Testing libc++ with "
+"-fsanitize=undefined "
+"<https://cplusplusmusings.wordpress.com/tag/clang/>`_.  The blog posting "
+"is a detailed examinations of issues uncovered by Clang in ``libc++``."
+msgstr ""
+
+#: ../../clang.rst:19
+msgid "What is Clang?"
+msgstr ""
+
+#: ../../clang.rst:21
+msgid ""
+"Clang is the C, C++ and Objective C front-end for the LLVM compiler.  The"
+" front-end provides access to LLVM's optimizer and code generator. The "
+"sanitizers - or checkers - are hooks into the code generation phase to "
+"instrument compiled code so suspicious behavior is flagged."
+msgstr ""
+
+#: ../../clang.rst:27
+msgid "What are Sanitizers?"
+msgstr ""
+
+#: ../../clang.rst:29
+msgid ""
+"Clang sanitizers are runtime checkers used to identify suspicious and "
+"undefined behavior. The checking occurs at runtime with actual runtime "
+"parameters so false positives are kept to a minimum."
+msgstr ""
+
+#: ../../clang.rst:33
+msgid ""
+"There are a number of sanitizers available, but two that should be used "
+"on a regular basis are the Address Sanitizer (or ASan) and the Undefined "
+"Behavior Sanitizer (or UBSan). ASan is invoked with the compiler option "
+"``-fsanitize=address``, and UBSan is invoked with "
+"``-fsanitize=undefined``.  The flags are passed through ``CFLAGS`` and "
+"``CXXFLAGS``, and sometimes through ``CC`` and ``CXX`` (in addition to "
+"the compiler)."
+msgstr ""
+
+#: ../../clang.rst:40
+msgid ""
+"A complete list of sanitizers can be found at `Controlling Code "
+"Generation <https://clang.llvm.org/docs/UsersManual.html#controlling-"
+"code-generation>`_."
+msgstr ""
+
+#: ../../clang.rst:45
+msgid ""
+"Because sanitizers operate at runtime on real program parameters, its "
+"important to provide a complete set of positive and negative self tests."
+msgstr ""
+
+#: ../../clang.rst:48
+msgid ""
+"Clang and its sanitizers have strengths (and weaknesses). Its just one "
+"tool in the war chest to uncovering bugs and improving code quality. "
+"Clang should be used to compliment other methods, including Code Reviews,"
+" Valgrind, Coverity, etc."
+msgstr ""
+
+#: ../../clang.rst:54
+msgid "Clang/LLVM Setup"
+msgstr ""
+
+#: ../../clang.rst:56
+msgid ""
+"This portion of the document covers downloading, building and installing "
+"Clang and LLVM. There are three components to download and build. They "
+"are the LLVM compiler, the compiler front end and the compiler runtime "
+"library."
+msgstr ""
+
+#: ../../clang.rst:60
+msgid ""
+"In preparation you should create a scratch directory. Also ensure you are"
+" using Python 2 and not Python 3. Python 3 will cause the build to fail."
+msgstr ""
+
+#: ../../clang.rst:64
+msgid "Download, Build and Install"
+msgstr ""
+
+#: ../../clang.rst:66
+msgid ""
+"Perform the following to download, build and install the Clang/LLVM 3.4. "
+"::"
+msgstr ""
+
+#: ../../clang.rst:94
+msgid ""
+"If you receive an error ``'LibraryDependencies.inc' file not found``, "
+"then ensure you are utilizing Python 2 and not Python 3. If you encounter"
+" the error after switching to Python 2, then delete everything and start "
+"over."
+msgstr ""
+
+#: ../../clang.rst:98
+msgid ""
+"After ``make install`` executes, the compilers will be installed in "
+"``/usr/local/bin`` and the various libraries will be installed in "
+"``/usr/local/lib/clang/3.4/lib/linux/``:"
+msgstr ""
+
+#: ../../clang.rst:111
+msgid ""
+"On Mac OS X, the libraries are installed in "
+"``/usr/local/lib/clang/3.3/lib/darwin/``:"
+msgstr ""
+
+#: ../../clang.rst:126
+msgid ""
+"You should never have to add the libraries to a project. Clang will "
+"handle it for you. If you find you cannot pass the ``-fsanitize=XXX`` "
+"flag through ``make``'s implicit variables (``CFLAGS``, ``CXXFLAGS``, "
+"``CC``, ``CXXFLAGS``, ``LDFLAGS``) during ``configure``, then you should "
+"modify the makefile after configuring to ensure the flag is passed "
+"through the compiler."
+msgstr ""
+
+#: ../../clang.rst:133
+msgid ""
+"The installer does not install all the components needed on occasion. For"
+" example, you might want to run a ``scan-build`` or examine the results "
+"with ``scan-view``. You can copy the components by hand with: ::"
+msgstr ""
+
+#: ../../clang.rst:144
+msgid ""
+"Because the installer does not install all the components needed on "
+"occasion, you should not delete the scratch directory until you are sure "
+"things work as expected. If a library is missing, then you should search "
+"for it in the Clang/LLVM build directory."
+msgstr ""
+
+#: ../../clang.rst:150
+msgid "Python Build Setup"
+msgstr ""
+
+#: ../../clang.rst:152
+msgid ""
+"This portion of the document covers invoking Clang and LLVM with the "
+"options required so the sanitizers analyze Python with under its test "
+"suite. Two checkers are used - ASan and UBSan."
+msgstr ""
+
+#: ../../clang.rst:156
+msgid ""
+"Because the sanitizers are runtime checkers, its best to have as many "
+"positive and negative self tests as possible. You can never have enough "
+"self tests."
+msgstr ""
+
+#: ../../clang.rst:159
+msgid ""
+"The general idea is to compile and link with the sanitizer flags. At link"
+" time, Clang will include the needed runtime libraries. However, you "
+"can't use ``CFLAGS`` and ``CXXFLAGS`` to pass the options through the "
+"compiler to the linker because the makefile rules for ``BUILDPYTHON``, "
+"``_testembed`` and ``_freeze_importlib`` don't use the implicit "
+"variables."
+msgstr ""
+
+#: ../../clang.rst:165
+msgid ""
+"As a workaround to the absence of flags to the linker, you can pass the "
+"sanitizer options by way of the compilers - ``CC`` and ``CXX``.  Passing "
+"the flags though the compiler is used below, but passing them through "
+"``LDFLAGS`` is also reported to work."
+msgstr ""
+
+#: ../../clang.rst:171
+msgid "Building Python"
+msgstr ""
+
+#: ../../clang.rst:173
+msgid ""
+"To begin, export the variables of interest with the desired sanitizers. "
+"Its OK to specify both sanitizers: ::"
+msgstr ""
+
+#: ../../clang.rst:180
+msgid "Or: ::"
+msgstr ""
+
+#: ../../clang.rst:186
+msgid ""
+"The ``-fno-sanitize=vptr`` removes vtable checks that are part of UBSan "
+"from C++ projects due to noise. Its not needed with Python, but you will "
+"likely need it for other C++ projects."
+msgstr ""
+
+#: ../../clang.rst:190
+msgid "After exporting ``CC`` and ``CXX``, ``configure`` as normal:"
+msgstr ""
+
+#: ../../clang.rst:205
+msgid "Next is a standard ``make`` (formatting added for clarity):"
+msgstr ""
+
+#: ../../clang.rst:220
+msgid "Finally is ``make test`` (formatting added for clarity):"
+msgstr ""
+
+#: ../../clang.rst:234
+msgid ""
+"If you are using the address sanitizer, its important to pipe the output "
+"through ``asan_symbolize.py`` to get a good trace. For example, from "
+"Issue 20953 during compile (formatting added for clarity):"
+msgstr ""
+
+#: ../../clang.rst:303
+msgid ""
+"``asan_symbolize.py`` is supposed to be installed during ``make "
+"install``. If its not installed, then look in the Clang/LLVM build "
+"directory for it and copy it to ``/usr/local/bin``."
+msgstr ""
+
+#: ../../clang.rst:308
+msgid "Blacklisting (Ignoring) Findings"
+msgstr ""
+
+#: ../../clang.rst:312
+msgid ""
+"Clang allows you to alter the behavior of sanitizer tools for certain "
+"source-level by providing a special blacklist file at compile-time. The "
+"blacklist is needed because it reports every instance of an issue, even "
+"if the issue is reported 10's of thousands of time in un-managed library "
+"code."
+msgstr ""
+
+#: ../../clang.rst:317
+msgid "You specify the blacklist with ``-fsanitize-blacklist=XXX``. For example::"
+msgstr ""
+
+#: ../../clang.rst:321
+msgid ""
+"``my_blacklist.txt`` would then contain entries such as the following. "
+"The entry will ignore a bug in ``libc++``'s ``ios`` formatting "
+"functions::"
+msgstr ""
+
+#: ../../clang.rst:326
+msgid ""
+"As an example with Python 3.4.0, ``audioop.c`` will produce a number of "
+"findings::"
+msgstr ""
+
+#: ../../clang.rst:342
+msgid ""
+"One of the function of interest is ``audioop_getsample_impl`` (flagged at"
+" line 422), and the blacklist entry would include::"
+msgstr ""
+
+#: ../../clang.rst:347
+msgid "Or, you could ignore the entire file with::"
+msgstr ""
+
+#: ../../clang.rst:351
+msgid ""
+"Unfortunately, you won't know what to blacklist until you run the "
+"sanitizer."
+msgstr ""
+
+#: ../../clang.rst:353
+msgid ""
+"The documentation is available at `Sanitizer special case list "
+"<https://clang.llvm.org/docs/SanitizerSpecialCaseList.html>`_."
+msgstr ""
+

@@ -1,0 +1,273 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2011-2021, Python Software Foundation
+# This file is distributed under the same license as the Python Developer's
+# Guide package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Developer's Guide \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-22 09:18+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../gdb.rst:4
+msgid "gdb Support"
+msgstr ""
+
+#: ../../gdb.rst:8
+msgid ""
+"If you experience low-level problems such as crashes or deadlocks (e.g. "
+"when tinkering with parts of CPython which are written in C), it can be "
+"convenient to use a low-level debugger such as gdb in order to diagnose "
+"and fix the issue.  By default, however, gdb (or any of its front-ends) "
+"doesn't know about high-level information specific to the CPython "
+"interpreter, such as which Python function is currently executing, or "
+"what type or value has a given Python object represented by a standard "
+"``PyObject *`` pointer.  We hereafter present two ways to overcome this "
+"limitation."
+msgstr ""
+
+#: ../../gdb.rst:20
+msgid "gdb 7 and later"
+msgstr ""
+
+#: ../../gdb.rst:22
+msgid ""
+"In gdb 7, support for `extending gdb with Python "
+"<https://sourceware.org/gdb/current/onlinedocs/gdb/Python.html#Python>`_ "
+"was added. When CPython is built you will notice a ``python-gdb.py`` file"
+" in the root directory of your checkout. Read the module docstring for "
+"details on how to use the file to enhance gdb for easier debugging of a "
+"CPython process."
+msgstr ""
+
+#: ../../gdb.rst:28
+msgid ""
+"To activate support, you must add the directory containing ``python-"
+"gdb.py`` to GDB's \"auto-load-safe-path\".  Put this in your "
+"``~/.gdbinit`` file::"
+msgstr ""
+
+#: ../../gdb.rst:33
+msgid "You can also add multiple paths, separated by ``:``."
+msgstr ""
+
+#: ../../gdb.rst:35
+msgid ""
+"This is what a backtrace looks like (truncated) when this extension is "
+"enabled::"
+msgstr ""
+
+#: ../../gdb.rst:54
+msgid ""
+"(Notice how the dictionary argument to ``PyDict_GetItemString`` is "
+"displayed as its ``repr()``, rather than an opaque ``PyObject *`` "
+"pointer.)"
+msgstr ""
+
+#: ../../gdb.rst:57
+msgid ""
+"The extension works by supplying a custom printing routine for values of "
+"type ``PyObject *``.  If you need to access lower-level details of an "
+"object, then cast the value to a pointer of the appropriate type.  For "
+"example::"
+msgstr ""
+
+#: ../../gdb.rst:80
+msgid ""
+"The pretty-printers try to closely match the ``repr()`` implementation of"
+" the underlying implementation of Python, and thus vary somewhat between "
+"Python 2 and Python 3."
+msgstr ""
+
+#: ../../gdb.rst:84
+msgid ""
+"An area that can be confusing is that the custom printer for some types "
+"look a lot like gdb's built-in printer for standard types.  For example, "
+"the pretty-printer for a Python 3 ``int`` gives a ``repr()`` that is not "
+"distinguishable from a printing of a regular machine-level integer::"
+msgstr ""
+
+#: ../../gdb.rst:99
+msgid ""
+"A similar confusion can arise with the ``str`` type, where the output "
+"looks a lot like gdb's built-in printer for ``char *``::"
+msgstr ""
+
+#: ../../gdb.rst:105
+msgid ""
+"The pretty-printer for ``str`` instances defaults to using single-quotes "
+"(as does Python's ``repr`` for strings) whereas the standard printer for "
+"``char *`` values uses double-quotes and contains a hexadecimal address::"
+msgstr ""
+
+#: ../../gdb.rst:112
+msgid ""
+"Here's how to see the implementation details of a ``str`` instance (for "
+"Python 3, where a ``str`` is a ``PyUnicodeObject *``)::"
+msgstr ""
+
+#: ../../gdb.rst:119
+msgid ""
+"As well as adding pretty-printing support for ``PyObject *``, the "
+"extension adds a number of commands to gdb:"
+msgstr ""
+
+#: ../../gdb.rst:141
+msgid "``py-list``"
+msgstr ""
+
+#: ../../gdb.rst:123
+msgid ""
+"List the Python source code (if any) for the current frame in the "
+"selected thread.  The current line is marked with a \">\"::"
+msgstr ""
+
+#: ../../gdb.rst:139
+msgid ""
+"Use ``py-list START`` to list at a different line number within the "
+"python source, and ``py-list START,END`` to list a specific range of "
+"lines within the python source."
+msgstr ""
+
+#: ../../gdb.rst:191
+msgid "``py-up`` and ``py-down``"
+msgstr ""
+
+#: ../../gdb.rst:144
+msgid ""
+"The ``py-up`` and ``py-down`` commands are analogous to gdb's regular "
+"``up`` and ``down`` commands, but try to move at the level of CPython "
+"frames, rather than C frames."
+msgstr ""
+
+#: ../../gdb.rst:148
+msgid ""
+"gdb is not always able to read the relevant frame information, depending "
+"on the optimization level with which CPython was compiled. Internally, "
+"the commands look for C frames that are executing ``PyEval_EvalFrameEx`` "
+"(which implements the core bytecode interpreter loop within CPython) and "
+"look up the value of the related ``PyFrameObject *``."
+msgstr ""
+
+#: ../../gdb.rst:154
+msgid "They emit the frame number (at the C level) within the thread."
+msgstr ""
+
+#: ../../gdb.rst:156 ../../gdb.rst:197
+msgid "For example::"
+msgstr ""
+
+#: ../../gdb.rst:169
+msgid "so we're at the top of the python stack.  Going back down::"
+msgstr ""
+
+#: ../../gdb.rst:191
+msgid "and we're at the bottom of the python stack."
+msgstr ""
+
+#: ../../gdb.rst:214
+msgid "``py-bt``"
+msgstr ""
+
+#: ../../gdb.rst:194
+msgid ""
+"The ``py-bt`` command attempts to display a Python-level backtrace of the"
+" current thread."
+msgstr ""
+
+#: ../../gdb.rst:213
+msgid ""
+"The frame numbers correspond to those displayed by gdb's standard "
+"``backtrace`` command."
+msgstr ""
+
+#: ../../gdb.rst:229
+msgid "``py-print``"
+msgstr ""
+
+#: ../../gdb.rst:217
+msgid ""
+"The ``py-print`` command looks up a Python name and tries to print it. It"
+" looks in locals within the current thread, then globals, then finally "
+"builtins::"
+msgstr ""
+
+#: ../../gdb.rst:238
+msgid "``py-locals``"
+msgstr ""
+
+#: ../../gdb.rst:232
+msgid ""
+"The ``py-locals`` command looks up all Python locals within the current "
+"Python frame in the selected thread, and prints their representations::"
+msgstr ""
+
+#: ../../gdb.rst:240
+msgid ""
+"You can of course use other gdb commands.  For example, the ``frame`` "
+"command takes you directly to a particular frame within the selected "
+"thread. We can use it to go a specific frame shown by ``py-bt`` like "
+"this::"
+msgstr ""
+
+#: ../../gdb.rst:259
+msgid ""
+"The ``info threads`` command will give you a list of the threads within "
+"the process, and you can use the ``thread`` command to select a different"
+" one::"
+msgstr ""
+
+#: ../../gdb.rst:267
+msgid ""
+"You can use ``thread apply all COMMAND`` or (``t a a COMMAND`` for short)"
+" to run a command on all threads.  You can use this with ``py-bt`` to see"
+" what every thread is doing at the Python level::"
+msgstr ""
+
+#: ../../gdb.rst:299
+msgid "This is only available for Python 2.7, 3.2 and higher."
+msgstr ""
+
+#: ../../gdb.rst:303
+msgid "gdb 6 and earlier"
+msgstr ""
+
+#: ../../gdb.rst:305
+msgid ""
+"The file at ``Misc/gdbinit`` contains a gdb configuration file which "
+"provides extra commands when working with a CPython process. To register "
+"these commands permanently, either copy the commands to your personal gdb"
+" configuration file or symlink ``~/.gdbinit`` to ``Misc/gdbinit``.  To "
+"use these commands from a single gdb session without registering them, "
+"type ``source Misc/gdbinit`` from your gdb session."
+msgstr ""
+
+#: ../../gdb.rst:314
+msgid "Updating auto-load-safe-path to allow test_gdb to run"
+msgstr ""
+
+#: ../../gdb.rst:316
+msgid ""
+"``test_gdb`` attempts to automatically load additional Python specific "
+"hooks into gdb in order to test them. Unfortunately, the command line "
+"options it uses to do this aren't always supported correctly."
+msgstr ""
+
+#: ../../gdb.rst:320
+msgid ""
+"If ``test_gdb`` is being skipped with an \"auto-loading has been "
+"declined\" message, then it is necessary to identify any Python build "
+"directories as auto-load safe. One way to achieve this is to add a line "
+"like the following to ``~/.gdbinit`` (edit the specific list of paths as "
+"appropriate)::"
+msgstr ""
+

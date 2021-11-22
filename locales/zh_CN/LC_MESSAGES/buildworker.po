@@ -1,0 +1,599 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2011-2021, Python Software Foundation
+# This file is distributed under the same license as the Python Developer's
+# Guide package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Developer's Guide \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-22 09:18+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../buildworker.rst:5
+msgid "Running a buildbot worker"
+msgstr ""
+
+#: ../../buildworker.rst:9
+msgid ""
+"Python's :ref:`buildbots` system was discussed earlier.  We sometimes "
+"refer to the collection of *build workers* as our \"buildbot fleet\".  "
+"The machines that comprise the fleet are voluntarily contributed "
+"resources.  Many are run by individual volunteers out of their own "
+"pockets and time, while others are supported by corporations.  Even the "
+"corporate sponsored buildbots, however, tend to exist because some "
+"individual championed them, made them a reality, and is committed to "
+"maintaining them."
+msgstr ""
+
+#: ../../buildworker.rst:17
+msgid ""
+"Anyone can contribute a buildbot to the fleet.  This chapter describes "
+"how to go about setting up a buildbot worker, getting it added, and some "
+"hints about buildbot maintenance."
+msgstr ""
+
+#: ../../buildworker.rst:21
+msgid ""
+"Anyone running a buildbot that is part of the fleet should subscribe to "
+"the `python-buildbots <https://mail.python.org/mailman/listinfo/python-"
+"buildbots>`_ mailing list.  This mailing list is also the place to "
+"contact if you want to contribute a buildbot but have questions."
+msgstr ""
+
+#: ../../buildworker.rst:26
+msgid ""
+"As for what kind of buildbot to run...take a look at our `current fleet "
+"<http://buildbot.python.org/all/#/workers>`_.  Pretty much anything that "
+"isn't on that list would be interesting: different Linux/UNIX "
+"distributions, different versions of the various OSes, other OSes if you "
+"or someone are prepared to make the test suite actually pass on that new "
+"OS.  Even if you only want to run an OS that's already on our list there "
+"may be utility in setting it up; we also need to build and test python "
+"under various alternate build configurations.  Post to the mailing list "
+"and talk about what you'd like to contribute."
+msgstr ""
+
+#: ../../buildworker.rst:38
+msgid "Preparing for buildbot worker setup"
+msgstr ""
+
+#: ../../buildworker.rst:40
+msgid ""
+"Since the goal is to build Python from source, the system will need to "
+"have everything required to do normal python development:  a compiler, a "
+"linker, and (except on windows) the \"development\" headers for any of "
+"the optional modules (zlib, OpenSSL, etc) supported by the platform.  "
+"Follow the steps outlined in :ref:`setup` for the target platform, all "
+"the way through to having a working compiled python."
+msgstr ""
+
+#: ../../buildworker.rst:47
+msgid ""
+"In order to set up the buildbot software, you will need to obtain an "
+"identifier and password for your worker so it can join the fleet.  Email "
+"python-buildbots@python.org to discuss adding your worker and to obtain "
+"the needed workername and password.  You can do some of the steps that "
+"follow before having the credentials, but it is easiest to have them "
+"before the \"buildbot worker\" step below."
+msgstr ""
+
+#: ../../buildworker.rst:56
+msgid "Setting up the buildbot worker"
+msgstr ""
+
+#: ../../buildworker.rst:59
+msgid "Conventional always-on machines"
+msgstr ""
+
+#: ../../buildworker.rst:61
+msgid ""
+"You need a recent version of the `buildbot <https://buildbot.net/>`_ "
+"software, and you will probably want a separate 'buildbot' user to run "
+"the buildbot software.  You may also want to set the buildbot up using a "
+"virtual environment, depending on how you manage your system.  We won't "
+"cover how to that here; it doesn't differ from setting up a virtual "
+"environment for any other software, but you'll need to modify the "
+"sequence of steps below as appropriate if you choose that path."
+msgstr ""
+
+#: ../../buildworker.rst:69 ../../buildworker.rst:112
+msgid "For Linux:"
+msgstr ""
+
+#: ../../buildworker.rst:71
+msgid ""
+"If your package manager provides the buildbot worker software, that is "
+"probably the best way to install it; it may create the buildbot user for "
+"you, in which case you can skip that step.  Otherwise, do ``pip install "
+"buildbot-worker``."
+msgstr ""
+
+#: ../../buildworker.rst:75
+msgid "Create a ``buildbot`` user (using, eg: ``useradd``) if necessary."
+msgstr ""
+
+#: ../../buildworker.rst:76 ../../buildworker.rst:82
+msgid "Log in as the buildbot user."
+msgstr ""
+
+#: ../../buildworker.rst:78
+msgid "For Mac:"
+msgstr ""
+
+#: ../../buildworker.rst:80
+msgid ""
+"Create a buildbot user using the OS/X control panel user admin.  It "
+"should be a \"standard\" user."
+msgstr ""
+
+#: ../../buildworker.rst:83
+msgid ""
+"Install the buildbot worker [#]_ by running ``pip install buildbot-"
+"worker``."
+msgstr ""
+
+#: ../../buildworker.rst:85 ../../buildworker.rst:170
+msgid "For Windows:"
+msgstr ""
+
+#: ../../buildworker.rst:87
+msgid "Create a buildbot user as a \"standard\" user."
+msgstr ""
+
+#: ../../buildworker.rst:88
+msgid "Install the latest version of Python from python.org."
+msgstr ""
+
+#: ../../buildworker.rst:89
+msgid "Open a Command Prompt."
+msgstr ""
+
+#: ../../buildworker.rst:90
+msgid ""
+"Execute ``python -m pip install pypiwin32 buildbot-worker`` (note that "
+"``python.exe`` is not added to ``PATH`` by default, making the ``python``"
+" command accessible is left as an exercise for the user)."
+msgstr ""
+
+#: ../../buildworker.rst:94
+msgid ""
+"In a terminal window for the buildbot user, issue the following commands "
+"(you can put the ``buildarea`` wherever you want to)::"
+msgstr ""
+
+#: ../../buildworker.rst:100
+msgid ""
+"(Note that on Windows, the ``buildbot-worker`` command will be in the "
+":file:`Scripts` directory of your Python installation.)"
+msgstr ""
+
+#: ../../buildworker.rst:103
+msgid ""
+"Once this initial worker setup completes, you should edit the files "
+"``buildarea/info/admin`` and ``buildarea/info/host`` to provide your "
+"contact info and information on the host configuration, respectively.  "
+"This information will be presented in the buildbot web pages that display"
+" information about the builders running on your worker."
+msgstr ""
+
+#: ../../buildworker.rst:109
+msgid ""
+"You will also want to make sure that the worker is started when the "
+"machine reboots:"
+msgstr ""
+
+#: ../../buildworker.rst:114
+msgid "Add the following line to ``/etc/crontab``::"
+msgstr ""
+
+#: ../../buildworker.rst:118
+msgid ""
+"Note that we use ``restart`` rather than ``start`` in case a crash has "
+"left a ``twistd.pid`` file behind."
+msgstr ""
+
+#: ../../buildworker.rst:121
+msgid "For OSX:"
+msgstr ""
+
+#: ../../buildworker.rst:123
+msgid "Create a bin directory for your buildbot user::"
+msgstr ""
+
+#: ../../buildworker.rst:127
+msgid "Place the following script, named ``run_worker.sh``, into that directory::"
+msgstr ""
+
+#: ../../buildworker.rst:135
+msgid ""
+"If you use pip with Apple's system python, add '/System' to the front of "
+"the path to the Python bin directory."
+msgstr ""
+
+#: ../../buildworker.rst:138
+msgid "Place a file with the following contents into ``/Library/LaunchDaemons``:"
+msgstr ""
+
+#: ../../buildworker.rst:168
+msgid "The recommended name for the file is ``net.buildbot.worker``."
+msgstr ""
+
+#: ../../buildworker.rst:172
+msgid ""
+"Add a Scheduled Task to run ``buildbot-worker start buildarea`` as the "
+"buildbot user \"when the computer starts up\".  It is best to provide "
+"absolute paths to the ``buildbot-worker`` command and the "
+":file:`buildarea` directory.  It is also recommended to set the task to "
+"run in the directory that contains the :file:`buildarea` directory."
+msgstr ""
+
+#: ../../buildworker.rst:178
+msgid ""
+"Alternatively (note: don't do both!), set up the worker service as "
+"described in the `buildbot documentation "
+"<http://trac.buildbot.net/wiki/RunningBuildbotOnWindows#Service>`_."
+msgstr ""
+
+#: ../../buildworker.rst:182
+msgid "To start the worker running for your initial testing, you can do::"
+msgstr ""
+
+#: ../../buildworker.rst:186
+msgid ""
+"Then you can either wait for someone to make a commit, or you can pick a "
+"builder associated with your worker from the `list of builders "
+"<http://buildbot.python.org/all/#/builders>`_ and force a build."
+msgstr ""
+
+#: ../../buildworker.rst:190
+msgid ""
+"In any case you should initially monitor builds on your builders to make "
+"sure the tests are passing and to resolve any platform issues that may be"
+" revealed by tests that fail.  Unfortunately we do not currently have a "
+"way to notify you only of failures on your builders, so doing periodic "
+"spot checks is also a good idea."
+msgstr ""
+
+#: ../../buildworker.rst:198
+msgid "Latent workers"
+msgstr ""
+
+#: ../../buildworker.rst:200
+msgid ""
+"We also support running `latent workers "
+"<http://docs.buildbot.net/current/manual/configuration/workers.html"
+"#latent-workers>`_ on the AWS EC2 service.  To set up such a worker:"
+msgstr ""
+
+#: ../../buildworker.rst:204
+msgid ""
+"Start an instance of your chosen base AMI and set it up as a conventional"
+" worker."
+msgstr ""
+
+#: ../../buildworker.rst:206
+msgid ""
+"After the instance is fully set up as a conventional worker (including "
+"worker name and password, and admin and host information), create an AMI "
+"from the instance and stop the instance."
+msgstr ""
+
+#: ../../buildworker.rst:209
+msgid ""
+"Contact the buildmaster administrator who gave you your worker name and "
+"password and give them the following information:"
+msgstr ""
+
+#: ../../buildworker.rst:212
+msgid "Instance size (such as ``m4.large``)"
+msgstr ""
+
+#: ../../buildworker.rst:213
+msgid "Full region specification (such as ``us-west-2``)"
+msgstr ""
+
+#: ../../buildworker.rst:214
+msgid "AMI ID (such as ``ami-1234beef``)"
+msgstr ""
+
+#: ../../buildworker.rst:215
+msgid ""
+"An Access Key ID and Access Key.  It is recommended to set up a separate "
+"IAM user with full access to EC2 and provide the access key information "
+"for that user rather than for your main account."
+msgstr ""
+
+#: ../../buildworker.rst:219
+msgid ""
+"The buildmaster cannot guarantee that it will always shut down your "
+"instance(s), so it is recommended to periodically check and make sure "
+"there are no \"zombie\" instances running on your account, created by the"
+" buildbot master.  Also, if you notice that your worker seems to have "
+"been down for an unexpectedly long time, please ping the `python-"
+"buildbots <https://mail.python.org/mailman/listinfo/python-buildbots>`_ "
+"list to request that the master be restarted."
+msgstr ""
+
+#: ../../buildworker.rst:227
+msgid ""
+"Latent workers should also be updated periodically to include operating "
+"system or other software updates, but when to do such maintenance is "
+"largely up to you as the worker owner.  There are a couple different "
+"options for doing such updates:"
+msgstr ""
+
+#: ../../buildworker.rst:232
+msgid ""
+"Start an instance from your existing AMI, do updates on that instance, "
+"and save a new AMI from the updated instance.  Note that (especially for "
+"Windows workers) you should do at least one restart of the instance after"
+" doing updates to be sure that any post-reboot update work is done before"
+" creating the new AMI."
+msgstr ""
+
+#: ../../buildworker.rst:237
+msgid ""
+"Create an entirely new setup from a newer base AMI using your existing "
+"worker name and password."
+msgstr ""
+
+#: ../../buildworker.rst:240
+msgid ""
+"Whichever way you choose to update your AMI, you'll need to provide the "
+"buildmaster administrators with the new AMI ID."
+msgstr ""
+
+#: ../../buildworker.rst:245
+msgid "Buildbot worker operation"
+msgstr ""
+
+#: ../../buildworker.rst:247
+msgid ""
+"Most of the time, running a worker is a \"set and forget\" operation, "
+"depending on the level of involvement you want to have in resolving bugs "
+"revealed by your builders.  There are, however, times when it is helpful "
+"or even necessary for you to get involved.  As noted above, you should be"
+" subscribed to ``python-buildbots@python.org`` so that you will be made "
+"aware of any fleet-wide issues."
+msgstr ""
+
+#: ../../buildworker.rst:254
+msgid ""
+"Necessary tasks include, obviously, keeping the buildbot running.  "
+"Currently the system for notifying buildbot owners when their workers go "
+"offline is not working; this is something we hope to resolve.  So "
+"currently it is helpful if you periodically check the status of your "
+"worker.  We will also contact you via your contact address in "
+"``buildarea/info/admin`` when we notice there is a problem that has not "
+"been resolved for some period of time and you have not responded to a "
+"posting on the python-buildbots list about it."
+msgstr ""
+
+#: ../../buildworker.rst:262
+msgid ""
+"We currently do not have a minimum version requirement for the worker "
+"software.  However, this is something we will probably establish as we "
+"tune the fleet, so another task will be to occasionally upgrade the "
+"buildbot worker software. Coordination for this will be done via "
+"``python-buildbots@python.org``."
+msgstr ""
+
+#: ../../buildworker.rst:267
+msgid ""
+"The most interesting extra involvement is when your worker reveals a "
+"unique or almost-unique problem:  a test that is failing on your system "
+"but not on other systems.  In this case you should be prepared to offer "
+"debugging help to the people working on the bug: running tests by hand on"
+" the worker machine or, if possible, providing ssh access to a committer "
+"to run experiments to try to resolve the issue."
+msgstr ""
+
+#: ../../buildworker.rst:276
+msgid "Required Ports"
+msgstr ""
+
+#: ../../buildworker.rst:278
+msgid ""
+"The worker operates as a *client* to the *buildmaster*.  This means that "
+"all network connections are *outbound*.  This is true also for the "
+"network tests in the test suite.  Most consumer firewalls will allow any "
+"outbound traffic, so normally you do not need to worry about what ports "
+"the buildbot uses.  However, corporate firewalls are sometimes more "
+"restrictive, so here is a table listing all of the outbound ports used by"
+" the buildbot and the python test suite (this list may not be complete as"
+" new tests may have been added since this table was last vetted):"
+msgstr ""
+
+#: ../../buildworker.rst:288
+msgid "Port"
+msgstr ""
+
+#: ../../buildworker.rst:288
+msgid "Host"
+msgstr ""
+
+#: ../../buildworker.rst:288
+msgid "Description"
+msgstr ""
+
+#: ../../buildworker.rst:290
+msgid "20, 21"
+msgstr ""
+
+#: ../../buildworker.rst:290
+msgid "ftp.debian.org"
+msgstr ""
+
+#: ../../buildworker.rst:290
+msgid "test_urllib2net"
+msgstr ""
+
+#: ../../buildworker.rst:291
+msgid "53"
+msgstr ""
+
+#: ../../buildworker.rst:291
+msgid "your DNS server"
+msgstr ""
+
+#: ../../buildworker.rst:291
+msgid "test_socket, and others implicitly"
+msgstr ""
+
+#: ../../buildworker.rst:292
+msgid "80"
+msgstr ""
+
+#: ../../buildworker.rst:292
+msgid "python.org example.com"
+msgstr ""
+
+#: ../../buildworker.rst:292
+msgid "(several tests)"
+msgstr ""
+
+#: ../../buildworker.rst:294
+msgid "119"
+msgstr ""
+
+#: ../../buildworker.rst:294
+msgid "news.gmane.org"
+msgstr ""
+
+#: ../../buildworker.rst:294
+msgid "test_nntplib"
+msgstr ""
+
+#: ../../buildworker.rst:295
+msgid "443"
+msgstr ""
+
+#: ../../buildworker.rst:295
+msgid "(various)"
+msgstr ""
+
+#: ../../buildworker.rst:295
+msgid "test_ssl"
+msgstr ""
+
+#: ../../buildworker.rst:296
+msgid "465"
+msgstr ""
+
+#: ../../buildworker.rst:296 ../../buildworker.rst:297
+msgid "smtp.gmail.com"
+msgstr ""
+
+#: ../../buildworker.rst:296 ../../buildworker.rst:297
+msgid "test_smtpnet"
+msgstr ""
+
+#: ../../buildworker.rst:297
+msgid "587"
+msgstr ""
+
+#: ../../buildworker.rst:298
+msgid "9020"
+msgstr ""
+
+#: ../../buildworker.rst:298
+msgid "python.org"
+msgstr ""
+
+#: ../../buildworker.rst:298
+msgid "connection to buildmaster"
+msgstr ""
+
+#: ../../buildworker.rst:301
+msgid ""
+"Many tests will also create local TCP sockets and connect to them, "
+"usually using either ``localhost`` or ``127.0.0.1``."
+msgstr ""
+
+#: ../../buildworker.rst:306
+msgid "Required Resources"
+msgstr ""
+
+#: ../../buildworker.rst:308
+msgid ""
+"Based on the last time we did a `survey "
+"<https://mail.python.org/pipermail/python-dev/2012-March/117978.html>`_ "
+"on buildbot requirements, the recommended resource allocations for a "
+"python buildbot are at least:"
+msgstr ""
+
+#: ../../buildworker.rst:313
+msgid "2 CPUs"
+msgstr ""
+
+#: ../../buildworker.rst:314
+msgid "512 MB RAM"
+msgstr ""
+
+#: ../../buildworker.rst:315
+msgid "30 GB free disk space"
+msgstr ""
+
+#: ../../buildworker.rst:317
+msgid ""
+"The bigmem tests won't run in this configuration, since they require "
+"substantially more memory, but these resources should be sufficient to "
+"ensure that Python compiles correctly on the platform and can run the "
+"rest of the test suite."
+msgstr ""
+
+#: ../../buildworker.rst:324
+msgid "Security Considerations"
+msgstr ""
+
+#: ../../buildworker.rst:326
+msgid ""
+"We only allow builds to be triggered against commits to the `CPython "
+"repository on GitHub <https://github.com/python/cpython>`_. This means "
+"that the code your buildbot will run will have been vetted by a "
+"committer. However, mistakes and bugs happen, as could a compromise, so "
+"keep this in mind when siting your buildbot on your network and "
+"establishing the security around it. Treat the buildbot like you would "
+"any resource that is public facing and might get hacked (use a VM and/or "
+"jail/chroot/solaris zone, put it in a DMZ, etc). While the buildbot does "
+"not have any ports open for inbound traffic (and is not public facing in "
+"that sense), committer mistakes do happen, and security flaws are "
+"discovered in both released and unreleased code, so treating the buildbot"
+" as if it were fully public facing is a good policy."
+msgstr ""
+
+#: ../../buildworker.rst:338
+msgid ""
+"Code runs differently as privileged and unprivileged users.  We would "
+"love to have builders running as privileged accounts, but security "
+"considerations do make that difficult, as access to root can provide "
+"access to surprising resources (such as spoofed IP packets, changes in "
+"MAC addresses, etc) even on a VM setup.  But if you are confident in your"
+" setup, we'd love to have a buildbot that runs python as root."
+msgstr ""
+
+#: ../../buildworker.rst:345
+msgid ""
+"Note that the above is a summary of a `discussion "
+"<https://mail.python.org/pipermail/python-dev/2011-October/113935.html>`_"
+" on python-dev about buildbot security that includes examples of the "
+"tests for which privilege matters.  There was no final consensus, but the"
+" information is useful as a point of reference."
+msgstr ""
+
+#: ../../buildworker.rst:351
+msgid ""
+"If the buildbot is going to do Framework builds, it is better to use the "
+"Apple-shipped Python so as to avoid any chance of the buildbot picking up"
+" components from the installed python.org python."
+msgstr ""
+

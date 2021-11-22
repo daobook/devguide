@@ -1,0 +1,1775 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2011-2021, Python Software Foundation
+# This file is distributed under the same license as the Python Developer's
+# Guide package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Developer's Guide \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-22 09:18+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../experts.rst:4
+msgid "Experts Index"
+msgstr ""
+
+#: ../../experts.rst:6
+msgid ""
+"This document has tables that list Python Modules, Tools, Platforms and "
+"Interest Areas and names for each item that indicate a maintainer or an "
+"expert in the field.  This list is intended to be used by issue "
+"submitters, issue triage people, and other issue participants to find "
+"people to add to the nosy list or to contact directly by email for help "
+"and decisions on feature requests and bug fixes.  People on this list may"
+" be asked to render final judgement on a feature or bug.  If no active "
+"maintainer is listed for a given module, then questionable changes should"
+" go to python-dev, while any other issues can and should be decided by "
+"any committer."
+msgstr ""
+
+#: ../../experts.rst:16
+msgid ""
+"Unless a name is followed by a '*', you should never assign an issue to "
+"that person, only make them nosy.  Names followed by a '*' may be "
+"assigned issues involving the module or topic."
+msgstr ""
+
+#: ../../experts.rst:22
+msgid ""
+"The Platform and Interest Area tables list broader fields in which "
+"various people have expertise.  These people can also be contacted for "
+"help, opinions, and decisions when issues involve their areas."
+msgstr ""
+
+#: ../../experts.rst:26
+msgid ""
+"If a listed maintainer does not respond to requests for comment for an "
+"extended period (three weeks or more), they should be marked as inactive "
+"in this list by placing the word 'inactive' in parenthesis behind their "
+"tracker id.  They are of course free to remove that inactive mark at any "
+"time."
+msgstr ""
+
+#: ../../experts.rst:32
+msgid ""
+"Committers should update these tables as their areas of expertise widen. "
+"New topics may be added to the Interest Area table at will."
+msgstr ""
+
+#: ../../experts.rst:35
+msgid ""
+"The existence of this list is not meant to indicate that these people "
+"*must* be contacted for decisions; it is, rather, a resource to be used "
+"by non-committers to find responsible parties, and by committers who do "
+"not feel qualified to make a decision in a particular context."
+msgstr ""
+
+#: ../../experts.rst:40
+msgid ""
+"See also :PEP:`291` and :PEP:`360` for information about certain modules "
+"with special rules."
+msgstr ""
+
+#: ../../experts.rst:45
+msgid "Stdlib"
+msgstr ""
+
+#: ../../experts.rst:47
+msgid "Module"
+msgstr ""
+
+#: ../../experts.rst:47 ../../experts.rst:280 ../../experts.rst:290
+#: ../../experts.rst:309
+msgid "Maintainers"
+msgstr ""
+
+#: ../../experts.rst:49
+msgid "__future__"
+msgstr ""
+
+#: ../../experts.rst:50
+msgid "__main__"
+msgstr ""
+
+#: ../../experts.rst:50
+msgid "gvanrossum, ncoghlan"
+msgstr ""
+
+#: ../../experts.rst:51
+msgid "_dummy_thread"
+msgstr ""
+
+#: ../../experts.rst:51 ../../experts.rst:104 ../../experts.rst:136
+msgid "brett.cannon"
+msgstr ""
+
+#: ../../experts.rst:52
+msgid "_thread"
+msgstr ""
+
+#: ../../experts.rst:53
+msgid "_testbuffer"
+msgstr ""
+
+#: ../../experts.rst:54
+msgid "abc"
+msgstr ""
+
+#: ../../experts.rst:55
+msgid "aifc"
+msgstr ""
+
+#: ../../experts.rst:55
+msgid "r.david.murray"
+msgstr ""
+
+#: ../../experts.rst:56
+msgid "argparse"
+msgstr ""
+
+#: ../../experts.rst:56 ../../experts.rst:68 ../../experts.rst:71
+#: ../../experts.rst:80 ../../experts.rst:118 ../../experts.rst:140
+#: ../../experts.rst:187 ../../experts.rst:311
+msgid "rhettinger*"
+msgstr ""
+
+#: ../../experts.rst:57
+msgid "array"
+msgstr ""
+
+#: ../../experts.rst:58
+msgid "ast"
+msgstr ""
+
+#: ../../experts.rst:58
+msgid "benjamin.peterson, pablogsal, BTaskaya"
+msgstr ""
+
+#: ../../experts.rst:59
+msgid "asynchat"
+msgstr ""
+
+#: ../../experts.rst:59 ../../experts.rst:61
+msgid "josiahcarlson, giampaolo.rodola*, stutzbach"
+msgstr ""
+
+#: ../../experts.rst:60
+msgid "asyncio"
+msgstr ""
+
+#: ../../experts.rst:60
+msgid "yselivanov, asvetlov"
+msgstr ""
+
+#: ../../experts.rst:61
+msgid "asyncore"
+msgstr ""
+
+#: ../../experts.rst:62
+msgid "atexit"
+msgstr ""
+
+#: ../../experts.rst:63
+msgid "audioop"
+msgstr ""
+
+#: ../../experts.rst:63 ../../experts.rst:166
+msgid "serhiy.storchaka"
+msgstr ""
+
+#: ../../experts.rst:64
+msgid "base64"
+msgstr ""
+
+#: ../../experts.rst:65
+msgid "bdb"
+msgstr ""
+
+#: ../../experts.rst:66
+msgid "binascii"
+msgstr ""
+
+#: ../../experts.rst:67
+msgid "binhex"
+msgstr ""
+
+#: ../../experts.rst:68
+msgid "bisect"
+msgstr ""
+
+#: ../../experts.rst:69
+msgid "builtins"
+msgstr ""
+
+#: ../../experts.rst:70
+msgid "bz2"
+msgstr ""
+
+#: ../../experts.rst:71
+msgid "calendar"
+msgstr ""
+
+#: ../../experts.rst:72
+msgid "cgi"
+msgstr ""
+
+#: ../../experts.rst:72 ../../experts.rst:73
+msgid "ethan.furman*"
+msgstr ""
+
+#: ../../experts.rst:73
+msgid "cgitb"
+msgstr ""
+
+#: ../../experts.rst:74
+msgid "chunk"
+msgstr ""
+
+#: ../../experts.rst:75
+msgid "cmath"
+msgstr ""
+
+#: ../../experts.rst:75 ../../experts.rst:323
+msgid "mark.dickinson"
+msgstr ""
+
+#: ../../experts.rst:76
+msgid "cmd"
+msgstr ""
+
+#: ../../experts.rst:77
+msgid "code"
+msgstr ""
+
+#: ../../experts.rst:78
+msgid "codecs"
+msgstr ""
+
+#: ../../experts.rst:78
+msgid "lemburg, doerwalter"
+msgstr ""
+
+#: ../../experts.rst:79
+msgid "codeop"
+msgstr ""
+
+#: ../../experts.rst:80
+msgid "collections"
+msgstr ""
+
+#: ../../experts.rst:81
+msgid "collections.abc"
+msgstr ""
+
+#: ../../experts.rst:81 ../../experts.rst:127
+msgid "rhettinger*, stutzbach"
+msgstr ""
+
+#: ../../experts.rst:82
+msgid "colorsys"
+msgstr ""
+
+#: ../../experts.rst:83
+msgid "compileall"
+msgstr ""
+
+#: ../../experts.rst:84
+msgid "concurrent.futures"
+msgstr ""
+
+#: ../../experts.rst:84
+msgid "pitrou, bquinlan"
+msgstr ""
+
+#: ../../experts.rst:85
+msgid "configparser"
+msgstr ""
+
+#: ../../experts.rst:85
+msgid "lukasz.langa*"
+msgstr ""
+
+#: ../../experts.rst:86
+msgid "contextlib"
+msgstr ""
+
+#: ../../experts.rst:86
+msgid "ncoghlan, yselivanov"
+msgstr ""
+
+#: ../../experts.rst:87
+msgid "contextvars"
+msgstr ""
+
+#: ../../experts.rst:88
+msgid "copy"
+msgstr ""
+
+#: ../../experts.rst:88 ../../experts.rst:89 ../../experts.rst:171
+#: ../../experts.rst:172
+msgid "alexandre.vassalotti"
+msgstr ""
+
+#: ../../experts.rst:89
+msgid "copyreg"
+msgstr ""
+
+#: ../../experts.rst:90
+msgid "cProfile"
+msgstr ""
+
+#: ../../experts.rst:91
+msgid "crypt"
+msgstr ""
+
+#: ../../experts.rst:91 ../../experts.rst:224
+msgid "jafo*"
+msgstr ""
+
+#: ../../experts.rst:92
+msgid "csv"
+msgstr ""
+
+#: ../../experts.rst:92
+msgid "skip.montanaro (inactive)"
+msgstr ""
+
+#: ../../experts.rst:93
+msgid "ctypes"
+msgstr ""
+
+#: ../../experts.rst:93
+msgid "theller (inactive), belopolsky, amaury.forgeotdarc, meador.inge"
+msgstr ""
+
+#: ../../experts.rst:95
+msgid "curses"
+msgstr ""
+
+#: ../../experts.rst:95 ../../experts.rst:109 ../../experts.rst:111
+#: ../../experts.rst:154 ../../experts.rst:191 ../../experts.rst:193
+#: ../../experts.rst:229 ../../experts.rst:273
+msgid "twouters"
+msgstr ""
+
+#: ../../experts.rst:96
+msgid "dataclasses"
+msgstr ""
+
+#: ../../experts.rst:96 ../../experts.rst:330 ../../experts.rst:350
+msgid "eric.smith*"
+msgstr ""
+
+#: ../../experts.rst:97
+msgid "datetime"
+msgstr ""
+
+#: ../../experts.rst:97 ../../experts.rst:233
+msgid "belopolsky, p-ganssle"
+msgstr ""
+
+#: ../../experts.rst:98
+msgid "dbm"
+msgstr ""
+
+#: ../../experts.rst:99
+msgid "decimal"
+msgstr ""
+
+#: ../../experts.rst:99
+msgid "facundobatista, rhettinger, mark.dickinson"
+msgstr ""
+
+#: ../../experts.rst:100
+msgid "difflib"
+msgstr ""
+
+#: ../../experts.rst:100 ../../experts.rst:103 ../../experts.rst:225
+msgid "tim.peters (inactive)"
+msgstr ""
+
+#: ../../experts.rst:101
+msgid "dis"
+msgstr ""
+
+#: ../../experts.rst:101 ../../experts.rst:137 ../../experts.rst:243
+msgid "yselivanov"
+msgstr ""
+
+#: ../../experts.rst:102
+msgid "distutils"
+msgstr ""
+
+#: ../../experts.rst:102
+msgid "eric.araujo, dstufft"
+msgstr ""
+
+#: ../../experts.rst:103
+msgid "doctest"
+msgstr ""
+
+#: ../../experts.rst:104
+msgid "dummy_threading"
+msgstr ""
+
+#: ../../experts.rst:105
+msgid "email"
+msgstr ""
+
+#: ../../experts.rst:105
+msgid "barry, r.david.murray*, maxking"
+msgstr ""
+
+#: ../../experts.rst:106
+msgid "encodings"
+msgstr ""
+
+#: ../../experts.rst:106 ../../experts.rst:146 ../../experts.rst:175
+#: ../../experts.rst:324 ../../experts.rst:335
+msgid "lemburg"
+msgstr ""
+
+#: ../../experts.rst:107
+msgid "ensurepip"
+msgstr ""
+
+#: ../../experts.rst:107
+msgid "ncoghlan, dstufft, pradyunsg"
+msgstr ""
+
+#: ../../experts.rst:108
+msgid "enum"
+msgstr ""
+
+#: ../../experts.rst:108
+msgid "eli.bendersky*, barry, ethan.furman*"
+msgstr ""
+
+#: ../../experts.rst:109
+msgid "errno"
+msgstr ""
+
+#: ../../experts.rst:110
+msgid "faulthandler"
+msgstr ""
+
+#: ../../experts.rst:110 ../../experts.rst:240
+msgid "vstinner"
+msgstr ""
+
+#: ../../experts.rst:111
+msgid "fcntl"
+msgstr ""
+
+#: ../../experts.rst:112
+msgid "filecmp"
+msgstr ""
+
+#: ../../experts.rst:113
+msgid "fileinput"
+msgstr ""
+
+#: ../../experts.rst:114
+msgid "fnmatch"
+msgstr ""
+
+#: ../../experts.rst:115
+msgid "formatter"
+msgstr ""
+
+#: ../../experts.rst:116
+msgid "fractions"
+msgstr ""
+
+#: ../../experts.rst:116
+msgid "mark.dickinson, rhettinger"
+msgstr ""
+
+#: ../../experts.rst:117
+msgid "ftplib"
+msgstr ""
+
+#: ../../experts.rst:117
+msgid "giampaolo.rodola*"
+msgstr ""
+
+#: ../../experts.rst:118
+msgid "functools"
+msgstr ""
+
+#: ../../experts.rst:119
+msgid "gc"
+msgstr ""
+
+#: ../../experts.rst:119
+msgid "pitrou, pablogsal"
+msgstr ""
+
+#: ../../experts.rst:120
+msgid "getopt"
+msgstr ""
+
+#: ../../experts.rst:121
+msgid "getpass"
+msgstr ""
+
+#: ../../experts.rst:122
+msgid "gettext"
+msgstr ""
+
+#: ../../experts.rst:123
+msgid "glob"
+msgstr ""
+
+#: ../../experts.rst:124
+msgid "grp"
+msgstr ""
+
+#: ../../experts.rst:125
+msgid "gzip"
+msgstr ""
+
+#: ../../experts.rst:126
+msgid "hashlib"
+msgstr ""
+
+#: ../../experts.rst:126 ../../experts.rst:128
+msgid "christian.heimes, gregory.p.smith"
+msgstr ""
+
+#: ../../experts.rst:127
+msgid "heapq"
+msgstr ""
+
+#: ../../experts.rst:128
+msgid "hmac"
+msgstr ""
+
+#: ../../experts.rst:129
+msgid "html"
+msgstr ""
+
+#: ../../experts.rst:129 ../../experts.rst:230 ../../experts.rst:316
+msgid "ezio.melotti"
+msgstr ""
+
+#: ../../experts.rst:130
+msgid "http"
+msgstr ""
+
+#: ../../experts.rst:131
+msgid "idlelib"
+msgstr ""
+
+#: ../../experts.rst:131
+msgid "kbk (inactive), terry.reedy*, roger.serwy (inactive), taleinat"
+msgstr ""
+
+#: ../../experts.rst:133
+msgid "imaplib"
+msgstr ""
+
+#: ../../experts.rst:134
+msgid "imghdr"
+msgstr ""
+
+#: ../../experts.rst:135
+msgid "imp"
+msgstr ""
+
+#: ../../experts.rst:136
+msgid "importlib"
+msgstr ""
+
+#: ../../experts.rst:137
+msgid "inspect"
+msgstr ""
+
+#: ../../experts.rst:138 ../../experts.rst:334
+msgid "io"
+msgstr ""
+
+#: ../../experts.rst:138 ../../experts.rst:334
+msgid "benjamin.peterson, stutzbach"
+msgstr ""
+
+#: ../../experts.rst:139
+msgid "ipaddress"
+msgstr ""
+
+#: ../../experts.rst:139
+msgid "pmoody"
+msgstr ""
+
+#: ../../experts.rst:140
+msgid "itertools"
+msgstr ""
+
+#: ../../experts.rst:141
+msgid "json"
+msgstr ""
+
+#: ../../experts.rst:141
+msgid "bob.ippolito (inactive), ezio.melotti, rhettinger"
+msgstr ""
+
+#: ../../experts.rst:142
+msgid "keyword"
+msgstr ""
+
+#: ../../experts.rst:143
+msgid "lib2to3"
+msgstr ""
+
+#: ../../experts.rst:143 ../../experts.rst:221 ../../experts.rst:346
+msgid "benjamin.peterson"
+msgstr ""
+
+#: ../../experts.rst:144
+msgid "libmpdec"
+msgstr ""
+
+#: ../../experts.rst:145
+msgid "linecache"
+msgstr ""
+
+#: ../../experts.rst:146 ../../experts.rst:335
+msgid "locale"
+msgstr ""
+
+#: ../../experts.rst:147
+msgid "logging"
+msgstr ""
+
+#: ../../experts.rst:147 ../../experts.rst:251
+msgid "vinay.sajip"
+msgstr ""
+
+#: ../../experts.rst:148
+msgid "lzma"
+msgstr ""
+
+#: ../../experts.rst:149
+msgid "mailbox"
+msgstr ""
+
+#: ../../experts.rst:150
+msgid "mailcap"
+msgstr ""
+
+#: ../../experts.rst:151
+msgid "marshal"
+msgstr ""
+
+#: ../../experts.rst:152
+msgid "math"
+msgstr ""
+
+#: ../../experts.rst:152
+msgid "mark.dickinson, rhettinger, stutzbach"
+msgstr ""
+
+#: ../../experts.rst:153
+msgid "mimetypes"
+msgstr ""
+
+#: ../../experts.rst:154
+msgid "mmap"
+msgstr ""
+
+#: ../../experts.rst:155
+msgid "modulefinder"
+msgstr ""
+
+#: ../../experts.rst:155
+msgid "theller (inactive), jvr"
+msgstr ""
+
+#: ../../experts.rst:156
+msgid "msilib"
+msgstr ""
+
+#: ../../experts.rst:157
+msgid "msvcrt"
+msgstr ""
+
+#: ../../experts.rst:158
+msgid "multiprocessing"
+msgstr ""
+
+#: ../../experts.rst:158
+msgid "davin*, pitrou, jnoller (inactive), sbt (inactive)"
+msgstr ""
+
+#: ../../experts.rst:159
+msgid "netrc"
+msgstr ""
+
+#: ../../experts.rst:160
+msgid "nis"
+msgstr ""
+
+#: ../../experts.rst:161
+msgid "nntplib"
+msgstr ""
+
+#: ../../experts.rst:162
+msgid "numbers"
+msgstr ""
+
+#: ../../experts.rst:163
+msgid "operator"
+msgstr ""
+
+#: ../../experts.rst:164
+msgid "optparse"
+msgstr ""
+
+#: ../../experts.rst:164
+msgid "aronacher"
+msgstr ""
+
+#: ../../experts.rst:165
+msgid "os"
+msgstr ""
+
+#: ../../experts.rst:166
+msgid "os.path"
+msgstr ""
+
+#: ../../experts.rst:167
+msgid "ossaudiodev"
+msgstr ""
+
+#: ../../experts.rst:168
+msgid "parser"
+msgstr ""
+
+#: ../../experts.rst:168
+msgid "benjamin.peterson, pablogsal"
+msgstr ""
+
+#: ../../experts.rst:169
+msgid "pathlib"
+msgstr ""
+
+#: ../../experts.rst:170
+msgid "pdb"
+msgstr ""
+
+#: ../../experts.rst:171
+msgid "pickle"
+msgstr ""
+
+#: ../../experts.rst:172
+msgid "pickletools"
+msgstr ""
+
+#: ../../experts.rst:173
+msgid "pipes"
+msgstr ""
+
+#: ../../experts.rst:174
+msgid "pkgutil"
+msgstr ""
+
+#: ../../experts.rst:175
+msgid "platform"
+msgstr ""
+
+#: ../../experts.rst:176
+msgid "plistlib"
+msgstr ""
+
+#: ../../experts.rst:177
+msgid "poplib"
+msgstr ""
+
+#: ../../experts.rst:178
+msgid "posix"
+msgstr ""
+
+#: ../../experts.rst:178 ../../experts.rst:282 ../../experts.rst:312
+msgid "larry"
+msgstr ""
+
+#: ../../experts.rst:179
+msgid "pprint"
+msgstr ""
+
+#: ../../experts.rst:179 ../../experts.rst:254
+msgid "fdrake"
+msgstr ""
+
+#: ../../experts.rst:180
+msgid "profile"
+msgstr ""
+
+#: ../../experts.rst:181
+msgid "pstats"
+msgstr ""
+
+#: ../../experts.rst:182
+msgid "pty"
+msgstr ""
+
+#: ../../experts.rst:182 ../../experts.rst:241 ../../experts.rst:272
+#: ../../experts.rst:314
+msgid "twouters*"
+msgstr ""
+
+#: ../../experts.rst:183
+msgid "pwd"
+msgstr ""
+
+#: ../../experts.rst:184
+msgid "py_compile"
+msgstr ""
+
+#: ../../experts.rst:185
+msgid "pyclbr"
+msgstr ""
+
+#: ../../experts.rst:185
+msgid "BTaskaya"
+msgstr ""
+
+#: ../../experts.rst:186
+msgid "pydoc"
+msgstr ""
+
+#: ../../experts.rst:187
+msgid "queue"
+msgstr ""
+
+#: ../../experts.rst:188
+msgid "quopri"
+msgstr ""
+
+#: ../../experts.rst:189
+msgid "random"
+msgstr ""
+
+#: ../../experts.rst:189
+msgid "rhettinger, mark.dickinson"
+msgstr ""
+
+#: ../../experts.rst:190
+msgid "re"
+msgstr ""
+
+#: ../../experts.rst:190
+msgid "effbot (inactive), ezio.melotti, serhiy.storchaka"
+msgstr ""
+
+#: ../../experts.rst:191
+msgid "readline"
+msgstr ""
+
+#: ../../experts.rst:192
+msgid "reprlib"
+msgstr ""
+
+#: ../../experts.rst:193
+msgid "resource"
+msgstr ""
+
+#: ../../experts.rst:194
+msgid "rlcompleter"
+msgstr ""
+
+#: ../../experts.rst:195
+msgid "runpy"
+msgstr ""
+
+#: ../../experts.rst:195 ../../experts.rst:319
+msgid "ncoghlan"
+msgstr ""
+
+#: ../../experts.rst:196
+msgid "sched"
+msgstr ""
+
+#: ../../experts.rst:197
+msgid "secrets"
+msgstr ""
+
+#: ../../experts.rst:198
+msgid "select"
+msgstr ""
+
+#: ../../experts.rst:199
+msgid "selectors"
+msgstr ""
+
+#: ../../experts.rst:199
+msgid "neologix, giampaolo.rodola"
+msgstr ""
+
+#: ../../experts.rst:200
+msgid "shelve"
+msgstr ""
+
+#: ../../experts.rst:201
+msgid "shlex"
+msgstr ""
+
+#: ../../experts.rst:202
+msgid "shutil"
+msgstr ""
+
+#: ../../experts.rst:202
+msgid "tarek, giampaolo.rodola"
+msgstr ""
+
+#: ../../experts.rst:203
+msgid "signal"
+msgstr ""
+
+#: ../../experts.rst:204
+msgid "site"
+msgstr ""
+
+#: ../../experts.rst:205
+msgid "smtpd"
+msgstr ""
+
+#: ../../experts.rst:205 ../../experts.rst:329
+msgid "giampaolo.rodola"
+msgstr ""
+
+#: ../../experts.rst:206
+msgid "smtplib"
+msgstr ""
+
+#: ../../experts.rst:207
+msgid "sndhdr"
+msgstr ""
+
+#: ../../experts.rst:208
+msgid "socket"
+msgstr ""
+
+#: ../../experts.rst:209
+msgid "socketserver"
+msgstr ""
+
+#: ../../experts.rst:210
+msgid "spwd"
+msgstr ""
+
+#: ../../experts.rst:211
+msgid "sqlite3"
+msgstr ""
+
+#: ../../experts.rst:211
+msgid "ghaering"
+msgstr ""
+
+#: ../../experts.rst:212
+msgid "ssl"
+msgstr ""
+
+#: ../../experts.rst:212
+msgid "janssen, christian.heimes, dstufft, alex"
+msgstr ""
+
+#: ../../experts.rst:213
+msgid "stat"
+msgstr ""
+
+#: ../../experts.rst:213
+msgid "christian.heimes"
+msgstr ""
+
+#: ../../experts.rst:214
+msgid "statistics"
+msgstr ""
+
+#: ../../experts.rst:214
+msgid "steven.daprano, rhettinger"
+msgstr ""
+
+#: ../../experts.rst:215
+msgid "string"
+msgstr ""
+
+#: ../../experts.rst:216
+msgid "stringprep"
+msgstr ""
+
+#: ../../experts.rst:217
+msgid "struct"
+msgstr ""
+
+#: ../../experts.rst:217
+msgid "mark.dickinson, meador.inge"
+msgstr ""
+
+#: ../../experts.rst:218
+msgid "subprocess"
+msgstr ""
+
+#: ../../experts.rst:218
+msgid "astrand (inactive), giampaolo.rodola"
+msgstr ""
+
+#: ../../experts.rst:219
+msgid "sunau"
+msgstr ""
+
+#: ../../experts.rst:220
+msgid "symbol"
+msgstr ""
+
+#: ../../experts.rst:221
+msgid "symtable"
+msgstr ""
+
+#: ../../experts.rst:222
+msgid "sys"
+msgstr ""
+
+#: ../../experts.rst:223
+msgid "sysconfig"
+msgstr ""
+
+#: ../../experts.rst:223
+msgid "tarek"
+msgstr ""
+
+#: ../../experts.rst:224
+msgid "syslog"
+msgstr ""
+
+#: ../../experts.rst:225
+msgid "tabnanny"
+msgstr ""
+
+#: ../../experts.rst:226
+msgid "tarfile"
+msgstr ""
+
+#: ../../experts.rst:226
+msgid "lars.gustaebel"
+msgstr ""
+
+#: ../../experts.rst:227
+msgid "telnetlib"
+msgstr ""
+
+#: ../../experts.rst:228
+msgid "tempfile"
+msgstr ""
+
+#: ../../experts.rst:229
+msgid "termios"
+msgstr ""
+
+#: ../../experts.rst:230
+msgid "test"
+msgstr ""
+
+#: ../../experts.rst:231
+msgid "textwrap"
+msgstr ""
+
+#: ../../experts.rst:232
+msgid "threading"
+msgstr ""
+
+#: ../../experts.rst:232
+msgid "pitrou"
+msgstr ""
+
+#: ../../experts.rst:233
+msgid "time"
+msgstr ""
+
+#: ../../experts.rst:234
+msgid "timeit"
+msgstr ""
+
+#: ../../experts.rst:235
+msgid "tkinter"
+msgstr ""
+
+#: ../../experts.rst:235
+msgid "gpolo, serhiy.storchaka"
+msgstr ""
+
+#: ../../experts.rst:236
+msgid "token"
+msgstr ""
+
+#: ../../experts.rst:237
+msgid "tokenize"
+msgstr ""
+
+#: ../../experts.rst:237
+msgid "meador.inge"
+msgstr ""
+
+#: ../../experts.rst:238
+msgid "trace"
+msgstr ""
+
+#: ../../experts.rst:238
+msgid "belopolsky"
+msgstr ""
+
+#: ../../experts.rst:239
+msgid "traceback"
+msgstr ""
+
+#: ../../experts.rst:239
+msgid "iritkatriel"
+msgstr ""
+
+#: ../../experts.rst:240
+msgid "tracemalloc"
+msgstr ""
+
+#: ../../experts.rst:241
+msgid "tty"
+msgstr ""
+
+#: ../../experts.rst:242
+msgid "turtle"
+msgstr ""
+
+#: ../../experts.rst:242
+msgid "gregorlingl, willingc"
+msgstr ""
+
+#: ../../experts.rst:243
+msgid "types"
+msgstr ""
+
+#: ../../experts.rst:244
+msgid "typing"
+msgstr ""
+
+#: ../../experts.rst:244
+msgid "gvanrossum, kj"
+msgstr ""
+
+#: ../../experts.rst:245
+msgid "unicodedata"
+msgstr ""
+
+#: ../../experts.rst:245
+msgid "lemburg, ezio.melotti"
+msgstr ""
+
+#: ../../experts.rst:246
+msgid "unittest"
+msgstr ""
+
+#: ../../experts.rst:246
+msgid "michael.foord*, ezio.melotti, rbcollins"
+msgstr ""
+
+#: ../../experts.rst:247
+msgid "unittest.mock"
+msgstr ""
+
+#: ../../experts.rst:247
+msgid "michael.foord*"
+msgstr ""
+
+#: ../../experts.rst:248
+msgid "urllib"
+msgstr ""
+
+#: ../../experts.rst:248
+msgid "orsenthil"
+msgstr ""
+
+#: ../../experts.rst:249
+msgid "uu"
+msgstr ""
+
+#: ../../experts.rst:250
+msgid "uuid"
+msgstr ""
+
+#: ../../experts.rst:251
+msgid "venv"
+msgstr ""
+
+#: ../../experts.rst:252
+msgid "warnings"
+msgstr ""
+
+#: ../../experts.rst:253
+msgid "wave"
+msgstr ""
+
+#: ../../experts.rst:254
+msgid "weakref"
+msgstr ""
+
+#: ../../experts.rst:255
+msgid "webbrowser"
+msgstr ""
+
+#: ../../experts.rst:256
+msgid "winreg"
+msgstr ""
+
+#: ../../experts.rst:256
+msgid "stutzbach"
+msgstr ""
+
+#: ../../experts.rst:257
+msgid "winsound"
+msgstr ""
+
+#: ../../experts.rst:257
+msgid "effbot (inactive)"
+msgstr ""
+
+#: ../../experts.rst:258
+msgid "wsgiref"
+msgstr ""
+
+#: ../../experts.rst:258
+msgid "pje"
+msgstr ""
+
+#: ../../experts.rst:259
+msgid "xdrlib"
+msgstr ""
+
+#: ../../experts.rst:260
+msgid "xml.dom"
+msgstr ""
+
+#: ../../experts.rst:261
+msgid "xml.dom.minidom"
+msgstr ""
+
+#: ../../experts.rst:262
+msgid "xml.dom.pulldom"
+msgstr ""
+
+#: ../../experts.rst:263
+msgid "xml.etree"
+msgstr ""
+
+#: ../../experts.rst:263
+msgid "effbot (inactive), eli.bendersky*, scoder"
+msgstr ""
+
+#: ../../experts.rst:264
+msgid "xml.parsers.expat"
+msgstr ""
+
+#: ../../experts.rst:265
+msgid "xml.sax"
+msgstr ""
+
+#: ../../experts.rst:266
+msgid "xml.sax.handler"
+msgstr ""
+
+#: ../../experts.rst:267
+msgid "xml.sax.saxutils"
+msgstr ""
+
+#: ../../experts.rst:268
+msgid "xml.sax.xmlreader"
+msgstr ""
+
+#: ../../experts.rst:269
+msgid "xmlrpc"
+msgstr ""
+
+#: ../../experts.rst:270
+msgid "zipapp"
+msgstr ""
+
+#: ../../experts.rst:270
+msgid "paul.moore"
+msgstr ""
+
+#: ../../experts.rst:271
+msgid "zipfile"
+msgstr ""
+
+#: ../../experts.rst:271
+msgid "alanmcintyre, serhiy.storchaka, twouters"
+msgstr ""
+
+#: ../../experts.rst:272
+msgid "zipimport"
+msgstr ""
+
+#: ../../experts.rst:273
+msgid "zlib"
+msgstr ""
+
+#: ../../experts.rst:278
+msgid "Tools"
+msgstr ""
+
+#: ../../experts.rst:280
+msgid "Tool"
+msgstr ""
+
+#: ../../experts.rst:282
+msgid "Argument Clinic"
+msgstr ""
+
+#: ../../experts.rst:283
+msgid "PEG Generator"
+msgstr ""
+
+#: ../../experts.rst:283 ../../experts.rst:343
+msgid "gvanrossum, pablogsal, lys.nikolaou"
+msgstr ""
+
+#: ../../experts.rst:288
+msgid "Platforms"
+msgstr ""
+
+#: ../../experts.rst:290
+msgid "Platform"
+msgstr ""
+
+#: ../../experts.rst:292
+msgid "AIX"
+msgstr ""
+
+#: ../../experts.rst:292
+msgid "David.Edelsohn"
+msgstr ""
+
+#: ../../experts.rst:293
+msgid "Cygwin"
+msgstr ""
+
+#: ../../experts.rst:293
+msgid "jlt63, stutzbach"
+msgstr ""
+
+#: ../../experts.rst:294
+msgid "FreeBSD"
+msgstr ""
+
+#: ../../experts.rst:295
+msgid "HP-UX"
+msgstr ""
+
+#: ../../experts.rst:296
+msgid "Linux"
+msgstr ""
+
+#: ../../experts.rst:297
+msgid "Mac OS X"
+msgstr ""
+
+#: ../../experts.rst:297
+msgid "ronaldoussoren, ned.deily"
+msgstr ""
+
+#: ../../experts.rst:298
+msgid "NetBSD1"
+msgstr ""
+
+#: ../../experts.rst:299
+msgid "OS2/EMX"
+msgstr ""
+
+#: ../../experts.rst:299
+msgid "aimacintyre"
+msgstr ""
+
+#: ../../experts.rst:300
+msgid "Solaris/OpenIndiana"
+msgstr ""
+
+#: ../../experts.rst:300
+msgid "jcea"
+msgstr ""
+
+#: ../../experts.rst:301
+msgid "Windows"
+msgstr ""
+
+#: ../../experts.rst:301
+msgid "tim.golden, zach.ware, steve.dower, paul.moore"
+msgstr ""
+
+#: ../../experts.rst:302
+msgid "JVM/Java"
+msgstr ""
+
+#: ../../experts.rst:302
+msgid "frank.wierzbicki"
+msgstr ""
+
+#: ../../experts.rst:307
+msgid "Miscellaneous"
+msgstr ""
+
+#: ../../experts.rst:309
+msgid "Interest Area"
+msgstr ""
+
+#: ../../experts.rst:311
+msgid "algorithms"
+msgstr ""
+
+#: ../../experts.rst:312
+msgid "argument clinic"
+msgstr ""
+
+#: ../../experts.rst:313
+msgid "ast/compiler"
+msgstr ""
+
+#: ../../experts.rst:313
+msgid ""
+"benjamin.peterson, brett.cannon, yselivanov, pablogsal, Mark.Shannon, "
+"BTaskaya"
+msgstr ""
+
+#: ../../experts.rst:314
+msgid "autoconf/makefiles"
+msgstr ""
+
+#: ../../experts.rst:315
+msgid "bsd"
+msgstr ""
+
+#: ../../experts.rst:316
+msgid "bug tracker"
+msgstr ""
+
+#: ../../experts.rst:317
+msgid "buildbots"
+msgstr ""
+
+#: ../../experts.rst:317
+msgid "zach.ware, pablogsal"
+msgstr ""
+
+#: ../../experts.rst:318
+msgid "bytecode"
+msgstr ""
+
+#: ../../experts.rst:318
+msgid "benjamin.peterson, yselivanov, Mark.Shannon"
+msgstr ""
+
+#: ../../experts.rst:319
+msgid "context managers"
+msgstr ""
+
+#: ../../experts.rst:320
+msgid "core workflow"
+msgstr ""
+
+#: ../../experts.rst:320 ../../experts.rst:327
+msgid "mariatta"
+msgstr ""
+
+#: ../../experts.rst:321
+msgid "coverity scan"
+msgstr ""
+
+#: ../../experts.rst:321
+msgid "christian.heimes, brett.cannon, twouters"
+msgstr ""
+
+#: ../../experts.rst:322
+msgid "cryptography"
+msgstr ""
+
+#: ../../experts.rst:322
+msgid "gregory.p.smith, dstufft"
+msgstr ""
+
+#: ../../experts.rst:323
+msgid "data formats"
+msgstr ""
+
+#: ../../experts.rst:324
+msgid "database"
+msgstr ""
+
+#: ../../experts.rst:325
+msgid "devguide"
+msgstr ""
+
+#: ../../experts.rst:325
+msgid "eric.araujo, ezio.melotti, willingc, mariatta"
+msgstr ""
+
+#: ../../experts.rst:326
+msgid "documentation"
+msgstr ""
+
+#: ../../experts.rst:326
+msgid "ezio.melotti, eric.araujo, mdk, willingc"
+msgstr ""
+
+#: ../../experts.rst:327
+msgid "emoji"
+msgstr ""
+
+#: ../../experts.rst:328
+msgid "extension modules"
+msgstr ""
+
+#: ../../experts.rst:328
+msgid "petr.viktorin, ncoghlan"
+msgstr ""
+
+#: ../../experts.rst:329
+msgid "filesystem"
+msgstr ""
+
+#: ../../experts.rst:330
+msgid "f-strings"
+msgstr ""
+
+#: ../../experts.rst:331
+msgid "GUI"
+msgstr ""
+
+#: ../../experts.rst:332
+msgid "i18n"
+msgstr ""
+
+#: ../../experts.rst:332
+msgid "lemburg, eric.araujo"
+msgstr ""
+
+#: ../../experts.rst:333
+msgid "import machinery"
+msgstr ""
+
+#: ../../experts.rst:333
+msgid "brett.cannon, ncoghlan, eric.snow"
+msgstr ""
+
+#: ../../experts.rst:336
+msgid "mathematics"
+msgstr ""
+
+#: ../../experts.rst:336
+msgid "mark.dickinson, lemburg, stutzbach, rhettinger"
+msgstr ""
+
+#: ../../experts.rst:337
+msgid "memory management"
+msgstr ""
+
+#: ../../experts.rst:337
+msgid "tim.peters, lemburg, twouters"
+msgstr ""
+
+#: ../../experts.rst:338
+msgid "memoryview"
+msgstr ""
+
+#: ../../experts.rst:339
+msgid "networking"
+msgstr ""
+
+#: ../../experts.rst:339
+msgid "giampaolo.rodola,"
+msgstr ""
+
+#: ../../experts.rst:340
+msgid "object model"
+msgstr ""
+
+#: ../../experts.rst:340
+msgid "benjamin.peterson, twouters"
+msgstr ""
+
+#: ../../experts.rst:341
+msgid "packaging"
+msgstr ""
+
+#: ../../experts.rst:341
+msgid "tarek, lemburg, alexis, eric.araujo, dstufft, paul.moore"
+msgstr ""
+
+#: ../../experts.rst:342
+msgid "pattern matching"
+msgstr ""
+
+#: ../../experts.rst:342
+msgid "brandtbucher*"
+msgstr ""
+
+#: ../../experts.rst:343
+msgid "peg parser"
+msgstr ""
+
+#: ../../experts.rst:344
+msgid "performance"
+msgstr ""
+
+#: ../../experts.rst:344
+msgid ""
+"brett.cannon, vstinner, serhiy.storchaka, yselivanov, rhettinger, "
+"Mark.Shannon"
+msgstr ""
+
+#: ../../experts.rst:345
+msgid "pip"
+msgstr ""
+
+#: ../../experts.rst:345
+msgid "ncoghlan, dstufft, paul.moore, Marcus.Smith, pradyunsg"
+msgstr ""
+
+#: ../../experts.rst:346
+msgid "py3 transition"
+msgstr ""
+
+#: ../../experts.rst:347
+msgid "release management"
+msgstr ""
+
+#: ../../experts.rst:347
+msgid ""
+"tarek, lemburg, benjamin.peterson, barry, gvanrossum, anthonybaxter, "
+"eric.araujo, ned.deily, georg.brandl, mdk"
+msgstr ""
+
+#: ../../experts.rst:350
+msgid "str.format"
+msgstr ""
+
+#: ../../experts.rst:351
+msgid "testing"
+msgstr ""
+
+#: ../../experts.rst:351
+msgid "michael.foord, ezio.melotti"
+msgstr ""
+
+#: ../../experts.rst:352
+msgid "test coverage"
+msgstr ""
+
+#: ../../experts.rst:353
+msgid "threads"
+msgstr ""
+
+#: ../../experts.rst:354
+msgid "time and dates"
+msgstr ""
+
+#: ../../experts.rst:354
+msgid "lemburg, belopolsky, p-ganssle"
+msgstr ""
+
+#: ../../experts.rst:355
+msgid "unicode"
+msgstr ""
+
+#: ../../experts.rst:355
+msgid "lemburg, ezio.melotti, benjamin.peterson,"
+msgstr ""
+
+#: ../../experts.rst:356
+msgid "version control"
+msgstr ""
+
+#: ../../experts.rst:356
+msgid "eric.araujo, ezio.melotti"
+msgstr ""
+
+#: ../../experts.rst:361
+msgid "Documentation Translations"
+msgstr ""
+
+#: ../../experts.rst:363
+msgid "Translation"
+msgstr ""
+
+#: ../../experts.rst:363
+msgid "Coordinator"
+msgstr ""
+
+#: ../../experts.rst:365
+msgid "French"
+msgstr ""
+
+#: ../../experts.rst:365
+msgid "mdk"
+msgstr ""
+
+#: ../../experts.rst:366
+msgid "Japanese"
+msgstr ""
+
+#: ../../experts.rst:366
+msgid "inada.naoki"
+msgstr ""
+
+#: ../../experts.rst:367
+msgid "Korean"
+msgstr ""
+
+#: ../../experts.rst:367
+msgid "flowdas"
+msgstr ""
+
+#: ../../experts.rst:368
+msgid "Bengali India"
+msgstr ""
+
+#: ../../experts.rst:368
+msgid "kushal.das"
+msgstr ""
+
+#: ../../experts.rst:369
+msgid "Hungarian"
+msgstr ""
+
+#: ../../experts.rst:369
+msgid "gbtami"
+msgstr ""
+
+#: ../../experts.rst:370
+msgid "Portuguese"
+msgstr ""
+
+#: ../../experts.rst:370
+msgid "rougeth"
+msgstr ""
+
+#: ../../experts.rst:371
+msgid "Chinese (TW)"
+msgstr ""
+
+#: ../../experts.rst:371
+msgid "mattwang44, josix"
+msgstr ""
+
+#: ../../experts.rst:372
+msgid "Chinese (CN)"
+msgstr ""
+
+#: ../../experts.rst:372
+msgid "zhsj"
+msgstr ""
+

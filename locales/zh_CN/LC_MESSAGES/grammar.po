@@ -1,0 +1,136 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2011-2021, Python Software Foundation
+# This file is distributed under the same license as the Python Developer's
+# Guide package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Developer's Guide \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-22 09:18+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../grammar.rst:4
+msgid "Changing CPython's Grammar"
+msgstr ""
+
+#: ../../grammar.rst:7
+msgid "Abstract"
+msgstr ""
+
+#: ../../grammar.rst:9
+msgid ""
+"There's more to changing Python's grammar than editing "
+":file:`Grammar/python.gram`.  Here's a checklist."
+msgstr ""
+
+#: ../../grammar.rst:13
+msgid ""
+"These instructions are for Python 3.9 and beyond.  Earlier versions use a"
+" different parser technology.  You probably shouldn't try to change the "
+"grammar of earlier Python versions, but if you really want to, use GitHub"
+" to track down the earlier version of this file in the devguide."
+msgstr ""
+
+#: ../../grammar.rst:19
+msgid ""
+"For more information on how to use the new parser, check the "
+":ref:`section on how to use CPython's parser <parser>`."
+msgstr ""
+
+#: ../../grammar.rst:23
+msgid "Checklist"
+msgstr ""
+
+#: ../../grammar.rst:25
+msgid ""
+"Note: sometimes things mysteriously don't work.  Before giving up, try "
+"``make clean``."
+msgstr ""
+
+#: ../../grammar.rst:27
+msgid ""
+":file:`Grammar/python.gram`: The grammar, with actions that build AST "
+"nodes.  After changing it, run ``make regen-pegen`` (or ``build.bat "
+"--regen`` on Windows), to regenerate :file:`Parser/parser.c`. (This runs "
+"Python's parser generator, ``Tools/peg_generator``)."
+msgstr ""
+
+#: ../../grammar.rst:32
+msgid ""
+":file:`Grammar/Tokens` is a place for adding new token types.  After "
+"changing it, run ``make regen-token`` to regenerate "
+":file:`Include/token.h`, :file:`Parser/token.c`, :file:`Lib/token.py` and"
+" :file:`Doc/library/token-list.inc`.  If you change both ``python.gram`` "
+"and ``Tokens``, run ``make regen-token`` before ``make regen-pegen``. On "
+"Windows, ``build.bat --regen`` will regenerate both at the same time."
+msgstr ""
+
+#: ../../grammar.rst:39
+msgid ""
+":file:`Parser/Python.asdl` may need changes to match the grammar.  Then "
+"run ``make regen-ast`` to regenerate :file:`Include/Python-ast.h` and "
+":file:`Python/Python-ast.c`."
+msgstr ""
+
+#: ../../grammar.rst:42
+msgid ""
+":file:`Parser/tokenizer.c` contains the tokenization code.  This is where"
+" you would add a new type of comment or string literal, for example."
+msgstr ""
+
+#: ../../grammar.rst:45
+msgid ""
+":file:`Python/ast.c` will need changes to validate AST objects involved "
+"with the grammar change."
+msgstr ""
+
+#: ../../grammar.rst:48
+msgid ""
+":file:`Python/ast_unparse.c` will need changes to unparse AST objects "
+"involved with the grammar change (\"unparsing\" is used to turn "
+"annotations into strings per :pep:`563`)."
+msgstr ""
+
+#: ../../grammar.rst:51
+msgid "The :doc:`compiler` has its own page."
+msgstr ""
+
+#: ../../grammar.rst:53
+msgid ""
+"``_Unparser`` in the :file:`Lib/ast.py` file may need changes to "
+"accommodate any modifications in the AST nodes."
+msgstr ""
+
+#: ../../grammar.rst:56
+msgid ""
+":file:`Doc/library/ast.rst` may need to be updated to reflect changes to "
+"AST nodes."
+msgstr ""
+
+#: ../../grammar.rst:58
+msgid "Add some usage of your new syntax to ``test_grammar.py``."
+msgstr ""
+
+#: ../../grammar.rst:60
+msgid "Certain changes may require tweaks to the library module :mod:`pyclbr`."
+msgstr ""
+
+#: ../../grammar.rst:62
+msgid ":file:`Lib/tokenize.py` needs changes to match changes to the tokenizer."
+msgstr ""
+
+#: ../../grammar.rst:64
+msgid ""
+"Documentation must be written! Specifically, one or more of the pages in "
+":file:`Doc/reference/` will need to be updated."
+msgstr ""
+

@@ -1,0 +1,43 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2011-2021, Python Software Foundation
+# This file is distributed under the same license as the Python Developer's
+# Guide package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Developer's Guide \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-22 09:18+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../silencewarnings.rst:4
+msgid "Silence Warnings From the Test Suite"
+msgstr ""
+
+#: ../../silencewarnings.rst:6
+msgid ""
+"When running Python's test suite, no warnings should result when you run "
+"it under :ref:`strenuous testing conditions <strenuous_testing>` (you can"
+" ignore the extra flags passed to ``test`` that cause randomness and "
+"parallel execution if you want). Unfortunately new warnings are added to "
+"Python on occasion which take some time to eliminate (e.g., "
+"``ResourceWarning``). Typically the easy warnings are dealt with quickly,"
+" but the more difficult ones that require some thought and work do not "
+"get fixed immediately."
+msgstr ""
+
+#: ../../silencewarnings.rst:14
+msgid ""
+"If you decide to tackle a warning you have found, open an issue on the "
+"`issue tracker`_ (if one has not already been opened) and say you are "
+"going to try and tackle the issue, and then proceed to fix the issue."
+msgstr ""
+

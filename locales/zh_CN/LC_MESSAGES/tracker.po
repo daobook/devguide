@@ -1,0 +1,434 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2011-2021, Python Software Foundation
+# This file is distributed under the same license as the Python Developer's
+# Guide package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Developer's Guide \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-22 09:18+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../tracker.rst:3
+msgid "Issue Tracking"
+msgstr ""
+
+#: ../../tracker.rst:8
+msgid "Using the Issue Tracker"
+msgstr ""
+
+#: ../../tracker.rst:10
+msgid ""
+"If you think you have found a bug in Python, you can report it to the "
+"`issue tracker`_. The `issue tracker`_ is also commonly referred to as "
+"`bugs.python.org` and `bpo`.  Documentation bugs can also be reported "
+"there."
+msgstr ""
+
+#: ../../tracker.rst:14
+msgid "You can report bugs with the issue tracker itself to the `meta tracker`_."
+msgstr ""
+
+#: ../../tracker.rst:16
+msgid ""
+"If you would like to file an issue about this devguide, please do so at "
+"the `devguide repo`_."
+msgstr ""
+
+#: ../../tracker.rst:21
+msgid "Checking if a bug already exists"
+msgstr ""
+
+#: ../../tracker.rst:23
+msgid ""
+"The first step before filing an issue report is to see whether the "
+"problem has already been reported.  Checking if the problem is an "
+"existing issue will:"
+msgstr ""
+
+#: ../../tracker.rst:26
+msgid ""
+"help you see if the problem has already been resolved or has been fixed "
+"for the next release"
+msgstr ""
+
+#: ../../tracker.rst:28
+msgid "save time for you and the developers"
+msgstr ""
+
+#: ../../tracker.rst:29
+msgid "help you learn what needs to be done to fix it"
+msgstr ""
+
+#: ../../tracker.rst:30
+msgid ""
+"determine if additional information, such as how to replicate the issue, "
+"is needed"
+msgstr ""
+
+#: ../../tracker.rst:33
+msgid ""
+"To see if an issue already exists, search the bug database using the "
+"search box on the top of the issue tracker page. An `advanced search`_ is"
+" also available by clicking on \"Search\" in the sidebar."
+msgstr ""
+
+#: ../../tracker.rst:39
+msgid "Reporting an issue"
+msgstr ""
+
+#: ../../tracker.rst:41
+msgid ""
+"If the problem you're reporting is not already in the `issue tracker`_, "
+"you need to log in by entering your user and password in the form on the "
+"left. If you don't already have a tracker account, select the "
+"\"Register\" link or, if you use `OpenID <https://openid.net>`_, one of "
+"the OpenID provider logos in the sidebar."
+msgstr ""
+
+#: ../../tracker.rst:47
+msgid "It is not possible to submit a bug report anonymously."
+msgstr ""
+
+#: ../../tracker.rst:49
+msgid ""
+"Once logged in, you can submit a bug by clicking on the \"Create New\" "
+"link in the sidebar."
+msgstr ""
+
+#: ../../tracker.rst:52
+msgid ""
+"The submission form has a number of fields, and they are described in "
+"detail in the :ref:`triaging` page.  This is a short summary:"
+msgstr ""
+
+#: ../../tracker.rst:55
+msgid ""
+"in the **Title** field, enter a *very* short description of the problem; "
+"less than ten words is good;"
+msgstr ""
+
+#: ../../tracker.rst:57
+msgid "in the **Type** field, select the type of your problem (usually behavior);"
+msgstr ""
+
+#: ../../tracker.rst:58
+msgid ""
+"if you know which **Components** and **Versions** are affected by the "
+"issue, you can select these too; otherwise, leave them blank;"
+msgstr ""
+
+#: ../../tracker.rst:60
+msgid ""
+"last but not least, you have to describe the problem in detail, including"
+" what you expected to happen, what did happen, and how to replicate the "
+"problem in the **Comment** field. Be sure to include whether any "
+"extension modules were involved, and what hardware and software platform "
+"you were using (including version information as appropriate)."
+msgstr ""
+
+#: ../../tracker.rst:68
+msgid "Understanding the issue's progress and status"
+msgstr ""
+
+#: ../../tracker.rst:70
+msgid ""
+"The triaging team will take care of setting other fields, and possibly "
+"assign the issue to a specific developer.  You will automatically receive"
+" an update each time an action is taken on the bug."
+msgstr ""
+
+#: ../../tracker.rst:76
+msgid "Disagreement With a Resolution on the Issue Tracker"
+msgstr ""
+
+#: ../../tracker.rst:78
+msgid ""
+"As humans, we will have differences of opinions from time to time. First "
+"and foremost, please be respectful that care, thought, and volunteer time"
+" went into the resolution."
+msgstr ""
+
+#: ../../tracker.rst:82
+msgid ""
+"With this in mind, take some time to consider any comments made in "
+"association with the resolution of the issue. On reflection, the "
+"resolution steps may seem more reasonable than you initially thought."
+msgstr ""
+
+#: ../../tracker.rst:86
+msgid ""
+"If you still feel the resolution is incorrect, then raise a thoughtful "
+"question on `python-dev`_. Further argument and disrespectful discourse "
+"on `python-dev`_ after a consensus has been reached amongst the core "
+"developers is unlikely to win any converts."
+msgstr ""
+
+#: ../../tracker.rst:91
+msgid ""
+"As a reminder, issues closed by a core developer have already been "
+"carefully considered. Please do not reopen a closed issue."
+msgstr ""
+
+#: ../../tracker.rst:100
+msgid "Helping Triage Issues"
+msgstr ""
+
+#: ../../tracker.rst:102
+msgid ""
+"Once you know your way around how Python's source files are structured "
+"and you are comfortable working with patches, a great way to contribute "
+"is to help triage issues. Do realize, though, that experience working on "
+"Python is needed in order to effectively help triage."
+msgstr ""
+
+#: ../../tracker.rst:107
+msgid ""
+"Around the clock, new issues are being opened on the `issue tracker`_ and"
+" existing issues are being updated. Every issue needs to be triaged to "
+"make sure various things are in proper order. Even without special "
+"privileges you can help with this process."
+msgstr ""
+
+#: ../../tracker.rst:114
+msgid "Classifying Reports"
+msgstr ""
+
+#: ../../tracker.rst:116
+msgid "For bugs, an issue needs to:"
+msgstr ""
+
+#: ../../tracker.rst:118
+msgid "clearly explain the bug so it can be reproduced"
+msgstr ""
+
+#: ../../tracker.rst:119
+msgid "include all relevant platform details"
+msgstr ""
+
+#: ../../tracker.rst:120
+msgid "state what version(s) of Python are affected by the bug."
+msgstr ""
+
+#: ../../tracker.rst:122
+msgid ""
+"These are things you can help with once you have experience developing "
+"for Python:"
+msgstr ""
+
+#: ../../tracker.rst:125
+msgid ""
+"try reproducing the bug: For instance, if a bug is not clearly explained "
+"enough for you to reproduce it then there is a good chance a core "
+"developer won't be able to either."
+msgstr ""
+
+#: ../../tracker.rst:128
+msgid ""
+"see if the issue happens on a different Python version: It is always "
+"helpful to know if a bug not only affects the in-development version of "
+"Python, but whether it also affects other versions in maintenance mode."
+msgstr ""
+
+#: ../../tracker.rst:131
+msgid ""
+"write a unit test: If the bug lacks a unit test that should end up in "
+"Python's test suite, having that written can be very helpful."
+msgstr ""
+
+#: ../../tracker.rst:134
+msgid ""
+"This is all helpful as it allows triagers (i.e., :ref:`people with the "
+"Developer role on the issue tracker <devrole>`) to properly classify an "
+"issue so it can be handled by the right core developers in a timely "
+"fashion."
+msgstr ""
+
+#: ../../tracker.rst:141
+msgid "Reviewing Patches"
+msgstr ""
+
+#: ../../tracker.rst:143
+msgid ""
+"If an issue has a patch attached that has not been reviewed, you can help"
+" by making sure the patch:"
+msgstr ""
+
+#: ../../tracker.rst:146
+msgid "follows the style guides"
+msgstr ""
+
+#: ../../tracker.rst:147
+msgid "applies cleanly to an up-to-date clone"
+msgstr ""
+
+#: ../../tracker.rst:148
+msgid "is a good solution to the problem it is trying to solve"
+msgstr ""
+
+#: ../../tracker.rst:149
+msgid "includes proper tests"
+msgstr ""
+
+#: ../../tracker.rst:150
+msgid "includes proper documentation changes"
+msgstr ""
+
+#: ../../tracker.rst:151
+msgid ""
+"submitter is listed in ``Misc/ACKS``, either already or the patch adds "
+"them"
+msgstr ""
+
+#: ../../tracker.rst:153
+msgid ""
+"Doing all of this allows core developers and :ref:`triagers <devrole>` to"
+" more quickly look for subtle issues that only people with extensive "
+"experience working on Python's code base will notice."
+msgstr ""
+
+#: ../../tracker.rst:159
+msgid "Finding an Issue You Can Help With"
+msgstr ""
+
+#: ../../tracker.rst:161
+msgid ""
+"If you want to help triage issues, you might also want to search for "
+"issues in modules which you have a working knowledge.  Search for the "
+"name of a module in the issue tracker or use the `advanced search`_ to "
+"search for specific components (e.g. \"Windows\" if you are a Windows "
+"developer, \"Extension Modules\" if you are familiar with C, etc.). "
+"Finally you can use the \"Random issue\" link in the sidebar to pick "
+"random issues until you find an issue that you like. You may find old "
+"issues that can be closed, either because they are no longer valid or "
+"they have a patch that is ready to be committed, but no one has had the "
+"time to do so."
+msgstr ""
+
+#: ../../tracker.rst:171
+msgid ""
+"In the sidebar you can also find links to summaries for easy issues and "
+"issues with a patch."
+msgstr ""
+
+#: ../../tracker.rst:178
+msgid "Gaining the \"Developer\" Role on the Issue Tracker"
+msgstr ""
+
+#: ../../tracker.rst:180
+msgid ""
+"When you have consistently shown the ability to properly help triage "
+"issues without guidance, you may request that you be given the "
+"\"Developer\" role on the `issue tracker`_. You can make the request of "
+"any person who already has the Developer role. If they decide you are "
+"ready to gain the extra privileges on the tracker they will then act as a"
+" mentor to you until you are ready to do things entirely on your own. "
+"There is no set rule as to how many issues you need to have helped with "
+"before or how long you have been participating. The key requirements are "
+"that you show the desire to help, you are able to work well with others "
+"(especially those already with the Developer role), and that have a firm "
+"grasp of how to do things on the issue tracker properly on your own."
+msgstr ""
+
+#: ../../tracker.rst:192
+msgid ""
+"Gaining the Developer role will allow you to set any value on any issue "
+"in the tracker, releasing you from the burden of having to ask others to "
+"set values on an issue for you in order to properly triage something. "
+"This will not only help speed up and simplify your work in helping out, "
+"but also help lessen the workload for everyone by gaining your help."
+msgstr ""
+
+#: ../../tracker.rst:200
+msgid "The Meta Tracker"
+msgstr ""
+
+#: ../../tracker.rst:202
+msgid ""
+"If you find an issue with the `issue tracker`_, you can report it to the "
+"`meta tracker`_.  The meta tracker is where you file issues against "
+"anything you come across when working with the issue tracker itself (e.g "
+"you can't attach a file, the layout is broken on your browser, Rietveld "
+"gave you an error, etc.)."
+msgstr ""
+
+#: ../../tracker.rst:208
+msgid ""
+"If you want to contribute to the tracker you can get a checkout of the "
+"source and install a local instance where to experiment.  You can find "
+"detailed instructions on the `Tracker Development`_ page."
+msgstr ""
+
+#: ../../tracker.rst
+msgid "*Issues with Python and documentation*"
+msgstr ""
+
+#: ../../tracker.rst:218
+msgid "`The Python issue tracker <https://bugs.python.org/>`_"
+msgstr ""
+
+#: ../../tracker.rst:218
+msgid "Where to report issues about Python."
+msgstr ""
+
+#: ../../tracker.rst:221
+msgid ""
+"`The New-bugs-announce mailing list "
+"<https://mail.python.org/mailman/listinfo/new-bugs-announce>`_"
+msgstr ""
+
+#: ../../tracker.rst:221
+msgid "Where all the new issues created on the tracker are reported."
+msgstr ""
+
+#: ../../tracker.rst:224
+msgid ""
+"`The Python-bugs-list mailing list "
+"<https://mail.python.org/mailman/listinfo/python-bugs-list>`_"
+msgstr ""
+
+#: ../../tracker.rst:224
+msgid "Where all the changes to issues are reported."
+msgstr ""
+
+#: ../../tracker.rst:226
+msgid "*The meta tracker and its development*"
+msgstr ""
+
+#: ../../tracker.rst:229
+msgid "`The meta tracker <https://github.com/python/psf-infra-meta/issues>`_"
+msgstr ""
+
+#: ../../tracker.rst:229
+msgid "Where to report issues about the tracker itself."
+msgstr ""
+
+#: ../../tracker.rst:232
+msgid ""
+"`The Tracker development wiki page "
+"<https://wiki.python.org/moin/TrackerDevelopment>`_"
+msgstr ""
+
+#: ../../tracker.rst:232
+msgid "Instructions about setting up a local instance of the bug tracker."
+msgstr ""
+
+#: ../../tracker.rst:234
+msgid ""
+"`The Tracker-discuss mailing list "
+"<https://mail.python.org/mailman/listinfo/tracker-discuss>`_"
+msgstr ""
+
+#: ../../tracker.rst:235
+msgid "Discussions about the bug tracker."
+msgstr ""
+

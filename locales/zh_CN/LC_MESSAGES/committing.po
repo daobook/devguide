@@ -1,0 +1,412 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2011-2021, Python Software Foundation
+# This file is distributed under the same license as the Python Developer's
+# Guide package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Developer's Guide \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-22 09:18+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../committing.rst:4
+msgid "Accepting Pull Requests"
+msgstr ""
+
+#: ../../committing.rst:8
+msgid ""
+"This page is a step-by-step guide for core developers who need to assess,"
+" merge, and possibly backport a pull request on the main repository."
+msgstr ""
+
+#: ../../committing.rst:12
+msgid "Assessing a pull request"
+msgstr ""
+
+#: ../../committing.rst:14
+msgid ""
+"Before you can accept a pull request, you need to make sure that it is "
+"ready to enter the public source tree. Ask yourself the following "
+"questions:"
+msgstr ""
+
+#: ../../committing.rst:19
+msgid "**Are there ongoing discussions at** ``bugs.python.org`` **(b.p.o.)?**"
+msgstr ""
+
+#: ../../committing.rst:18
+msgid ""
+"Read the linked b.p.o. issue. If there are ongoing discussions, then we "
+"need to have a resolution there before we can merge the pull request."
+msgstr ""
+
+#: ../../committing.rst:24
+msgid "**Was the pull request first made against the appropriate branch?**"
+msgstr ""
+
+#: ../../committing.rst:22
+msgid ""
+"The only branch that receives new features is ``main``, the in-"
+"development branch. Pull requests should only target bug-fix branches if "
+"an issue appears in only that version and possibly older versions."
+msgstr ""
+
+#: ../../committing.rst:30
+msgid "**Are the changes acceptable?**"
+msgstr ""
+
+#: ../../committing.rst:27
+msgid ""
+"If you want to share your work-in-progress code on a feature or bugfix, "
+"then you can open a ``WIP``-prefixed pull request, publish patches on the"
+" `issue tracker <https://bugs.python.org/>`_, or create a public fork of "
+"the repository."
+msgstr ""
+
+#: ../../committing.rst:33
+msgid "**Do the checks on the pull request show that the test suite passes?**"
+msgstr ""
+
+#: ../../committing.rst:33
+msgid "Make sure that all of the status checks are passing."
+msgstr ""
+
+#: ../../committing.rst:37
+msgid "**Is the patch in a good state?**"
+msgstr ""
+
+#: ../../committing.rst:36
+msgid ""
+"Check :ref:`patch` and :ref:`helptriage` to review what is expected of a "
+"patch."
+msgstr ""
+
+#: ../../committing.rst:43
+msgid "**Does the patch break backwards-compatibility without a strong reason?**"
+msgstr ""
+
+#: ../../committing.rst:40
+msgid ""
+":ref:`Run the entire test suite <runtests>` to make sure that everything "
+"still passes. If there is a change to the semantics, then there needs to "
+"be a strong reason, because it will cause some peoples' code to break. If"
+" you are unsure if the breakage is worth it, then ask on python-dev."
+msgstr ""
+
+#: ../../committing.rst:48
+msgid "**Does documentation need to be updated?**"
+msgstr ""
+
+#: ../../committing.rst:46
+msgid ""
+"If the pull request introduces backwards-incompatible changes (e.g. "
+"deprecating or removing a feature), then make sure that those changes are"
+" reflected in the documentation before you merge the pull request."
+msgstr ""
+
+#: ../../committing.rst:57
+msgid ""
+"**Were appropriate labels added to signify necessary backporting of the "
+"pull request?**"
+msgstr ""
+
+#: ../../committing.rst:51
+msgid ""
+"If it is determined that a pull request needs to be backported into one "
+"or more of the maintenance branches, then a core developer can apply the "
+"label ``needs backport to X.Y`` to the pull request. Once the backport "
+"pull request has been created, remove the ``needs backport to X.Y`` label"
+" from the original pull request. (Only core developers and members of the"
+" `Python Triage Team`_ can apply labels to GitHub pull requests)."
+msgstr ""
+
+#: ../../committing.rst:67
+msgid ""
+"**Does the pull request have a label indicating that the submitter has "
+"signed the CLA?**"
+msgstr ""
+
+#: ../../committing.rst:60
+msgid ""
+"Make sure that the contributor has signed a `Contributor Licensing "
+"Agreement <https://www.python.org/psf/contrib/contrib-form/>`_ (CLA), "
+"unless their change has no possible intellectual property associated with"
+" it (e.g. fixing a spelling mistake in documentation). To check if a "
+"contributor’s CLA has been received, go to `Check Python CLA <https"
+"://check-python-cla.herokuapp.com/>`_ and put in their GitHub username. "
+"For further questions about the CLA process, write to "
+"contributors@python.org."
+msgstr ""
+
+#: ../../committing.rst:75
+msgid ""
+"**Were** ``What's New in Python`` **and** ``Misc/NEWS.d/next`` "
+"**updated?**"
+msgstr ""
+
+#: ../../committing.rst:70
+msgid ""
+"If the change is particularly interesting for end users (e.g. new "
+"features, significant improvements, or backwards-incompatible changes), "
+"then an entry in the ``What's New in Python`` document (in "
+"``Doc/whatsnew/``) should be added as well. Changes that affect only "
+"documentation generally do not require a ``NEWS`` entry. (See the "
+"following section for more information.)"
+msgstr ""
+
+#: ../../committing.rst:78
+msgid "Updating NEWS and What's New in Python"
+msgstr ""
+
+#: ../../committing.rst:80
+msgid ""
+"Almost all changes made to the code base deserve an entry in "
+"``Misc/NEWS.d``. If the change is particularly interesting for end users "
+"(e.g. new features, significant improvements, or backwards-incompatible "
+"changes), then an entry in the ``What's New in Python`` document (in "
+"``Doc/whatsnew/``) should be added as well. Changes that affect "
+"documentation only generally do not require a ``NEWS`` entry."
+msgstr ""
+
+#: ../../committing.rst:87
+msgid ""
+"There are two notable exceptions to this general principle, and they both"
+" relate to changes that:"
+msgstr ""
+
+#: ../../committing.rst:90
+msgid "Already have a ``NEWS`` entry"
+msgstr ""
+
+#: ../../committing.rst:91
+msgid ""
+"Have not yet been included in any formal release (including alpha and "
+"beta releases)"
+msgstr ""
+
+#: ../../committing.rst:94
+msgid "These are the two exceptions:"
+msgstr ""
+
+#: ../../committing.rst:96
+msgid ""
+"**If a change is reverted prior to release**, then the corresponding "
+"entry is simply removed. Otherwise, a new entry must be added noting that"
+" the change has been reverted (e.g. when a feature is released in an "
+"alpha and then cut prior to the first beta)."
+msgstr ""
+
+#: ../../committing.rst:101
+msgid ""
+"**If a change is a fix (or other adjustment) to an earlier unreleased "
+"change and the original** ``NEWS`` **entry remains valid**, then no "
+"additional entry is needed."
+msgstr ""
+
+#: ../../committing.rst:105
+msgid ""
+"If a change needs an entry in ``What's New in Python``, then it is very "
+"likely not suitable for including in a maintenance release."
+msgstr ""
+
+#: ../../committing.rst:108
+msgid ""
+"``NEWS`` entries go into the ``Misc/NEWS.d`` directory as individual "
+"files. The ``NEWS`` entry can be created by using `blurb-it <https"
+"://blurb-it.herokuapp.com/>`_, or the `blurb "
+"<https://pypi.org/project/blurb/>`_ tool and its ``blurb add`` command."
+msgstr ""
+
+#: ../../committing.rst:113
+msgid ""
+"If you are unable to use the tool, then you can create the ``NEWS`` entry"
+" file manually. The ``Misc/NEWS.d`` directory contains a sub-directory "
+"named ``next``, which contains various sub-directories representing "
+"classifications for what was affected (e.g. ``Misc/NEWS.d/next/Library`` "
+"for changes relating to the standard library). The file name itself "
+"should be in the format ``<datetime>.bpo-<issue-number>.<nonce>.rst``:"
+msgstr ""
+
+#: ../../committing.rst:120
+msgid ""
+"``<datetime>`` is today's date joined with a hyphen (``-``) to the "
+"current time, in the ``YYYY-MM-DD-hh-mm-ss`` format (e.g. "
+"``2017-05-27-16-46-23``)."
+msgstr ""
+
+#: ../../committing.rst:122
+msgid ""
+"``<issue-number>`` is the issue number the change is for (e.g. ``12345`` "
+"for ``bpo-12345``)."
+msgstr ""
+
+#: ../../committing.rst:124
+msgid ""
+"``<nonce>`` is a unique string to guarantee that the file name is unique "
+"across branches (e.g. ``Yl4gI2``). It is typically six characters long, "
+"but it can be any length of letters and numbers. Its uniqueness can be "
+"satisfied by typing random characters on your keyboard."
+msgstr ""
+
+#: ../../committing.rst:129
+msgid ""
+"As a result, a file name can look something like "
+"``Misc/NEWS.d/next/Library/2017-05-27-16-46-23.bpo-12345.Yl4gI2.rst``."
+msgstr ""
+
+#: ../../committing.rst:132
+msgid ""
+"The contents of a ``NEWS`` file should be valid reStructuredText. An 80 "
+"character column width should be used. There is no indentation or leading"
+" marker in the file (e.g. ``-``). There is also no need to start the "
+"entry with the issue number since it is part of the file name. You can "
+"use :ref:`inline markups <rest-inline-markup>` too. Here is an example of"
+" a ``NEWS`` entry::"
+msgstr ""
+
+#: ../../committing.rst:142
+msgid ""
+"The inline Sphinx roles like ``:func:`` can be used help readers find "
+"more information. You can build HTML and verify that the link target is "
+"appropriate by using :ref:`make html <building-using-make>`."
+msgstr ""
+
+#: ../../committing.rst:146
+msgid ""
+"While Sphinx roles can be beneficial to readers, they are not required. "
+"Inline ````code blocks```` can be used instead."
+msgstr ""
+
+#: ../../committing.rst:151
+msgid "Working with Git_"
+msgstr ""
+
+#: ../../committing.rst:154
+msgid ":ref:`gitbootcamp`"
+msgstr ""
+
+#: ../../committing.rst:156
+msgid ""
+"As a core developer, you have the ability to push changes to the official"
+" Python repositories, so you need to be careful with your workflow:"
+msgstr ""
+
+#: ../../committing.rst:159
+msgid ""
+"**You should not push new branches to the main repository.**  You can "
+"still use them in the fork that you use for the development of patches. "
+"You can also push these branches to a separate public repository for "
+"maintenance work before it is integrated into the main repository."
+msgstr ""
+
+#: ../../committing.rst:164
+msgid ""
+"**You should not commit directly into the** ``main`` **branch, or any of "
+"the maintenance branches.** You should commit against your own feature "
+"branch, and then create a pull request."
+msgstr ""
+
+#: ../../committing.rst:168
+msgid ""
+"**For a small change, you can make a quick edit through the GitHub web "
+"UI.** If you choose to use the web UI, be aware that GitHub will create a"
+" new branch in the main CPython repository rather than in your fork. "
+"Delete this newly created branch after it has been merged into the "
+"``main`` branch or any of the maintenance branches. To keep the CPython "
+"repository tidy, remove the new branch within a few days."
+msgstr ""
+
+#: ../../committing.rst:175
+msgid ""
+"Keep a fork of the main repository, since it will allow you to revert all"
+" local changes (even committed ones) if you're not happy with your local "
+"clone."
+msgstr ""
+
+#: ../../committing.rst:186
+msgid "Seeing active branches"
+msgstr ""
+
+#: ../../committing.rst:188
+msgid ""
+"If you use ``git branch``, then you will see a :ref:`list of branches "
+"<branchstatus>`. The only branch that receives new features is ``main``, "
+"the in-development branch. The other branches receive only bug fixes or "
+"security fixes."
+msgstr ""
+
+#: ../../committing.rst:197
+msgid "Backporting changes to an older version"
+msgstr ""
+
+#: ../../committing.rst:199
+msgid ""
+"If it is determined that a pull request needs to be backported into one "
+"or more of the maintenance branches, then a core developer can apply the "
+"label ``needs backport to X.Y`` to the pull request."
+msgstr ""
+
+#: ../../committing.rst:203
+msgid ""
+"After the pull request has been merged, miss-islington (bot) will first "
+"try to do the backport automatically. If miss-islington is unable to do "
+"it, then the pull request author or the core developer who merged it "
+"should look into backporting it themselves, using the backport generated "
+"by cherry_picker.py_ as a starting point."
+msgstr ""
+
+#: ../../committing.rst:209
+msgid ""
+"You can get the commit hash from the original pull request, or you can "
+"use ``git log`` on the ``main`` branch. To display the 10 most recent "
+"commit hashes and their first line of the commit, use the following "
+"command::"
+msgstr ""
+
+#: ../../committing.rst:217
+msgid ""
+"You can prefix the backport pull request with the branch, and reference "
+"the pull request number from ``main``. Here is an example::"
+msgstr ""
+
+#: ../../committing.rst:222
+msgid "Note that cherry_picker.py_ adds the branch prefix automatically."
+msgstr ""
+
+#: ../../committing.rst:224
+msgid ""
+"Once the backport pull request has been created, remove the ``needs "
+"backport to X.Y`` label from the original pull request. (Only core "
+"developers and members of the `Python Triage Team`_ can apply labels to "
+"GitHub pull requests)."
+msgstr ""
+
+#: ../../committing.rst:234
+msgid "Reverting a merged pull request"
+msgstr ""
+
+#: ../../committing.rst:236
+msgid ""
+"To revert a merged pull request, press the ``Revert`` button at the "
+"bottom of the pull request. That will bring up the page to create a new "
+"pull request where the commit can be reverted. It will also create a new "
+"branch on the main CPython repository. Delete the branch once the pull "
+"request has been merged."
+msgstr ""
+
+#: ../../committing.rst:242
+msgid ""
+"Always include the reason for reverting the commit to help others "
+"understand why it was done. The reason should be included as part of the "
+"commit message. Here is an example::"
+msgstr ""
+

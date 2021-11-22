@@ -1,0 +1,193 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2011-2021, Python Software Foundation
+# This file is distributed under the same license as the Python Developer's
+# Guide package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Developer's Guide \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-22 09:18+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../help.rst:4
+msgid "Where to Get Help"
+msgstr ""
+
+#: ../../help.rst:6
+msgid ""
+"If you are working on Python it is very possible you will come across an "
+"issue where you need some assistance to solve it (this happens to core "
+"developers all the time)."
+msgstr ""
+
+#: ../../help.rst:10
+msgid ""
+"Should you require help, there are a :ref:`variety of options available "
+"<communication>` to seek assistance. If the question involves process or "
+"tool usage then please check the rest of this guide first as it should "
+"answer your question."
+msgstr ""
+
+#: ../../help.rst:16
+msgid "Discourse"
+msgstr ""
+
+#: ../../help.rst:18
+msgid ""
+"Python has a hosted `Discourse`_ instance. Be sure to visit the related "
+"Core categories, such as `Core Development <https://discuss.python.org/c"
+"/core-dev/23>`_ and `Core Workflow <https://discuss.python.org/c/core-"
+"workflow/8>`_."
+msgstr ""
+
+#: ../../help.rst:26
+msgid "Mailing Lists"
+msgstr ""
+
+#: ../../help.rst:28
+msgid ""
+"Further options for seeking assistance include the `python-ideas`_ and "
+"`python-dev`_ mailing lists. Python-ideas contains discussion of "
+"speculative Python language ideas for possible inclusion into the "
+"language. If an idea gains traction it can then be discussed and honed to"
+" the point of becoming a solid proposal and presented on python-dev.  "
+"Python-dev contains discussion of current Python design issues, release "
+"mechanics, and maintenance of existing releases.  These mailing lists are"
+" for questions involving the development *of* Python, **not** for "
+"development *with* Python."
+msgstr ""
+
+#: ../../help.rst:41
+msgid "Ask #python-dev"
+msgstr ""
+
+#: ../../help.rst:43
+msgid ""
+"If you are comfortable with IRC you can try asking on ``#python-dev`` (on"
+" the `Libera.Chat`_ network). Typically there are a number of experienced"
+" developers, ranging from triagers to core developers, who can answer "
+"questions about developing for Python.  As with the mailing lists, "
+"``#python-dev`` is for questions involving the development *of* Python "
+"whereas ``#python`` is for questions concerning development *with* "
+"Python."
+msgstr ""
+
+#: ../../help.rst:52
+msgid ""
+"You may not be able to access the history of this channel, so it cannot "
+"be used as a \"knowledge base\" of sorts."
+msgstr ""
+
+#: ../../help.rst:58
+msgid "Zulip"
+msgstr ""
+
+#: ../../help.rst:60
+msgid ""
+"An alternative to IRC is our own `Zulip`_ instance.  There are different "
+"streams for asking help with core development, as well as core "
+"developers' office hour stream. It is preferred that you ask questions "
+"here first or schedule an office hour, before posting to python-dev "
+"mailing list or filing bugs."
+msgstr ""
+
+#: ../../help.rst:67
+msgid ""
+"This is no longer actively monitored by core devs. Consider asking your "
+"questions on Discourse or on the `python-dev`_ mailing list."
+msgstr ""
+
+#: ../../help.rst:74
+msgid "Core Mentorship"
+msgstr ""
+
+#: ../../help.rst:76
+msgid ""
+"If you are interested in improving Python and contributing to its "
+"development, but don’t yet feel entirely comfortable with the public "
+"channels mentioned above, `Python Mentors`_ are here to help you.  Python"
+" is fortunate to have a community of volunteer core developers willing to"
+" mentor anyone wishing to contribute code, work on bug fixes or improve "
+"documentation.  Everyone is welcomed and encouraged to contribute."
+msgstr ""
+
+#: ../../help.rst:89
+msgid "Core Developers Office Hours"
+msgstr ""
+
+#: ../../help.rst:91
+msgid ""
+"Several core developers have set aside time to host mentorship office "
+"hours. During the office hour, core developers are available to help "
+"contributors with our process, answer questions, and help lower the "
+"barrier of contributing and becoming Python core developers."
+msgstr ""
+
+#: ../../help.rst:96
+msgid ""
+"The PSF's code of conduct applies for interactions with core developers "
+"during office hours."
+msgstr ""
+
+#: ../../help.rst:100
+msgid "Core Developer"
+msgstr ""
+
+#: ../../help.rst:100
+msgid "Schedule"
+msgstr ""
+
+#: ../../help.rst:100
+msgid "Details"
+msgstr ""
+
+#: ../../help.rst:102
+msgid "Zachary Ware"
+msgstr ""
+
+#: ../../help.rst:102
+msgid "See details link"
+msgstr ""
+
+#: ../../help.rst:102
+msgid "Schedule at https://calendly.com/zware"
+msgstr ""
+
+#: ../../help.rst:104
+msgid "Mariatta Wijaya"
+msgstr ""
+
+#: ../../help.rst:104
+msgid "Thursdays 7PM - 8PM Pacific (Vancouver, Canada Timezone)"
+msgstr ""
+
+#: ../../help.rst:104
+msgid ""
+"In `Python's Zulip Chat`_, Core > Office Hour stream. A reminder will be "
+"posted to both Zulip and `Mariatta's twitter`_ account 24 hours before "
+"the start."
+msgstr ""
+
+#: ../../help.rst:115
+msgid "File a Bug"
+msgstr ""
+
+#: ../../help.rst:117
+msgid ""
+"If you strongly suspect you have stumbled on a bug (be it in the build "
+"process, in the test suite, or in other areas), then open an issue on the"
+" `issue tracker`_.  As with every bug report it is strongly advised that "
+"you detail which conditions triggered it (including the OS name and "
+"version, and what you were trying to do), as well as the exact error "
+"message you encountered."
+msgstr ""
+

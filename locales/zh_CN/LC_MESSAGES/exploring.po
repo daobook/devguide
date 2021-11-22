@@ -1,0 +1,311 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2011-2021, Python Software Foundation
+# This file is distributed under the same license as the Python Developer's
+# Guide package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Developer's Guide \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-22 09:18+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../exploring.rst:4
+msgid "Exploring CPython's Internals"
+msgstr ""
+
+#: ../../exploring.rst:6
+msgid ""
+"This is a quick guide for people who are interested in learning more "
+"about CPython's internals. It provides a summary of the source code "
+"structure and contains references to resources providing a more in-depth "
+"view."
+msgstr ""
+
+#: ../../exploring.rst:12
+msgid "CPython Source Code Layout"
+msgstr ""
+
+#: ../../exploring.rst:14
+msgid ""
+"This guide gives an overview of CPython's code structure. It serves as a "
+"summary of file locations for modules and builtins."
+msgstr ""
+
+#: ../../exploring.rst:17
+msgid "For Python modules, the typical layout is:"
+msgstr ""
+
+#: ../../exploring.rst:19
+msgid ":file:`Lib/{<module>}.py`"
+msgstr ""
+
+#: ../../exploring.rst:20
+msgid ":file:`Modules/_{<module>}.c` (if there's also a C accelerator module)"
+msgstr ""
+
+#: ../../exploring.rst:21 ../../exploring.rst:27
+msgid ":file:`Lib/test/test_{<module>}.py`"
+msgstr ""
+
+#: ../../exploring.rst:22 ../../exploring.rst:28
+msgid ":file:`Doc/library/{<module>}.rst`"
+msgstr ""
+
+#: ../../exploring.rst:24
+msgid "For extension-only modules, the typical layout is:"
+msgstr ""
+
+#: ../../exploring.rst:26
+msgid ":file:`Modules/{<module>}module.c`"
+msgstr ""
+
+#: ../../exploring.rst:30
+msgid "For builtin types, the typical layout is:"
+msgstr ""
+
+#: ../../exploring.rst:32
+msgid ":file:`Objects/{<builtin>}object.c`"
+msgstr ""
+
+#: ../../exploring.rst:33
+msgid ":file:`Lib/test/test_{<builtin>}.py`"
+msgstr ""
+
+#: ../../exploring.rst:34
+msgid ":file:`Doc/library/stdtypes.rst`"
+msgstr ""
+
+#: ../../exploring.rst:36
+msgid "For builtin functions, the typical layout is:"
+msgstr ""
+
+#: ../../exploring.rst:38
+msgid ":file:`Python/bltinmodule.c`"
+msgstr ""
+
+#: ../../exploring.rst:39
+msgid ":file:`Lib/test/test_builtin.py`"
+msgstr ""
+
+#: ../../exploring.rst:40
+msgid ":file:`Doc/library/functions.rst`"
+msgstr ""
+
+#: ../../exploring.rst:42
+msgid "Some exceptions:"
+msgstr ""
+
+#: ../../exploring.rst:44
+msgid "builtin type ``int`` is at :file:`Objects/longobject.c`"
+msgstr ""
+
+#: ../../exploring.rst:45
+msgid "builtin type ``str`` is at :file:`Objects/unicodeobject.c`"
+msgstr ""
+
+#: ../../exploring.rst:46
+msgid "builtin module ``sys`` is at :file:`Python/sysmodule.c`"
+msgstr ""
+
+#: ../../exploring.rst:47
+msgid "builtin module ``marshal`` is at :file:`Python/marshal.c`"
+msgstr ""
+
+#: ../../exploring.rst:48
+msgid "Windows-only module ``winreg`` is at :file:`PC/winreg.c`"
+msgstr ""
+
+#: ../../exploring.rst:52
+msgid "Additional References"
+msgstr ""
+
+#: ../../exploring.rst:54
+msgid ""
+"For over 20 years the CPython code base has been changing and evolving. "
+"Here's a sample of resources about the architecture of CPython aimed at "
+"building your understanding of both the 2.x and 3.x versions of CPython:"
+msgstr ""
+
+#: ../../exploring.rst:59
+msgid "**Current references**"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid "Title"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid "Brief"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid "Author"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid "Version"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid "`A guide from parser to objects, observed using GDB`_"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid "Code walk from Parser, AST, Sym Table and Objects"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid "Louie Lu"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid "3.7.a0"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid "`Green Tree Snakes`_"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid "The missing Python AST docs"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid "Thomas Kluyver"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid "3.6"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid "`Yet another guided tour of CPython`_"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid "A guide for how CPython REPL works"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid "Guido van Rossum"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid "3.5"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid "`Python Asynchronous I/O Walkthrough`_"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid "How CPython async I/O, generator and coroutine works"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid "Philip Guo"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid "`Coding Patterns for Python Extensions`_"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid "Reliable patterns of coding Python Extensions in C"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid "Paul Ross"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid "3.4"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid "`Your Guide to the CPython Source Code`_"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid "Your Guide to the CPython Source Code"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid "Anthony Shaw"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid "3.8"
+msgstr ""
+
+#: ../../exploring.rst:70
+msgid "**Historical references**"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid "`Python's Innards Series`_"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid "ceval, objects, pystate and miscellaneous topics"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid "Yaniv Aknin"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid "3.1"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid "`Eli Bendersky's Python Internals`_"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid "Objects, Symbol tables and miscellaneous topics"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid "Eli Bendersky"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid "3.x"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid "`A guide from parser to objects, observed using Eclipse`_"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid "Prashanth Raghu"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid "2.7.12"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid ""
+"`CPython internals: A ten-hour codewalk through the Python interpreter "
+"source code`_"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid "Code walk from source code to generators"
+msgstr ""
+
+#: ../../exploring.rst:1
+msgid "2.7.8"
+msgstr ""
+

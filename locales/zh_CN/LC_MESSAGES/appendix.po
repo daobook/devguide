@@ -1,0 +1,168 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2011-2021, Python Software Foundation
+# This file is distributed under the same license as the Python Developer's
+# Guide package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Developer's Guide \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-22 09:18+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../appendix.rst:2
+msgid "Appendix: Topics"
+msgstr ""
+
+#: ../../appendix.rst:5
+msgid "Basics for contributors"
+msgstr ""
+
+#: ../../appendix.rst:7 ../../appendix.rst:18
+msgid "**Recommended reading**"
+msgstr ""
+
+#: ../../appendix.rst:9 ../../appendix.rst:20
+msgid ":doc:`setup`"
+msgstr ""
+
+#: ../../appendix.rst:10 ../../appendix.rst:21 ../../appendix.rst:33
+msgid ":doc:`pullrequest`"
+msgstr ""
+
+#: ../../appendix.rst:12
+msgid ":doc:`help`"
+msgstr ""
+
+#: ../../appendix.rst:13
+msgid ":doc:`communication`"
+msgstr ""
+
+#: ../../appendix.rst:16
+msgid "Core developers"
+msgstr ""
+
+#: ../../appendix.rst:22
+msgid ":doc:`committing`"
+msgstr ""
+
+#: ../../appendix.rst:24
+msgid ":doc:`coredev`"
+msgstr ""
+
+#: ../../appendix.rst:25
+msgid ":doc:`developers`"
+msgstr ""
+
+#: ../../appendix.rst:26
+msgid ":doc:`motivations`"
+msgstr ""
+
+#: ../../appendix.rst:27
+msgid ":doc:`experts`"
+msgstr ""
+
+#: ../../appendix.rst:30
+msgid "Development workflow for contributors"
+msgstr ""
+
+#: ../../appendix.rst:32
+msgid ":doc:`devcycle`"
+msgstr ""
+
+#: ../../appendix.rst:34
+msgid ":doc:`fixingissues`"
+msgstr ""
+
+#: ../../appendix.rst:37
+msgid "Documenting Python and style guide"
+msgstr ""
+
+#: ../../appendix.rst:39
+msgid ":doc:`docquality`"
+msgstr ""
+
+#: ../../appendix.rst:40
+msgid ":doc:`documenting`"
+msgstr ""
+
+#: ../../appendix.rst:43
+msgid "Issue tracking and triaging"
+msgstr ""
+
+#: ../../appendix.rst:45
+msgid ":doc:`tracker`"
+msgstr ""
+
+#: ../../appendix.rst:46
+msgid ":doc:`triaging`"
+msgstr ""
+
+#: ../../appendix.rst:49
+msgid "Language development in depth"
+msgstr ""
+
+#: ../../appendix.rst:51
+msgid ":doc:`exploring`"
+msgstr ""
+
+#: ../../appendix.rst:52
+msgid ":doc:`grammar`"
+msgstr ""
+
+#: ../../appendix.rst:53
+msgid ":doc:`compiler`"
+msgstr ""
+
+#: ../../appendix.rst:54
+msgid ":doc:`garbage_collector`"
+msgstr ""
+
+#: ../../appendix.rst:55
+msgid ":doc:`stdlibchanges`"
+msgstr ""
+
+#: ../../appendix.rst:56
+msgid ":doc:`langchanges`"
+msgstr ""
+
+#: ../../appendix.rst:57
+msgid ":doc:`porting`"
+msgstr ""
+
+#: ../../appendix.rst:60
+msgid "Testing and continuous integration"
+msgstr ""
+
+#: ../../appendix.rst:62
+msgid ":doc:`runtests`"
+msgstr ""
+
+#: ../../appendix.rst:63
+msgid ":doc:`coverage`"
+msgstr ""
+
+#: ../../appendix.rst:64
+msgid ":doc:`silencewarnings`"
+msgstr ""
+
+#: ../../appendix.rst:65
+msgid ":doc:`buildbots`"
+msgstr ""
+
+#: ../../appendix.rst:66
+msgid ":doc:`buildworker`"
+msgstr ""
+
+#: ../../appendix.rst:67
+msgid ":doc:`coverity`"
+msgstr ""
+

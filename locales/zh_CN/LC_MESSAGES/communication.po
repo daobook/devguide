@@ -1,0 +1,197 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2011-2021, Python Software Foundation
+# This file is distributed under the same license as the Python Developer's
+# Guide package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Developer's Guide \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-22 09:18+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../communication.rst:4
+msgid "Following Python's Development"
+msgstr ""
+
+#: ../../communication.rst:6
+msgid ""
+"Python's development is communicated through a myriad of ways, mostly "
+"through mailing lists, but also other forms."
+msgstr ""
+
+#: ../../communication.rst:12
+msgid "Mailing Lists"
+msgstr ""
+
+#: ../../communication.rst:14
+msgid ""
+"python-dev_ is the primary mailing list for discussions about Python's "
+"development. The list is open to the public and is subscribed to by all "
+"core developers plus many people simply interested in following Python's "
+"development. Discussion is focused on issues related to Python's "
+"development, such as how to handle a specific issue, a PEP, etc."
+msgstr ""
+
+#: ../../communication.rst:20
+msgid ""
+"Ideas about new functionality should **not** start here and instead "
+"should be sent to python-ideas_."
+msgstr ""
+
+#: ../../communication.rst:22
+msgid ""
+"Technical support questions should also not be asked here and instead "
+"should go to python-list_ or python-help_."
+msgstr ""
+
+#: ../../communication.rst:25
+msgid ""
+"Python-ideas_ is a mailing list open to the public to discuss ideas on "
+"changing Python. If a new idea does not start here (or python-list_, "
+"discussed below), it will get redirected here."
+msgstr ""
+
+#: ../../communication.rst:29
+msgid ""
+"Sometimes people post new ideas to python-list_ to gather community "
+"opinion before heading to python-ideas_. The list is also sometimes known"
+" as comp.lang.python, the name of the newsgroup it mirrors (it is also "
+"known by the abbreviation c.l.py)."
+msgstr ""
+
+#: ../../communication.rst:34
+msgid ""
+"The python-committers_ mailing list is a private mailing list for core "
+"developers (the archives are publicly available). If something only "
+"affects core developers (e.g., the tree is frozen for commits, etc.), it "
+"is discussed here instead of python-dev to keep traffic down on the "
+"latter."
+msgstr ""
+
+#: ../../communication.rst:40
+msgid ""
+"Python-checkins_ sends out an email for every commit to Python's various "
+"repositories from https://github.com/python/cpython. All core developers "
+"subscribe to this list and are known to reply to these emails to make "
+"comments about various issues they catch in the commit. Replies get "
+"redirected to python-dev."
+msgstr ""
+
+#: ../../communication.rst:46
+msgid ""
+"There are two mailing lists related to issues on the `issue tracker`_. If"
+" you only want an email for when a new issue is open, subscribe to new-"
+"bugs-announce_. If you would rather receive an email for all changes made"
+" to any issue, subscribe to python-bugs-list_."
+msgstr ""
+
+#: ../../communication.rst:51
+msgid ""
+"General Python questions should go to `python-list`_ or `tutor`_ or "
+"similar resources, such as StackOverflow_ or the ``#python`` IRC channel "
+"on Libera.Chat_."
+msgstr ""
+
+#: ../../communication.rst:55
+msgid ""
+"`Core-Workflow <https://mail.python.org/mm3/mailman3/lists/core-"
+"workflow.python.org/>`_ mailing list is the place to discuss and work on "
+"improvements to the CPython core development workflow."
+msgstr ""
+
+#: ../../communication.rst:59
+msgid ""
+"A complete list of Python mailing lists can be found at "
+"https://mail.python.org/mailman/listinfo. Most lists are also mirrored at"
+" `GMANE <https://gmane.io/>`_ and can be read and posted to in various "
+"ways, including via web browsers, NNTP newsreaders, and RSS feed readers."
+msgstr ""
+
+#: ../../communication.rst:79
+msgid "Discourse"
+msgstr ""
+
+#: ../../communication.rst:81
+msgid ""
+"We have our own `Discourse`_ forum for both developers and users. This "
+"forum complements the `python-dev`_, `python-ideas`_, `python-help`_, and"
+" `python-list`_ mailing lists. Also, voting for new core developers takes"
+" place at `Discourse`_."
+msgstr ""
+
+#: ../../communication.rst:90
+msgid "IRC"
+msgstr ""
+
+#: ../../communication.rst:92
+msgid ""
+"Some core developers enjoy spending time on IRC discussing various issues"
+" regarding Python's development in the ``#python-dev`` channel on "
+"``irc.libera.chat``. This is not a place to ask for help with Python, but"
+" to discuss issues related to Python's own development. See also the "
+"``#python-dev-notifs`` channel for bots notifications."
+msgstr ""
+
+#: ../../communication.rst:100
+msgid "Blogs"
+msgstr ""
+
+#: ../../communication.rst:102
+msgid ""
+"Several core developers are active bloggers and discuss Python's "
+"development that way. You can find their blogs (and various other "
+"developers who use Python) at http://planetpython.org/."
+msgstr ""
+
+#: ../../communication.rst:108
+msgid "Standards of behaviour in these communication channels"
+msgstr ""
+
+#: ../../communication.rst:109
+msgid ""
+"We try to foster environments of mutual respect, tolerance and "
+"encouragement, as described in the PSF's `Diversity Statement`_. Abiding "
+"by the guidelines in this document and asking questions or posting "
+"suggestions in the appropriate channels are an excellent way to get "
+"started on the mutual respect part, greatly increasing the chances of "
+"receiving tolerance and encouragement in return."
+msgstr ""
+
+#: ../../communication.rst:119
+msgid "Setting Expectations for Open Source Participation"
+msgstr ""
+
+#: ../../communication.rst:121
+msgid ""
+"Burn-out is common in open source due to a misunderstanding of what "
+"users, contributors, and maintainers should expect from each other. Brett"
+" Cannon gave a `talk <https://youtu.be/-Nk-8fSJM6I>`_ about this topic "
+"that sets out to help everyone set reasonable expectations of each other "
+"in order to make open source pleasant for everyone involved."
+msgstr ""
+
+#: ../../communication.rst:127
+msgid "Additional Repositories"
+msgstr ""
+
+#: ../../communication.rst:129
+msgid ""
+"`Python Core Workflow`_ hosts the codebase for tools such as "
+"`cherry_picker`_ and `blurb`_."
+msgstr ""
+
+#: ../../communication.rst:132
+msgid ""
+"Python `Performance Benchmark`_ project is intended to be an "
+"authoritative source of benchmarks for all Python implementations."
+msgstr ""
+

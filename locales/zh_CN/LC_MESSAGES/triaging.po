@@ -1,0 +1,1298 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2011-2021, Python Software Foundation
+# This file is distributed under the same license as the Python Developer's
+# Guide package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Developer's Guide \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-22 09:18+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../triaging.rst:4
+msgid "Triaging an Issue"
+msgstr ""
+
+#: ../../triaging.rst:6
+msgid ""
+"This section of the devguide documents the `issue tracker`_ for users and"
+" developers."
+msgstr ""
+
+#: ../../triaging.rst:9
+msgid ""
+"Contributors with the Developer role on the `issue tracker`_ can triage "
+"issues directly without any assistance."
+msgstr ""
+
+#: ../../triaging.rst:12
+msgid "Additionally, this section provides an overview of the Python triage team."
+msgstr ""
+
+#: ../../triaging.rst:15
+msgid "Python triage team"
+msgstr ""
+
+#: ../../triaging.rst:17
+msgid ""
+"The Python triage team is a group dedicated towards improving workflow "
+"efficiency through thoughtful review and triage of open issues and pull "
+"requests. This helps contributors receive timely feedback and enables "
+"core developers to focus on reviewed items which reduces their workload. "
+"The expectations of this role expand upon the \"Developer\" role on the "
+"`issue tracker`_. The responsibilities listed below are primarily "
+"centered around the Python GitHub repositories. This extends beyond "
+"CPython, and, as needed, to other repos such as devguide and core-"
+"workflow."
+msgstr ""
+
+#: ../../triaging.rst:26
+msgid "Responsibilities include:"
+msgstr ""
+
+#: ../../triaging.rst:31
+msgid "PR/issue management"
+msgstr ""
+
+#: ../../triaging.rst:29
+msgid "Renaming PRs"
+msgstr ""
+
+#: ../../triaging.rst:30
+msgid "Reviewing PRs"
+msgstr ""
+
+#: ../../triaging.rst:31
+msgid "Assisting contributors"
+msgstr ""
+
+#: ../../triaging.rst:32
+msgid "Notifying appropriate core developers"
+msgstr ""
+
+#: ../../triaging.rst:37
+msgid "Applying appropriate labels to PRs/Issues"
+msgstr ""
+
+#: ../../triaging.rst:34
+msgid "Skip news"
+msgstr ""
+
+#: ../../triaging.rst:35
+msgid "Skip issue"
+msgstr ""
+
+#: ../../triaging.rst:36
+msgid "Good first issue"
+msgstr ""
+
+#: ../../triaging.rst:37
+msgid "Other categorizations"
+msgstr ""
+
+#: ../../triaging.rst:39
+msgid ""
+"As triagers gain experience, they may have some intuition of when a PR "
+"should be closed. Triagers can recommend closing a PR, but the final "
+"decision must be made by a core developer. By having triagers and core "
+"developers work together, the author receives a careful consideration of "
+"their PR. This encourages future contributions, regardless of whether "
+"their PR is accepted or closed."
+msgstr ""
+
+#: ../../triaging.rst:45
+msgid ""
+"Triagers can make use of the ``invalid`` and ``stale`` labels to suggest "
+"that a PR may be suitable for closure. For more information, see the "
+":ref:`GitHub PR labels <github-pr-labels>` section."
+msgstr ""
+
+#: ../../triaging.rst:49
+msgid ""
+"It is also of paramount importance to treat every contributor to the "
+"Python project kindly and with respect. Regardless of whether they're "
+"entirely new or a veteran core developer, they're actively choosing to "
+"voluntarily donate their time towards the improvement of Python. As is "
+"the case with any member of the Python Software Foundation, always follow"
+" the `PSF Code of Conduct`_."
+msgstr ""
+
+#: ../../triaging.rst:56
+msgid "Becoming a member of the Python triage team"
+msgstr ""
+
+#: ../../triaging.rst:58
+msgid ""
+"Any Python core developers are welcome to invite a Python contributor to "
+"the Python triage team. Do note that the responsibilities of a Python "
+"triager are more elevated than a developer on bpo. For example, the "
+"Python triager has access to more repositories than just CPython. "
+"Triagers will be responsible to handle not just issues, but also pull "
+"requests, and even managing backports."
+msgstr ""
+
+#: ../../triaging.rst:64
+msgid ""
+"Any existing developers on b.p.o can transition into becoming a Python "
+"triager. They can request this to any core developer, and the core "
+"developer can pass the request to the `Python organization admin "
+"<https://devguide.python.org/devcycle/?highlight=organization%20admin"
+"#current-owners>`_ on GitHub. The request can be made confidentially via "
+"a DM in Discourse, or publicly by opening an `issue in the core-workflow "
+"repository <https://github.com/python/core-"
+"workflow/issues/new?template=triage_membership.md>`_."
+msgstr ""
+
+#: ../../triaging.rst:73
+msgid ""
+"Any contributor who is not already a developer on b.p.o can also self-"
+"nominate to be a member of Python triage team. They can request this to "
+"any core developer, confidentially via DM in Discourse, or publicly by "
+"opening an issue in core-workflow. If a core developer agrees and is "
+"willing to vouch for them, the core developer can pass the request to the"
+" GitHub administrator. They should also be added as developer on bpo."
+msgstr ""
+
+#: ../../triaging.rst:80
+msgid ""
+"For every new triager, it would be great to announce them in the python-"
+"committers mailing list and core-workflow category in Discourse. `Example"
+" announcement <https://discuss.python.org/t/abhilash-raj-has-been-"
+"granted-triage-role-on-github/2089>`_."
+msgstr ""
+
+#: ../../triaging.rst:87
+msgid "GitHub Labels for PRs"
+msgstr ""
+
+#: ../../triaging.rst:89
+msgid ""
+"An important component of triaging PRs for the CPython repo involves "
+"appropriately categorizing them through the usage of labels."
+msgstr ""
+
+#: ../../triaging.rst:92
+msgid "Labels for PRs include:"
+msgstr ""
+
+#: ../../triaging.rst:97
+msgid "DO-NOT-MERGE"
+msgstr ""
+
+#: ../../triaging.rst:95
+msgid ""
+"Used on PRs to prevent miss-islington from being able to automatically "
+"merge the pull request. This label is appropriate when a PR has a non-"
+"trivial conflict with the branch it is being merged into."
+msgstr ""
+
+#: ../../triaging.rst:101
+msgid "expert-asyncio"
+msgstr ""
+
+#: ../../triaging.rst:100
+msgid ""
+"Used for PRs which involve changes to the asyncio module or other "
+"asynchronous frameworks that utilize it."
+msgstr ""
+
+#: ../../triaging.rst:108
+msgid "invalid"
+msgstr ""
+
+#: ../../triaging.rst:104
+msgid ""
+"Used manually for PRs that do not meet basic requirements and "
+"automatically added by bedevere when PR authors attempt to merge "
+"maintenace branches into the main branch. During events such as the "
+"October Hacktoberfest, this label will prevent the PR from counting "
+"toward the author's contributions."
+msgstr ""
+
+#: ../../triaging.rst:117
+msgid "needs backport to X.Y"
+msgstr ""
+
+#: ../../triaging.rst:111
+msgid ""
+"Used for PRs which are appropriate to backport to branches prior to main."
+" Generally, backports to the maintenance branches are primarily bugfixes "
+"and documentation clarifications. Backports to the security branches are "
+"strictly reserved for PRs involving security fixes, such as crashes, "
+"privilege escalation, and DoS. The use of this label will cause miss-"
+"islington to attempt to automatically merge the PR into the branches "
+"specified."
+msgstr ""
+
+#: ../../triaging.rst:122
+msgid "OS-X"
+msgstr ""
+
+#: ../../triaging.rst:120
+msgid ""
+"Used for PRs involving changes which only have an effect upon a specific "
+"operating system. Current variations of the label include OS-Windows and "
+"OS-Mac."
+msgstr ""
+
+#: ../../triaging.rst:129
+msgid "skip issue"
+msgstr ""
+
+#: ../../triaging.rst:125
+msgid ""
+"Used for PRs which involve trivial changes, such as typo fixes, comment "
+"changes, and section rephrases. The majority of PRs require an issue to "
+"be attached to, but if there are no code changes and the section being "
+"modified retains the same meaning, this label might be appropriate."
+msgstr ""
+
+#: ../../triaging.rst:136
+msgid "skip news"
+msgstr ""
+
+#: ../../triaging.rst:132
+msgid ""
+"Similar to the skip issue label, this label is used for PRs which involve"
+" trivial changes, backports, or already have a relevant news entry in "
+"another PR. Any potentially impactful changes should have a corresponding"
+" news entry, but for trivial changes it's commonly at the discretion of "
+"the PR author if they wish to opt-out of making one."
+msgstr ""
+
+#: ../../triaging.rst:141
+msgid "sprint"
+msgstr ""
+
+#: ../../triaging.rst:139
+msgid ""
+"Used for PRs authored during an in-person sprint, such as at PyCon, "
+"EuroPython, or other official Python events. The label is used to "
+"prioritize the review of those PRs during the sprint."
+msgstr ""
+
+#: ../../triaging.rst:147
+msgid "stale"
+msgstr ""
+
+#: ../../triaging.rst:144
+msgid ""
+"Used for PRs that include changes which are no longer relevant or when "
+"the author hasn't responded to feedback in a long period of time. This "
+"label helps core developers quickly identify PRs that are candidates for "
+"closure or require a ping to the author."
+msgstr ""
+
+#: ../../triaging.rst:152
+msgid "type-bugfix"
+msgstr ""
+
+#: ../../triaging.rst:150
+msgid ""
+"Used for PRs that address unintentional behavior, but do not pose "
+"significant security concerns. Generally, bugfixes will be attached to a "
+"specific issue where the unintended behavior was first reported."
+msgstr ""
+
+#: ../../triaging.rst:157
+msgid "type-documentation"
+msgstr ""
+
+#: ../../triaging.rst:155
+msgid ""
+"Used for PRs that exclusively involve changes to the documentation. "
+"Documentation includes `*.rst` files, docstrings, and code comments."
+msgstr ""
+
+#: ../../triaging.rst:161
+msgid "type-enhancement"
+msgstr ""
+
+#: ../../triaging.rst:160
+msgid ""
+"Used for PRs that provide additional functionality or capabilities beyond"
+" the existing specifications."
+msgstr ""
+
+#: ../../triaging.rst:164
+msgid "type-performance"
+msgstr ""
+
+#: ../../triaging.rst:164
+msgid "Used for PRs that provide performance optimizations."
+msgstr ""
+
+#: ../../triaging.rst:168
+msgid "type-security"
+msgstr ""
+
+#: ../../triaging.rst:167
+msgid ""
+"Used for PRs that involve critical security issues. Less severe security "
+"concerns can instead use the type-bugfix label."
+msgstr ""
+
+#: ../../triaging.rst:171
+msgid "type-tests"
+msgstr ""
+
+#: ../../triaging.rst:171
+msgid "Used for PRs that exclusively involve changes to the tests."
+msgstr ""
+
+#: ../../triaging.rst:177
+msgid "test-with-buildbots"
+msgstr ""
+
+#: ../../triaging.rst:174
+msgid ""
+"Used on PRs to test the latest commit with the buildbot fleet. Generally "
+"for PRs with large code changes requiring more testing before merging. "
+"This may take multiple hours to complete. Triagers can also stop a stuck "
+"build using the web interface."
+msgstr ""
+
+#: ../../triaging.rst:180
+msgid "Fields in the Issue Tracker"
+msgstr ""
+
+#: ../../triaging.rst:182
+msgid "The major elements found in an issue report include:"
+msgstr ""
+
+#: ../../triaging.rst:184
+msgid ""
+"Classification (including *Title*) - These fields categorize the issue. "
+"The fields include *Title*, *Type*, *Stage*, *Components*, and *Version*."
+msgstr ""
+
+#: ../../triaging.rst:186
+msgid ""
+"Process - These fields indicate the state of the issue and its progress "
+"toward resolution. The fields are *Status*, *Resolution*, *Dependencies*,"
+" *Superseder*, *Assigned To*, *Nosy List*, *Priority*, *Keywords*, "
+"*Comment*, *File*, *File Description*, *Remote hg repo*, *GitHub PR*."
+msgstr ""
+
+#: ../../triaging.rst:190
+msgid "Messages"
+msgstr ""
+
+#: ../../triaging.rst:191
+msgid "History"
+msgstr ""
+
+#: ../../triaging.rst:194
+msgid "Title"
+msgstr ""
+
+#: ../../triaging.rst:195
+msgid ""
+"A brief description of the issue. Review whether the title is too generic"
+" or specifies an incorrect term or library."
+msgstr ""
+
+#: ../../triaging.rst:198
+msgid ""
+"(Optional) Add a prefix at the start of the title to indicate the module,"
+" e.g. IDLE, doc, or asyncio."
+msgstr ""
+
+#: ../../triaging.rst:202 ../../triaging.rst:207 ../../triaging.rst:574
+msgid "Type"
+msgstr ""
+
+#: ../../triaging.rst:203
+msgid ""
+"Describes the type of issue.  If an issue does not fit within any "
+"specific type, please do not set a type."
+msgstr ""
+
+#: ../../triaging.rst:207 ../../triaging.rst:245 ../../triaging.rst:278
+#: ../../triaging.rst:345 ../../triaging.rst:377 ../../triaging.rst:452
+#: ../../triaging.rst:477 ../../triaging.rst:523
+msgid "Description"
+msgstr ""
+
+#: ../../triaging.rst:209
+msgid "behavior"
+msgstr ""
+
+#: ../../triaging.rst:209
+msgid "Unexpected behavior, result, or exception.  Most bugs will have this type."
+msgstr ""
+
+#: ../../triaging.rst:212
+msgid "compile error"
+msgstr ""
+
+#: ../../triaging.rst:212
+msgid "Errors reported by the compiler while compiling Python."
+msgstr ""
+
+#: ../../triaging.rst:214
+msgid "crash"
+msgstr ""
+
+#: ../../triaging.rst:214
+msgid ""
+"Hard crashes of the Python interpreter -- possibly with a core dump or a "
+"Windows error box."
+msgstr ""
+
+#: ../../triaging.rst:217
+msgid "enhancement"
+msgstr ""
+
+#: ../../triaging.rst:217
+msgid ""
+"Issues that propose the addition of new functionality, such as new "
+"functions, classes, modules, or even new arguments for existing "
+"functions. Also used for improvements in the documentation, test suite "
+"and other refactorings. A good place to discuss enhancements prior to "
+"filing an issue is `python-ideas`_ mailing list."
+msgstr ""
+
+#: ../../triaging.rst:225
+msgid "performance"
+msgstr ""
+
+#: ../../triaging.rst:225
+msgid ""
+"Situations where too much time is necessary to complete the task. For "
+"example, a common task now takes significantly longer to complete."
+msgstr ""
+
+#: ../../triaging.rst:229
+msgid "resource usage"
+msgstr ""
+
+#: ../../triaging.rst:229
+msgid "Situations where too many resources (e.g. memory) are used."
+msgstr ""
+
+#: ../../triaging.rst:232
+msgid "security"
+msgstr ""
+
+#: ../../triaging.rst:232
+msgid ""
+"Issues that might have security implications. Report security "
+"vulnerabilities using the procedure found in the `Reporting security "
+"issues in Python`_ page on the python.org website."
+msgstr ""
+
+#: ../../triaging.rst:239 ../../triaging.rst:245 ../../triaging.rst:575
+msgid "Stage"
+msgstr ""
+
+#: ../../triaging.rst:240
+msgid ""
+"A needed next action to advance the issue.  The *stage* needn't be set "
+"until it is clear that the issue has been initially triaged and "
+"determined work will be needed."
+msgstr ""
+
+#: ../../triaging.rst:247
+msgid "test needed"
+msgstr ""
+
+#: ../../triaging.rst:247
+msgid ""
+"The steps which are needed to reproduce the issue. The bug reporter "
+"should post a script, instructions, or example to help someone test or "
+"reproduce the issue."
+msgstr ""
+
+#: ../../triaging.rst:251
+msgid "needs patch"
+msgstr ""
+
+#: ../../triaging.rst:251
+msgid ""
+"A patch or pull request is needed to solve the problem (i.e. fixing the "
+"bug or adding the requested improvement)."
+msgstr ""
+
+#: ../../triaging.rst:255
+msgid "patch review"
+msgstr ""
+
+#: ../../triaging.rst:255
+msgid ""
+"A patch or pull request exists, but it needs review. Any triager or core "
+"developer may do the review."
+msgstr ""
+
+#: ../../triaging.rst:258
+msgid "commit review"
+msgstr ""
+
+#: ../../triaging.rst:258
+msgid ""
+"A triager performed a patch review and it looks good. This signals to "
+"core developers the patch or pull request needs a quick once-over to make"
+" sure nothing was overlooked before committing it."
+msgstr ""
+
+#: ../../triaging.rst:263
+msgid "resolved"
+msgstr ""
+
+#: ../../triaging.rst:263
+msgid ""
+"The issue is considered closed and addressed (e.g. patch or pull request "
+"committed; expected behavior)."
+msgstr ""
+
+#: ../../triaging.rst:268
+msgid "Components"
+msgstr ""
+
+#: ../../triaging.rst:269
+msgid ""
+"The area or Python library affected by the issue. This is a multi-select "
+"field."
+msgstr ""
+
+#: ../../triaging.rst:271
+msgid ""
+"Choosing certain components, such as `Documentation`, may cause the issue"
+" to be auto-assigned, i.e. the issue tracker may automatically fill in "
+"the `Assigned To`_ field after you press ``Submit changes``."
+msgstr ""
+
+#: ../../triaging.rst:275
+msgid "One or more components may be selected for an issue:"
+msgstr ""
+
+#: ../../triaging.rst:278
+msgid "Component"
+msgstr ""
+
+#: ../../triaging.rst:280
+msgid "2to3 (*2.x to* *3 conversion* *tool*)"
+msgstr ""
+
+#: ../../triaging.rst:280
+msgid "The 2to3 conversion tool in `Lib/lib2to3`_."
+msgstr ""
+
+#: ../../triaging.rst:284
+msgid "Build"
+msgstr ""
+
+#: ../../triaging.rst:284
+msgid "The build process."
+msgstr ""
+
+#: ../../triaging.rst:286
+msgid "ctypes"
+msgstr ""
+
+#: ../../triaging.rst:286
+msgid "The ctypes package in `Lib/ctypes`_."
+msgstr ""
+
+#: ../../triaging.rst:288
+msgid "Demos and Tools"
+msgstr ""
+
+#: ../../triaging.rst:288
+msgid "The files in Tools_ and `Tools/demo`_."
+msgstr ""
+
+#: ../../triaging.rst:290
+msgid "Distutils"
+msgstr ""
+
+#: ../../triaging.rst:290
+msgid "The distutils package in `Lib/distutils`_."
+msgstr ""
+
+#: ../../triaging.rst:292
+msgid "Documentation"
+msgstr ""
+
+#: ../../triaging.rst:292
+msgid ""
+"The documentation in Doc_ (source used to build HTML docs for "
+"https://docs.python.org/)."
+msgstr ""
+
+#: ../../triaging.rst:295
+msgid "email"
+msgstr ""
+
+#: ../../triaging.rst:295
+msgid "The email package and related modules."
+msgstr ""
+
+#: ../../triaging.rst:297
+msgid "Extension Modules"
+msgstr ""
+
+#: ../../triaging.rst:297
+msgid "C modules in Modules_."
+msgstr ""
+
+#: ../../triaging.rst:299
+msgid "IDLE"
+msgstr ""
+
+#: ../../triaging.rst:299
+msgid "The `Lib/idlelib`_ package."
+msgstr ""
+
+#: ../../triaging.rst:301
+msgid "Installation"
+msgstr ""
+
+#: ../../triaging.rst:301
+msgid "The installation process."
+msgstr ""
+
+#: ../../triaging.rst:303
+msgid "Interpreter Core"
+msgstr ""
+
+#: ../../triaging.rst:303
+msgid ""
+"The interpreter core. The built-in objects in `Objects`_, the `Python`_, "
+"`Grammar`_ and `Parser`_ dirs."
+msgstr ""
+
+#: ../../triaging.rst:307
+msgid "IO"
+msgstr ""
+
+#: ../../triaging.rst:307
+msgid "The I/O system, `Lib/io.py`_ and `Modules/_io`_."
+msgstr ""
+
+#: ../../triaging.rst:309
+msgid "Library (Lib)"
+msgstr ""
+
+#: ../../triaging.rst:309
+msgid "Python modules in Lib_."
+msgstr ""
+
+#: ../../triaging.rst:311
+msgid "Macintosh"
+msgstr ""
+
+#: ../../triaging.rst:311
+msgid "The Mac OS X operating system."
+msgstr ""
+
+#: ../../triaging.rst:313
+msgid "Regular Expressions"
+msgstr ""
+
+#: ../../triaging.rst:313
+msgid "The `Lib/re.py`_ and `Modules/_sre.c`_ modules."
+msgstr ""
+
+#: ../../triaging.rst:316
+msgid "Tests"
+msgstr ""
+
+#: ../../triaging.rst:316
+msgid ""
+"The unittest framework in `Lib/unittest`_ The doctest framework "
+"`Lib/doctest.py`_. The CPython tests in `Lib/test`_. The test runner in "
+"`Lib/test/regrtest.py`_. The test support utilities in "
+"`Lib/test/support`_."
+msgstr ""
+
+#: ../../triaging.rst:322
+msgid "Tkinter"
+msgstr ""
+
+#: ../../triaging.rst:322
+msgid "The `Lib/tkinter`_ package."
+msgstr ""
+
+#: ../../triaging.rst:324
+msgid "Unicode"
+msgstr ""
+
+#: ../../triaging.rst:324
+msgid "Unicode, codecs, str vs bytes, `Objects/unicodeobject.c`_."
+msgstr ""
+
+#: ../../triaging.rst:327
+msgid "Windows"
+msgstr ""
+
+#: ../../triaging.rst:327
+msgid "The Windows operating system."
+msgstr ""
+
+#: ../../triaging.rst:329
+msgid "XML"
+msgstr ""
+
+#: ../../triaging.rst:329
+msgid "The `Lib/xml`_ package."
+msgstr ""
+
+#: ../../triaging.rst:333
+msgid "Versions"
+msgstr ""
+
+#: ../../triaging.rst:334
+msgid ""
+"The known versions of Python that the issue affects and should be fixed "
+"for."
+msgstr ""
+
+#: ../../triaging.rst:336
+msgid ""
+"Thus if an issue for a new feature is assigned for e.g., Python 3.8 but "
+"is not applied before Python 3.8.0 is released, this field should be "
+"updated to say Python 3.9 as the version and drop Python 3.8."
+msgstr ""
+
+#: ../../triaging.rst:341 ../../triaging.rst:345 ../../triaging.rst:584
+msgid "Priority"
+msgstr ""
+
+#: ../../triaging.rst:342
+msgid "What is the severity and urgency?"
+msgstr ""
+
+#: ../../triaging.rst:347
+msgid "low"
+msgstr ""
+
+#: ../../triaging.rst:347
+msgid "This is for low-impact bugs."
+msgstr ""
+
+#: ../../triaging.rst:349
+msgid "normal"
+msgstr ""
+
+#: ../../triaging.rst:349
+msgid "The default value for most issues filed."
+msgstr ""
+
+#: ../../triaging.rst:351
+msgid "high"
+msgstr ""
+
+#: ../../triaging.rst:351
+msgid "Try to fix the issue before the next final release."
+msgstr ""
+
+#: ../../triaging.rst:353
+msgid "critical"
+msgstr ""
+
+#: ../../triaging.rst:353
+msgid "Should definitely be fixed for next final release."
+msgstr ""
+
+#: ../../triaging.rst:355
+msgid "deferred blocker"
+msgstr ""
+
+#: ../../triaging.rst:355
+msgid ""
+"The issue will not hold up the next release, *n*. It will be promoted to "
+"a *release blocker* for the following release, *n+1*."
+msgstr ""
+
+#: ../../triaging.rst:359
+msgid "release blocker"
+msgstr ""
+
+#: ../../triaging.rst:359
+msgid ""
+"The issue **must** be fixed before *any* release is made, e.g., will "
+"block the next release even if it is an alpha release."
+msgstr ""
+
+#: ../../triaging.rst:364
+msgid ""
+"As a guideline, *critical* and above are usually reserved for crashes, "
+"serious regressions or breakage of very important APIs.  Whether a bug is"
+" a *release blocker* for the current `release schedule`_ is decided by "
+"the release manager. Triagers may recommend this priority and should add "
+"the release manager to the *nosy list*. If needed, consult the `release "
+"schedule`_ and the release's associated PEP for the release manager's "
+"name."
+msgstr ""
+
+#: ../../triaging.rst:373 ../../triaging.rst:585
+msgid "Keywords"
+msgstr ""
+
+#: ../../triaging.rst:374
+msgid "Various informational flags about the issue. Multiple values are possible."
+msgstr ""
+
+#: ../../triaging.rst:377
+msgid "Keyword"
+msgstr ""
+
+#: ../../triaging.rst:379
+msgid "buildbot"
+msgstr ""
+
+#: ../../triaging.rst:379
+msgid "A buildbot triggered the issue being reported."
+msgstr ""
+
+#: ../../triaging.rst:381
+msgid "easy"
+msgstr ""
+
+#: ../../triaging.rst:381
+msgid ""
+"Fixing the issue should not take longer than a day for someone new to "
+"contributing to Python to solve."
+msgstr ""
+
+#: ../../triaging.rst:384
+msgid "easy (C)"
+msgstr ""
+
+#: ../../triaging.rst:384
+msgid ""
+"Fixing the issue should not take longer than a day for someone new "
+"contributing to Python, focused on C."
+msgstr ""
+
+#: ../../triaging.rst:387
+msgid "security_issue"
+msgstr ""
+
+#: ../../triaging.rst:387
+msgid ""
+"This is a security issue or is related to one. The main difference from "
+"the \"security\" issue type is that this is a definite security problem "
+"that has to be dealt with."
+msgstr ""
+
+#: ../../triaging.rst:391
+msgid "PEP 3121"
+msgstr ""
+
+#: ../../triaging.rst:391
+msgid ""
+"The issue is related to PEP `PEP 3121`_. Extension Module Initialization "
+"and Finalization."
+msgstr ""
+
+#: ../../triaging.rst:394
+msgid "newcomer friendly"
+msgstr ""
+
+#: ../../triaging.rst:394
+msgid ""
+"Issue suitable for newcomer/first time contributors. Not suitable for "
+"experienced contributors. Typically it is straightforward, well-defined, "
+"low-risk, and optionally someone is able to mentor the new contributor."
+msgstr ""
+
+#: ../../triaging.rst:399
+msgid "gsoc"
+msgstr ""
+
+#: ../../triaging.rst:399
+msgid "The issue would fit as, or is related to, a GSoC_ project."
+msgstr ""
+
+#: ../../triaging.rst:401
+msgid "needs review"
+msgstr ""
+
+#: ../../triaging.rst:401
+msgid "The patch or pull request attached to the issue is in need of a review."
+msgstr ""
+
+#: ../../triaging.rst:404
+msgid "patch"
+msgstr ""
+
+#: ../../triaging.rst:404
+msgid "There is a patch or pull request attached to the issue."
+msgstr ""
+
+#: ../../triaging.rst:406
+msgid "3.3regression"
+msgstr ""
+
+#: ../../triaging.rst:406
+msgid "The issue is a regression in 3.3."
+msgstr ""
+
+#: ../../triaging.rst:410 ../../triaging.rst:583
+msgid "Nosy List"
+msgstr ""
+
+#: ../../triaging.rst:411
+msgid "A list of people who may be interested in an issue."
+msgstr ""
+
+#: ../../triaging.rst:413
+msgid ""
+"It is acceptable to add someone to the nosy list if you think the issue "
+"should be brought to their attention. Use the :ref:`experts` to know who "
+"wants to be added to the nosy list for issues targeting specific areas."
+msgstr ""
+
+#: ../../triaging.rst:417
+msgid ""
+"If you are logged in and have JavaScript enabled, you can use the ``[+]``"
+" button to add yourself to the nosy list (remember to click on \"Submit "
+"Changes\" afterwards).  Note that you are added to the nosy automatically"
+" when you submit a message."
+msgstr ""
+
+#: ../../triaging.rst:422
+msgid ""
+"The nosy list also has an autocomplete that lets you search from the "
+"lists of developers and :ref:`experts`.  The search is case-insensitive "
+"and works for real names, modules, interest areas, etc., and only adds "
+"the username(s) to the nosy once an entry is selected."
+msgstr ""
+
+#: ../../triaging.rst:428 ../../triaging.rst:582
+msgid "Assigned To"
+msgstr ""
+
+#: ../../triaging.rst:429
+msgid "Who is expected to take the next step in resolving the issue."
+msgstr ""
+
+#: ../../triaging.rst:431
+msgid ""
+"It is acceptable to assign an issue to someone if the issue cannot move "
+"forward without their help, e.g., they need to make a technical decision "
+"to allow the issue to move forward. Also consult the :ref:`experts` as "
+"certain stdlib modules should always be assigned to a specific person."
+msgstr ""
+
+#: ../../triaging.rst:436
+msgid ""
+"Note that in order to assign an issue to someone, that person **must** "
+"have the :ref:`Developer role <devrole>` on the issue tracker."
+msgstr ""
+
+#: ../../triaging.rst:440
+msgid "Dependencies"
+msgstr ""
+
+#: ../../triaging.rst:441
+msgid ""
+"The issue requires the listed issue(s) to be resolved first before it can"
+" move forward."
+msgstr ""
+
+#: ../../triaging.rst:445 ../../triaging.rst:581
+msgid "Superseder"
+msgstr ""
+
+#: ../../triaging.rst:446
+msgid "The issue is a duplicate of the listed issue(s)."
+msgstr ""
+
+#: ../../triaging.rst:449 ../../triaging.rst:452 ../../triaging.rst:579
+msgid "Status"
+msgstr ""
+
+#: ../../triaging.rst:454 ../../triaging.rst:479
+msgid "open"
+msgstr ""
+
+#: ../../triaging.rst:454 ../../triaging.rst:479
+msgid "Issue is not resolved."
+msgstr ""
+
+#: ../../triaging.rst:456
+msgid "pending"
+msgstr ""
+
+#: ../../triaging.rst:456
+msgid ""
+"The issue is blocked until someone (often the :abbr:`OP (original "
+"poster)`) provides some critical information; the issue will be closed "
+"after a set amount time if no reply comes in."
+msgstr ""
+
+#: ../../triaging.rst:461
+msgid ""
+"Useful when someone opens an issue that lacks enough information to "
+"reproduce the bug reported.  Requesting additional information and "
+"setting status to *pending* indicates that the issue should be closed if "
+"the necessary information is not provided in a timely manner (i.e. one "
+"month)."
+msgstr ""
+
+#: ../../triaging.rst:468
+msgid "closed"
+msgstr ""
+
+#: ../../triaging.rst:468
+msgid "The issue has been resolved (somehow)."
+msgstr ""
+
+#: ../../triaging.rst:472 ../../triaging.rst:477 ../../triaging.rst:580
+msgid "Resolution"
+msgstr ""
+
+#: ../../triaging.rst:473
+msgid ""
+"Why the issue is in its current state. This is not usually used for "
+"issues with the \"open\" status."
+msgstr ""
+
+#: ../../triaging.rst:481
+msgid "duplicate"
+msgstr ""
+
+#: ../../triaging.rst:481
+msgid "Duplicate of another issue; should have the *Superseder* field filled out."
+msgstr ""
+
+#: ../../triaging.rst:484
+msgid "fixed"
+msgstr ""
+
+#: ../../triaging.rst:484
+msgid "A fix for the issue was committed."
+msgstr ""
+
+#: ../../triaging.rst:486
+msgid "later"
+msgstr ""
+
+#: ../../triaging.rst:486
+msgid "Issue is to be worked on in a later release cycle."
+msgstr ""
+
+#: ../../triaging.rst:488
+msgid "not a bug"
+msgstr ""
+
+#: ../../triaging.rst:488
+msgid ""
+"For some reason the issue is invalid (e.g. the perceived problem is not a"
+" bug in Python)."
+msgstr ""
+
+#: ../../triaging.rst:491
+msgid "out of date"
+msgstr ""
+
+#: ../../triaging.rst:491
+msgid ""
+"The issue has already been fixed, or the problem doesn't exist anymore "
+"for other reasons."
+msgstr ""
+
+#: ../../triaging.rst:494
+msgid "postponed"
+msgstr ""
+
+#: ../../triaging.rst:494
+msgid ""
+"Issue will not be worked on at the moment but in a future minor release "
+"version."
+msgstr ""
+
+#: ../../triaging.rst:497
+msgid "rejected"
+msgstr ""
+
+#: ../../triaging.rst:497
+msgid "Issue was rejected (especially for feature requests)."
+msgstr ""
+
+#: ../../triaging.rst:499
+msgid "remind"
+msgstr ""
+
+#: ../../triaging.rst:499
+msgid "The issue is acting as a reminder for someone."
+msgstr ""
+
+#: ../../triaging.rst:501
+msgid "wont fix"
+msgstr ""
+
+#: ../../triaging.rst:501
+msgid ""
+"Issue will not be fixed, typically because it would cause a backwards-"
+"compatibility problem."
+msgstr ""
+
+#: ../../triaging.rst:504
+msgid "works for me"
+msgstr ""
+
+#: ../../triaging.rst:504
+msgid "Bug cannot be reproduced."
+msgstr ""
+
+#: ../../triaging.rst:508
+msgid "Mercurial Repository"
+msgstr ""
+
+#: ../../triaging.rst:509
+msgid ""
+"HTTP link to a Mercurial repository that contains a patch for the issue. "
+"A :guilabel:`Create Patch` button will appear that computes a diff for "
+"the head revision of the remote branch and attaches it to the issue.  The"
+" button supports only CPython_ patches."
+msgstr ""
+
+#: ../../triaging.rst:514
+msgid ""
+"If you don't indicate a remote branch, ``default`` is used.  You can "
+"indicate a remote branch by adding ``#BRANCH`` to the end of the URL."
+msgstr ""
+
+#: ../../triaging.rst:518
+msgid "Generating Special Links in a Comment"
+msgstr ""
+
+#: ../../triaging.rst:519
+msgid ""
+"Using the following abbreviations in a comment will automatically "
+"generate a link to relevant web pages."
+msgstr ""
+
+#: ../../triaging.rst:523
+msgid "Comment abbreviation"
+msgstr ""
+
+#: ../../triaging.rst:525
+msgid "``#<number>``, ``issue<number>``, or ``issue <number>``"
+msgstr ""
+
+#: ../../triaging.rst:525
+msgid "Links to the tracker issue ``<number>``."
+msgstr ""
+
+#: ../../triaging.rst:529
+msgid "``msg<number>``"
+msgstr ""
+
+#: ../../triaging.rst:529
+msgid "Links to the tracker message ``<number>``."
+msgstr ""
+
+#: ../../triaging.rst:531
+msgid "``PR <number>``, ``PR<number>``, or ``pull request <number>``"
+msgstr ""
+
+#: ../../triaging.rst:531
+msgid "Links to `GitHub pull requests`_."
+msgstr ""
+
+#: ../../triaging.rst:535
+msgid "a 10-, 11-, 12-, or 40-digit hex ``<number>``"
+msgstr ""
+
+#: ../../triaging.rst:535
+msgid ""
+"Indicates a Git or Mercurial changeset identifier and generates a link to"
+" changeset ``<number>`` on GitHub or https://hg.python.org/. The ``git`` "
+"and ``hg`` prefixes can also be used to disambiguate, and must precede "
+"the number without spaces."
+msgstr ""
+
+#: ../../triaging.rst:541
+msgid "``r<number>``, ``rev<number>``, or ``revision <number>``"
+msgstr ""
+
+#: ../../triaging.rst:541
+msgid ""
+"Indicates a legacy Subversion revision number, a reference to a changeset"
+" that was checked in prior to 2011-03-05 when the official Python source "
+"code repositories were migrated from the :abbr:`svn (Subversion)` "
+":abbr:`VCS (version control system)` to Mercurial. The issue tracker "
+"automatically translates the legacy svn revision ``<number>`` to its "
+"corresponding Mercurial changeset identifier."
+msgstr ""
+
+#: ../../triaging.rst:551
+msgid "``Dir/file.ext`` or ``Dir/file.ext:NNN``"
+msgstr ""
+
+#: ../../triaging.rst:551
+msgid ""
+"Links to files in the `Python source code repositories`_, possibly "
+"linking to the line number specified after the ``:``. "
+"``3.6/Dir/file.ext`` will generate a link with ``3.6`` as branch."
+msgstr ""
+
+#: ../../triaging.rst:557
+msgid "``PEP <number>`` or ``PEP<number>``"
+msgstr ""
+
+#: ../../triaging.rst:557
+msgid "Link to the :abbr:`PEP (Python Enhancement Proposal)` ``<number>``."
+msgstr ""
+
+#: ../../triaging.rst:560
+msgid ""
+"``devguide``, ``devguide/triaging``, or ``devguide/triaging#generating-"
+"special-links-in-a-comment``"
+msgstr ""
+
+#: ../../triaging.rst:560
+msgid "Links to the Devguide, this page, and this section respectively."
+msgstr ""
+
+#: ../../triaging.rst:566
+msgid "Checklist for Triaging"
+msgstr ""
+
+#: ../../triaging.rst:568
+msgid "Read the issue comment(s)."
+msgstr ""
+
+#: ../../triaging.rst:576
+msgid "Review and set classification fields"
+msgstr ""
+
+#: ../../triaging.rst:570
+msgid ""
+"Title: should be concise with specifics which are helpful to someone "
+"scanning a list of issue titles. (Optional, if possible) Add a prefix at "
+"the start of the title to indicate the module, e.g. IDLE, doc, or async."
+msgstr ""
+
+#: ../../triaging.rst:576
+msgid "Components: multiple items may be set"
+msgstr ""
+
+#: ../../triaging.rst:577
+msgid "Versions: set if known, leave blank if unsure. Multiple items may be set."
+msgstr ""
+
+#: ../../triaging.rst:584
+msgid "Review and set process fields"
+msgstr ""
+
+#: ../../triaging.rst:586
+msgid ""
+"(Optional) Leave a brief comment about the proposed next action needed. "
+"If there is a long message list, a summary can be very helpful."
+msgstr ""
+
