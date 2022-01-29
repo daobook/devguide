@@ -13,7 +13,7 @@ directory structure of the CPython source code.
 
 Alternatively, if you have `Docker <https://www.docker.com/>`_ installed you
 might want to use `our official images
-<https://gitlab.com/python-devs/ci-images/blob/master/README.md>`_.  These
+<https://gitlab.com/python-devs/ci-images/blob/main/README.md>`_.  These
 contain the latest releases of several Python versions, along with git head,
 and are provided for development and testing purposes only.
 
@@ -240,7 +240,8 @@ Windows
 For a quick guide to building you can read `this documentation`_ from Victor
 Stinner.
 
-**Python 3.6** and later can use Microsoft Visual Studio 2017.  You can download
+All current versions of Python can be built using Microsoft Visual Studio 2017
+or later.  You can download
 and use any of the free or paid versions of `Visual Studio 2017`_.
 
 When installing Visual Studio 2017, select the **Python development** workload

@@ -131,6 +131,8 @@ For reference, here are the Python versions that most recently reached their end
 +------------------+--------------+----------------+----------------+----------------------------------+
 | Branch           | Schedule     | First release  | End-of-life    | Release manager                  |
 +==================+==============+================+================+==================================+
+| 3.6              | :pep:`494`   | 2016-12-23     | 2021-12-23     | Ned Deily                        |
++------------------+--------------+----------------+----------------+----------------------------------+
 | 3.5              | :pep:`478`   | 2015-09-13     | 2020-09-30     | Larry Hastings                   |
 +------------------+--------------+----------------+----------------+----------------------------------+
 | 3.4              | :pep:`429`   | 2014-03-16     | 2019-03-18     | Larry Hastings                   |
@@ -283,8 +285,6 @@ Current Owners
 +----------------------+--------------------------------+-----------------+
 | Donald Stufft        | Infrastructure Staff           | dstufft         |
 +----------------------+--------------------------------+-----------------+
-| Ewa Jodlowska        | PSF Executive Director         | ejodlowska      |
-+----------------------+--------------------------------+-----------------+
 | Ee Durbin            | PSF Director of Infrastructure | ewdurbin        |
 +----------------------+--------------------------------+-----------------+
 | Van Lindberg         | PSF General Counsel            | VanL            |
@@ -329,7 +329,7 @@ Current Administrators
 +-------------------+----------------------------------------------------------+-----------------+
 | Ned Deily         | Python 3.6 and 3.7 Release Manager                       | ned-deily       |
 +-------------------+----------------------------------------------------------+-----------------+
-| Lary Hastings     | Retired Release Manager (for Python 3.4 and 3.5)         | larryhastings   |
+| Larry Hastings    | Retired Release Manager (for Python 3.4 and 3.5)         | larryhastings   |
 +-------------------+----------------------------------------------------------+-----------------+
 | Berker Peksag     | Maintainer of bpo-linkify and cpython-emailer-webhook    | berkerpeksag    |
 +-------------------+----------------------------------------------------------+-----------------+
