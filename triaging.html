@@ -5,13 +5,13 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="索引" href="genindex.html" /><link rel="search" title="搜索" href="search.html" /><link rel="next" title="Following Python’s Development" href="communication.html" /><link rel="prev" title="Issue Tracking" href="tracker.html" />
 
-    <meta name="generator" content="sphinx-4.3.0, furo 2021.11.16"/>
+    <meta name="generator" content="sphinx-4.4.0, furo 2022.01.02"/>
         <title>Triaging an Issue - Python Developer&#39;s Guide</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=916d6ed8f59335acffa15474ff504849343d4c76" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=df49af52631e7917044a9c21a57f7b83170a6dd0" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=0af69da206d614734f649b27d4cdc2dd6c31f41d" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=fade93df149f7c5fedb3ff897f799dc7d283b420" />
     
     
 
@@ -242,7 +242,6 @@ needed, to other repos such as devguide and core-workflow.</p>
 <ul class="simple">
 <li><dl class="simple">
 <dt>PR/issue management</dt><dd><ul>
-<li><p>Renaming PRs</p></li>
 <li><p>Reviewing PRs</p></li>
 <li><p>Assisting contributors</p></li>
 <li><p>Notifying appropriate core developers</p></li>
@@ -724,7 +723,9 @@ forward.</p>
 </section>
 <section id="superseder">
 <h3>Superseder<a class="headerlink" href="#superseder" title="永久链接至标题">¶</a></h3>
-<p>The issue is a duplicate of the listed issue(s).</p>
+<p>The issue is a duplicate of the listed issue(s). The issue should just be the
+number, not the b.p.o URL or “issueXXXXX”. If this is set, the Resolution should
+be set to <em>Duplicate</em>.</p>
 </section>
 <section id="status">
 <h3>Status<a class="headerlink" href="#status" title="永久链接至标题">¶</a></h3>
@@ -819,12 +820,14 @@ a backwards-compatibility problem.</p></td>
 </section>
 <section id="mercurial-repository">
 <h3>Mercurial Repository<a class="headerlink" href="#mercurial-repository" title="永久链接至标题">¶</a></h3>
-<p>HTTP link to a Mercurial repository that contains a patch for the issue.
-A <span class="guilabel">Create Patch</span> button will appear that computes a diff for the
-head revision of the remote branch and attaches it to the issue.  The button
-supports only <a class="reference external" href="https://github.com/python/cpython/">CPython</a> patches.</p>
-<p>If you don’t indicate a remote branch, <code class="docutils literal notranslate"><span class="pre">default</span></code> is used.  You can
-indicate a remote branch by adding <code class="docutils literal notranslate"><span class="pre">#BRANCH</span></code> to the end of the URL.</p>
+<p>Deprecated: HTTP link to a Mercurial repository that contains a patch for the issue.</p>
+<p>New repository links should not be added to new or existing issues.</p>
+</section>
+<section id="github-pr">
+<h3>GitHub PR<a class="headerlink" href="#github-pr" title="永久链接至标题">¶</a></h3>
+<p>GitHub pull request number or full URL to a pull request.  This field is
+usually not needed as links are automatically created between issues and PRs
+when an issue number is mentioned in the PR description or a commit message.</p>
 </section>
 </section>
 <section id="generating-special-links-in-a-comment">
@@ -843,6 +846,7 @@ a link to relevant web pages.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">#&lt;number&gt;</span></code>,
+<code class="docutils literal notranslate"><span class="pre">bpo-&lt;number&gt;</span></code>,
 <code class="docutils literal notranslate"><span class="pre">issue&lt;number&gt;</span></code>, or
 <code class="docutils literal notranslate"><span class="pre">issue</span> <span class="pre">&lt;number&gt;</span></code></p></td>
 <td><p>Links to the tracker issue <code class="docutils literal notranslate"><span class="pre">&lt;number&gt;</span></code>.</p></td>
@@ -851,7 +855,11 @@ a link to relevant web pages.</p>
 <td><p>Links to the tracker message <code class="docutils literal notranslate"><span class="pre">&lt;number&gt;</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">PR</span> <span class="pre">&lt;number&gt;</span></code>,
-<code class="docutils literal notranslate"><span class="pre">PR&lt;number&gt;</span></code>, or
+<code class="docutils literal notranslate"><span class="pre">PR-&lt;number&gt;</span></code>,
+<code class="docutils literal notranslate"><span class="pre">PR&lt;number&gt;</span></code>,
+<code class="docutils literal notranslate"><span class="pre">GH</span> <span class="pre">&lt;number&gt;</span></code>,
+<code class="docutils literal notranslate"><span class="pre">GH-&lt;number&gt;</span></code>,
+<code class="docutils literal notranslate"><span class="pre">GH&lt;number&gt;</span></code>, or
 <code class="docutils literal notranslate"><span class="pre">pull</span> <span class="pre">request</span> <span class="pre">&lt;number&gt;</span></code></p></td>
 <td><p>Links to <a class="reference external" href="https://github.com/python/cpython/pulls">GitHub pull requests</a>.</p></td>
 </tr>
@@ -962,8 +970,8 @@ there is a long message list, a summary can be very helpful.</p></li>
         </div>
 
         <div class="related-information">
-              Copyright &#169; 2011-2021, Python Software Foundation |
-            最后更新于 11月 22, 2021. |
+              Copyright &#169; 2011-2022, Python Software Foundation |
+            最后更新于 1月 29, 2022. |
           Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
           <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
             | <a class="muted-link" href="_sources/triaging.rst.txt"
@@ -1007,6 +1015,7 @@ there is a long message list, a summary can be very helpful.</p></li>
 <li><a class="reference internal" href="#status">Status</a></li>
 <li><a class="reference internal" href="#resolution">Resolution</a></li>
 <li><a class="reference internal" href="#mercurial-repository">Mercurial Repository</a></li>
+<li><a class="reference internal" href="#github-pr">GitHub PR</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#generating-special-links-in-a-comment">Generating Special Links in a Comment</a></li>

@@ -5,13 +5,13 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="索引" href="genindex.html" /><link rel="search" title="搜索" href="search.html" /><link rel="next" title="Design of CPython’s Garbage Collector" href="garbage_collector.html" /><link rel="prev" title="Guide to CPython’s Parser" href="parser.html" />
 
-    <meta name="generator" content="sphinx-4.3.0, furo 2021.11.16"/>
+    <meta name="generator" content="sphinx-4.4.0, furo 2022.01.02"/>
         <title>Design of CPython’s Compiler - Python Developer&#39;s Guide</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=916d6ed8f59335acffa15474ff504849343d4c76" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=df49af52631e7917044a9c21a57f7b83170a6dd0" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=0af69da206d614734f649b27d4cdc2dd6c31f41d" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=fade93df149f7c5fedb3ff897f799dc7d283b420" />
     
     
 
@@ -295,22 +295,22 @@ stmt as one might expect.</p>
 <p>All three kinds also have an ‘attributes’ argument; this is shown by the
 fact that ‘attributes’ lacks a ‘|’ before it.</p>
 <p>The statement definitions above generate the following C structure type:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span> <span class="nc">_stmt</span><span class="w"> </span><span class="o">*</span><span class="n">stmt_ty</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_stmt</span><span class="w"> </span><span class="o">*</span><span class="n">stmt_ty</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">struct</span> <span class="nc">_stmt</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">_stmt</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="k">enum</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">FunctionDef_kind</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">Return_kind</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">Yield_kind</span><span class="o">=</span><span class="mi">3</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="n">kind</span><span class="p">;</span><span class="w"></span>
-<span class="w">      </span><span class="k">union</span> <span class="p">{</span><span class="w"></span>
-<span class="w">              </span><span class="k">struct</span> <span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">union</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">              </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">                      </span><span class="n">identifier</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w"></span>
 <span class="w">                      </span><span class="n">arguments_ty</span><span class="w"> </span><span class="n">args</span><span class="p">;</span><span class="w"></span>
 <span class="w">                      </span><span class="n">asdl_seq</span><span class="w"> </span><span class="o">*</span><span class="n">body</span><span class="p">;</span><span class="w"></span>
 <span class="w">              </span><span class="p">}</span><span class="w"> </span><span class="n">FunctionDef</span><span class="p">;</span><span class="w"></span>
 
-<span class="w">              </span><span class="k">struct</span> <span class="p">{</span><span class="w"></span>
+<span class="w">              </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">                      </span><span class="n">expr_ty</span><span class="w"> </span><span class="n">value</span><span class="p">;</span><span class="w"></span>
 <span class="w">              </span><span class="p">}</span><span class="w"> </span><span class="n">Return</span><span class="p">;</span><span class="w"></span>
 
-<span class="w">              </span><span class="k">struct</span> <span class="p">{</span><span class="w"></span>
+<span class="w">              </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">                      </span><span class="n">expr_ty</span><span class="w"> </span><span class="n">value</span><span class="p">;</span><span class="w"></span>
 <span class="w">              </span><span class="p">}</span><span class="w"> </span><span class="n">Yield</span><span class="p">;</span><span class="w"></span>
 <span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="n">v</span><span class="p">;</span><span class="w"></span>
@@ -426,11 +426,11 @@ manually – <code class="docutils literal notranslate"><span class="pre">generi
 <code class="file docutils literal notranslate"><span class="pre">Include/Internal/pycore_asdl.h</span></code>.  Functions and macros
 for creating <code class="docutils literal notranslate"><span class="pre">asdl_xx_seq</span> <span class="pre">*</span></code> types are as follows:</p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">_Py_asdl_generic_seq_new(Py_ssize_t,</span> <span class="pre">PyArena</span> <span class="pre">*)</span></code></dt><dd><p>Allocate memory for an <code class="docutils literal notranslate"><span class="pre">asdl_int_seq</span></code> of the specified length</p>
+<dt><code class="docutils literal notranslate"><span class="pre">_Py_asdl_generic_seq_new(Py_ssize_t,</span> <span class="pre">PyArena</span> <span class="pre">*)</span></code></dt><dd><p>Allocate memory for an <code class="docutils literal notranslate"><span class="pre">asdl_generic_seq</span></code> of the specified length</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">_Py_asdl_identifier_seq_new(Py_ssize_t,</span> <span class="pre">PyArena</span> <span class="pre">*)</span></code></dt><dd><p>Allocate memory for an <code class="docutils literal notranslate"><span class="pre">asdl_identifier_seq</span></code> of the specified length</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">_Py_asdl_int_seq_new(Py_ssize_t,</span> <span class="pre">PyArena</span> <span class="pre">*)</span></code></dt><dd><p>Allocate memory for an <code class="docutils literal notranslate"><span class="pre">asdl_generic_seq</span></code> of the specified length</p>
+<dt><code class="docutils literal notranslate"><span class="pre">_Py_asdl_int_seq_new(Py_ssize_t,</span> <span class="pre">PyArena</span> <span class="pre">*)</span></code></dt><dd><p>Allocate memory for an <code class="docutils literal notranslate"><span class="pre">asdl_int_seq</span></code> of the specified length</p>
 </dd>
 </dl>
 <p>In addition to the three types mentioned above, some ASDL sequence types are
@@ -640,7 +640,7 @@ command before adding the new bytecode target to <code class="file docutils lite
 result in an error. You should only run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">regen-importlib</span></code> after the new
 bytecode target has been added.</p>
 <div class="admonition note">
-<p class="admonition-title">注解</p>
+<p class="admonition-title">备注</p>
 <p>On Windows, running the <code class="docutils literal notranslate"><span class="pre">./build.bat</span></code> script will automatically
 regenerate the required files without requiring additional arguments.</p>
 </div>
@@ -876,8 +876,8 @@ In Proceedings of the Conference on Domain-Specific Languages, pp.
         </div>
 
         <div class="related-information">
-              Copyright &#169; 2011-2021, Python Software Foundation |
-            最后更新于 11月 22, 2021. |
+              Copyright &#169; 2011-2022, Python Software Foundation |
+            最后更新于 1月 29, 2022. |
           Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
           <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
             | <a class="muted-link" href="_sources/compiler.rst.txt"

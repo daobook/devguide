@@ -5,13 +5,13 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="索引" href="genindex.html" /><link rel="search" title="搜索" href="search.html" /><link rel="next" title="Design of CPython’s Compiler" href="compiler.html" /><link rel="prev" title="Changing CPython’s Grammar" href="grammar.html" />
 
-    <meta name="generator" content="sphinx-4.3.0, furo 2021.11.16"/>
+    <meta name="generator" content="sphinx-4.4.0, furo 2022.01.02"/>
         <title>Guide to CPython’s Parser - Python Developer&#39;s Guide</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=916d6ed8f59335acffa15474ff504849343d4c76" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=df49af52631e7917044a9c21a57f7b83170a6dd0" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=0af69da206d614734f649b27d4cdc2dd6c31f41d" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=fade93df149f7c5fedb3ff897f799dc7d283b420" />
     
     
 
@@ -775,7 +775,7 @@ the rule name (and type, if present):</p>
 </div>
 <p>By selectively turning on memoization for a handful of rules, the parser becomes faster and uses less memory.</p>
 <div class="admonition note">
-<p class="admonition-title">注解</p>
+<p class="admonition-title">备注</p>
 <p>Left-recursive rules always use memoization, since the implementation of left-recursion depends on it.</p>
 </div>
 <p>To know if a new rule needs memoization or not, benchmarking is required
@@ -799,7 +799,7 @@ location variables are taken from the location information of the current token.
 <section id="hard-and-soft-keywords">
 <h3>Hard and Soft keywords<a class="headerlink" href="#hard-and-soft-keywords" title="永久链接至标题">¶</a></h3>
 <div class="admonition note">
-<p class="admonition-title">注解</p>
+<p class="admonition-title">备注</p>
 <p>In the grammar files, keywords are defined using <strong>single quotes</strong> (e.g. <cite>‘class’</cite>) while soft
 keywords are defined using <strong>double quotes</strong> (e.g. <cite>“match”</cite>).</p>
 </div>
@@ -863,7 +863,7 @@ exception set by calling Python C-API functions. This also includes <a class="re
 exceptions and this is the main mechanism the parser uses to report custom syntax
 error messages.</p>
 <div class="admonition note">
-<p class="admonition-title">注解</p>
+<p class="admonition-title">备注</p>
 <p>Tokenizer errors are normally reported by raising exceptions but some special
 tokenizer errors such as unclosed parenthesis will be reported only after the
 parser finishes without returning anything.</p>
@@ -1009,7 +1009,7 @@ adding <code class="docutils literal notranslate"><span class="pre">-d</span></c
 mode in the generated parser. This is very useful to debug the generated parser and to understand how it works, but it
 can be a bit hard to understand at first.</p>
 <div class="admonition note">
-<p class="admonition-title">注解</p>
+<p class="admonition-title">备注</p>
 <p>When activating verbose mode in the Python parser, it is better to not use interactive mode as it can be much harder to
 understand, because interactive mode involves some special steps compared to regular parsing.</p>
 </div>
@@ -1082,8 +1082,8 @@ indicates what alternative within that rule is being attempted.</p>
         </div>
 
         <div class="related-information">
-              Copyright &#169; 2011-2021, Python Software Foundation |
-            最后更新于 11月 22, 2021. |
+              Copyright &#169; 2011-2022, Python Software Foundation |
+            最后更新于 1月 29, 2022. |
           Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
           <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
             | <a class="muted-link" href="_sources/parser.rst.txt"

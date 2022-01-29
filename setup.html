@@ -5,13 +5,13 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="索引" href="genindex.html" /><link rel="search" title="搜索" href="search.html" /><link rel="next" title="Where to Get Help" href="help.html" /><link rel="prev" title="Python 开发者指南" href="index.html" />
 
-    <meta name="generator" content="sphinx-4.3.0, furo 2021.11.16"/>
+    <meta name="generator" content="sphinx-4.4.0, furo 2022.01.02"/>
         <title>Getting Started - Python Developer&#39;s Guide</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=916d6ed8f59335acffa15474ff504849343d4c76" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=df49af52631e7917044a9c21a57f7b83170a6dd0" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=0af69da206d614734f649b27d4cdc2dd6c31f41d" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=fade93df149f7c5fedb3ff897f799dc7d283b420" />
     
     
 
@@ -228,7 +228,7 @@ compiled version of the CPython interpreter (CPython is the version of Python
 available from <a class="reference external" href="https://www.python.org/">https://www.python.org/</a>). It also gives an overview of the
 directory structure of the CPython source code.</p>
 <p>Alternatively, if you have <a class="reference external" href="https://www.docker.com/">Docker</a> installed you
-might want to use <a class="reference external" href="https://gitlab.com/python-devs/ci-images/blob/master/README.md">our official images</a>.  These
+might want to use <a class="reference external" href="https://gitlab.com/python-devs/ci-images/blob/main/README.md">our official images</a>.  These
 contain the latest releases of several Python versions, along with git head,
 and are provided for development and testing purposes only.</p>
 <div class="admonition seealso">
@@ -345,7 +345,7 @@ for development is to configure it and then compile it.</p>
 <p>More flags are available to <code class="docutils literal notranslate"><span class="pre">configure</span></code>, but this is the minimum you should
 do to get a pydebug build of CPython.</p>
 <div class="admonition note">
-<p class="admonition-title">注解</p>
+<p class="admonition-title">备注</p>
 <p>You might need to run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">clean</span></code> before or after re-running <code class="docutils literal notranslate"><span class="pre">configure</span></code>
 in a particular build directory.</p>
 </div>
@@ -409,14 +409,15 @@ still build properly).</p>
 <span id="windows-compiling"></span><h3>Windows<a class="headerlink" href="#windows" title="永久链接至标题">¶</a></h3>
 <p>For a quick guide to building you can read <a class="reference external" href="https://cpython-core-tutorial.readthedocs.io/en/latest/build_cpython_windows.html">this documentation</a> from Victor
 Stinner.</p>
-<p><strong>Python 3.6</strong> and later can use Microsoft Visual Studio 2017.  You can download
+<p>All current versions of Python can be built using Microsoft Visual Studio 2017
+or later.  You can download
 and use any of the free or paid versions of <a class="reference external" href="https://www.visualstudio.com/">Visual Studio 2017</a>.</p>
 <p>When installing Visual Studio 2017, select the <strong>Python development</strong> workload
 and the optional <strong>Python native development tools</strong> component to obtain all of
 the necessary build tools. If you do not already have git installed, you can
 find git for Windows on the <strong>Individual components</strong> tab of the installer.</p>
 <div class="admonition note">
-<p class="admonition-title">注解</p>
+<p class="admonition-title">备注</p>
 <p>If you want to build MSI installers, be aware that the build toolchain
 for them has a dependency on the Microsoft .NET Framework Version 3.5 (which
 may not be configured on recent versions of Windows, such as Windows 10). If
@@ -434,7 +435,7 @@ Visual Studio to continue development.</p>
 <p>See the <a class="reference external" href="https://github.com/python/cpython/blob/main/PCbuild/readme.txt">readme</a> for more details on what other software is necessary and how
 to build.</p>
 <div class="admonition note">
-<p class="admonition-title">注解</p>
+<p class="admonition-title">备注</p>
 <p>If you are using the Windows Subsystem for Linux (WSL), clone the
 repository from a native Windows terminal program like cmd.exe command prompt
 or PowerShell as well as use a build of git targeted for Windows, e.g., the
@@ -559,7 +560,7 @@ just ask for assistance on the core-mentorship list.</p>
 <p>Explaining how to build optional dependencies on a UNIX based system without
 root access is beyond the scope of this guide.</p>
 <div class="admonition note">
-<p class="admonition-title">注解</p>
+<p class="admonition-title">备注</p>
 <p>While you need a C compiler to build CPython, you don’t need any
 knowledge of the C language to contribute!  Vast areas of CPython are
 written completely in Python: as of this writing, CPython contains slightly
@@ -695,8 +696,8 @@ compiler, eval loop and various built-in modules.</p>
         </div>
 
         <div class="related-information">
-              Copyright &#169; 2011-2021, Python Software Foundation |
-            最后更新于 11月 22, 2021. |
+              Copyright &#169; 2011-2022, Python Software Foundation |
+            最后更新于 1月 29, 2022. |
           Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
           <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
             | <a class="muted-link" href="_sources/setup.rst.txt"

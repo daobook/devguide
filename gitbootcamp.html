@@ -5,13 +5,13 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="索引" href="genindex.html" /><link rel="search" title="搜索" href="search.html" /><link rel="next" title="Appendix: Topics" href="appendix.html" /><link rel="prev" title="Core Developer Motivations and Affiliations" href="motivations.html" />
 
-    <meta name="generator" content="sphinx-4.3.0, furo 2021.11.16"/>
+    <meta name="generator" content="sphinx-4.4.0, furo 2022.01.02"/>
         <title>Git Bootcamp and Cheat Sheet - Python Developer&#39;s Guide</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=916d6ed8f59335acffa15474ff504849343d4c76" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=df49af52631e7917044a9c21a57f7b83170a6dd0" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=0af69da206d614734f649b27d4cdc2dd6c31f41d" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=fade93df149f7c5fedb3ff897f799dc7d283b420" />
     
     
 
@@ -224,7 +224,7 @@
           <section id="git-bootcamp-and-cheat-sheet">
 <span id="gitbootcamp"></span><h1>Git Bootcamp and Cheat Sheet<a class="headerlink" href="#git-bootcamp-and-cheat-sheet" title="永久链接至标题">¶</a></h1>
 <div class="admonition note">
-<p class="admonition-title">注解</p>
+<p class="admonition-title">备注</p>
 <p>This section provides instructions on common tasks in CPython’s
 workflow. It’s designed to assist new contributors who have
 some familiarity with git and GitHub.</p>
@@ -237,7 +237,7 @@ desire a different approach.</p>
 <p>In this section, we will go over some commonly used Git commands that are
 relevant to CPython’s workflow.</p>
 <div class="admonition note">
-<p class="admonition-title">注解</p>
+<p class="admonition-title">备注</p>
 <p>Setting up git aliases for common tasks can be useful to you. You can
 get more information about that in
 <a class="reference external" href="https://git-scm.com/book/en/v2/Git-Basics-Git-Aliases">git documentation</a></p>
@@ -432,6 +432,29 @@ the origin is at:</p>
 </pre></div>
 </div>
 </section>
+<section id="comparing-changes">
+<span id="diff-changes"></span><h2>Comparing Changes<a class="headerlink" href="#comparing-changes" title="永久链接至标题">¶</a></h2>
+<p>View all non-commited changes:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git diff</span>
+</pre></div>
+</div>
+<p>Compare to the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git diff main</span>
+</pre></div>
+</div>
+<p>Exclude generated files from diff using an <code class="docutils literal notranslate"><span class="pre">attr</span></code>
+<a class="reference external" href="https://git-scm.com/docs/gitglossary#def_pathspec">pathspec</a> (note the
+single quotes):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git diff main ':(attr:!generated)'</span>
+</pre></div>
+</div>
+<p>Exclude generated files from diff by default:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git config diff.generated.binary true</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">generated</span></code> <a class="reference external" href="https://git-scm.com/docs/gitattributes">attribute</a> is
+defined in <code class="file docutils literal notranslate"><span class="pre">.gitattributes</span></code>, found in the repository root.</p>
+</section>
 <section id="pushing-changes">
 <span id="push-changes"></span><h2>Pushing Changes<a class="headerlink" href="#pushing-changes" title="永久链接至标题">¶</a></h2>
 <p>Once your changes are ready for a review or a pull request, you will need to push
@@ -474,7 +497,7 @@ get notified unnecessarily.</p>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="admonition-title">注解</p>
+<p class="admonition-title">备注</p>
 <p>For the above commands to work, please follow the instructions found
 in the <a class="reference internal" href="setup.html#checkout"><span class="std std-ref">Get the source code</span></a> section</p>
 </div>
@@ -502,23 +525,23 @@ you run <code class="docutils literal notranslate"><span class="pre">git</span> 
 <li><p><a class="reference external" href="https://help.github.com/en/articles/resolving-a-merge-conflict-using-the-command-line">Resolving a merge conflict using the command line</a></p></li>
 </ul>
 </section>
-<section id="applying-a-patch-from-mercurial-to-git">
-<span id="git-from-mercurial"></span><h2>Applying a Patch from Mercurial to Git<a class="headerlink" href="#applying-a-patch-from-mercurial-to-git" title="永久链接至标题">¶</a></h2>
+<section id="applying-a-patch-to-git">
+<span id="git-from-patch"></span><h2>Applying a Patch to Git<a class="headerlink" href="#applying-a-patch-to-git" title="永久链接至标题">¶</a></h2>
 <p>Scenario:</p>
 <ul class="simple">
-<li><p>A Mercurial patch exists but there is no pull request for it.</p></li>
+<li><p>A patch exists but there is no pull request for it.</p></li>
 </ul>
 <p>Solution:</p>
 <ol class="arabic">
 <li><p>Download the patch locally.</p></li>
 <li><p>Apply the patch:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git apply /path/to/issueNNNN-git.patch</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git apply /path/to/patch.diff</span>
 </pre></div>
 </div>
 <p>If there are errors, update to a revision from when the patch was
 created and then try the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">apply</span></code> again:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git checkout <span class="k">$(</span>git rev-list -n <span class="m">1</span> --before<span class="o">=</span><span class="s2">"yyyy-mm-dd hh:mm:ss"</span> main<span class="k">)</span>
-git apply /path/to/issueNNNN-git.patch
+git apply /path/to/patch.diff
 </pre></div>
 </div>
 <p>If the patch still won’t apply, then a patch tool will not be able to
@@ -532,6 +555,8 @@ merge conflicts need to be resolved:</p>
 <span class="go">git mergetool</span>
 </pre></div>
 </div>
+<p>For very old changes, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span> <span class="pre">--no-ff</span></code> may be easier than a rebase,
+with regards to resolving conflicts.</p>
 </li>
 <li><p>Push the changes and open a pull request.</p></li>
 </ol>
@@ -543,7 +568,17 @@ merge conflicts need to be resolved:</p>
 <li><p>A contributor made a pull request to CPython.</p></li>
 <li><p>Before merging it, you want to be able to test their changes locally.</p></li>
 </ul>
-<p>On Unix and MacOS, set up the following git alias:</p>
+<p>If you’ve got <a class="reference external" href="https://cli.github.com">GitHub CLI</a> or
+<a class="reference external" href="https://hub.github.com">hub</a> installed, you can simply do:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>gh pr checkout &lt;pr_number&gt;   <span class="c1"># GitHub CLI</span>
+<span class="gp">$ </span>hub pr checkout &lt;pr_number&gt;  <span class="c1"># hub</span>
+</pre></div>
+</div>
+<p>Both of these tools will configure a remote URL for the branch, so you can
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code> if the pull request author checked “Allow edits from maintainers”
+when creating the pull request.</p>
+<p>If you don’t have GitHub CLI or hub installed, you can set up a git alias. On
+Unix and macOS:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git config --global alias.pr <span class="s1">'!sh -c "git fetch upstream pull/${1}/head:pr_${1} &amp;&amp; git checkout pr_${1}" -'</span>
 </pre></div>
 </div>
@@ -555,15 +590,6 @@ merge conflicts need to be resolved:</p>
 local copy of a pull request as follows:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git pr &lt;pr_number&gt;</span>
 </pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">注解</p>
-<p><a class="reference external" href="https://github.com/github/hub">hub</a> command line utility makes this
-workflow very easy.  You can check out the branch by
-<code class="docutils literal notranslate"><span class="pre">hub</span> <span class="pre">pr</span> <span class="pre">checkout</span> <span class="pre">&lt;pr_number&gt;</span> <span class="pre">[&lt;branch_name&gt;]</span></code>.
-This command configures remote URL for the branch too.
-So you can <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code> if the pull request author checked
-“Allow edits from maintainers” when creating the pull request.</p>
 </div>
 </section>
 <section id="accepting-and-merging-a-pull-request">
@@ -593,7 +619,7 @@ message body.</p></li>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="admonition-title">注解</p>
+<p class="admonition-title">备注</p>
 <p><a class="reference external" href="https://chris.beams.io/posts/git-commit/">How to Write a Git Commit Message</a>
 is a nice article describing how to write a good commit message.</p>
 </div>
@@ -713,8 +739,8 @@ git commit -m <span class="s2">"&lt;message&gt;"</span>
         </div>
 
         <div class="related-information">
-              Copyright &#169; 2011-2021, Python Software Foundation |
-            最后更新于 11月 22, 2021. |
+              Copyright &#169; 2011-2022, Python Software Foundation |
+            最后更新于 1月 29, 2022. |
           Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
           <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
             | <a class="muted-link" href="_sources/gitbootcamp.rst.txt"
@@ -750,10 +776,11 @@ git commit -m <span class="s2">"&lt;message&gt;"</span>
 <li><a class="reference internal" href="#reverting-changes">Reverting Changes</a></li>
 <li><a class="reference internal" href="#stashing-changes">Stashing Changes</a></li>
 <li><a class="reference internal" href="#committing-changes">Committing Changes</a></li>
+<li><a class="reference internal" href="#comparing-changes">Comparing Changes</a></li>
 <li><a class="reference internal" href="#pushing-changes">Pushing Changes</a></li>
 <li><a class="reference internal" href="#creating-a-pull-request">Creating a Pull Request</a></li>
 <li><a class="reference internal" href="#updating-your-cpython-fork">Updating your CPython Fork</a></li>
-<li><a class="reference internal" href="#applying-a-patch-from-mercurial-to-git">Applying a Patch from Mercurial to Git</a></li>
+<li><a class="reference internal" href="#applying-a-patch-to-git">Applying a Patch to Git</a></li>
 <li><a class="reference internal" href="#downloading-other-s-patches">Downloading Other’s Patches</a></li>
 <li><a class="reference internal" href="#accepting-and-merging-a-pull-request">Accepting and Merging a Pull Request</a></li>
 <li><a class="reference internal" href="#backporting-merged-changes">Backporting Merged Changes</a></li>

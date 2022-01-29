@@ -16,17 +16,16 @@ Python triage team
 
 The Python triage team is a group dedicated towards improving workflow
 efficiency through thoughtful review and triage of open issues and pull
-requests. This helps contributors receive timely feedback and enables core 
-developers to focus on reviewed items which reduces their workload. The 
-expectations of this role expand upon the "Developer" role on the 
-`issue tracker`_. The responsibilities listed below are primarily centered 
-around the Python GitHub repositories. This extends beyond CPython, and, as 
+requests. This helps contributors receive timely feedback and enables core
+developers to focus on reviewed items which reduces their workload. The
+expectations of this role expand upon the "Developer" role on the
+`issue tracker`_. The responsibilities listed below are primarily centered
+around the Python GitHub repositories. This extends beyond CPython, and, as
 needed, to other repos such as devguide and core-workflow.
 
 Responsibilities include:
 
 * PR/issue management
-    - Renaming PRs
     - Reviewing PRs
     - Assisting contributors
     - Notifying appropriate core developers
@@ -143,7 +142,7 @@ sprint
 stale
     Used for PRs that include changes which are no longer relevant or when the
     author hasn't responded to feedback in a long period of time. This label
-    helps core developers quickly identify PRs that are candidates for closure 
+    helps core developers quickly identify PRs that are candidates for closure
     or require a ping to the author.
 
 type-bugfix
@@ -164,7 +163,7 @@ type-performance
     Used for PRs that provide performance optimizations.
 
 type-security
-    Used for PRs that involve critical security issues. Less severe 
+    Used for PRs that involve critical security issues. Less severe
     security concerns can instead use the type-bugfix label.
 
 type-tests
@@ -443,7 +442,9 @@ forward.
 
 Superseder
 ''''''''''
-The issue is a duplicate of the listed issue(s).
+The issue is a duplicate of the listed issue(s). The issue should just be the
+number, not the b.p.o URL or "issueXXXXX". If this is set, the Resolution should
+be set to *Duplicate*.
 
 Status
 ''''''
@@ -506,13 +507,15 @@ with the "open" status.
 
 Mercurial Repository
 ''''''''''''''''''''
-HTTP link to a Mercurial repository that contains a patch for the issue.
-A :guilabel:`Create Patch` button will appear that computes a diff for the
-head revision of the remote branch and attaches it to the issue.  The button
-supports only CPython_ patches.
+Deprecated: HTTP link to a Mercurial repository that contains a patch for the issue.
 
-If you don't indicate a remote branch, ``default`` is used.  You can
-indicate a remote branch by adding ``#BRANCH`` to the end of the URL.
+New repository links should not be added to new or existing issues.
+
+GitHub PR
+'''''''''
+GitHub pull request number or full URL to a pull request.  This field is
+usually not needed as links are automatically created between issues and PRs
+when an issue number is mentioned in the PR description or a commit message.
 
 Generating Special Links in a Comment
 -------------------------------------
@@ -523,13 +526,18 @@ a link to relevant web pages.
 | Comment abbreviation                                        | Description                                           |
 +=============================================================+=======================================================+
 | ``#<number>``,                                              | Links to the tracker issue ``<number>``.              |
+| ``bpo-<number>``,                                           |                                                       |
 | ``issue<number>``, or                                       |                                                       |
 | ``issue <number>``                                          |                                                       |
 +-------------------------------------------------------------+-------------------------------------------------------+
 | ``msg<number>``                                             | Links to the tracker message ``<number>``.            |
 +-------------------------------------------------------------+-------------------------------------------------------+
 | ``PR <number>``,                                            | Links to `GitHub pull requests`_.                     |
-| ``PR<number>``, or                                          |                                                       |
+| ``PR-<number>``,                                            |                                                       |
+| ``PR<number>``,                                             |                                                       |
+| ``GH <number>``,                                            |                                                       |
+| ``GH-<number>``,                                            |                                                       |
+| ``GH<number>``, or                                          |                                                       |
 | ``pull request <number>``                                   |                                                       |
 +-------------------------------------------------------------+-------------------------------------------------------+
 | a 10-, 11-, 12-, or 40-digit hex ``<number>``               | Indicates a Git or Mercurial changeset identifier and |

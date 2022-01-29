@@ -5,13 +5,13 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="索引" href="genindex.html" /><link rel="search" title="搜索" href="search.html" /><link rel="next" title="Getting Started" href="setup.html" />
 
-    <meta name="generator" content="sphinx-4.3.0, furo 2021.11.16"/>
+    <meta name="generator" content="sphinx-4.4.0, furo 2022.01.02"/>
         <title>Python Developer&#39;s Guide</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=916d6ed8f59335acffa15474ff504849343d4c76" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=df49af52631e7917044a9c21a57f7b83170a6dd0" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=0af69da206d614734f649b27d4cdc2dd6c31f41d" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=fade93df149f7c5fedb3ff897f799dc7d283b420" />
     
     
 
@@ -270,7 +270,7 @@ or the <a class="reference external" href="https://pypi.org/project/blurb/">blur
 command. Please read more about <code class="docutils literal notranslate"><span class="pre">blurb</span></code> in <a class="reference internal" href="documenting.html#documenting"><span class="std std-ref">documentation</span></a>.</p></li>
 </ol>
 <div class="admonition note">
-<p class="admonition-title">注解</p>
+<p class="admonition-title">备注</p>
 <p>First time contributors will need to sign the Contributor Licensing
 Agreement (CLA) as described in the <a class="reference internal" href="pullrequest.html#cla"><span class="std std-ref">Licensing</span></a> section of
 this guide.</p>
@@ -342,13 +342,6 @@ contributing to Python:</p>
 <td><p>security</p></td>
 <td><p>2018-06-27</p></td>
 <td><p><em>2023-06-27</em></p></td>
-<td><p>Ned Deily</p></td>
-</tr>
-<tr class="row-odd"><td><p>3.6</p></td>
-<td><p><span class="target" id="index-5"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0494"><strong>PEP 494</strong></a></p></td>
-<td><p>security</p></td>
-<td><p>2016-12-23</p></td>
-<td><p><em>2021-12-23</em></p></td>
 <td><p>Ned Deily</p></td>
 </tr>
 </tbody>
@@ -508,8 +501,8 @@ extension modules</p></li>
 <ul class="simple">
 <li><dl class="simple">
 <dt>Coding style guides</dt><dd><ul>
-<li><p><span class="target" id="index-6"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0007"><strong>PEP 7</strong></a> (Style Guide for C Code)</p></li>
-<li><p><span class="target" id="index-7"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0008"><strong>PEP 8</strong></a> (Style Guide for Python Code)</p></li>
+<li><p><span class="target" id="index-5"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0007"><strong>PEP 7</strong></a> (Style Guide for C Code)</p></li>
+<li><p><span class="target" id="index-6"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0008"><strong>PEP 8</strong></a> (Style Guide for Python Code)</p></li>
 </ul>
 </dd>
 </dl>
@@ -765,6 +758,7 @@ respectful of others no matter what their position is within the project.</p>
 <li class="toctree-l3"><a class="reference internal" href="triaging.html#status">Status</a></li>
 <li class="toctree-l3"><a class="reference internal" href="triaging.html#resolution">Resolution</a></li>
 <li class="toctree-l3"><a class="reference internal" href="triaging.html#mercurial-repository">Mercurial Repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="triaging.html#github-pr">GitHub PR</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="triaging.html#generating-special-links-in-a-comment">Generating Special Links in a Comment</a></li>
@@ -964,7 +958,8 @@ respectful of others no matter what their position is within the project.</p>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="c-api.html#public-c-api">Public C API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c-api.html#limited-api">Limited API</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="c-api.html#guidelines-for-changing-the-limited-api">Guidelines for changing the Limited API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="c-api.html#guidelines-for-changing-the-limited-api-and-removing-items-from-it">Guidelines for changing the Limited API, and removing items from it</a></li>
+<li class="toctree-l3"><a class="reference internal" href="c-api.html#guidelines-for-adding-to-the-limited-api">Guidelines for adding to the Limited API</a></li>
 <li class="toctree-l3"><a class="reference internal" href="c-api.html#adding-a-new-definition-to-the-limited-api">Adding a new definition to the Limited API</a></li>
 </ul>
 </li>
@@ -1033,10 +1028,11 @@ respectful of others no matter what their position is within the project.</p>
 <li class="toctree-l2"><a class="reference internal" href="gitbootcamp.html#reverting-changes">Reverting Changes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gitbootcamp.html#stashing-changes">Stashing Changes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gitbootcamp.html#committing-changes">Committing Changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gitbootcamp.html#comparing-changes">Comparing Changes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gitbootcamp.html#pushing-changes">Pushing Changes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gitbootcamp.html#creating-a-pull-request">Creating a Pull Request</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gitbootcamp.html#updating-your-cpython-fork">Updating your CPython Fork</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gitbootcamp.html#applying-a-patch-from-mercurial-to-git">Applying a Patch from Mercurial to Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gitbootcamp.html#applying-a-patch-to-git">Applying a Patch to Git</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gitbootcamp.html#downloading-other-s-patches">Downloading Other’s Patches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gitbootcamp.html#accepting-and-merging-a-pull-request">Accepting and Merging a Pull Request</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gitbootcamp.html#backporting-merged-changes">Backporting Merged Changes</a></li>
@@ -1076,8 +1072,8 @@ respectful of others no matter what their position is within the project.</p>
         </div>
 
         <div class="related-information">
-              Copyright &#169; 2011-2021, Python Software Foundation |
-            最后更新于 11月 22, 2021. |
+              Copyright &#169; 2011-2022, Python Software Foundation |
+            最后更新于 1月 29, 2022. |
           Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
           <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
             | <a class="muted-link" href="_sources/index.rst.txt"

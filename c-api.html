@@ -5,13 +5,13 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="索引" href="genindex.html" /><link rel="search" title="搜索" href="search.html" /><link rel="next" title="Coverity Scan" href="coverity.html" /><link rel="prev" title="Updating standard library extension modules" href="extensions.html" />
 
-    <meta name="generator" content="sphinx-4.3.0, furo 2021.11.16"/>
+    <meta name="generator" content="sphinx-4.4.0, furo 2022.01.02"/>
         <title>Changing Python’s C API - Python Developer&#39;s Guide</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=916d6ed8f59335acffa15474ff504849343d4c76" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=df49af52631e7917044a9c21a57f7b83170a6dd0" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=0af69da206d614734f649b27d4cdc2dd6c31f41d" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=fade93df149f7c5fedb3ff897f799dc7d283b420" />
     
     
 
@@ -302,8 +302,38 @@ this subset.</p>
 <p>No changes that break the Stable ABI are allowed.</p>
 <p>The Limited API should be defined in <code class="docutils literal notranslate"><span class="pre">Include/</span></code>, excluding the
 <code class="docutils literal notranslate"><span class="pre">cpython</span></code> and <code class="docutils literal notranslate"><span class="pre">internal</span></code> subdirectories.</p>
-<section id="guidelines-for-changing-the-limited-api">
-<h3>Guidelines for changing the Limited API<a class="headerlink" href="#guidelines-for-changing-the-limited-api" title="永久链接至标题">¶</a></h3>
+<section id="guidelines-for-changing-the-limited-api-and-removing-items-from-it">
+<h3>Guidelines for changing the Limited API, and removing items from it<a class="headerlink" href="#guidelines-for-changing-the-limited-api-and-removing-items-from-it" title="永久链接至标题">¶</a></h3>
+<p>While the <em>Stable ABI</em>  must not be broken, the existing Limited API can be
+changed, and items can be removed from it, if:</p>
+<ul class="simple">
+<li><p>the Backwards Compatibility Policy (<span class="target" id="index-0"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0387"><strong>PEP 387</strong></a>) is followed, and</p></li>
+<li><p>the Stable ABI is not broken – that is, extensions compiled with
+Limited API of older versions of Python continue to work on
+newer versions of Python.</p></li>
+</ul>
+<p>This is tricky to do and requires careful thought.
+Some examples:</p>
+<ul class="simple">
+<li><p>Functions, structs etc. accessed by macros in <em>any version</em> of the
+Limited API are part of the Stable ABI, even if they are named with
+an underscore. They must not be removed and their signature must not change.
+(Their implementation may change, though.)</p></li>
+<li><p>Structs members cannot be rearranged if they were part of any version of
+the Limited API.</p></li>
+<li><p>If the Limited API allows users to allocate a struct directly,
+its size must not change.</p></li>
+<li><p>Exported symbols (functions and data) must continue to be available
+as exported symbols. Specifically, a function can only be converted
+to a <code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">inline</span></code> function (or macro) if Python also continues to
+provide the actual function.
+For an example, see the <code class="docutils literal notranslate"><span class="pre">Py_NewRef</span></code> <a class="reference external" href="https://github.com/python/cpython/blob/v3.10.1/Include/object.h#L591-L595">macro</a> and <a class="reference external" href="https://github.com/python/cpython/blob/v3.10.1/Objects/object.c#L2298-L2308">redefinition</a> in 3.10.</p></li>
+</ul>
+<p>It is possible to remove items marked as part of the Stable ABI, but only
+if there was no way to use them in any past version of the Limited API.</p>
+</section>
+<section id="guidelines-for-adding-to-the-limited-api">
+<h3>Guidelines for adding to the Limited API<a class="headerlink" href="#guidelines-for-adding-to-the-limited-api" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
 <li><p>Guidelines for the general <a class="reference internal" href="#public-capi"><span class="std std-ref">Public C API</span></a> apply.</p></li>
 <li><p>New Limited API should only be defined if <code class="docutils literal notranslate"><span class="pre">Py_LIMITED_API</span></code> is set
@@ -327,7 +357,7 @@ languages that don’t use the C preprocessor.</p></li>
 </li>
 <li><p>Please start a public discussion before expanding the Limited API</p></li>
 <li><p>The Limited API and must follow standard C, not just features of currently
-supported platforms. The exact C dialect is described in <span class="target" id="index-0"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0007"><strong>PEP 7</strong></a>.</p>
+supported platforms. The exact C dialect is described in <span class="target" id="index-1"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0007"><strong>PEP 7</strong></a>.</p>
 <ul>
 <li><p>Documentation examples (and more generally: the intended use of the API)
 should also follow standard C.</p></li>
@@ -425,8 +455,8 @@ On platforms without <code class="docutils literal notranslate"><span class="pre
         </div>
 
         <div class="related-information">
-              Copyright &#169; 2011-2021, Python Software Foundation |
-            最后更新于 11月 22, 2021. |
+              Copyright &#169; 2011-2022, Python Software Foundation |
+            最后更新于 1月 29, 2022. |
           Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
           <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
             | <a class="muted-link" href="_sources/c-api.rst.txt"
@@ -458,7 +488,8 @@ On platforms without <code class="docutils literal notranslate"><span class="pre
 </li>
 <li><a class="reference internal" href="#public-c-api">Public C API</a></li>
 <li><a class="reference internal" href="#limited-api">Limited API</a><ul>
-<li><a class="reference internal" href="#guidelines-for-changing-the-limited-api">Guidelines for changing the Limited API</a></li>
+<li><a class="reference internal" href="#guidelines-for-changing-the-limited-api-and-removing-items-from-it">Guidelines for changing the Limited API, and removing items from it</a></li>
+<li><a class="reference internal" href="#guidelines-for-adding-to-the-limited-api">Guidelines for adding to the Limited API</a></li>
 <li><a class="reference internal" href="#adding-a-new-definition-to-the-limited-api">Adding a new definition to the Limited API</a></li>
 </ul>
 </li>
