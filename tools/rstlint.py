@@ -195,16 +195,14 @@ def check_whitespace(fn, lines):
 def check_line_length(fn, lines):
     """Check for line length; this checker is not run by default."""
     for lno, line in enumerate(lines):
-        if len(line) > 81:
-            # don't complain about tables, links and function signatures
-            if (
-                line.lstrip()[0] not in '+|'
-                and 'http://' not in line
-                and not line.lstrip().startswith(
-                    ('.. function', '.. method', '.. cfunction')
-                )
-            ):
-                yield lno + 1, "line too long"
+        if len(line) > 81 and (
+            line.lstrip()[0] not in '+|'
+            and 'http://' not in line
+            and not line.lstrip().startswith(
+                ('.. function', '.. method', '.. cfunction')
+            )
+        ):
+            yield lno + 1, "line too long"
 
 
 @checker('.html', severity=2, falsepositives=True)
@@ -302,16 +300,15 @@ Options:  -v       verbose (print all checked file names)
                         count[csev] += 1
     if verbose:
         print()
-    if not count:
-        if severity > 1:
-            print('No problems with severity >= %d found.' % severity)
-        else:
-            print('No problems found.')
-    else:
+    if count:
         for severity in sorted(count):
             number = count[severity]
             print('%d problem%s with severity %d found.' %
                   (number, 's' if number > 1 else '', severity))
+    elif severity > 1:
+        print('No problems with severity >= %d found.' % severity)
+    else:
+        print('No problems found.')
     return int(bool(count))
 
 
